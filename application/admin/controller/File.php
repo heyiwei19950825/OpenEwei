@@ -1,8 +1,7 @@
 <?php
 /**
- * 上传图片
- * EweiOpen V3
- * Copyright 2017-2018 http://www.redkylin.con All rights reserved.
+ * OpenCenter V3
+ * Copyright 2014-2018 http://www.ocenter.cn All rights reserved.
  * ----------------------------------------------------------------------
  * Author: sun(slf02@ourstu.com)
  * Date: 2018/9/27

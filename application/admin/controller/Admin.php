@@ -1,10 +1,9 @@
 <?php
 /**----------------------------------------------------------------------
- * 管理员
- * EweiOpen V3
- * Copyright 2017-2018 http://www.redkylin.con All rights reserved.
+ * OpenCenter V3
+ * Copyright 2014-2018 http://www.ocenter.cn All rights reserved.
  * ----------------------------------------------------------------------
- * Author: ewei(lamp_heyiwei@163.com)
+ * Author: wdx(wdx@ourstu.com)
  * Date: 2018/9/12
  * Time: 10:09
  * ----------------------------------------------------------------------
@@ -154,7 +153,6 @@ class Admin extends Base
                 $temp['name'] = $val;
                 $groups[] = $temp;
             }
-
             $groupJson = json_encode($groups);
             $this->assign('admin', $admin);
             $this->assign('group', $group);

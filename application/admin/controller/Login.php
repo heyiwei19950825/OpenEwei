@@ -1,11 +1,10 @@
 <?php
 /**----------------------------------------------------------------------
- * 登录
- * EweiOpen V3
- * Copyright 2017-2018 http://www.redkylin.con All rights reserved.
+ * OpenCenter V3
+ * Copyright 2014-2018 http://www.ocenter.cn All rights reserved.
  * ----------------------------------------------------------------------
- * Author: ewei(lamp_heyiwei@163.com)
- * Date: 2018/11/18
+ * Author: wdx(wdx@ourstu.com)
+ * Date: 2018/9/21
  * Time: 14:38
  * ----------------------------------------------------------------------
  */
@@ -45,6 +44,7 @@ class Login extends Controller
     {
         if (is_admin_login()) {
             $this->aid = get_aid();
+//            $this->error('请不要重复登录', url('admin/index/index'));
             return redirect('admin/index/index');
         }
         if ($this->request->isPost()) {
@@ -68,7 +68,6 @@ class Login extends Controller
             if ($adminInfo['status'] != 1) {
                 $this->error('用户被禁用');
             }
-
             if (think_ucenter_md5($password) !== $adminInfo['password']) {
                 $this->error('密码错误');
             }

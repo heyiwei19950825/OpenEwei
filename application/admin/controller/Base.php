@@ -1,9 +1,9 @@
 <?php
 /**----------------------------------------------------------------------
- * EweiOpen V3
- * Copyright 2017-2018 http://www.redkylin.con All rights reserved.
+ * OpenCenter V3
+ * Copyright 2014-2018 http://www.ocenter.cn All rights reserved.
  * ----------------------------------------------------------------------
- * Author: ewei(lamp_heyiwei@163.com)
+ * Author: wdx(wdx@ourstu.com)
  * Date: 2018/9/15
  * Time: 9:13
  * ----------------------------------------------------------------------
@@ -11,9 +11,7 @@
 
 namespace app\admin\controller;
 
-use app\common\common\helper;
 use think\Controller;
-use think\Db;
 
 /**
  * 后台公共控制器
@@ -39,6 +37,7 @@ class Base extends Controller
         }
         //登录验证
         if (!$this->isLogin()) {
+//            $this->error('请登录后再试', 'admin/login/login');
             $this->redirect('admin/login/login');
         }
         //数据初始化
@@ -58,7 +57,6 @@ class Base extends Controller
         }
         //菜单机制
         $menuList = cache('menu');
-
         if (!$menuList) {
             $map1[] = ['is_menu', '=', 1];
             $map1[] = ['is_show', '=', 1];
@@ -73,7 +71,6 @@ class Base extends Controller
                 ->select()
                 ->toArray();
             $menuList = list_to_tree($menu);
-
             //菜单写入缓存
             cache('menu', $menuList);
         }
@@ -106,126 +103,6 @@ class Base extends Controller
         $this->adminAuthRule = model('admin/AdminAuthRule');
         //权限校验
         $this->checkAuth();
-
-    }
-
-    /**
-     * 获取字典全数据
-     */
-    public function distData(){
-        $dictList = cache('dist');
-        if( !$dictList ){
-            $dict           = config()['api']['dict'];
-            $dictList       = helper::http_curl($dict, array(
-                'token' => 'caea90167af2875c9243774ff0ef6150'
-            ));
-
-            if ( $dictList['result'] ) {
-                $dictList = $dictList['data'];
-                foreach ( $dictList as $k=>$v ){
-                    $dictData[$v['type_class']][] = $v;
-                }
-
-                cache('dist',$dictData);
-                $dictList = $dictData;
-            }else{
-                $dictList = [
-                    'age_require' =>[],
-                    'article_guide' =>[],
-                    'article_type' =>[],
-                    'beds_range' =>[],
-                    'charge_range' =>[],
-                    'degree_require' =>[],
-                    'elder_relation' =>[],
-                    'flink_position' =>[],
-                    'nursing_level' =>[],
-                    'page_type' =>[],
-                    'position' =>[],
-                    'push_level' =>[],
-                    'resthome_feature' =>[],
-                    'resthome_type' =>[],
-                    'sex_require' =>[],
-                    'web_type' =>[],
-                    'work_years' =>[],
-                ];
-            }
-        }
-
-        $serverList = cache('server');
-        if( !$serverList ){
-            $server           = config()['api']['server'];
-            $serverList       = helper::http_curl($server, array(
-                'token' => 'caea90167af2875c9243774ff0ef6150'
-            ));
-            $serverData = [];
-            if ( $serverList['result'] ) {
-                $serverList = $serverList['data'];
-
-                foreach ( $serverList as $k=>$v ){
-                    $serverData[$v['type_name']][] = $v['data'];
-                }
-
-
-                cache('server',$serverData);
-                $serverList = $serverData;
-            }else{
-                $serverList = [
-                    'resthome_service' =>[],
-                    'resthome_qicai' =>[],
-                    'resthome_feature' =>[],
-                    'resthome_consumers' =>[],
-
-                ];
-            }
-        }
-
-        $chinacityList = cache('chinacity');
-
-        $chinacityData = null;
-        if( !$chinacityList ){
-            $chinacityList = Db::name('city')->select();
-            foreach ($chinacityList as $k=>$v){
-                if( $v['level'] == 'city'){
-                    $chinacityData['city'][] = $v;
-                }
-                if( $v['level'] == 'district'){
-                    $chinacityData['district'][] = $v;
-                }
-                if( $v['level'] == 'province'){
-                    $chinacityData['province'][] = $v;
-                }
-            }
-
-            cache('chinacity',$chinacityData);
-        }
-
-        $this->assign('dict',$dictList);
-        $this->assign('server',$serverList);
-        $this->assign('chinacity',$chinacityList);
-    }
-
-    /**
-     * 获取省份 城市 区域
-     */
-    public function province(){
-        $provincetList = cache('provincet');
-        if( !$provincetList ){
-            $provincet           = config()['api']['province']['district'];
-
-            $provincetList       = helper::http_curl($provincet, array(
-                'token' => 'caea90167af2875c9243774ff0ef6150'
-            ));
-
-            if ( $provincetList['result'] ) {
-                $provincetList = $provincetList['data'];
-                cache('provincet',$provincetList);
-            }else{
-                $provincetList = [
-                ];
-            }
-        }
-
-        $this->assign('dict',$provincetList);
     }
 
     /**

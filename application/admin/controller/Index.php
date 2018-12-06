@@ -1,13 +1,4 @@
 <?php
-/**
- * 后台首页
- * EweiOpen V3
- * Copyright 2017-2018 http://www.redkylin.con All rights reserved.
- * ----------------------------------------------------------------------
- * Author: sun(slf02@ourstu.com)
- * Date: 2018/9/27
- * Time: 16:50
- */
 
 namespace app\admin\controller;
 

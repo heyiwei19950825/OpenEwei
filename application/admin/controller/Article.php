@@ -1,179 +1,100 @@
 <?php
-/**----------------------------------------------------------------------
- * 文章管理
- * EweiOpen V3
- * Copyright 2017-2018 http://www.redkylin.con All rights reserved.
+/**
+ * OpenCenter V3
+ * Copyright 2014-2018 http://www.ocenter.cn All rights reserved.
  * ----------------------------------------------------------------------
- * Author: ewei(lamp_heyiwei@163.com)
- * Date: 2018/11/18
- * Time: 14:38
- * ----------------------------------------------------------------------
+ * Author: sun(slf02@ourstu.com)
+ * Date: 2018/9/25
+ * Time: 14:16
  */
+
 namespace app\admin\controller;
 
+use think\Controller;
 use app\admin\model\AdminLog;
-use app\common\common\helper;
 
-/**
- * 文章管理
- * Class Article
- * @package app\admin\controller
- */
-class Article extends Base
+class Article extends Controller
 {
-    protected $url = [];
-    public function initialize()
-    {
-        $this->distData();
-        $this->url = config()['api']['user'];
-    }
-
     /**
-     * 管理
-     * @return mixed
+     * @return mixed|\think\response\Json
+     * @author sun slf02@ourstu.com
+     * @date 2018/9/26 14:35
+     * //文章列表页
      */
     public function index()
     {
+        $page = input('get.page', 1, 'intval');
+        $limit = input('get.limit', 10, 'intval');
         if ($this->request->isAjax()) {
-            $map = [
-                'token'     => 'caea90167af2875c9243774ff0ef6150',
-                'pageindex' => input('get.page/d', 1),
-                'pagesize'  => input('get.limit/d', 10)
-            ];
-            if($this->request->get('time-scope')){
-                $time = $this->request->get('time-scope');
-                $time = explode(' - ',$time);
-                $map['sarttime']    = $time[0];
-                $map['endtime']     = $time[1];
+            $map[] = ['status', 'in', '0,1'];
+            $list = db('Article')->where($map)->page($page, $limit)->order('create_time desc')->select();
+            foreach ($list as &$val) {
+                $val['create_time'] = time_format($val['create_time']);
+                $val['update_time'] = time_format($val['update_time']);
+                $val['cover'] = pic($val['cover']);
             }
-
-            $map['keyword'] = $this->request->get('keyword', '');
-            $map['mobile']  = $this->request->get('mobile', '');
-            $map['sex']     = $this->request->get('sex', '');
-            $map['status']  = $this->request->get('status', '');
-//            $row = helper::http_curl($this->url['list'], $map);
-
-            $row = [
-                'result' => 'true',
-                'count_info'    =>[
-                    'count' =>100
-                ],
-                'data'=> [
-                    ['id' => '1',
-                        'title' => '好文章',
-                        'comments' => '300',
-                        'share' => '20',
-                        'thumbsup' => '20',
-                        'create_time'=>'2018-12-2']
-                ]
-            ];
-            $list = $count = [];
-
-            if ($row['result']) {
-                $list   = $row['data'];
-                $count  = $row['count_info']['count'];
-            }
+            unset($val);
+            $count = db('Article')->where($map)->count();
             $data = [
-                'code'  => 0,
-                'msg'   => '数据返回成功',
+                'code' => 0,
+                'message' => '数据返回成功',
                 'count' => $count,
-                'data'  => $list
+                'data' => $list
             ];
-
-            AdminLog::setTitle('获取广告列表');
+            AdminLog::setTitle('获取文章列表');
             return json($data);
-        }else{
-            return $this->fetch();
         }
+        AdminLog::setTitle('文章列表');
+        return $this->fetch();
     }
 
-    /**
-     * 添加
-     * @return mixed
-     */
-    public function form()
+    public function editArticle()
     {
         if ($this->request->isPost()) {
-            $map = [
-                'token'     => 'caea90167af2875c9243774ff0ef6150',
-                'userid'    => session('admin_auth')['uid'],
-            ];
-
-            $map['user']     = $this->request->post();
-
-            if ( isset( $map['user']['id'] )&&!empty( $map['user']['id'] ) ) {
-                $row = helper::http_curl($this->url['update'], $map,'POST');
+            $info['id'] = input('post.id', 0, 'intval');
+            $info['cover'] = input('post.cover', 0, 'intval');
+            $info['status'] = input('post.status', 0, 'intval');
+            $info['content'] = input('post.content');
+            $info['title'] = input('post.title');
+            if ($info['id']) {
+                $info['update_time'] = time();
+                $res = db('Article')->save($info, ['id' => $info['id']]);
             } else {
-                $row = helper::http_curl($this->url['save'], $map,'POST');
+                $info['create_time'] = $info['update_time'] = time();
+                $info['view'] = 0;
+                $res = db('Article')->insert($info);
             }
-
-            if ($row['result']) {
-                $this->success($map['user']['id'] ? '编辑成功' : '新增成功');
+            if ($res) {
+                $this->error($info['id'] ? '编辑' : '新增' . '成功');
             } else {
-
-                AdminLog::setTitle('编辑广告');
-
-                $this->error($map['user']['id'] ? '编辑失败' : '新增失败');
+                AdminLog::setTitle('编辑文章列表');
+                $this->success($info['id'] ? '编辑' : '新增' . '失败');
             }
         }
-
-        $map['id']     = input('get.id', 0, 'intval');
-        $map['token']       = 'caea90167af2875c9243774ff0ef6150';
-        $data = NULL;
-
-        if( $map['id']){
-
-            $row   = helper::http_curl($this->url['info'], $map);
-            $row['data'] = array(
-                'id'        => 10,
-                'title'=>'招聘广告',
-                'source'  =>'来源',
-                'author'=>'我是西红柿',
-                'comments'=>'200',
-                'views'=>'300',
-                'level'=>'2',
-                'content'=>'真的是一片好文章呀',
-                'summary'=>'真的是一片好文章呀',
-                'pagebelong'=>'60',
-                'sortorder'=>'1',
-                'statuss'=>'1',
-                'commend'=>'1',
-                'forbid_reserved'=>'1',
-            );
-            if ($row['result']) {
-                $data = $row['data'];
-            }
-        }
+        $id = input('get.id', 0, 'intval');
+        $data = db('Article')->find($id);
         $this->assign('data', $data);
         return $this->fetch();
     }
 
     /**
-     * 删除
-     * @author:wdx(wdx@ourstu.com)
+     * @throws \think\Exception
+     * @throws \think\exception\PDOException
+     * @author sun slf02@ourstu.com
+     * @date 2018/9/26 16:24
+     * 删除记录
      */
-    public function del()
+    public function setStatus()
     {
-        $map = [
-            'token'         => 'caea90167af2875c9243774ff0ef6150',
-            'userid'        => session('admin_auth')['uid'],
-            'id'            => trim(implode(',',array_unique(input('post.id/a', [])) ),',')
-        ];
-
-        $row = helper::http_curl($this->url['delete'], $map,'post');
-
-        if ( isset($row['result']) && $row['result'] ) {
-            AdminLog::setTitle('删除机构招聘');
-            $this->success('删除成功');
+        $id = input('post.id');
+        $status = input('status', 0, 'intval');
+        if (!$id) {
+            $this->error('删除文章id不能为空');
         }
-
-        $this->error('删除失败');
-    }
-
-    /**
-     * 修改状态
-     */
-    public function update_status(){
-        return $this->fetch();
+        $res = db('Article')->where('id', 'in', $id)->update(['status' => $status]);
+        if ($res) {
+            AdminLog::setTitle('删除文章');
+            $this->success('操作成功');
+        }
     }
 }

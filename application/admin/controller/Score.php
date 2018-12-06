@@ -1,10 +1,9 @@
 <?php
 /**----------------------------------------------------------------------
- * 积分
- * EweiOpen V3
- * Copyright 2017-2018 http://www.redkylin.con All rights reserved.
+ * OpenCenter V3
+ * Copyright 2014-2018 http://www.ocenter.cn All rights reserved.
  * ----------------------------------------------------------------------
- * Author: ewei(lamp_heyiwei@163.com)
+ * Author: wdx(wdx@ourstu.com)
  * Date: 2018/10/17
  * Time: 18:33
  * ----------------------------------------------------------------------

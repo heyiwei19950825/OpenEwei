@@ -45,7 +45,7 @@
         });
 
         $('.logout').on('click', function () {
-            $.post("{:url('admin/login/logout')}",{1:1}, function (res) {
+            $.post("{:url('admin/login/logout')}", function (res) {
                 if (res.code === 1) {
                     layer.msg(res.msg);
                     setTimeout(function () {
