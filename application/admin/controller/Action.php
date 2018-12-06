@@ -80,7 +80,7 @@ class Action extends Base
     public function actionLimitForm()
     {
         if ($this->request->isPost()) {
-            $data = input('post.data/a', []);
+            $data = input('post.', []);
             $title = $data['id'] ? '编辑' : '新增';
             $data['status'] = isset($data['status']) ? 1 : 0;
             //自动验证

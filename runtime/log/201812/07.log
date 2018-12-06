@@ -1,0 +1,555 @@
+---------------------------------------------------------------
+[ 2018-12-07T00:01:33+08:00 ] 127.0.0.1 GET www.ewei.com/admin/admin/adminlist
+[运行时间：0.568032s] [吞吐率：1.76req/s] [内存消耗：3,023.01kb] [文件加载：90]
+[ info ] [ LANG ] D:\work\OpenEwei\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=u84iegd7r74g9un0mkcekkm193; keep_login=1%7C1544193820%7Cd012a5fac7deeb023f7a8757a7f1bea4',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.ewei.com/admin/index/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.26 Safari/537.36 Core/1.63.6788.400 QQBrowser/10.3.2864.400',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'www.ewei.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\work\OpenEwei\application\admin\view\admin\admin_list.html [ array (
+  0 => 'menu',
+  1 => 'nav',
+  2 => 'adminRole',
+  3 => 'group',
+  4 => 'admin',
+) ]
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog->run @app_end [ RunTime:0.198012s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010001s ] mysql:host=127.0.0.1;dbname=ocenter;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oc_admin_auth_group` [ RunTime:0.063003s ]
+[ sql ] [ SQL ] SELECT `id`,`title` FROM `oc_admin_auth_group` WHERE  `status` = 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `rules` FROM `oc_admin_auth_group` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oc_admin_auth_rule` [ RunTime:0.058003s ]
+[ sql ] [ SQL ] SELECT * FROM `oc_admin_auth_rule` WHERE  `is_menu` = 1  AND `is_show` = 1  AND `status` = 1  AND `module` <> 'admin' ORDER BY `sort` ASC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `oc_admin_auth_rule` WHERE  `name` = 'admin/admin/adminlist'  AND `status` = 1 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oc_admin` [ RunTime:0.059003s ]
+[ sql ] [ SQL ] SELECT `username` FROM `oc_admin` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oc_admin_log` [ RunTime:0.061003s ]
+[ sql ] [ SQL ] INSERT INTO `oc_admin_log` (`admin_id` , `username` , `module` , `action` , `param` , `title` , `content` , `ip` , `user_agent` , `create_time`) VALUES (1 , 'admin' , 'admin' , '/admin/admin/adminlist' , '' , '管理员列表' , '' , 2130706433 , 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.26 Safari/537.36 Core/1.63.6788.400 QQBrowser/10.3.2864.400' , 1544112092) [ RunTime:0.000000s ]
+---------------------------------------------------------------
+[ 2018-12-07T00:01:33+08:00 ] 127.0.0.1 GET www.ewei.com/admin/admin/adminlist?page=1&limit=20
+[运行时间：0.324019s] [吞吐率：3.09req/s] [内存消耗：2,975.33kb] [文件加载：89]
+[ info ] [ LANG ] D:\work\OpenEwei\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=u84iegd7r74g9un0mkcekkm193; keep_login=1%7C1544193820%7Cd012a5fac7deeb023f7a8757a7f1bea4',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.ewei.com/admin/admin/adminlist',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.26 Safari/537.36 Core/1.63.6788.400 QQBrowser/10.3.2864.400',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'connection' => 'keep-alive',
+  'host' => 'www.ewei.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '20',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000000s ] mysql:host=127.0.0.1;dbname=ocenter;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oc_admin_auth_group` [ RunTime:0.060004s ]
+[ sql ] [ SQL ] SELECT `id`,`title` FROM `oc_admin_auth_group` WHERE  `status` = 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `rules` FROM `oc_admin_auth_group` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oc_admin_auth_rule` [ RunTime:0.062003s ]
+[ sql ] [ SQL ] SELECT * FROM `oc_admin_auth_rule` WHERE  `is_menu` = 1  AND `is_show` = 1  AND `status` = 1  AND `module` <> 'admin' ORDER BY `sort` ASC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `oc_admin_auth_rule` WHERE  `name` = 'admin/admin/adminlist'  AND `status` = 1 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oc_admin` [ RunTime:0.063004s ]
+[ error ] [0]查询表达式错误:''[D:\work\OpenEwei\thinkphp\library\think\db\Builder.php:311]
+---------------------------------------------------------------
+[ 2018-12-07T00:01:41+08:00 ] 127.0.0.1 GET www.ewei.com/admin/admin/adminlist?page=1&limit=20&keyword=&state=0
+[运行时间：0.343020s] [吞吐率：2.92req/s] [内存消耗：2,975.77kb] [文件加载：89]
+[ info ] [ LANG ] D:\work\OpenEwei\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=u84iegd7r74g9un0mkcekkm193; keep_login=1%7C1544193820%7Cd012a5fac7deeb023f7a8757a7f1bea4',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.ewei.com/admin/admin/adminlist',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.26 Safari/537.36 Core/1.63.6788.400 QQBrowser/10.3.2864.400',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'connection' => 'keep-alive',
+  'host' => 'www.ewei.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '20',
+  'keyword' => '',
+  'state' => '0',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:host=127.0.0.1;dbname=ocenter;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oc_admin_auth_group` [ RunTime:0.067004s ]
+[ sql ] [ SQL ] SELECT `id`,`title` FROM `oc_admin_auth_group` WHERE  `status` = 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `rules` FROM `oc_admin_auth_group` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oc_admin_auth_rule` [ RunTime:0.070004s ]
+[ sql ] [ SQL ] SELECT * FROM `oc_admin_auth_rule` WHERE  `is_menu` = 1  AND `is_show` = 1  AND `status` = 1  AND `module` <> 'admin' ORDER BY `sort` ASC [ RunTime:0.001001s ]
+[ sql ] [ SQL ] SELECT * FROM `oc_admin_auth_rule` WHERE  `name` = 'admin/admin/adminlist'  AND `status` = 1 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oc_admin` [ RunTime:0.060004s ]
+[ error ] [0]查询表达式错误:''[D:\work\OpenEwei\thinkphp\library\think\db\Builder.php:311]
+---------------------------------------------------------------
+[ 2018-12-07T00:01:54+08:00 ] 127.0.0.1 GET www.ewei.com/admin/admin/adminlist?page=1&limit=20&keyword=&state=0
+[运行时间：0.259015s] [吞吐率：3.86req/s] [内存消耗：2,896.94kb] [文件加载：83]
+[ info ] [ LANG ] D:\work\OpenEwei\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=u84iegd7r74g9un0mkcekkm193; keep_login=1%7C1544193820%7Cd012a5fac7deeb023f7a8757a7f1bea4',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.ewei.com/admin/admin/adminlist',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.26 Safari/537.36 Core/1.63.6788.400 QQBrowser/10.3.2864.400',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'connection' => 'keep-alive',
+  'host' => 'www.ewei.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '20',
+  'keyword' => '',
+  'state' => '0',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010001s ] mysql:host=127.0.0.1;dbname=ocenter;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oc_admin_auth_group` [ RunTime:0.063004s ]
+[ sql ] [ SQL ] SELECT `id`,`title` FROM `oc_admin_auth_group` WHERE  `status` = 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `rules` FROM `oc_admin_auth_group` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oc_admin_auth_rule` [ RunTime:0.062003s ]
+[ sql ] [ SQL ] SELECT * FROM `oc_admin_auth_rule` WHERE  `is_menu` = 1  AND `is_show` = 1  AND `status` = 1  AND `module` <> 'admin' ORDER BY `sort` ASC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `oc_admin_auth_rule` WHERE  `name` = 'admin/admin/adminlist'  AND `status` = 1 LIMIT 1 [ RunTime:0.000000s ]
+---------------------------------------------------------------
+[ 2018-12-07T00:02:59+08:00 ] 127.0.0.1 GET www.ewei.com/admin/admin/adminlist?page=1&limit=20&keyword=&state=0
+[运行时间：0.326019s] [吞吐率：3.07req/s] [内存消耗：2,931.01kb] [文件加载：84]
+[ info ] [ LANG ] D:\work\OpenEwei\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=u84iegd7r74g9un0mkcekkm193; keep_login=1%7C1544193820%7Cd012a5fac7deeb023f7a8757a7f1bea4',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.ewei.com/admin/admin/adminlist',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.26 Safari/537.36 Core/1.63.6788.400 QQBrowser/10.3.2864.400',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'connection' => 'keep-alive',
+  'host' => 'www.ewei.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '20',
+  'keyword' => '',
+  'state' => '0',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010000s ] mysql:host=127.0.0.1;dbname=ocenter;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oc_admin_auth_group` [ RunTime:0.065004s ]
+[ sql ] [ SQL ] SELECT `id`,`title` FROM `oc_admin_auth_group` WHERE  `status` = 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `rules` FROM `oc_admin_auth_group` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oc_admin_auth_rule` [ RunTime:0.060003s ]
+[ sql ] [ SQL ] SELECT * FROM `oc_admin_auth_rule` WHERE  `is_menu` = 1  AND `is_show` = 1  AND `status` = 1  AND `module` <> 'admin' ORDER BY `sort` ASC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `oc_admin_auth_rule` WHERE  `name` = 'admin/admin/adminlist'  AND `status` = 1 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oc_admin` [ RunTime:0.070004s ]
+---------------------------------------------------------------
+[ 2018-12-07T00:02:59+08:00 ] 127.0.0.1 GET www.ewei.com/admin/admin/adminlist?page=1&limit=20&keyword=&state=0
+[运行时间：0.317018s] [吞吐率：3.15req/s] [内存消耗：2,931.01kb] [文件加载：84]
+[ info ] [ LANG ] D:\work\OpenEwei\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=u84iegd7r74g9un0mkcekkm193; keep_login=1%7C1544193820%7Cd012a5fac7deeb023f7a8757a7f1bea4',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.ewei.com/admin/admin/adminlist',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.26 Safari/537.36 Core/1.63.6788.400 QQBrowser/10.3.2864.400',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'connection' => 'keep-alive',
+  'host' => 'www.ewei.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '20',
+  'keyword' => '',
+  'state' => '0',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:host=127.0.0.1;dbname=ocenter;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oc_admin_auth_group` [ RunTime:0.061003s ]
+[ sql ] [ SQL ] SELECT `id`,`title` FROM `oc_admin_auth_group` WHERE  `status` = 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `rules` FROM `oc_admin_auth_group` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oc_admin_auth_rule` [ RunTime:0.068004s ]
+[ sql ] [ SQL ] SELECT * FROM `oc_admin_auth_rule` WHERE  `is_menu` = 1  AND `is_show` = 1  AND `status` = 1  AND `module` <> 'admin' ORDER BY `sort` ASC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `oc_admin_auth_rule` WHERE  `name` = 'admin/admin/adminlist'  AND `status` = 1 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oc_admin` [ RunTime:0.064004s ]
+---------------------------------------------------------------
+[ 2018-12-07T00:03:22+08:00 ] 127.0.0.1 GET www.ewei.com/admin/admin/adminlist?page=1&limit=20&keyword=&state=0
+[运行时间：0.479027s] [吞吐率：2.09req/s] [内存消耗：2,961.78kb] [文件加载：87]
+[ info ] [ LANG ] D:\work\OpenEwei\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=u84iegd7r74g9un0mkcekkm193; keep_login=1%7C1544193820%7Cd012a5fac7deeb023f7a8757a7f1bea4',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.ewei.com/admin/admin/adminlist',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.26 Safari/537.36 Core/1.63.6788.400 QQBrowser/10.3.2864.400',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'connection' => 'keep-alive',
+  'host' => 'www.ewei.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '20',
+  'keyword' => '',
+  'state' => '0',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog->run @app_end [ RunTime:0.128008s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010001s ] mysql:host=127.0.0.1;dbname=ocenter;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oc_admin_auth_group` [ RunTime:0.066004s ]
+[ sql ] [ SQL ] SELECT `id`,`title` FROM `oc_admin_auth_group` WHERE  `status` = 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `rules` FROM `oc_admin_auth_group` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oc_admin_auth_rule` [ RunTime:0.073004s ]
+[ sql ] [ SQL ] SELECT * FROM `oc_admin_auth_rule` WHERE  `is_menu` = 1  AND `is_show` = 1  AND `status` = 1  AND `module` <> 'admin' ORDER BY `sort` ASC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `oc_admin_auth_rule` WHERE  `name` = 'admin/admin/adminlist'  AND `status` = 1 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oc_admin` [ RunTime:0.066004s ]
+[ sql ] [ SQL ] SELECT * FROM `oc_admin` WHERE  `status` >= 0 LIMIT 0,20 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `id`,`title` FROM `oc_admin_auth_group` WHERE  `status` = 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `oc_admin` WHERE  `status` >= 0 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `username` FROM `oc_admin` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oc_admin_log` [ RunTime:0.061003s ]
+[ sql ] [ SQL ] INSERT INTO `oc_admin_log` (`admin_id` , `username` , `module` , `action` , `param` , `title` , `content` , `ip` , `user_agent` , `create_time`) VALUES (1 , 'admin' , 'admin' , '/admin/admin/adminlist?page=1&limit=20&keyword=&state=0' , '{\"page\":\"1\",\"limit\":\"20\",\"keyword\":\"\",\"state\":\"0\"}' , '获取管理员列表' , '' , 2130706433 , 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.26 Safari/537.36 Core/1.63.6788.400 QQBrowser/10.3.2864.400' , 1544112202) [ RunTime:0.000000s ]
+---------------------------------------------------------------
+[ 2018-12-07T00:03:48+08:00 ] 127.0.0.1 GET www.ewei.com/admin/admin/adminlist?page=1&limit=20&keyword=1&state=0
+[运行时间：0.391022s] [吞吐率：2.56req/s] [内存消耗：2,975.84kb] [文件加载：89]
+[ info ] [ LANG ] D:\work\OpenEwei\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=u84iegd7r74g9un0mkcekkm193; keep_login=1%7C1544193820%7Cd012a5fac7deeb023f7a8757a7f1bea4',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.ewei.com/admin/admin/adminlist',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.26 Safari/537.36 Core/1.63.6788.400 QQBrowser/10.3.2864.400',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'connection' => 'keep-alive',
+  'host' => 'www.ewei.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '20',
+  'keyword' => '1',
+  'state' => '0',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:host=127.0.0.1;dbname=ocenter;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oc_admin_auth_group` [ RunTime:0.062004s ]
+[ sql ] [ SQL ] SELECT `id`,`title` FROM `oc_admin_auth_group` WHERE  `status` = 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `rules` FROM `oc_admin_auth_group` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oc_admin_auth_rule` [ RunTime:0.068004s ]
+[ sql ] [ SQL ] SELECT * FROM `oc_admin_auth_rule` WHERE  `is_menu` = 1  AND `is_show` = 1  AND `status` = 1  AND `module` <> 'admin' ORDER BY `sort` ASC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `oc_admin_auth_rule` WHERE  `name` = 'admin/admin/adminlist'  AND `status` = 1 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oc_admin` [ RunTime:0.058003s ]
+[ error ] [0]查询表达式错误:1[D:\work\OpenEwei\thinkphp\library\think\db\Builder.php:311]
+---------------------------------------------------------------
+[ 2018-12-07T00:04:01+08:00 ] 127.0.0.1 GET www.ewei.com/admin/admin/adminlist?page=1&limit=20&keyword=1&state=0
+[运行时间：0.300017s] [吞吐率：3.33req/s] [内存消耗：2,897.13kb] [文件加载：83]
+[ info ] [ LANG ] D:\work\OpenEwei\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=u84iegd7r74g9un0mkcekkm193; keep_login=1%7C1544193820%7Cd012a5fac7deeb023f7a8757a7f1bea4',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.ewei.com/admin/admin/adminlist',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.26 Safari/537.36 Core/1.63.6788.400 QQBrowser/10.3.2864.400',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'connection' => 'keep-alive',
+  'host' => 'www.ewei.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '20',
+  'keyword' => '1',
+  'state' => '0',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000000s ] mysql:host=127.0.0.1;dbname=ocenter;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oc_admin_auth_group` [ RunTime:0.068004s ]
+[ sql ] [ SQL ] SELECT `id`,`title` FROM `oc_admin_auth_group` WHERE  `status` = 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `rules` FROM `oc_admin_auth_group` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oc_admin_auth_rule` [ RunTime:0.073004s ]
+[ sql ] [ SQL ] SELECT * FROM `oc_admin_auth_rule` WHERE  `is_menu` = 1  AND `is_show` = 1  AND `status` = 1  AND `module` <> 'admin' ORDER BY `sort` ASC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `oc_admin_auth_rule` WHERE  `name` = 'admin/admin/adminlist'  AND `status` = 1 LIMIT 1 [ RunTime:0.000000s ]
+---------------------------------------------------------------
+[ 2018-12-07T00:04:21+08:00 ] 127.0.0.1 GET www.ewei.com/admin/admin/adminlist?page=1&limit=20&keyword=1&state=0
+[运行时间：0.333019s] [吞吐率：3.00req/s] [内存消耗：2,931.23kb] [文件加载：84]
+[ info ] [ LANG ] D:\work\OpenEwei\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=u84iegd7r74g9un0mkcekkm193; keep_login=1%7C1544193820%7Cd012a5fac7deeb023f7a8757a7f1bea4',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.ewei.com/admin/admin/adminlist',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.26 Safari/537.36 Core/1.63.6788.400 QQBrowser/10.3.2864.400',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'connection' => 'keep-alive',
+  'host' => 'www.ewei.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '20',
+  'keyword' => '1',
+  'state' => '0',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011000s ] mysql:host=127.0.0.1;dbname=ocenter;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oc_admin_auth_group` [ RunTime:0.059004s ]
+[ sql ] [ SQL ] SELECT `id`,`title` FROM `oc_admin_auth_group` WHERE  `status` = 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `rules` FROM `oc_admin_auth_group` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oc_admin_auth_rule` [ RunTime:0.063003s ]
+[ sql ] [ SQL ] SELECT * FROM `oc_admin_auth_rule` WHERE  `is_menu` = 1  AND `is_show` = 1  AND `status` = 1  AND `module` <> 'admin' ORDER BY `sort` ASC [ RunTime:0.001001s ]
+[ sql ] [ SQL ] SELECT * FROM `oc_admin_auth_rule` WHERE  `name` = 'admin/admin/adminlist'  AND `status` = 1 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oc_admin` [ RunTime:0.067004s ]
+---------------------------------------------------------------
+[ 2018-12-07T00:04:45+08:00 ] 127.0.0.1 GET www.ewei.com/admin/admin/adminlist?page=1&limit=20&keyword=1&state=0
+[运行时间：0.322018s] [吞吐率：3.11req/s] [内存消耗：2,931.43kb] [文件加载：84]
+[ info ] [ LANG ] D:\work\OpenEwei\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=u84iegd7r74g9un0mkcekkm193; keep_login=1%7C1544193820%7Cd012a5fac7deeb023f7a8757a7f1bea4',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.ewei.com/admin/admin/adminlist',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.26 Safari/537.36 Core/1.63.6788.400 QQBrowser/10.3.2864.400',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'connection' => 'keep-alive',
+  'host' => 'www.ewei.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '20',
+  'keyword' => '1',
+  'state' => '0',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010000s ] mysql:host=127.0.0.1;dbname=ocenter;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oc_admin_auth_group` [ RunTime:0.060004s ]
+[ sql ] [ SQL ] SELECT `id`,`title` FROM `oc_admin_auth_group` WHERE  `status` = 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `rules` FROM `oc_admin_auth_group` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oc_admin_auth_rule` [ RunTime:0.064004s ]
+[ sql ] [ SQL ] SELECT * FROM `oc_admin_auth_rule` WHERE  `is_menu` = 1  AND `is_show` = 1  AND `status` = 1  AND `module` <> 'admin' ORDER BY `sort` ASC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `oc_admin_auth_rule` WHERE  `name` = 'admin/admin/adminlist'  AND `status` = 1 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oc_admin` [ RunTime:0.063004s ]
+---------------------------------------------------------------
+[ 2018-12-07T00:10:58+08:00 ] 127.0.0.1 GET www.ewei.com/admin/admin/adminlist?page=1&limit=20&keyword=1&state=0
+[运行时间：0.386022s] [吞吐率：2.59req/s] [内存消耗：2,897.52kb] [文件加载：83]
+[ info ] [ LANG ] D:\work\OpenEwei\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=u84iegd7r74g9un0mkcekkm193; keep_login=1%7C1544193820%7Cd012a5fac7deeb023f7a8757a7f1bea4',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.ewei.com/admin/admin/adminlist',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.26 Safari/537.36 Core/1.63.6788.400 QQBrowser/10.3.2864.400',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'connection' => 'keep-alive',
+  'host' => 'www.ewei.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '20',
+  'keyword' => '1',
+  'state' => '0',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002000s ] mysql:host=127.0.0.1;dbname=ocenter;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oc_admin_auth_group` [ RunTime:0.082005s ]
+[ sql ] [ SQL ] SELECT `id`,`title` FROM `oc_admin_auth_group` WHERE  `status` = 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `rules` FROM `oc_admin_auth_group` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oc_admin_auth_rule` [ RunTime:0.075005s ]
+[ sql ] [ SQL ] SELECT * FROM `oc_admin_auth_rule` WHERE  `is_menu` = 1  AND `is_show` = 1  AND `status` = 1  AND `module` <> 'admin' ORDER BY `sort` ASC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `oc_admin_auth_rule` WHERE  `name` = 'admin/admin/adminlist'  AND `status` = 1 LIMIT 1 [ RunTime:0.001000s ]
+---------------------------------------------------------------
+[ 2018-12-07T00:11:38+08:00 ] 127.0.0.1 GET www.ewei.com/admin/admin/adminlist?page=1&limit=20&keyword=1&state=0
+[运行时间：0.264015s] [吞吐率：3.79req/s] [内存消耗：2,897.52kb] [文件加载：83]
+[ info ] [ LANG ] D:\work\OpenEwei\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=u84iegd7r74g9un0mkcekkm193; keep_login=1%7C1544193820%7Cd012a5fac7deeb023f7a8757a7f1bea4',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.ewei.com/admin/admin/adminlist',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.26 Safari/537.36 Core/1.63.6788.400 QQBrowser/10.3.2864.400',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'connection' => 'keep-alive',
+  'host' => 'www.ewei.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '20',
+  'keyword' => '1',
+  'state' => '0',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011000s ] mysql:host=127.0.0.1;dbname=ocenter;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oc_admin_auth_group` [ RunTime:0.063004s ]
+[ sql ] [ SQL ] SELECT `id`,`title` FROM `oc_admin_auth_group` WHERE  `status` = 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `rules` FROM `oc_admin_auth_group` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oc_admin_auth_rule` [ RunTime:0.072004s ]
+[ sql ] [ SQL ] SELECT * FROM `oc_admin_auth_rule` WHERE  `is_menu` = 1  AND `is_show` = 1  AND `status` = 1  AND `module` <> 'admin' ORDER BY `sort` ASC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `oc_admin_auth_rule` WHERE  `name` = 'admin/admin/adminlist'  AND `status` = 1 LIMIT 1 [ RunTime:0.001000s ]
+---------------------------------------------------------------
+[ 2018-12-07T00:11:44+08:00 ] 127.0.0.1 GET www.ewei.com/admin/admin/adminlist?page=1&limit=20&keyword=1&state=0
+[运行时间：0.326019s] [吞吐率：3.07req/s] [内存消耗：2,931.23kb] [文件加载：84]
+[ info ] [ LANG ] D:\work\OpenEwei\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=u84iegd7r74g9un0mkcekkm193; keep_login=1%7C1544193820%7Cd012a5fac7deeb023f7a8757a7f1bea4',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.ewei.com/admin/admin/adminlist',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.26 Safari/537.36 Core/1.63.6788.400 QQBrowser/10.3.2864.400',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'connection' => 'keep-alive',
+  'host' => 'www.ewei.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '20',
+  'keyword' => '1',
+  'state' => '0',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010000s ] mysql:host=127.0.0.1;dbname=ocenter;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oc_admin_auth_group` [ RunTime:0.063004s ]
+[ sql ] [ SQL ] SELECT `id`,`title` FROM `oc_admin_auth_group` WHERE  `status` = 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `rules` FROM `oc_admin_auth_group` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oc_admin_auth_rule` [ RunTime:0.060004s ]
+[ sql ] [ SQL ] SELECT * FROM `oc_admin_auth_rule` WHERE  `is_menu` = 1  AND `is_show` = 1  AND `status` = 1  AND `module` <> 'admin' ORDER BY `sort` ASC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `oc_admin_auth_rule` WHERE  `name` = 'admin/admin/adminlist'  AND `status` = 1 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oc_admin` [ RunTime:0.061004s ]
+---------------------------------------------------------------
+[ 2018-12-07T00:12:14+08:00 ] 127.0.0.1 GET www.ewei.com/admin/admin/adminlist?page=1&limit=20&keyword=1&state=0
+[运行时间：0.313018s] [吞吐率：3.19req/s] [内存消耗：2,944.71kb] [文件加载：85]
+[ info ] [ LANG ] D:\work\OpenEwei\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=u84iegd7r74g9un0mkcekkm193; keep_login=1%7C1544193820%7Cd012a5fac7deeb023f7a8757a7f1bea4',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.ewei.com/admin/admin/adminlist',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.26 Safari/537.36 Core/1.63.6788.400 QQBrowser/10.3.2864.400',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'connection' => 'keep-alive',
+  'host' => 'www.ewei.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '20',
+  'keyword' => '1',
+  'state' => '0',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011000s ] mysql:host=127.0.0.1;dbname=ocenter;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oc_admin_auth_group` [ RunTime:0.061004s ]
+[ sql ] [ SQL ] SELECT `id`,`title` FROM `oc_admin_auth_group` WHERE  `status` = 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `rules` FROM `oc_admin_auth_group` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oc_admin_auth_rule` [ RunTime:0.063004s ]
+[ sql ] [ SQL ] SELECT * FROM `oc_admin_auth_rule` WHERE  `is_menu` = 1  AND `is_show` = 1  AND `status` = 1  AND `module` <> 'admin' ORDER BY `sort` ASC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `oc_admin_auth_rule` WHERE  `name` = 'admin/admin/adminlist'  AND `status` = 1 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oc_admin` [ RunTime:0.061004s ]
+---------------------------------------------------------------
+[ 2018-12-07T00:12:22+08:00 ] 127.0.0.1 GET www.ewei.com/admin/admin/adminlist?page=1&limit=20&keyword=1&state=0
+[运行时间：0.271015s] [吞吐率：3.69req/s] [内存消耗：2,897.94kb] [文件加载：83]
+[ info ] [ LANG ] D:\work\OpenEwei\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=u84iegd7r74g9un0mkcekkm193; keep_login=1%7C1544193820%7Cd012a5fac7deeb023f7a8757a7f1bea4',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.ewei.com/admin/admin/adminlist',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.26 Safari/537.36 Core/1.63.6788.400 QQBrowser/10.3.2864.400',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'connection' => 'keep-alive',
+  'host' => 'www.ewei.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '20',
+  'keyword' => '1',
+  'state' => '0',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:host=127.0.0.1;dbname=ocenter;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oc_admin_auth_group` [ RunTime:0.072004s ]
+[ sql ] [ SQL ] SELECT `id`,`title` FROM `oc_admin_auth_group` WHERE  `status` = 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `rules` FROM `oc_admin_auth_group` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `oc_admin_auth_rule` [ RunTime:0.068003s ]
+[ sql ] [ SQL ] SELECT * FROM `oc_admin_auth_rule` WHERE  `is_menu` = 1  AND `is_show` = 1  AND `status` = 1  AND `module` <> 'admin' ORDER BY `sort` ASC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `oc_admin_auth_rule` WHERE  `name` = 'admin/admin/adminlist'  AND `status` = 1 LIMIT 1 [ RunTime:0.000000s ]

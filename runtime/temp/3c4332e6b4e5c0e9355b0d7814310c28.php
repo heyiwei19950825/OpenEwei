@@ -1,17 +1,18 @@
+<?php /*a:1:{s:64:"D:\work\OpenEwei\application\admin\view\action\action_limit.html";i:1544111275;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
-    <title>管理员管理</title>
-    <link rel="stylesheet" href="__LAYUI__/layui/css/layui.css" media="all">
-    <link rel="stylesheet" href="__LAYUI__/style/admin.css" media="all">
-    <link rel="stylesheet" href="__LAYUI__/style/oc.css" media="all">
+    <title>行为限制</title>
+    <link rel="stylesheet" href="/static/layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/static/layuiadmin/style/admin.css" media="all">
+    <link rel="stylesheet" href="/static/layuiadmin/style/oc.css" media="all">
 </head>
 <body>
 <div class="layui-fluid">
     <div class="layui-tab layui-tab-card">
         <ul class="layui-tab-title">
-            <li class="layui-this">管理员管理</li>
+            <li class="layui-this">行为限制</li>
         </ul>
         <div class="layui-tab-content">
             <div class="layui-form layui-card-header layuiadmin-card-header-auto">
@@ -39,28 +40,28 @@
                     </div>
                 </div>
             </div>
-
             <div class="layui-tab-item layui-show">
                 <div style="padding: 10px;">
-                    <button class="layui-btn layuiadmin-btn-admin" data-type="add" data-title="添加" data-url="{:url('adminForm')}" data-width="600px" data-height="500px">添加</button>
-                    <button class="layui-btn layuiadmin-btn-admin layui-btn-danger" data-type="del" data-url="{:url('delAdmin')}">删除</button>
+                    <button class="layui-btn layuiadmin-btn-admin" data-type="add" data-title="添加" data-url="<?php echo url('admin/action/actionLimitForm'); ?>" data-width="600px" data-height="500px">添加</button>
+                    <button class="layui-btn layuiadmin-btn-admin layui-btn-danger" data-type="del" data-url="<?php echo url('admin/action/delActionLimit'); ?>">删除</button>
                 </div>
                 <table id="list" lay-filter="list"></table>
                 <script type="text/html" id="barDemo">
-                    <a class="layui-btn layui-btn-xs" lay-event="other" data-title="编辑用户" data-url="{:url('adminForm')}" data-width="600px" data-height="500px;">编辑</a>
-                    {{# if(d.id > 1){ }}
-                    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del"  data-url='{:url("delAdmin")}'>删除</a>
-                    {{# } }}
+                    <a class="layui-btn layui-btn-xs" lay-event="other" data-title="编辑用户" data-url="<?php echo url('admin/action/actionLimitForm'); ?>" data-width="600px" data-height="500px;">编辑</a>
+                    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del"  data-url='<?php echo url("admin/action/delActionLimit"); ?>'>删除</a>
                 </script>
+            </div>
+            <div class="layui-tab-item">
+                <table id="data-list" lay-filter="list"></table>
             </div>
         </div>
     </div>
 </div>
 
-<script src="__LAYUI__/layui/layui.js"></script>
+<script src="/static/layuiadmin/layui/layui.js"></script>
 <script>
     layui.config({
-        base: '__LAYUI__/' //静态资源所在路径
+        base: '/static/layuiadmin/' //静态资源所在路径
     }).extend({
         index: 'lib/index' //主入口模块
     }).use(['table', 'jquery','laydate','common'],function(){
@@ -68,8 +69,8 @@
             $ = layui.$;
         table.render({
             elem: '#list',
-            url: "{:url('admin/adminList')}", //数据接口
-            title: '管理员表',
+            url: "<?php echo url('admin/action/actionLimit'); ?>", //数据接口
+            title: '用户权限表',
             toolbar: 'true',
             defaultToolbar: ['filter', 'print', 'exports'],
             page: true,
@@ -79,16 +80,17 @@
             cols: [[
                 {type: 'checkbox', fixed: 'left'},
                 {field: 'id', title: 'ID', sort: true, fixed: 'left'},
-                {field: 'group_name', title: '权限组', sort: true},
-                {field: 'username', title: '用户名', sort: true},
-                {field: 'email', title: '电子邮箱', sort: true},
-                {field: 'mobile', title: '手机号', sort: true},
-                {field: 'last_login_time', title: '上次登陆时间', sort: true},
-                {field: 'last_login_ip', title: '上次登陆IP', sort: true},
+                {field: 'title', title: '标题', sort: true},
+                {field: 'rule_title', title: '权限节点名称', sort: true},
+                {field: 'frequency', title: '频率', sort: true},
+                {field: 'punish_type', title: '处罚方式', sort: true},
+                {field: 'if_message', title: '是否发送提示信息', sort: true},
+                {field: 'message_content', title: '消息提示内容', sort: true},
+                {field: 'create_time', title: '创建时间', sort: true},
                 {field: 'update_time', title: '更新时间', sort: true},
                 {field: 'status', title: '状态', sort: true},
                 {fixed: 'right', width: 165, align: 'center', toolbar: '#barDemo'}
-            ]]
+            ]],
         });
     });
 </script>

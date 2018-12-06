@@ -11,6 +11,7 @@
 
 namespace app\admin\controller;
 
+use think\Exception;
 use think\response\Json;
 use app\admin\model\AdminLog;
 
@@ -40,12 +41,19 @@ class Admin extends Base
         if ($this->request->isAjax()) {
             $page = input('get.page/d', 1);
             $limit = input('get.limit/d', 20);
+            $keyword = input('get.keyword/d', '');
             $map[] = ['status', '>=', 0];
+            if(!empty($keyword)){
+                $map['username|mobile|email'] = ['like','%'.$keyword.'%'];
+
+            }
+
             $adminList = $this->admin
                 ->where($map)
                 ->page($page, $limit)
                 ->select()
                 ->toArray();
+            
             $group = $this->adminAuthGroup->where('status', 1)->column('id, title');
             $ids = array_keys($group);
             foreach ($adminList as &$val) {
@@ -144,7 +152,7 @@ class Admin extends Base
                 $this->error($title . '管理员失败');
             }
         } else {
-            $aid = input('get.aid/d', 0);
+            $aid = input('get.id/d', 0);
             $admin = $this->admin->find($aid);
             $group = $this->adminAuthGroup->where('status', 1)->column('id, title');
             $groups = [];

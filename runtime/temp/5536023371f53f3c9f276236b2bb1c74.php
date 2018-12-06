@@ -1,11 +1,12 @@
+<?php /*a:1:{s:61:"D:\work\OpenEwei\application\admin\view\admin\admin_list.html";i:1544111753;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <title>管理员管理</title>
-    <link rel="stylesheet" href="__LAYUI__/layui/css/layui.css" media="all">
-    <link rel="stylesheet" href="__LAYUI__/style/admin.css" media="all">
-    <link rel="stylesheet" href="__LAYUI__/style/oc.css" media="all">
+    <link rel="stylesheet" href="/static/layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/static/layuiadmin/style/admin.css" media="all">
+    <link rel="stylesheet" href="/static/layuiadmin/style/oc.css" media="all">
 </head>
 <body>
 <div class="layui-fluid">
@@ -42,14 +43,14 @@
 
             <div class="layui-tab-item layui-show">
                 <div style="padding: 10px;">
-                    <button class="layui-btn layuiadmin-btn-admin" data-type="add" data-title="添加" data-url="{:url('adminForm')}" data-width="600px" data-height="500px">添加</button>
-                    <button class="layui-btn layuiadmin-btn-admin layui-btn-danger" data-type="del" data-url="{:url('delAdmin')}">删除</button>
+                    <button class="layui-btn layuiadmin-btn-admin" data-type="add" data-title="添加" data-url="<?php echo url('adminForm'); ?>" data-width="600px" data-height="500px">添加</button>
+                    <button class="layui-btn layuiadmin-btn-admin layui-btn-danger" data-type="del" data-url="<?php echo url('delAdmin'); ?>">删除</button>
                 </div>
                 <table id="list" lay-filter="list"></table>
                 <script type="text/html" id="barDemo">
-                    <a class="layui-btn layui-btn-xs" lay-event="other" data-title="编辑用户" data-url="{:url('adminForm')}" data-width="600px" data-height="500px;">编辑</a>
+                    <a class="layui-btn layui-btn-xs" lay-event="other" data-title="编辑用户" data-url="<?php echo url('adminForm'); ?>" data-width="600px" data-height="500px;">编辑</a>
                     {{# if(d.id > 1){ }}
-                    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del"  data-url='{:url("delAdmin")}'>删除</a>
+                    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del"  data-url='<?php echo url("delAdmin"); ?>'>删除</a>
                     {{# } }}
                 </script>
             </div>
@@ -57,10 +58,10 @@
     </div>
 </div>
 
-<script src="__LAYUI__/layui/layui.js"></script>
+<script src="/static/layuiadmin/layui/layui.js"></script>
 <script>
     layui.config({
-        base: '__LAYUI__/' //静态资源所在路径
+        base: '/static/layuiadmin/' //静态资源所在路径
     }).extend({
         index: 'lib/index' //主入口模块
     }).use(['table', 'jquery','laydate','common'],function(){
@@ -68,7 +69,7 @@
             $ = layui.$;
         table.render({
             elem: '#list',
-            url: "{:url('admin/adminList')}", //数据接口
+            url: "<?php echo url('admin/adminList'); ?>", //数据接口
             title: '管理员表',
             toolbar: 'true',
             defaultToolbar: ['filter', 'print', 'exports'],
