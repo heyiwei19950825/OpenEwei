@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>预约编辑</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="__LAYUI__/layui/css/layui.css" media="all">
+</head>
+<body>
+<form class="layui-form" action="" method="post" lay-filter="admin-form">
+    <div class="layui-form-item">
+        <div class="layui-input-inline">
+            <input type="hidden" name="id" value="{$data.id}" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">老人人姓名</label>
+        <div class="layui-input-inline">
+            <input type="text" name="name" value="{$data.name}" lay-verify="required" placeholder="请输入老人人姓名"
+                   autocomplete="off" class="layui-input">
+        </div>
+        <label class="layui-form-label">老人人年龄</label>
+        <div class="layui-input-inline">
+            <input type="number" name="age" value="{$data.age}" lay-verify="required|number" placeholder="请输入老人人年龄"
+                   autocomplete="off" class="layui-input">
+        </div>
+        <label class="layui-form-label">性别</label>
+        <div class="layui-input-inline">
+            <select name="sex">
+                <option value="0">选择性别</option>
+                <option value="男"  {if $data.sex == '男'}selected{/if}>男</option>
+                <option value="女"  {if $data.sex == '女'}selected{/if}>女</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">预约时间</label>
+        <div class="layui-input-inline">
+            <input type="text" name="time" value="{$data.time}" lay-verify="required|text" placeholder="yyyy-MM-dd HH:mm:ss" autocomplete="off" class="layui-input" id="time">
+        </div>
+        <label class="layui-form-label">机构</label>
+        <div class="layui-input-inline">
+            <input type="text" name="resthome" value="{$data.resthome}" lay-verify="required|text" placeholder="机构" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">预约人</label>
+        <div class="layui-input-inline">
+            <input type="text" name="contact" value="{$data.contact}" lay-verify="required|text" placeholder="请输入预约人姓名" autocomplete="off" class="layui-input">
+        </div>
+        <label class="layui-form-label">预约人电话</label>
+        <div class="layui-input-inline">
+            <input type="number" name="mobile" value="{$data.mobile}" lay-verify="required|mobile" placeholder="请输入预约人电话" autocomplete="off" class="layui-input">
+        </div>
+        <label class="layui-form-label">与老人关系</label>
+        <div class="layui-input-inline">
+            <select class="form-control m-b" name="relation">
+                <option value="">选择关系</option>
+                {foreach name="$dict.elder_relation" item="rvo"}
+                <option value="{$rvo.id}" {if $data.relation == $rvo.id}selected{/if}>{$rvo.name}</option>
+                {/foreach}
+            </select>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">预约状态</label>
+        <div class="layui-input-inline">
+            <select name="service_status">
+                <option value="">选择预约状态</option>
+                <option value="1" {if $data.state == '1'}selected{/if}>正常</option>
+                <option value="-1" {if $data.state == '-1'}selected{/if}>已结束</option>
+            </select>
+        </div>
+        <label class="layui-form-label">预约阶段</label>
+        <div class="layui-input-inline">
+            <select name="service_phase">
+                <option value="">选择预约阶段</option>
+                <option value="1" {if $data.state == '1'}selected{/if}>正在沟通</option>
+                <option value="-1" {if $data.state == '-1'}selected{/if}>已沟通</option>
+            </select>
+        </div>
+        <label class="layui-form-label">备注</label>
+        <div class="layui-input-inline">
+            <input type="text" class="layui-input" name="remark" value="{$data.remark}">
+        </div>
+    </div>
+
+    <div class="layui-form-item layui-hide">
+        <input type="button" lay-submit lay-filter="LAY-submit" id="LAY-submit" value="确认">
+    </div>
+</form>
+
+<script src="__LAYUI__/layui/layui.js"></script>
+<script>
+    layui.config({
+        base: '__LAYUI__/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index', //主入口模块
+    }).use(['index', 'form','laydate'],function() {
+        var $ = layui.jquery
+            ,laydate = layui.laydate;
+
+
+        //日期时间选择器
+        laydate.render({
+            elem: '#time'
+            ,type: 'datetime'
+        });
+    });
+
+</script>
+</body>
+</html>
