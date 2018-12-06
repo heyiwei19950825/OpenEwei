@@ -53,7 +53,7 @@ class Admin extends Base
                 ->page($page, $limit)
                 ->select()
                 ->toArray();
-            
+
             $group = $this->adminAuthGroup->where('status', 1)->column('id, title');
             $ids = array_keys($group);
             foreach ($adminList as &$val) {
