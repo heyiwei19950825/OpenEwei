@@ -18,17 +18,17 @@
                 <div class="layui-form-item">
                     <div class="layui-inline">
                         <label class="layui-form-label">关键字</label>
-                        <div class="layui-input-block">
-                            <input type="text" name="keyword" placeholder="请输入标题" class="layui-input">
+                        <div class="layui-input-block" style="width: 300px;">
+                            <input type="text" name="keyword" placeholder="请输入关键字【用户名|邮箱|手机号】" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label">状态</label>
                         <div class="layui-input-block">
-                            <select name="state">
-                                <option value="0">选择状态</option>
-                                <option value="1">未激活</option>
-                                <option value="2">已激活</option>
+                            <select name="status">
+                                <option value="">选择状态</option>
+                                <option value="0">禁用</option>
+                                <option value="1">启用</option>
                             </select>
                         </div>
                     </div>
@@ -81,8 +81,8 @@
                 {field: 'id', title: 'ID', sort: true, fixed: 'left'},
                 {field: 'group_name', title: '权限组', sort: true},
                 {field: 'username', title: '用户名', sort: true},
-                {field: 'email', title: '电子邮箱', sort: true},
-                {field: 'mobile', title: '手机号', sort: true},
+                {field: 'email', title: '电子邮箱', sort: true,edit:true},
+                {field: 'mobile', title: '手机号', sort: true,edit:true},
                 {field: 'last_login_time', title: '上次登陆时间', sort: true},
                 {field: 'last_login_ip', title: '上次登陆IP', sort: true},
                 {field: 'update_time', title: '更新时间', sort: true},

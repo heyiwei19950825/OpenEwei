@@ -39,13 +39,18 @@ class Admin extends Base
     public function adminList()
     {
         if ($this->request->isAjax()) {
-            $page = input('get.page/d', 1);
-            $limit = input('get.limit/d', 20);
-            $keyword = input('get.keyword/d', '');
-            $map[] = ['status', '>=', 0];
-            if(!empty($keyword)){
-                $map['username|mobile|email'] = ['like','%'.$keyword.'%'];
+            $page       = input('get.page/d', 1);
+            $limit      = input('get.limit/d', 20);
+            $keyword    = input('get.keyword', '');
+            $status     = input('get.status', '');
+            $map        = [];
 
+            if(!empty($keyword)){
+                $map[] = ['username|mobile|email','like','%'.$keyword.'%'];
+            }
+
+            if(!empty($status)){
+                $map[] = ['status','=',$status];
             }
 
             $adminList = $this->admin
@@ -222,12 +227,19 @@ class Admin extends Base
         if ($this->request->isAjax()) {
             $page = input('get.page/d', 1);
             $limit = input('get.limit/d', 20);
-            $map[] = ['status', '>=', 0];
+            $keyword = input('get.keyword', '');
+
+            $map[] = ['status','>=', 0];
+            if(!empty($keyword)){
+                $map[] = ['name|title','like','%'.$keyword.'%'];
+            }
+
             $adminAuthList = $this->adminAuthRule
                 ->where($map)
                 ->page($page, $limit)
                 ->select()
                 ->toArray();
+
             $adminAuthTitle = $this->adminAuthRule->where('status', '>=', 0)->column('id, title');
             foreach ($adminAuthList as &$val) {
                 to_status($val, 'status');
@@ -332,19 +344,23 @@ class Admin extends Base
         if (!$data['name']) {
             $this->error('URL不能为空');
         }
+        $issetTitle = $this->adminAuthRule->where('title', $data['title'])->value('id');
+        $issetName  = $this->adminAuthRule->where('name', $data['title'])->value('id');
+
         //唯一性校验
         if (isset($data['id'])) {
-            if ($this->adminAuthRule->where('title', $data['title'])->value('id') != $data['id']) {
+
+            if ( !empty($issetTitle) &&  $issetTitle  != $data['id'] ) {
                 $this->error('权限名称已存在');
             }
-            if ($this->adminAuthRule->where('name', strtolower($data['name']))->value('id') != $data['id']) {
+            if ( !empty($issetName) &&  $issetTitle  != $data['id']) {
                 $this->error('该URL已存在');
             }
         } else {
-            if ($this->adminAuthRule->where('title', $data['name'])->value('id')) {
+            if ( $issetTitle ) {
                 $this->error('权限名称已存在');
             }
-            if ($this->adminAuthRule->where('name', strtolower($data['name']))->value('id')) {
+            if ( $issetName ) {
                 $this->error('该URL已存在');
             }
         }
@@ -546,13 +562,22 @@ class Admin extends Base
     public function adminLog()
     {
         if ($this->request->isAjax()) {
-            $page = input('get.page/d', 1);
-            $limit = input('get.limit/d', 20);
+            $page       = input('get.page/d', 1);
+            $limit      = input('get.limit/d', 20);
+            $keyword    = input('get.keyword', '');
+            $map        = [];
+
+            if(!empty($keyword)){
+                $map[] = ['username|title|action','like','%'.$keyword.'%'];
+            }
+
             $adminLogList = $this->adminLog
+                ->where($map)
                 ->page($page, $limit)
                 ->order('id desc')
                 ->select()
                 ->toArray();
+
             foreach ($adminLogList as &$val) {
                 to_ip($val);
             }

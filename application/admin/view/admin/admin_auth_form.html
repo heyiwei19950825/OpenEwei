@@ -40,7 +40,7 @@
     <div class="layui-form-item">
         <div class="layui-inline" style="width: 80%">
             <label class="layui-form-label">父级权限</label>
-            <div class="layui-input-block">
+            <div class="layui-input-inline">
                 <select name="pid" lay-filter="pid">
                     <option value="0">顶级</option>
                     {volist name="adminAuthTree" id="vo"}
@@ -97,7 +97,7 @@
         </div>
     </div>
     <div class="layui-form-item layui-hide">
-        <input type="button" lay-submit lay-filter="LAY-user-front-submit" id="LAY-user-front-submit" value="确认">
+        <input type="button" lay-submit lay-filter="LAY-submit" id="LAY-submit" value="确认">
     </div>
 </form>
 
