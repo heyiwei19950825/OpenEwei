@@ -130,6 +130,7 @@ class Article extends Base
 
     public function category_from(){
 
+        return $this->fetch();
     }
 
 
