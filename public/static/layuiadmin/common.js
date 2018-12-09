@@ -3,9 +3,10 @@ layui.define(function(exports){
         ,layer = layui.layer
         ,laydate = layui.laydate
         ,table = layui.table
-        ,form = layui.form;
+        ,form = layui.form
+        ,admin = layui.admin
 
-        var active_url = '';
+    var active_url = '';
         var active_title = '';
         var active_width = '';
         var active_height= '';
@@ -20,7 +21,8 @@ layui.define(function(exports){
         //监听搜索
         form.on('submit(LAY-search)', function(data){
             var where = data.field;
-
+            var item = $(this).attr('data-item');
+            console.log(item);return false;
             //执行重载
             table.reload('list', {
                 where:where
@@ -163,6 +165,25 @@ layui.define(function(exports){
                 });
             }
         };
+
+        //退出
+        admin.events.logout = function(){
+            //执行退出接口
+            admin.req({
+                url: layui.setter.base + 'json/user/logout.js'
+                ,type: 'get'
+                ,data: {}
+                ,done: function(res){ //这里要说明一下：done 是只有 response 的 code 正常才会执行。而 succese 则是只要 http 为 200 就会执行
+
+                    //清空本地记录的 token，并跳转到登入页
+                    admin.exit(function(){
+                        location.href = 'user/login.html';
+                    });
+                }
+            });
+        };
+
+
 
         //事件点击
         $('.layuiadmin-btn-admin').on('click', function () {

@@ -1,4 +1,4 @@
-<?php /*a:1:{s:64:"D:\work\OpenEwei\application\admin\view\action\action_limit.html";i:1544111275;}*/ ?>
+<?php /*a:1:{s:64:"D:\work\OpenEwei\application\admin\view\action\action_limit.html";i:1544247221;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,14 +20,14 @@
                     <div class="layui-inline">
                         <label class="layui-form-label">关键字</label>
                         <div class="layui-input-block">
-                            <input type="text" name="keyword" placeholder="请输入标题" class="layui-input">
+                            <input type="text" name="keyword" placeholder="请输入关键字" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label">状态</label>
                         <div class="layui-input-block">
-                            <select name="state">
-                                <option value="0">选择状态</option>
+                            <select name="status">
+                                <option value="">选择状态</option>
                                 <option value="1">未激活</option>
                                 <option value="2">已激活</option>
                             </select>

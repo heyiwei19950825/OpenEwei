@@ -2,188 +2,133 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>layui</title>
-    <meta name="renderer" content="webkit">
+    <title>文章管理列表</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <link rel="stylesheet" href="__LAYUI__/layui/css/layui.css" media="all">
     <link rel="stylesheet" href="__LAYUI__/style/admin.css" media="all">
     <link rel="stylesheet" href="__LAYUI__/style/oc.css" media="all">
-    <link rel="stylesheet" href="__STATIC__/admin/css/article.css" media="all">
 </head>
 <body>
 <div class="layui-fluid">
-    <div class="layui-row layui-col-space15">
-        <div class="layui-col-md12">
-            <div class="layui-card">
-                <div class="layui-card-body">
-                    <table class="layui-hide" id="list" lay-filter="test"></table>
+    <div class="layui-tab layui-tab-card">
+        <ul class="layui-tab-title">
+            <li class="layui-this">文章分类</li>
+            <li>文章管理</li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <div class="layui-form layui-card-header layuiadmin-card-header-auto">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">关键字</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="keyword" placeholder="请输入关键字" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">状态</label>
+                            <div class="layui-input-block">
+                                <select name="status">
+                                    <option value="">选择状态</option>
+                                    <option value="1">未激活</option>
+                                    <option value="2">已激活</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <button class="layui-btn layuiadmin-btn-useradmin" lay-submit lay-filter="LAY-search" data-item="category_list">
+                                <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+                            </button>
+                        </div>
+                    </div>
                 </div>
+                <div style="padding: 10px;">
+                    <button class="layui-btn layuiadmin-btn-admin" data-type="add" data-title="添加" data-url="{:url('admin/action/actionLimitForm')}" data-width="600px" data-height="500px">添加</button>
+                    <button class="layui-btn layuiadmin-btn-admin layui-btn-danger" data-type="del" data-url="{:url('admin/action/delActionLimit')}">删除</button>
+                </div>
+                <table id="category_list" lay-filter="category_list"></table>
+                <script type="text/html" id="bar">
+                    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="other" data-title="添加子类" data-url="{:url('admin/action/actionLimitForm')}" data-width="600px" data-height="500px;">添加子类</a>
+                    <a class="layui-btn layui-btn-xs" lay-event="other" data-title="编辑用户" data-url="{:url('admin/action/actionLimitForm')}" data-width="600px" data-height="500px;">编辑</a>
+                    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del"  data-url='{:url("admin/action/delActionLimit")}'>删除</a>
+                </script>
+            </div>
+
+
+            <div class="layui-tab-item">
+                <div style="padding: 10px;">
+                    <button class="layui-btn layuiadmin-btn-admin" data-type="add" data-title="添加" data-url="{:url('admin/action/actionLimitForm')}" data-width="600px" data-height="500px">添加</button>
+                    <button class="layui-btn layuiadmin-btn-admin layui-btn-danger" data-type="del" data-url="{:url('admin/action/delActionLimit')}">删除</button>
+                </div>
+                <table id="list" lay-filter="list"></table>
+                <script type="text/html" id="data-bar">
+                    <a class="layui-btn layui-btn-xs edit" lay-event="edit">编辑</a>
+                    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+                </script>
             </div>
         </div>
-        <script type="text/html" id="cover">
-            <img src="{{ d.cover }}">
-        </script>
-        <script type="text/html" id="toolbarDemo">
-            <div class="layui-btn-container">
-                <button class="layui-btn layui-btn-sm" lay-event="addData">添加</button>
-                <button class="layui-btn layui-btn-sm" lay-event="delData">删除</button>
-            </div>
-        </script>
-        <script type="text/html" id="switchTpl">
-            <input type="checkbox" name="status" value="{{d.id}}" lay-skin="switch" lay-text="启用|禁用" lay-filter="statusDemo" {{ d.status == 1 ? 'checked' : '' }}>
-        </script>
-        <script type="text/html" id="barDemo">
-            <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-            <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
-        </script>
     </div>
 </div>
+
 <script src="__LAYUI__/layui/layui.js"></script>
 <script>
-    layui.use(['table',['form']], function(){
-        var table = layui.table
-            ,$ = layui.$
-            ,form = layui.form;
+    layui.config({
+        base: '__LAYUI__/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index','jquery', 'table','laydate','common'], function () {
+        var $ = layui.$
+            , form = layui.form
+            , table = layui.table;
+
+        //文章位列表
         table.render({
-            elem: '#list'
-            ,url:'{:url("article/index")}'
-            ,toolbar: '#toolbarDemo'
-            ,title: '文章列表'
-            ,cols: [[
-                {type: 'checkbox'}
-                ,{field:'id', title:'ID', sort: true}
-                ,{field:'title', title:'文章标题'}
-                ,{field:'cover', title:'封面',templet: '#cover'}
-                ,{field:'content', title:'内容'}
-                ,{field:'view', title:'浏览量',sort: true}
-                ,{field:'create_time', title:'创建时间',sort: true}
-                ,{field:'update_time', title:'更新时间',sort: true}
-                ,{field:'status', title:'状态',templet: '#switchTpl', unresize: true}
-                ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:150}
+            elem: '#category_list',
+            url: "{:url('article/category')}", //数据接口
+            defaultToolbar: ['filter', 'print', 'exports'],
+            page: true, //开启分页
+            toolbar: true,
+            limits: [10, 20, 50, 100],
+            cols: [[ //表头
+                {type: 'checkbox', fixed: 'left'},
+                {field: 'id', title: 'ID', sort: true, fixed: 'left'},
+                {field: 'name', title: '分类名称', sort: true, fixed: 'left'},
+                {field: 'thumb', title: '缩略图', sort: true, fixed: 'left'},
+                {field: 'alias', title: '别名', sort: true, fixed: 'left'},
+                {field: 'list_template', title: '分类列表模板', sort: true},
+                {field: 'detail_template', title: '分类详情模板', sort: true,edit:true},
+                {field: 'type', title: '类型', sort: true},
+                {field: 'sort', title: '排序', sort: true},
+                {field: 'pid', title: '父级', sort: true},
+                {fixed: 'right', width: 175, align: 'center', toolbar: '#bar'}
             ]]
-            ,page: true
-            ,done:function(res,curr,count){
-                hoverOpenImg();//显示大图
-            }
         });
-        function hoverOpenImg(){
-            var img_show = null; // tips提示
-            $('td img').hover(function(){
-                //alert($(this).attr('src'));
-                var img = "<img class='img_msg' src='"+$(this).attr('src')+"' style='width:130px;' />";
-                img_show = layer.tips(img, this,{
-                    tips:[2, 'rgba(41,41,41,.5)']
-                    ,area: ['160px']
-                });
-            },function(){
-                layer.close(img_show);
-            });
-            $('td img').attr('style','max-width:70px');
-        }
-        //头工具栏事件
-        table.on('toolbar(test)', function(obj){
-            var checkStatus = table.checkStatus(obj.config.id);
-            switch(obj.event){
-                case 'addData':
-                    layer.open({
-                        type: 2
-                        ,title: '添加文章'
-                        ,content: "{:url('article/editArticle')}"
-                        ,area: ['800px', '800px']
-                        ,btn: ['确定', '取消']
-                        ,yes: function(index, layero){
-                            var iframeWindow = window['layui-layer-iframe'+ index]
-                                ,submit = layero.find('iframe').contents().find("#LAY-submit");
-                            //监听提交
-                            iframeWindow.layui.form.on('submit(LAY-submit)', function(data){
-                                var field = data.field; //获取提交的字段
-                                $.ajax({
-                                    url:"{:url('article/editArticle')}",
-                                    type:"POST",
-                                    data:field,
-                                    success:function (res) {
-                                        layer.msg(res.msg);
-                                    }
-                                });
-                                table.reload('test');
-                                layer.close(index); //关闭弹层
-                            });
-                            submit.trigger('click');
-                        }
-                    });
-                    break;
-                case 'delData':
-                    var checkData=checkStatus.data;
-                    if(checkData.length===0){
-                        return layer.msg('请选择数据');
-                    }
-                    layer.confirm('确定删除吗？', function(index) {
-                        var id_array = new Array();
-                        for(var i=0;i<checkData.length;i++){
-                            id_array.push(checkData[i]['id']);
-                        }
-                        var ids=id_array.join(',');
-                        //执行 Ajax 后重载
-                        layer.close(index);
-                        //向服务端发送删除指令
-                        $.post("{:url('article/setStatus')}",{id:ids,status:-1},function (res) {
-                            layer.msg('删除成功');
-                        });
-                        table.reload('list');
-                    });
-                    break;
-            };
-        });
-        //监听行工具事件
-        table.on('tool(test)', function(obj){
-            var data = obj.data;
-            if(obj.event === 'del'){
-                layer.confirm('真的删除行么', function(index){
-                    obj.del();
-                    layer.close(index);
-                    $.post("{:url('article/setStatus')}",{id:data.id,status:-1},function (res) {
-                        layer.msg('删除成功');
-                    });
-                });
-            } else if(obj.event === 'edit'){
-                layer.open({
-                    type: 2
-                    ,title: '编辑文章'
-                    ,content: "{:url('article/editArticle')}?id=" + data.id
-                    ,area: ['800px', '800px']
-                    ,btn: ['确定', '取消']
-                    ,yes: function(index, layero){
-                        var iframeWindow = window['layui-layer-iframe'+ index]
-                            ,submit = layero.find('iframe').contents().find("#LAY-submit");
-                        //监听提交
-                        iframeWindow.layui.form.on('submit(LAY-submit)', function(data){
-                            var field = data.field; //获取提交的字段
-                            $.ajax({
-                                url:"{:url('article/editArticle')}",
-                                type:"POST",
-                                data:field,
-                                success:function (res) {
-                                    layer.msg(res.msg);
-                                }
-                            });
-                            table.reload('test');
-                            layer.close(index); //关闭弹层
-                        });
-                        submit.trigger('click');
-                    }
-                });
-            }
-        });
-        //监听状态操作
-        form.on('switch(statusDemo)', function(obj){
-            var status = 0;
-            if(obj.elem.checked){
-                status = 1 ;
-            }
-            $.post("{:url('article/setStatus')}",{id:this.value,status:status},function (res) {
-                layer.msg(res.msg);
-            });
+
+
+        //文章列表
+        table.render({
+            elem: '#list',
+            url: "{:url('article/index')}", //数据接口
+            defaultToolbar: ['filter', 'print', 'exports'],
+            page: true, //开启分页
+            toolbar: true,
+            limits: [10, 20, 50, 100],
+            cols: [[ //表头
+                {type: 'checkbox', fixed: 'left'},
+                {field: 'id', title: 'ID', sort: true, fixed: 'left'},
+                {field: 'title', title: '分类名称', sort: true, fixed: 'left'},
+                {field: 'author', title: '作者', sort: true},
+                {field: 'status', title: '状态', sort: true},
+                {field: 'reading', title: '阅读量', sort: true,edit:true},
+                {field: 'is_top', title: '是否置顶', sort: true},
+                {field: 'is_recommend', title: '是否推荐', sort: true},
+                {field: 'sort', title: '排序', sort: true},
+                {field: 'create_time', title: '创建时间', sort: true},
+                {field: 'publish_time', title: '发布时间', sort: true},
+                {fixed: 'right', width: 165, align: 'center', toolbar: '#bar'}
+            ]]
         });
     });
 </script>
