@@ -12,7 +12,6 @@
 namespace app\admin\controller;
 
 use app\admin\model\AdminLog;
-use think\Exception;
 
 class Article extends Base
 {
@@ -23,6 +22,9 @@ class Article extends Base
     {
         $this->article          = model('Article');
         $this->articleCategory  = model('ArticleCategory');
+
+        $category_level_list = $this->articleCategory->getLevelList();
+        $this->assign('category_level_list', $category_level_list);
     }
 
     /**
@@ -128,13 +130,19 @@ class Article extends Base
         return $this->fetch();
     }
 
-    public function category_from(){
+    public function categoryFrom(){
 
+        if($this->request->isAjax()){
+
+
+        }
+        $category = NULL;
+        $this->assign('category',$category);
         return $this->fetch();
     }
 
 
-    public function update_status(){
+    public function updateStatus(){
 
     }
 }
