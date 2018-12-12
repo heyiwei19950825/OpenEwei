@@ -45,7 +45,7 @@
                     </div>
                 </div>
                 <div style="padding: 10px;">
-                    <button class="layui-btn layuiadmin-btn-admin" data-type="add" data-title="添加" data-url="{:url('categoryFrom')}" data-width="600px" data-height="500px">添加</button>
+                    <button class="layui-btn layuiadmin-btn-admin" data-type="add" data-title="添加" data-url="{:url('categoryFrom')}" data-width="90%" data-height="90%">添加</button>
                     <button class="layui-btn layuiadmin-btn-admin layui-btn-danger" data-type="del" data-url="{:url('admin/action/delActionLimit')}">删除</button>
                 </div>
                 <table id="category_list" lay-filter="category_list"></table>
@@ -108,7 +108,8 @@
         var $ = layui.$
             , form = layui.form
             , table = layui.table;
-
+        var active_url ="{:url('article/index')}";
+        var active_category_url ="{:url('article/category')}";
         //文章位列表
         table.render({
             elem: '#category_list',
@@ -120,13 +121,13 @@
             cols: [[ //表头
                 {type: 'checkbox', fixed: 'left'},
                 {field: 'id', title: 'ID', sort: true, fixed: 'left'},
-                {field: 'name', title: '分类名称', sort: true, fixed: 'left'},
+                {field: 'name', title: '分类名称', sort: true, fixed: 'left',edit:true},
                 {field: 'thumb', title: '缩略图', sort: true, fixed: 'left'},
-                {field: 'alias', title: '别名', sort: true, fixed: 'left'},
+                {field: 'alias', title: '别名', sort: true, fixed: 'left',edit:true},
                 {field: 'list_template', title: '分类列表模板', sort: true},
                 {field: 'detail_template', title: '分类详情模板', sort: true,edit:true},
                 {field: 'type', title: '类型', sort: true},
-                {field: 'sort', title: '排序', sort: true},
+                {field: 'sort', title: '排序', sort: true,edit:true},
                 {field: 'pid', title: '父级', sort: true},
                 {fixed: 'right', width: 175, align: 'center', toolbar: '#bar'}
             ]]
@@ -247,63 +248,6 @@
                 });
             }
         });
-
-
-        //事件
-        var active = {
-            del: function () {
-                var checkStatus = table.checkStatus('category_list')
-                    , checkData = checkStatus.data; //得到选中的数据
-                if (checkData.length === 0) {
-                    return layer.msg('请选择数据');
-                }
-                var ids = [];
-                for (var v in checkData) {
-                    ids.push(checkData[v].id);
-                }
-                layer.confirm('确定删除吗？', function (index) {
-                    $.post(active_url, {id: ids}, function (res) {
-                        if (res.code === 1) {
-                            layer.close(index);
-                            table.reload('category_list');
-                            layer.msg(res.msg);
-                        } else {
-                            layer.msg(res.msg);
-                        }
-                    }, 'json')
-                })
-            },add: function () {
-                layer.open({
-                    type: 2
-                    , title: active_title
-                    , content: active_url
-                    , area: [active_width, active_height]
-                    , maxmin: true
-                    , btn: ['确定', '取消']
-                    , yes: function (index, layero) {
-                        var iframeWindow = window['layui-layer-iframe' + index]
-                            , submitID = 'LAY-submit'
-                            , submit = layero.find('iframe').contents().find('#' + submitID);
-
-                        //监听提交
-                        iframeWindow.layui.form.on('submit(' + submitID + ')', function (data) {
-                            var field = data.field; //获取提交的字段
-                            //提交 Ajax 成功后，静态更新表格中的数据
-                            $.post(active_url,field, function (res) {
-                                if (res.code === 1) {
-                                    layer.close(index);
-                                    table.reload('category_list');
-                                    layer.msg(res.msg);
-                                } else {
-                                    layer.msg(res.msg);
-                                }
-                            });
-                        });
-                        submit.trigger('click');
-                    }
-                });
-            }
-        };
     });
 </script>
 </body>

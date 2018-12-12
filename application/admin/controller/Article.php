@@ -12,6 +12,7 @@
 namespace app\admin\controller;
 
 use app\admin\model\AdminLog;
+use app\admin\validate\ArticleCategory;
 
 class Article extends Base
 {
@@ -133,7 +134,28 @@ class Article extends Base
     public function categoryFrom(){
 
         if($this->request->isAjax()){
+            $data = input('');
 
+            //自动验证
+            $validate = new ArticleCategory();
+            if (!$validate->check($data)) {
+                $this->error($validate->getError());
+            }
+
+            if ( isset( $data['id'] )&&!empty( $data['id'] ) ) {
+                $rs = $this->articleCategory->update($data);
+            } else {
+                $rs = $this->articleCategory->insert($data);
+            }
+
+            if ( $rs ) {
+                $this->success(isset($data['id']) ? '编辑成功' : '新增成功');
+            } else {
+
+                AdminLog::setTitle('编辑分类');
+
+                $this->error(isset($data['id']) ? '编辑失败' : '新增失败');
+            }
 
         }
         $category = NULL;

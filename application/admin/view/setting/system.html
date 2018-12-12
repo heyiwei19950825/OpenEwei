@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <title>用户注册配置</title>
@@ -9,8 +10,8 @@
     <link rel="stylesheet" href="__LAYUI__/layui/css/layui.css" media="all">
     <link rel="stylesheet" href="__LAYUI__/style/admin.css" media="all">
 </head>
-<body>
 
+<body>
 <div class="layui-fluid">
     <div class="layui-tab layui-tab-card layui-card">
         <ul class="layui-tab-title">
@@ -23,29 +24,106 @@
             <div class="layui-tab-item layui-show">
                 <div class="layui-card-body" style="padding: 15px;">
                     <form class="layui-form" action="" lay-filter="component-form-group">
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">站点名称</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="username"  lay-verify="required" placeholder="请输入站点名称" class="layui-input">
+                        <blockquote class="layui-elem-quote">网站基本信息设置</blockquote>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">网站名称</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="username" lay-verify="required" placeholder="请输入网站名称" class="layui-input">
+                            </div>
+                            <div class="layui-form-mid layui-word-aux">前端显示名称</div>
                         </div>
-                    </div>
-
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">网站开关</label>
-                        <div class="layui-input-block">
-                            <input type="radio" name="website_switch" value="1"  title="开启">
-                            <input type="radio" name="website_switch" value="0"  title="关闭">
-                        </div>
-                    </div>
-                    <div class="layui-form-item layui-layout-admin">
-                        <div class="layui-input-block">
-                            <div class="layui-footer" style="left: 0;">
-                                <button class="layui-btn" lay-submit="" lay-filter="component-form-demo">立即提交</button>
-                                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">网站LOGO</label>
+                            <div class="layui-input-block">
+                                <div class="layui-form-mid layui-word-aux">建议尺寸 180 * 60 (像素)</div>
                             </div>
                         </div>
-                    </div>
-                </form>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">手机站LOGO</label>
+                            <div class="layui-input-block">
+                                <div class="layui-form-mid layui-word-aux">建议尺寸 90 * 30 (像素) 模板有手机LOGO设置时，此处设置失效，开启静态页面时设置无效，留空手机端使用默认LOGO</div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">地址栏图标</label>
+                            <div class="layui-input-block">
+                                <input type="radio" name="website_switch" value="1" title="开启">
+                                <input type="radio" name="website_switch" value="0" title="关闭">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">网站网址</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="username" lay-verify="required" placeholder="请输入网站网址" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">网站关键词</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="username" lay-verify="required" placeholder="请输入网站关键词" class="layui-input">
+                                <div class="layui-form-mid layui-word-aux">多个关键词请用竖线|隔开，建议3到4个关键词。</div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">网站描述</label>
+                            <div class="layui-input-block">
+                                <textarea placeholder="请输入内容" class="layui-textarea" name="desc" placeholder="网站描述，一般显示在搜索引擎搜索结果中的描述文字，用于介绍网站，吸引浏览者点击。"></textarea>
+                                <div class="layui-form-mid layui-word-aux">（100字以内（（当前已输入 40 个字符）））</div>
+                            </div>
+                        </div>
+                        <blockquote class="layui-elem-quote">底部信息设置（显示在网站前台底部）</blockquote>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">版权信息</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="username" lay-verify="required" placeholder="我的网站 版权所有 2008-2014 湘ICP备8888888" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">地址邮编</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="username" lay-verify="required" placeholder="本页面内容为网站演示数据，前台页面内容都可以在后台修改。" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">联系方式</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="username" lay-verify="required" placeholder="输入手机号码" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">QQ号</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="username" lay-verify="required" placeholder="输入QQ号用于前端对话QQ对话框" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">微信二维码</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="username" lay-verify="required" placeholder="" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">版权信息</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="username" lay-verify="required" placeholder="我的网站 版权所有 2008-2014 湘ICP备8888888" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">网站开关</label>
+                            <div class="layui-input-block">
+                                <input type="radio" name="website_switch" value="1" title="开启">
+                                <input type="radio" name="website_switch" value="0" title="关闭">
+                            </div>
+                        </div>
+                        <div class="layui-form-item layui-layout-admin">
+                            <div class="layui-input-block">
+                                <div class="layui-footer" style="left: 0;">
+                                    <button class="layui-btn" lay-submit="" lay-filter="component-form-demo">立即提交</button>
+                                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
             <div class="layui-tab-item ">
@@ -65,6 +143,57 @@
             <div class="layui-tab-item ">
                 <div class="layui-card-body" style="padding: 15px;">
                     <form class="layui-form" action="" lay-filter="component-form-group">
+                        <blockquote class="layui-elem-quote">发件箱设置（站内所有邮件均由此邮箱发送，如会员密码找回邮件等）</blockquote>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">发件人</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="username" lay-verify="required" placeholder="请输入网站名称" class="layui-input">
+                            </div>
+                            <div class="layui-form-mid layui-word-aux">所显示的发件人姓名</div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">邮箱账号</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="username" lay-verify="required" placeholder="请输入网站名称" class="layui-input">
+                            </div>
+                            <div class="layui-form-mid layui-word-aux">用于发送邮件的邮箱账号</div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">邮箱密码</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="username" lay-verify="required" placeholder="请输入网站名称" class="layui-input">
+                            </div>
+                            <div class="layui-form-mid layui-word-aux">用于发送邮件的邮箱密码</div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">SMTP</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="username" lay-verify="required" placeholder="61.152.188.131" class="layui-input">
+                            </div>
+                            <div class="layui-form-mid layui-word-aux">如QQ邮箱为smtp.qq.com</div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">发送端口</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="username" lay-verify="required" placeholder="61.152.188.131" class="layui-input">
+                            </div>
+                            <div class="layui-form-mid layui-word-aux">用于邮件发送端口（咨询邮箱服务商获得，TLS一般为25，SSL一般为465</div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">发送方式</label>
+                            <div class="layui-input-block">
+                                <input type="radio" name="website_switch" value="1" title="SSL服务方式">
+                                <input type="radio" name="website_switch" value="0" title="TLS服务方式">
+                            </div>
+                            <div class="layui-form-mid layui-word-aux">默认邮箱服务方式为TLS（咨询空间商获得）
+                                如果使用TLS方式25端口无法发送邮件，请尝试使用SSL方式465端口发件</div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label"></label>
+                            <div class="layui-input-block">
+                                <button class="layui-btn layui-btn-normal">发送邮件</button>
+                            </div>
+                        </div>
                         <div class="layui-form-item layui-layout-admin">
                             <div class="layui-input-block">
                                 <div class="layui-footer" style="left: 0;">
@@ -93,8 +222,6 @@
         </div>
     </div>
 </div>
-
-
 <script src="__LAYUI__/layui/layui.js"></script>
 <script>
     layui.config({
