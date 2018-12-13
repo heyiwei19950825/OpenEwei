@@ -22,9 +22,9 @@
                 <div class="layui-form layui-card-header layuiadmin-card-header-auto">
                     <div class="layui-form-item">
                         <div class="layui-inline">
-                            <label class="layui-form-label">关键字</label>
+                            <label class="layui-form-label">分类名称</label>
                             <div class="layui-input-block">
-                                <input type="text" name="keyword" placeholder="请输入关键字" class="layui-input">
+                                <input type="text" name="keyword" placeholder="请输入分类名称" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-inline">
@@ -45,14 +45,14 @@
                     </div>
                 </div>
                 <div style="padding: 10px;">
-                    <button class="layui-btn layuiadmin-btn-admin" data-type="add" data-title="添加" data-url="{:url('categoryFrom')}" data-width="90%" data-height="90%">添加</button>
-                    <button class="layui-btn layuiadmin-btn-admin layui-btn-danger" data-type="del" data-url="{:url('admin/action/delActionLimit')}">删除</button>
+                    <button class="layui-btn layuiadmin-btn-admin" data-type="add" data-title="添加" data-item="category_list" data-url="{:url('categoryFrom')}" data-width="90%" data-height="90%">添加</button>
+                    <button class="layui-btn layuiadmin-btn-admin layui-btn-danger" data-type="del" data-item="category_list" data-url="{:url('categoryDel')}">删除</button>
                 </div>
                 <table id="category_list" lay-filter="category_list"></table>
                 <script type="text/html" id="bar">
-                    <a class="layui-btn layui-btn-primary layui-btn-xs layui-tool-btn" lay-event="other" data-title="添加子类" data-url="{:url('categoryFrom')}" data-width="90%" data-height="90%">添加子类</a>
-                    <a class="layui-btn layui-btn-xs layui-tool-btn" lay-event="other" data-title="编辑用户" data-url="{:url('categoryFrom')}" data-width="90%" data-height="90%">编辑</a>
-                    <a class="layui-btn layui-btn-danger layui-btn-xs layui-tool-btn" lay-event="del"  data-url='{:url("delActionLimit")}'>删除</a>
+                    <a class="layui-btn layui-btn-primary layui-btn-xs layui-tool-btn" lay-event="p_add" data-title="添加子类" data-url="{:url('categoryFrom')}" data-width="90%" data-height="90%">添加子类</a>
+                    <a class="layui-btn layui-btn-xs layui-tool-btn" lay-event="other" data-title="编辑分类" data-url="{:url('categoryFrom')}" data-width="90%" data-height="90%">编辑</a>
+                    <a class="layui-btn layui-btn-danger layui-btn-xs layui-tool-btn" lay-event="del"  data-url='{:url("categoryDel")}'>删除</a>
                 </script>
             </div>
 
@@ -84,14 +84,13 @@
                     </div>
                 </div>
                 <div style="padding: 10px;">
-                    <button class="layui-btn layuiadmin-btn-admin" data-type="add" data-title="添加" data-url="{:url('categoryFrom')}" data-width="600px" data-height="500px">添加</button>
-                    <button class="layui-btn layuiadmin-btn-admin layui-btn-danger" data-type="del" data-url="{:url('admin/action/delActionLimit')}">删除</button>
+                    <button class="layui-btn layuiadmin-btn-admin" data-type="add" data-title="添加" data-item="list"  data-url="{:url('from')}" data-width="600px" data-height="500px">添加</button>
+                    <button class="layui-btn layuiadmin-btn-admin layui-btn-danger" data-type="del" data-item="list"  data-url="{:url('del')}">删除</button>
                 </div>
                 <table id="list" lay-filter="list"></table>
                 <script type="text/html" id="data-bar">
-                    <a class="layui-btn layui-btn-primary layui-btn-xs layui-tool-btn" lay-event="other" data-title="添加子类" data-url="{:url('categoryFrom')}" data-width="90%" data-height="90%">添加子类</a>
-                    <a class="layui-btn layui-btn-xs layui-tool-btn" lay-event="other" data-title="编辑用户" data-url="{:url('categoryFrom')}" data-width="90%" data-height="90%">编辑</a>
-                    <a class="layui-btn layui-btn-danger layui-btn-xs layui-tool-btn" lay-event="del"  data-url='{:url("delActionLimit")}'>删除</a>
+                    <a class="layui-btn layui-btn-xs layui-tool-btn" lay-event="other" data-title="编辑文章" data-url="{:url('from')}" data-width="90%" data-height="90%">编辑</a>
+                    <a class="layui-btn layui-btn-danger layui-btn-xs layui-tool-btn" lay-event="del"  data-url='{:url("del")}'>删除</a>
                 </script>
             </div>
         </div>
@@ -120,8 +119,8 @@
             limits: [10, 20, 50, 100],
             cols: [[ //表头
                 {type: 'checkbox', fixed: 'left'},
-                {field: 'id', title: 'ID', sort: true, fixed: 'left'},
-                {field: 'name', title: '分类名称', sort: true, fixed: 'left',edit:true},
+                {field: 'id', title: 'ID', sort: true, fixed: 'left',width:60},
+                {field: 'name', title: '分类名称', sort: true, fixed: 'left',edit:true,width:400},
                 {field: 'thumb', title: '缩略图', sort: true, fixed: 'left'},
                 {field: 'alias', title: '别名', sort: true, fixed: 'left',edit:true},
                 {field: 'list_template', title: '分类列表模板', sort: true},
@@ -154,7 +153,7 @@
                 {field: 'sort', title: '排序', sort: true},
                 {field: 'create_time', title: '创建时间', sort: true},
                 {field: 'publish_time', title: '发布时间', sort: true},
-                {fixed: 'right', width: 165, align: 'center', toolbar: '#bar'}
+                {fixed: 'right', width: 165, align: 'center', toolbar: '#data-bar'}
             ]]
         });
 
@@ -213,9 +212,13 @@
                         }
                     });
                 });
-            } else if (layEvent === 'other') {
+            } else if (layEvent === 'other' || layEvent === 'p_add') {
                 if( data.id ){
-                    url += "?id=" + data.id
+                    if( layEvent === 'p_add'){
+                        url += "?pid=" + data.id
+                    }else {
+                        url += "?id=" + data.id
+                    }
                 }
                 layer.open({
                     type: 2

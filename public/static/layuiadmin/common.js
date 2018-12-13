@@ -6,10 +6,11 @@ layui.define(function(exports){
         ,form = layui.form
         ,admin = layui.admin
 
-    var active_url = '';
-        var active_title = '';
-        var active_width = '';
-        var active_height= '';
+        var active_url     = '';
+        var active_title    = '';
+        var active_width    = '';
+        var active_height   = '';
+        var active_item     = '';
 
         //日期时间范围
         laydate.render({
@@ -113,7 +114,7 @@ layui.define(function(exports){
         //事件
         var active = {
             del: function () {
-                var checkStatus = table.checkStatus('list')
+                var checkStatus = table.checkStatus(active_item)
                     , checkData = checkStatus.data; //得到选中的数据
                 if (checkData.length === 0) {
                     return layer.msg('请选择数据');
@@ -174,6 +175,8 @@ layui.define(function(exports){
             active_title = $(this).attr('data-title');
             active_width = $(this).attr('data-width');
             active_height = $(this).attr('data-height');
+            active_item = $(this).attr('data-item');
+            layer.msg(11111);
 
             active[type] ? active[type].call(this) : '';
         });
