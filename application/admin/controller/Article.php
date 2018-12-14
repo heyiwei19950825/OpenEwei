@@ -119,7 +119,7 @@ class Article extends Base
      */
     public function category(){
 
-        if($this->request->isAjax()){
+//        if($this->request->isAjax()){
             $map = [];
             $page       = input('get.page/d', 1);
             $limit      = input('get.limit/d', 20);
@@ -145,7 +145,6 @@ class Article extends Base
                 $category_level_list = $category_list;
             }else{
                 $category_list = array2level($category_list);
-
                 $category_level_list = [];
                 foreach ($category_list as $k=>$v){
                     if( $v['level'] != 1 ){
@@ -168,19 +167,14 @@ class Article extends Base
 
             AdminLog::setTitle('获取文章列表');
             return json($data);
-        }
-
-        $category_list = $this->articleCategory->column('name', 'id');
-        $this->assign('category_list',$category_list);
-
-        return $this->fetch();
+//        }
     }
 
     /**
      * 分类表单
      * @return mixed
      */
-    public function categoryFrom(){
+    public function categoryForm(){
 
         if($this->request->isAjax()){
             $data = input('');

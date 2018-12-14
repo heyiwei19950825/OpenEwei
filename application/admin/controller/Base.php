@@ -30,16 +30,16 @@ class Base extends Controller
 
     public function initialize()
     {
-        // 判断是否安装OCenter
+        // 判断是否安装OEwei
         if (!is_file(APP_PATH . 'admin/command/Install/install.lock'))
         {
             $this->redirect(url('install/Install/index'));
         }
         //登录验证
         if (!$this->isLogin()) {
-//            $this->error('请登录后再试', 'admin/login/login');
             $this->redirect('admin/login/login');
         }
+
         //数据初始化
         $this->aid = get_aid();
         $this->module = $this->request->module();
@@ -128,9 +128,10 @@ class Base extends Controller
      */
     protected function checkAuth()
     {
-        $model = strtolower($this->request->module());
+        $model      = strtolower($this->request->module());
+        $action     = strtolower($this->request->action());
         $controller = strtolower($this->request->controller());
-        $action = strtolower($this->request->action());
+
         $rule = $this->adminAuthRule->where('name', $model . '/' . $controller . '/' . $action)->where('status', 1)->find();
         if ($rule) {
             $admin = session('admin_auth');

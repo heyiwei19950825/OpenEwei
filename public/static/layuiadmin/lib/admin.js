@@ -305,7 +305,9 @@ layui.define('view', function(exports){
     
     //关闭当前 pageTabs
     ,closeThisTabs: function(){
-      if(!admin.tabsPage.index) return;
+              alert(admin.tabsPage);
+
+              if(!admin.tabsPage.index) return;
       $(TABS_HEADER).eq(admin.tabsPage.index).find('.layui-tab-close').trigger('click');
     }
     

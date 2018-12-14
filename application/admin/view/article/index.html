@@ -45,13 +45,13 @@
                     </div>
                 </div>
                 <div style="padding: 10px;">
-                    <button class="layui-btn layuiadmin-btn-admin" data-type="add" data-title="添加" data-item="category_list" data-url="{:url('categoryFrom')}" data-width="90%" data-height="90%">添加</button>
-                    <button class="layui-btn layuiadmin-btn-admin layui-btn-danger" data-type="del" data-item="category_list" data-url="{:url('categoryDel')}">删除</button>
+                    <button class="layui-btn" lay-href="{:url('categoryForm')}">添加分类</button>
+                    <button class="layui-btn layuiadmin-btn-admin layui-btn-danger" data-type="del" data-item="category_list" data-url="{:url('categoryDel')}">删除分类</button>
                 </div>
                 <table id="category_list" lay-filter="category_list"></table>
                 <script type="text/html" id="bar">
-                    <a class="layui-btn layui-btn-primary layui-btn-xs layui-tool-btn" lay-event="p_add" data-title="添加子类" data-url="{:url('categoryFrom')}" data-width="90%" data-height="90%">添加子类</a>
-                    <a class="layui-btn layui-btn-xs layui-tool-btn" lay-event="other" data-title="编辑分类" data-url="{:url('categoryFrom')}" data-width="90%" data-height="90%">编辑</a>
+                    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-href="{:url('categoryForm')}?pid={{ d.id }}">添加子类</a>
+                    <a class="layui-btn layui-btn-xs" lay-href="{:url('categoryForm')}?id={{ d.id }}">编辑</a>
                     <a class="layui-btn layui-btn-danger layui-btn-xs layui-tool-btn" lay-event="del"  data-url='{:url("categoryDel")}'>删除</a>
                 </script>
             </div>
@@ -107,8 +107,7 @@
         var $ = layui.$
             , form = layui.form
             , table = layui.table;
-        var active_url ="{:url('article/index')}";
-        var active_category_url ="{:url('article/category')}";
+
         //文章位列表
         table.render({
             elem: '#category_list',
@@ -118,11 +117,11 @@
             toolbar: true,
             limits: [10, 20, 50, 100],
             cols: [[ //表头
-                {type: 'checkbox', fixed: 'left'},
-                {field: 'id', title: 'ID', sort: true, fixed: 'left',width:60},
-                {field: 'name', title: '分类名称', sort: true, fixed: 'left',edit:true,width:400},
-                {field: 'thumb', title: '缩略图', sort: true, fixed: 'left'},
-                {field: 'alias', title: '别名', sort: true, fixed: 'left',edit:true},
+                {type: 'checkbox', align:'center' , fixed: 'left'},
+                {field: 'id', title: 'ID', sort: true, align:'center' , fixed: 'left',width:60},
+                {field: 'name', title: '分类名称', sort: true, align:'center' , fixed: 'left',edit:true,width:400},
+                {field: 'thumb', title: '缩略图', sort: true, align:'center' , fixed: 'left'},
+                {field: 'alias', title: '别名', sort: true, align:'center' , fixed: 'left',edit:true},
                 {field: 'list_template', title: '分类列表模板', sort: true},
                 {field: 'detail_template', title: '分类详情模板', sort: true,edit:true},
                 {field: 'type', title: '类型', sort: true},
@@ -142,9 +141,9 @@
             toolbar: true,
             limits: [10, 20, 50, 100],
             cols: [[ //表头
-                {type: 'checkbox', fixed: 'left'},
-                {field: 'id', title: 'ID', sort: true, fixed: 'left'},
-                {field: 'title', title: '分类名称', sort: true, fixed: 'left'},
+                {type: 'checkbox', align:'center' , fixed: 'left'},
+                {field: 'id', title: 'ID', sort: true, align:'center' , fixed: 'left'},
+                {field: 'title', title: '分类名称', sort: true, align:'center' , fixed: 'left'},
                 {field: 'author', title: '作者', sort: true},
                 {field: 'status', title: '状态', sort: true},
                 {field: 'reading', title: '阅读量', sort: true,edit:true},
@@ -193,11 +192,7 @@
 
         //监听行工具事件
         table.on('tool(category_list)', function (obj,i) {
-            var title = $(this).attr('data-title');
             var url =  $(this).attr('data-url');
-            var width =  $(this).attr('data-width');
-            var height =  $(this).attr('data-height');
-
             var data = obj.data;
             var layEvent = obj.event;
             if (layEvent === 'del') {
@@ -211,43 +206,6 @@
                             layer.msg(res.msg);
                         }
                     });
-                });
-            } else if (layEvent === 'other' || layEvent === 'p_add') {
-                if( data.id ){
-                    if( layEvent === 'p_add'){
-                        url += "?pid=" + data.id
-                    }else {
-                        url += "?id=" + data.id
-                    }
-                }
-                layer.open({
-                    type: 2
-                    , title: title
-                    , content: url
-                    , maxmin: true
-                    , area: [width, height]
-                    , btn: ['确定', '取消']
-                    , yes: function (index, layero) {
-                        var iframeWindow = window['layui-layer-iframe' + index ]
-                            , submitID = 'LAY-submit'
-                            , submit = layero.find('iframe').contents().find('#' + submitID);
-
-                        //监听提交
-                        iframeWindow.layui.form.on('submit(' + submitID + ')', function (data) {
-                            var field = data.field; //获取提交的字段
-                            //提交 Ajax 成功后，静态更新表格中的数据
-                            $.post(url, field, function (res) {
-                                if (res.code === 1) {
-                                    table.reload('category_list');   //数据刷新
-                                    layer.close(index);     //关闭弹层
-                                    layer.msg(res.msg);
-                                } else {
-                                    layer.msg(res.msg);
-                                }
-                            }, 'json');
-                        });
-                        submit.trigger('click');
-                    }
                 });
             }
         });

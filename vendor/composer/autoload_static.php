@@ -7,18 +7,39 @@ namespace Composer\Autoload;
 class ComposerStaticInitce339991e9ac5ecf073fed7c65d837a7
 {
     public static $files = array (
+        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
+        '9b552a3cc426e3287cc811caefa3cf53' => __DIR__ . '/..' . '/topthink/think-helper/src/helper.php',
         '1cfd2761b63b0a29ed23657ea394cb2d' => __DIR__ . '/..' . '/topthink/think-captcha/src/helper.php',
+        'cc56288302d9df745d97c934d6a6e5f0' => __DIR__ . '/..' . '/topthink/think-queue/src/common.php',
     );
 
     public static $prefixLengthsPsr4 = array (
         't' => 
         array (
+            'think\\helper\\' => 13,
             'think\\composer\\' => 15,
             'think\\captcha\\' => 14,
+            'think\\' => 6,
+        ),
+        'T' => 
+        array (
+            'Twig\\' => 5,
+        ),
+        'S' => 
+        array (
+            'Symfony\\Polyfill\\Ctype\\' => 23,
+        ),
+        'P' => 
+        array (
+            'PHPMailer\\PHPMailer\\' => 20,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
+        'think\\helper\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/topthink/think-helper/src',
+        ),
         'think\\composer\\' => 
         array (
             0 => __DIR__ . '/..' . '/topthink/think-installer/src',
@@ -27,6 +48,43 @@ class ComposerStaticInitce339991e9ac5ecf073fed7c65d837a7
         array (
             0 => __DIR__ . '/..' . '/topthink/think-captcha/src',
         ),
+        'think\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/topthink/think-queue/src',
+        ),
+        'Twig\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/twig/twig/src',
+        ),
+        'Symfony\\Polyfill\\Ctype\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
+        ),
+        'PHPMailer\\PHPMailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
+        ),
+    );
+
+    public static $prefixesPsr0 = array (
+        'T' => 
+        array (
+            'Twig_' => 
+            array (
+                0 => __DIR__ . '/..' . '/twig/twig/lib',
+            ),
+        ),
+        'P' => 
+        array (
+            'PHPQRCode' => 
+            array (
+                0 => __DIR__ . '/..' . '/aferrandini/phpqrcode/lib',
+            ),
+            'PHPExcel' => 
+            array (
+                0 => __DIR__ . '/..' . '/phpoffice/phpexcel/Classes',
+            ),
+        ),
     );
 
     public static function getInitializer(ClassLoader $loader)
@@ -34,6 +92,7 @@ class ComposerStaticInitce339991e9ac5ecf073fed7c65d837a7
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInitce339991e9ac5ecf073fed7c65d837a7::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitce339991e9ac5ecf073fed7c65d837a7::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitce339991e9ac5ecf073fed7c65d837a7::$prefixesPsr0;
 
         }, null, ClassLoader::class);
     }

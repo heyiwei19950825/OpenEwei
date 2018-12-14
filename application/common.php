@@ -507,77 +507,6 @@ function list_sort_by($list, $field, $sortby = 'asc')
     return false;
 }
 
-
-/**
- * 获取分类所有子分类
- * @param int $cid 分类ID
- * @return array|bool
- */
-function get_category_children($cid)
-{
-    if (empty($cid)) {
-        return false;
-    }
-
-    $children = Db::name('category')->where(['path' => ['like', "%,{$cid},%"]])->select();
-
-    return array2tree($children);
-}
-
-/**
- * 根据分类ID获取文章列表（包括子分类）
- * @param int   $cid   分类ID
- * @param int   $limit 显示条数
- * @param array $where 查询条件
- * @param array $order 排序
- * @param array $filed 查询字段
- * @return bool|false|PDOStatement|string|\think\Collection
- */
-function get_articles_by_cid($cid, $limit = 10, $where = [], $order = [], $filed = [])
-{
-    if (empty($cid)) {
-        return false;
-    }
-
-    $ids = Db::name('category')->where(['path' => ['like', "%,{$cid},%"]])->column('id');
-    $ids = (!empty($ids) && is_array($ids)) ? implode(',', $ids) . ',' . $cid : $cid;
-
-    $fileds = array_merge(['id', 'cid', 'title', 'introduction', 'thumb', 'reading', 'publish_time'], (array)$filed);
-    $map    = array_merge(['cid' => ['IN', $ids], 'status' => 1, 'publish_time' => ['<= time', date('Y-m-d H:i:s')]], (array)$where);
-    $sort   = array_merge(['is_top' => 'DESC', 'sort' => 'DESC', 'publish_time' => 'DESC'], (array)$order);
-
-    $article_list = Db::name('article')->where($map)->field($fileds)->order($sort)->limit($limit)->select();
-
-    return $article_list;
-}
-
-/**
- * 根据分类ID获取文章列表，带分页（包括子分类）
- * @param int   $cid       分类ID
- * @param int   $page_size 每页显示条数
- * @param array $where     查询条件
- * @param array $order     排序
- * @param array $filed     查询字段
- * @return bool|\think\paginator\Collection
- */
-function get_articles_by_cid_paged($cid, $page_size = 15, $where = [], $order = [], $filed = [])
-{
-    if (empty($cid)) {
-        return false;
-    }
-
-    $ids = Db::name('category')->where(['path' => ['like', "%,{$cid},%"]])->column('id');
-    $ids = (!empty($ids) && is_array($ids)) ? implode(',', $ids) . ',' . $cid : $cid;
-
-    $fileds = array_merge(['id', 'cid', 'title', 'introduction', 'thumb', 'reading', 'publish_time'], (array)$filed);
-    $map    = array_merge(['cid' => ['IN', $ids], 'status' => 1, 'publish_time' => ['<= time', date('Y-m-d H:i:s')]], (array)$where);
-    $sort   = array_merge(['is_top' => 'DESC', 'sort' => 'DESC', 'publish_time' => 'DESC'], (array)$order);
-
-    $article_list = Db::name('article')->where($map)->field($fileds)->order($sort)->paginate($page_size);
-
-    return $article_list;
-}
-
 /**
  * 数组层级缩进转换
  * @param array $array 源数组
@@ -742,3 +671,4 @@ function check_mobile_number($mobile)
 
     return preg_match($reg, $mobile) ? true : false;
 }
+

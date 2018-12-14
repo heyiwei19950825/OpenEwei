@@ -34,17 +34,17 @@ return [
     //模板替换
     'tpl_replace_string' => [
         //本地环境开启
-        '__PUBLIC__' => $root,
-        '__STATIC__' => $root . '/static',
-        '__JS__' => $root . '/static/javascript',
-        '__LAYUI__' => $root . '/static/layuiadmin',
-        '__ADMIN__' => $root . '/static/admin'
+        '__PUBLIC__'    => $root,
+        '__STATIC__'    => $root . '/static',
+        '__JS__'        => $root . '/static/javascript',
+        '__LAYUI__'     => $root . '/static/layuiadmin',
+        '__ADMIN__'     => $root . '/static/admin'
         //线上环境开启
-//        '__PUBLIC__' => '',
-//        '__STATIC__' => '/static',
-//        '__JS__' => '/static/javascript',
-//        '__LAYUI__' => '/static/layuiadmin',
-//        '__ADMIN__' => '/static/admin',
-//        '__APP__' => '/../application'
+//        '__PUBLIC__'  => '',
+//        '__STATIC__'  => '/static',
+//        '__JS__'      => '/static/javascript',
+//        '__LAYUI__'   => '/static/layuiadmin',
+//        '__ADMIN__'   => '/static/admin',
+//        '__APP__'     => '/../application'
     ]
 ];

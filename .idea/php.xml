@@ -5,6 +5,13 @@
       <path value="$PROJECT_DIR$/vendor/topthink/think-installer" />
       <path value="$PROJECT_DIR$/vendor/topthink/think-captcha" />
       <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/topthink/think-helper" />
+      <path value="$PROJECT_DIR$/vendor/aferrandini/phpqrcode" />
+      <path value="$PROJECT_DIR$/vendor/phpmailer/phpmailer" />
+      <path value="$PROJECT_DIR$/vendor/phpoffice/phpexcel" />
+      <path value="$PROJECT_DIR$/vendor/twig/twig" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/vendor/topthink/think-queue" />
     </include_path>
   </component>
 </project>
