@@ -127,6 +127,7 @@ class Ueditor extends Controller
                 break;
         }
 
+
         /* 生成上传实例对象并完成上传 */
         $up = new UeditorUpload($fieldName, $param, $base64);
 

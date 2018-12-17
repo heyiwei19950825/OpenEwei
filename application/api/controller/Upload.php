@@ -14,14 +14,6 @@ class Upload extends Controller
     protected function initialize()
     {
         parent::initialize();
-        if (!Session::has('admin_auth')) {
-            $result = [
-                'error'   => 1,
-                'message' => '未登录'
-            ];
-
-            return json($result);
-        }
     }
 
     /**

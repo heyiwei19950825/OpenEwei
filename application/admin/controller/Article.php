@@ -13,7 +13,8 @@ namespace app\admin\controller;
 
 use app\admin\model\AdminLog;
 use app\admin\validate\ArticleCategory;
-use think\Request;
+use app\admin\validate\Article as ArticleValidate;
+use think\Exception;
 
 class Article extends Base
 {
@@ -26,8 +27,10 @@ class Article extends Base
         $this->articleCategory  = model('ArticleCategory');
         $request = \think\facade\Request::instance();
 
-        if($request->action() != 'category'){
+
+        if($request->action() != 'category' && $request->action != 'categoryform'){
             $category_level_list = $this->articleCategory->getLevelList();
+            $category_level_list = array2level($category_level_list);
             $this->assign('category_level_list', $category_level_list);
         }
 
@@ -35,7 +38,6 @@ class Article extends Base
 
     /**
      * 文章管理
-
      * @return mixed
      */
     public function index(){
@@ -96,11 +98,68 @@ class Article extends Base
         return $this->fetch();
     }
 
-    public function from(){
+    /**
+     * 文章表单
+     * @return mixed
+     */
+    public function form(){
+        if ($this->request->isPost()) {
+            $map  = $this->request->post();
 
+            if(!isset($map['thumb'])){
+                $map['thumb'] = '';
+            }
+            if(!isset($map['photo'])){
+                $map['photo'] = '';
+            }
+
+            $map['publish_time'] = strtotime($map['publish_time']);
+
+            //自动验证
+            $validate = new ArticleValidate();
+            if (!$validate->check($map)) {
+                $this->error($validate->getError());
+            }
+            unset($map['file']);
+            if ( isset( $map['id'] )&&!empty( $map['id'] ) ) {
+                try{
+                    $row = $this->article->allowField(true)->update($map);
+                }catch (Exception $e){
+                    echo $e->getMessage();die;
+                }
+            } else {
+                try{
+                    $row = $this->article->allowField(true)->insert($map);
+                    echo $this->article->getLastSql();die;
+                }catch (Exception $e){
+                    echo $e->getMessage();die;
+                }
+            }
+
+            if ($row) {
+                $this->success($map['id'] ? '编辑成功' : '新增成功');
+            } else {
+
+                AdminLog::setTitle('编辑文章');
+                $this->error($map['id'] ? '编辑失败' : '新增失败');
+            }
+        }
+
+        $id     = input('get.id', 0, 'intval');
+        $data = NULL;
+
+        if( $id ){
+            $data = $this->article->find($id);
+        }
+
+        $this->assign('data', $data);
+        return $this->fetch();
     }
 
-
+    /**
+     * 文章删除
+     * @return mixed
+     */
     public function del()
     {
         $aId = input('post.id', '', 'strval');
@@ -119,7 +178,7 @@ class Article extends Base
      */
     public function category(){
 
-//        if($this->request->isAjax()){
+        if($this->request->isAjax()){
             $map = [];
             $page       = input('get.page/d', 1);
             $limit      = input('get.limit/d', 20);
@@ -167,7 +226,7 @@ class Article extends Base
 
             AdminLog::setTitle('获取文章列表');
             return json($data);
-//        }
+        }
     }
 
     /**
@@ -183,6 +242,10 @@ class Article extends Base
             $validate = new ArticleCategory();
             if (!$validate->check($data)) {
                 $this->error($validate->getError());
+            }
+
+            if(!isset($map['thumb'])){
+                $map['thumb'] = '';
             }
 
             if ( isset( $data['id'] )&&!empty( $data['id'] ) ) {
@@ -201,8 +264,15 @@ class Article extends Base
             }
 
         }
-        $category = NULL;
-        $this->assign('category',$category);
+        $id     = input('get.id', 0, 'intval');
+        $data = NULL;
+
+        if( $id ){
+            $data = $this->articleCategory->find($id);
+        }
+
+        $this->assign('data', $data);
+
         return $this->fetch();
     }
 

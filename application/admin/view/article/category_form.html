@@ -8,7 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <link rel="stylesheet" href="__LAYUI__/layui/css/layui.css" media="all">
     <link rel="stylesheet" href="/static/layuiadmin/style/admin.css" media="all">
-
+    <link rel="stylesheet" href="/static/layuiadmin/style/template.css" media="all">
+    <style>
+        .layui-upload-img{width: 402px; height: 202px; margin: 0 10px 10px 0;}
+    </style>
 </head>
 <body>
 <div class="layui-fluid">
@@ -21,7 +24,7 @@
                         <select name="pid" lay-verify="required">
                             <option value="0">一级栏目</option>
                             {foreach name="category_level_list" item="vo"}
-                            <option value="{$vo.id}" {if condition="$category.id==$vo.id"} disabled="disabled"{/if} {if condition="$category.pid==$vo.id"} selected="selected"{/if}>{neq name="vo.level" value="1"}|{php}for($i=1;$i<$vo['level'];$i++){echo ' ----';}{/php}{/neq} {$vo.name}</option>
+                            <option value="{$vo.id}" {if condition="$data.id==$vo.id"} disabled="disabled"{/if} {if condition="$data.pid==$vo.id"} selected="selected"{/if}>{neq name="vo.level" value="1"}|{php}for($i=1;$i<$vo['level'];$i++){echo ' ----';}{/php}{/neq} {$vo.name}</option>
                             {/foreach}
                         </select>
                     </div>
@@ -29,68 +32,88 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">栏目名称</label>
                     <div class="layui-input-block">
-                        <input type="text" name="name" value="{$category.name}" required  lay-verify="required" placeholder="请输入栏目名称" class="layui-input">
+                        <input type="text" name="name" value="{$data.name}" required  lay-verify="required" placeholder="请输入栏目名称" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">别名</label>
                     <div class="layui-input-block">
-                        <input type="text" name="alias" value="{$category.alias}" placeholder="（选填）请输入栏目别名" class="layui-input">
+                        <input type="text" name="alias" value="{$data.alias}" placeholder="（选填）请输入栏目别名" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">图标</label>
                     <div class="layui-input-block">
-                        <input type="text" name="icon" value="{$category.icon}" placeholder="（选填）如：fa fa-home" class="layui-input">
+                        <input type="text" name="icon" value="{$data.icon}" placeholder="（选填）如：fa fa-home" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">图标</label>
-                    <div class="layui-upload">
-                        <button type="button" class="layui-btn" id="test1">上传图片</button>
-                        <input type="hidden" name="thumb" value="{$category.thumb}" class="layui-input layui-input-inline" id="thumb">
-                        <div class="layui-upload-list">
-                            <img class="layui-upload-img" id="up-img">
-                            <p id="demoText"></p>
-                        </div>
+                    <label class="layui-form-label">图集</label>
+                    <div class="layui-input-block">
+                        <button type="button" id="upload-photo-btn" class="layui-btn">上传图集</button>
+                        <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+                            预览图：
+                            <div class="layui-upload-list layui-row" id="photo-container">
+                                {if condition="!empty($data['thumb'])"}
+                                {foreach name="$data['thumb']" item="vo"}
+                                <div class="layui-col-md2 layui-col-sm4 photo-list">
+                                    <div class="cmdlist-container">
+                                        <a href="javascript:;">
+                                            <img src="{$vo}">
+                                        </a>
+                                        <a href="javascript:;">
+                                            <div class="cmdlist-text">
+                                                <div class="price">
+                                                    <input type="hidden" name="thumb[]" value="{$vo}">
+                                                    <button type="button" class="layui-btn layui-btn-danger remove-photo-btn">移除</button>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                {/foreach}
+                                {/if}
+                            </div>
+                        </blockquote>
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">内容</label>
                     <div class="layui-input-block">
-                        <textent name="content" id="content">{$category.content}</textent>
+                        <textent name="content" id="content">{$data.content}</textent>
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">类型</label>
                     <div class="layui-input-block">
                         <select name="type" lay-verify="required">
-                            <option value="1" {if condition="$category.type==1"} selected="selected"{/if}>列表</option>
-                            <option value="2" {if condition="$category.type==2"} selected="selected"{/if}>单页</option>
+                            <option value="1" {if condition="$data.type==1"} selected="selected"{/if}>列表</option>
+                            <option value="2" {if condition="$data.type==2"} selected="selected"{/if}>单页</option>
                         </select>
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">排序</label>
                     <div class="layui-input-block">
-                        <input type="text" name="sort" value="{$category.sort}" required  lay-verify="required" class="layui-input">
+                        <input type="text" name="sort" value="{$data.sort}" required  lay-verify="required" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">列表模板</label>
                     <div class="layui-input-block">
-                        <input type="text" name="list_template" value="{$category.list_template}" placeholder="（选填）请输入模板文件名" class="layui-input">
+                        <input type="text" name="list_template" value="{$data.list_template}" placeholder="（选填）请输入模板文件名" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">详情模板</label>
                     <div class="layui-input-block">
-                        <input type="text" name="detail_template" value="{$category.detail_template}" placeholder="（选填）请输入模板文件名" class="layui-input">
+                        <input type="text" name="detail_template" value="{$data.detail_template}" placeholder="（选填）请输入模板文件名" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item layui-layout-admin">
                     <div class="layui-input-block">
                         <div class="layui-footer" style="left: 0;">
+                            <input type="hidden" name="id" value="{$data.id}">
                             <button class="layui-btn" lay-submit="" lay-filter="form-submit">立即提交</button>
                             <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                         </div>
@@ -109,11 +132,11 @@
         base: '__LAYUI__/' //静态资源所在路径
     }).extend({
         index: 'lib/index' //主入口模块
-    }).use(['index', 'form','vaeyo','admin'], function(){
+    }).use(['index','jquery','form', 'table','laydate','upload','common'], function(){
         var $ = layui.$
-            ,vae = layui.vaeyo
-            ,admin = layui.admin
-            ,form = layui.form;
+            ,form = layui.form
+            ,uploadEditor = UE.getEditor('upload-photo-btn')
+            ,uploadImage;
         var ue = UE.getEditor('content');
         ue.ready(function() {
             ue.setHeight(500);
@@ -121,12 +144,54 @@
 
         form.render();
 
+        //百度编辑器多图上传
+        uploadEditor.ready(function () {
+            uploadEditor.setDisabled();
+            uploadEditor.hide();
+            uploadEditor.addListener('beforeInsertImage', function (t, arg) {
+                $.each(arg, function (index, item) {
+                    var photoListItem ='<div class="layui-col-md2 layui-col-sm4 photo-list">\n' +
+                        '        <div class="cmdlist-container">\n' +
+                        '            <a href="javascript:;">\n' +
+                        '              <img src="'+item.src+'">\n' +
+                        '            </a>\n' +
+                        '            <a href="javascript:;">\n' +
+                        '              <div class="cmdlist-text">\n' +
+                        '                <div class="price">\n' +
+                        '                   <input type="hidden" name="thumb[]" value="'+item.src+'">'+
+                        '                   <button type="button" class="layui-btn layui-btn-danger remove-photo-btn">移除</button>'+
+                        '                </div>\n' +
+                        '              </div>\n' +
+                        '            </a>\n' +
+                        '        </div>\n' +
+                        '    </div>\n';
+
+                    $('#photo-container').append(photoListItem);
+                    $('.remove-photo-btn').on('click', function () {
+                        $(this).parents('.photo-list').remove();
+                    });
+                });
+            });
+        });
+
+        //删除图片
+        $('.remove-photo-btn').on('click', function () {
+            $(this).parents('.photo-list').remove();
+        });
+
+        $('#upload-photo-btn').on('click', function () {
+            uploadImage = uploadEditor.getDialog("insertimage");
+            uploadImage.open();
+        });
+
+
+
         /* 监听提交 */
         form.on('submit(form-submit)', function(data){
             $.post("{:url('categoryForm')}", data.field, function (e) {
                 if(e.code==1){
                     layer.confirm('保存成功,关闭本页面吗?', {icon: 3, title:'提示'}, function(index){
-                        admin.closeThisTabs();
+                        // admin.closeThisTabs();
                         layer.close(index);
                     });
                 }else{

@@ -8,7 +8,7 @@
  * Time: 16:05
  * ----------------------------------------------------------------------
  */
-namespace app\admin\model;
+namespace app\common\model;
 
 use think\Model;
 
@@ -57,6 +57,28 @@ class ArticleCategory extends Model
             }
         });
     }
+
+    /**
+     * 序列化photo图集
+     * @param $value
+     * @return string
+     */
+    protected function setThumbAttr($value)
+    {
+        return serialize($value);
+    }
+
+    /**
+     * 反序列化photo图集
+     * @param $value
+     * @return mixed
+     */
+    protected function getThumbAttr($value)
+    {
+        return unserialize($value);
+    }
+
+
 
     /**
      * 反转义HTML实体标签

@@ -8,7 +8,7 @@
  * Time: 16:05
  * ----------------------------------------------------------------------
  */
-namespace app\admin\model;
+namespace app\common\model;
 
 use think\Model;
 use think\Session;
@@ -28,7 +28,7 @@ class Article extends Model
      */
     protected function setAuthorAttr($value)
     {
-        return $value ? $value : Session::get('admin_name');
+        return $value ? $value : session('admin_auth')['username'];
     }
 
     /**
@@ -61,14 +61,38 @@ class Article extends Model
         return unserialize($value);
     }
 
+
     /**
-     * 创建时间
+     * 序列化photo图集
+     * @param $value
+     * @return string
+     */
+    protected function setThumbAttr($value)
+    {
+        return serialize($value);
+    }
+
+    /**
+     * 反序列化photo图集
+     * @param $value
+     * @return mixed
+     */
+    protected function getThumbAttr($value)
+    {
+        return unserialize($value);
+    }
+
+    /**
+     * 发布时间
      * @return bool|string
      */
-    protected function setCreateTimeAttr()
+    protected function getPublishTimeAttr($value)
     {
-        return date('Y-m-d H:i:s');
+        return date('Y-m-d', $value);
     }
+
+
+
 
 
 }

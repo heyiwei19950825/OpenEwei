@@ -4,7 +4,8 @@ layui.define(function(exports){
         ,laydate = layui.laydate
         ,table = layui.table
         ,form = layui.form
-        ,admin = layui.admin
+        ,upload = layui.upload
+        ,admin = layui.admin;
 
     var active_url     = '';
     var active_title    = '';
@@ -19,11 +20,12 @@ layui.define(function(exports){
         ,range: true
     });
 
+
+
     //监听搜索
     form.on('submit(LAY-search)', function(data){
         var where = data.field;
         var item = $(this).attr('data-item');
-        console.log(item);return false;
         //执行重载
         table.reload('list', {
             where:where
@@ -68,7 +70,7 @@ layui.define(function(exports){
                 $.post(url, {id: [data.id]}, function (res) {
                     if (res.code === 1) {
                         obj.del();
-                        layer.close(user_list);
+                        layer.close(index);     //关闭弹层
                         layer.msg(res.msg);
                     } else {
                         layer.msg(res.msg);
@@ -179,6 +181,73 @@ layui.define(function(exports){
 
         active[type] ? active[type].call(this) : '';
     });
+
+    /**
+     * 多图上传
+     */
+    upload.render({
+        elem: '#thumb-upload-more'
+        ,url: "/api/upload/upload"
+        ,accept: 'image'
+        ,exts: 'jpg|png|gif|bmp'
+        ,multiple: true
+        ,before: function(obj){
+        }
+        ,done: function(res){
+            //上传完毕
+            if( res.error == 0 ){
+                var thumbContainer = '<div class="layui-col-md2 layui-col-sm4 photo-list">\n' +
+                    '        <div class="cmdlist-container">\n' +
+                    '            <a href="javascript:;">\n' +
+                    '              <img src="'+res.url+'">\n' +
+                    '            </a>\n' +
+                    '            <a href="javascript:;">\n' +
+                    '              <div class="cmdlist-text">\n' +
+                    '                <div class="price">\n' +
+                    '                   <input name="thumb[]" type="hidden" value="'+res.url+'">'+
+                '                   <button type="button" class="layui-btn layui-btn-danger remove-photo-btn">移除</button>'+
+                '                </div>\n' +
+                '              </div>\n' +
+                '            </a>\n' +
+                '        </div>\n' +
+                '    </div>\n';
+                $('#thumb-container').append(thumbContainer).on('click', '.remove-photo-btn', function () {
+                    $(this).parent('.photo-list').remove();
+                });
+            }
+        }
+    });
+    /**
+     * 单图上传
+     */
+    upload.render({
+        elem: '#thumb-upload'
+        ,url: '/api/upload/upload'
+        ,accept: 'image'
+        ,exts: 'jpg|png|gif|bmp'
+        ,before: function(obj){
+            //预读本地文件示例，不支持ie8
+            obj.preview(function(index, file, result){
+                $('#thumb-img').attr('src', result); //图片链接（base64）
+            });
+        }
+        ,done: function(res){
+            //如果上传失败
+            if(res.code > 0){
+                return layer.msg('上传失败');
+            }
+            //上传成功
+        }
+        ,error: function(){
+            //演示失败状态，并实现重传
+            var demoText = $('#demoText');
+            demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+            demoText.find('.demo-reload').on('click', function(){
+                uploadInst.upload();
+            });
+        }
+    });
+
 
     //对外暴露的接口
     exports('common', {});
