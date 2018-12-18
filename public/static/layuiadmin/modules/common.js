@@ -21,7 +21,6 @@ layui.define(function(exports){
     });
 
 
-
     //监听搜索
     form.on('submit(LAY-search)', function(data){
         var where = data.field;
@@ -62,6 +61,7 @@ layui.define(function(exports){
         var url =  $(this).attr('data-url');
         var width =  $(this).attr('data-width');
         var height =  $(this).attr('data-height');
+        var data_item =  $(this).attr('data-item');
 
         var data = obj.data;
         var layEvent = obj.event;
@@ -99,7 +99,7 @@ layui.define(function(exports){
                         //提交 Ajax 成功后，静态更新表格中的数据
                         $.post(url, field, function (res) {
                             if (res.code === 1) {
-                                table.reload('list');   //数据刷新
+                                table.reload(data_item);   //数据刷新
                                 layer.close(index);     //关闭弹层
                                 layer.msg(res.msg);
                             } else {
@@ -222,7 +222,7 @@ layui.define(function(exports){
      */
     upload.render({
         elem: '#thumb-upload'
-        ,url: '/api/upload/upload'
+        ,url: 'admin/adv/upload'
         ,accept: 'image'
         ,exts: 'jpg|png|gif|bmp'
         ,before: function(obj){

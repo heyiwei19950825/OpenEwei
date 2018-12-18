@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>文章管理列表</title>
+    <title>菜单管理列表</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -12,50 +12,23 @@
 </head>
 <body>
 <div class="layui-fluid">
-    <div class="layui-tab layui-tab-card">
+    <div class="layui-tab layui-tab-card" >
         <ul class="layui-tab-title">
-            <li class="layui-this">文章分类</li>
-            <li>文章管理</li>
+            <li class="layui-this" >菜单分类</li>
+            <li lay-id="list">菜单管理</li>
         </ul>
         <div class="layui-tab-content">
             <div class="layui-tab-item layui-show">
-                <div class="layui-form layui-card-header layuiadmin-card-header-auto">
-                    <div class="layui-form-item">
-                        <div class="layui-inline">
-                            <label class="layui-form-label">分类名称</label>
-                            <div class="layui-input-block">
-                                <input type="text" name="keyword" placeholder="请输入分类名称" class="layui-input">
-                            </div>
-                        </div>
-                        <div class="layui-inline">
-                            <label class="layui-form-label">状态</label>
-                            <div class="layui-input-block">
-                                <select name="status">
-                                    <option value="">选择状态</option>
-                                    <option value="1">未激活</option>
-                                    <option value="2">已激活</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="layui-inline">
-                            <button class="layui-btn layuiadmin-btn-useradmin" lay-submit lay-filter="LAY-search" data-item="category_list">
-                                <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
                 <div style="padding: 10px;">
                     <button class="layui-btn" lay-href="{:url('categoryForm')}">添加分类</button>
                     <button class="layui-btn layuiadmin-btn-admin layui-btn-danger" data-type="del" data-item="category_list" data-url="{:url('categoryDel')}">删除分类</button>
                 </div>
                 <table id="category_list" lay-filter="category_list"></table>
                 <script type="text/html" id="bar">
-                    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-href="{:url('categoryForm')}?pid={{ d.id }}">添加子类</a>
                     <a class="layui-btn layui-btn-xs" lay-href="{:url('categoryForm')}?id={{ d.id }}">编辑</a>
-                    <a class="layui-btn layui-btn-danger layui-btn-xs layui-tool-btn" lay-event="del"  data-url='{:url("categoryDel")}'>删除</a>
+                    <a class="layui-btn layui-btn-danger layui-btn-xs layui-tool-btn" lay-event="del"  data-item="category_list" data-url='{:url("categoryDel")}'>删除</a>
                 </script>
             </div>
-
 
             <div class="layui-tab-item">
                 <div class="layui-form layui-card-header layuiadmin-card-header-auto">
@@ -84,11 +57,12 @@
                     </div>
                 </div>
                 <div style="padding: 10px;">
-                    <button class="layui-btn" lay-href="{:url('form')}">添加文章</button>
+                    <button class="layui-btn" lay-href="{:url('form')}">添加菜单</button>
                     <button class="layui-btn layuiadmin-btn-admin layui-btn-danger" data-type="del" data-item="list"  data-url="{:url('del')}">删除</button>
                 </div>
                 <table id="list" lay-filter="list"></table>
                 <script type="text/html" id="data-bar">
+                    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-href="{:url('form')}?pid={{ d.id }}">添加子导航</a>
                     <a class="layui-btn layui-btn-xs" lay-href="{:url('form')}?id={{ d.id }}">编辑</a>
                     <a class="layui-btn layui-btn-danger layui-btn-xs layui-tool-btn" lay-event="del"  data-url='{:url("del")}'>删除</a>
                 </script>
@@ -108,33 +82,30 @@
             , form = layui.form
             , table = layui.table;
 
-        //文章位列表
+        //菜单分类列表
         table.render({
             elem: '#category_list',
-            url: "{:url('article/category')}", //数据接口
+            url: "{:url('nav/category')}", //数据接口
             defaultToolbar: ['filter', 'print', 'exports'],
-            page: true, //开启分页
+            page: false, //开启分页
             toolbar: true,
             limits: [10, 20, 50, 100],
             cols: [[ //表头
                 {type: 'checkbox', align:'center' , fixed: 'left'},
-                {field: 'id', title: 'ID', sort: true, align:'center' , fixed: 'left',width:60},
-                {field: 'name', title: '分类名称', sort: true, align:'center' , fixed: 'left',edit:true,width:400},
-                {field: 'alias', title: '别名', sort: true, align:'center' , fixed: 'left',edit:true},
-                {field: 'list_template', title: '分类列表模板', sort: true},
-                {field: 'detail_template', title: '分类详情模板', sort: true,edit:true},
-                {field: 'type', title: '类型', sort: true},
-                {field: 'sort', title: '排序', sort: true,edit:true},
-                {field: 'pid', title: '父级', sort: true},
-                {fixed: 'right', width: 175, align: 'center', toolbar: '#bar'}
+                {field: 'id', title: 'ID', align:'center' , fixed: 'left'},
+                {field: 'name', title: '导航位置名称', align:'center' , fixed: 'left',edit:true},
+                {field: 'is_main', title: '是否设为主导航', align:'center' , fixed: 'left'},
+                {field: 'remark', title: '备注', edit:true},
+                {fixed: 'right', title: '操作', width: 145, align: 'center', toolbar: '#bar'}
             ]]
         });
 
 
-        //文章列表
+
+        //菜单列表
         table.render({
             elem: '#list',
-            url: "{:url('article/index')}", //数据接口
+            url: "{:url('nav/index')}", //数据接口
             defaultToolbar: ['filter', 'print', 'exports'],
             page: true, //开启分页
             toolbar: true,
@@ -142,7 +113,7 @@
             cols: [[ //表头
                 {type: 'checkbox', align:'center' , fixed: 'left'},
                 {field: 'id', title: 'ID', sort: true, align:'center' , fixed: 'left'},
-                {field: 'title', title: '文章名称', sort: true, align:'center' , fixed: 'left'},
+                {field: 'title', title: '菜单名称', sort: true, align:'center' , fixed: 'left'},
                 {field: 'author', title: '作者', sort: true},
                 {field: 'status', title: '状态', sort: true},
                 {field: 'reading', title: '阅读量', sort: true,edit:true},
@@ -151,7 +122,7 @@
                 {field: 'sort', title: '排序', sort: true},
                 {field: 'create_time', title: '创建时间', sort: true},
                 {field: 'publish_time', title: '发布时间', sort: true},
-                {fixed: 'right', width: 165, align: 'center', toolbar: '#data-bar'}
+                {fixed: 'right', title: '操作', width: 205, align: 'center', toolbar: '#data-bar'}
             ]]
         });
 

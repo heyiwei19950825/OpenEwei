@@ -144,7 +144,10 @@ class Adv extends Controller
             $posId = $advInfo['pos_id'];
         }
         $advPos = $advPosModel::get($posId);
+
+
         if ($this->request->isAjax()) {
+
             $adv['id'] = input('post.id', 0, 'intval');
             $adv['title'] = input('post.title', '', 'text');
             $adv['pos_id'] = input('post.pos_id', 0, 'intval');
@@ -191,8 +194,10 @@ class Adv extends Controller
             }
 
         }
+
         $this->assign('pos', $advPos);
         $this->assign('adv', $advInfo);
+
         return $this->fetch();
     }
 

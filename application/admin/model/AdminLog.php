@@ -27,7 +27,7 @@ class AdminLog extends Model
 
     public static function setTitle($title)
     {
-        self::$title = $title;
+        self::$title = session('admin_auth')['username'].$title;
     }
 
     public static function setContent($content)

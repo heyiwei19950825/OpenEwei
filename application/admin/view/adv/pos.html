@@ -81,7 +81,7 @@
             var tr = obj.tr; //获得当前行 tr 的DOM对象
 
             if (layEvent === 'add') { //添加
-                $('[lay-event="add"]').attr('lay-href', "{:url('adv/appendAdv')}&pos_id=" + data.id);
+                $('[lay-event="add"]').attr('lay-href', "{:url('adv/appendAdv')}?pos_id=" + data.id);
             } else if (layEvent === 'del') { //删除
                 layer.confirm('确定删除吗？', function (index) {
                     obj.del(); //删除对应行（tr）的DOM结构，并更新缓存
@@ -96,7 +96,7 @@
                 layer.open({
                     type: 2
                     , title: '编辑广告'
-                    , content: "{:url('adv/editPos')}&id=" + data.id
+                    , content: "{:url('adv/editPos')}?id=" + data.id
                     , area: ['800px', '500px']
                     , btn: ['确定', '取消']
                     , yes: function (index, layero) {
@@ -226,7 +226,7 @@
                     })
                 });
             } else if (layEvent === 'edit') { //编辑
-                $('.edit').attr('lay-href', "{:url('adv/appendAdv')}&id=" + data.id);
+                $('.edit').attr('lay-href', "{:url('adv/appendAdv')}?id=" + data.id);
             }
         });
     });

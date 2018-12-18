@@ -13,7 +13,7 @@ namespace app\common\model;
 use think\Model;
 use think\Session;
 
-class Article extends Model
+class Nav extends Model
 {
 
     //自定义初始化

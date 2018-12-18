@@ -14,8 +14,6 @@ use think\Model;
 
 class Picture extends Model
 {
-    protected $table = COMMON . 'picture';
-
     protected $autoWriteTimestamp = true;
 
     /**

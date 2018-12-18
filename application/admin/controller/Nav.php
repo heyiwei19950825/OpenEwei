@@ -14,10 +14,10 @@ namespace app\admin\controller;
 use app\admin\model\AdminLog;
 use org\Helper;
 
-class Article extends Base
+class Nav extends Base
 {
-    protected $article;
-    protected $articleCategory;
+    protected $nav;
+    protected $navCategory;
 
     public function initialize()
     {
@@ -25,19 +25,16 @@ class Article extends Base
         $this->request->filter(['strip_tags']);
 
         //实例化model层
-        $this->article          = model('Article');
-        $this->articleCategory  = model('ArticleCategory');
-
-        $category_level_list = $this->articleCategory->getLevelList();
-        $this->assign('category_level_list', $category_level_list);
-
+        $this->nav          = model('Nav');
+        $this->navCategory  = model('NavCategory');
     }
 
     /**
-     * 文章管理
+     * 菜单管理
      * @return mixed
      */
     public function index(){
+
         if($this->request->isAjax()){
             //查询条件
             $page       = input('get.page/d', 1);
@@ -61,29 +58,28 @@ class Article extends Base
             }
 
             if ($cid > 0) {
-                $category_children_ids = $this->articleCategory->where(['path' => ['like', "%,{$cid},%"]])->column('id');
+                $category_children_ids = $this->navCategory->where(['path' => ['like', "%,{$cid},%"]])->column('id');
                 $category_children_ids = (!empty($category_children_ids) && is_array($category_children_ids)) ? implode(',', $category_children_ids) . ',' . $cid : $cid;
                 $map['cid']            = ['IN', $category_children_ids];
             }
 
             //查询字段
-            $field = 'id,title,cid,author,reading,status,publish_time,sort,reading,is_top,is_recommend,publish_time,create_time';
+            $field = 'id,nav_id,parent_id,status,sort,name,target,href,icon,path';
 
             //查询数据
-            $row  =  $this->article->select( $field,$map,$page,$limit );
+            $row  =  $this->nav->select( $field,$map,$page,$limit );
 
             //记录日志
-            AdminLog::setTitle( '获取文章列表' );
+            AdminLog::setTitle( '获取菜单列表' );
 
             //返回数据
             Helper::json_success( $row['data'],$row['count'] );
         }
-
         return $this->fetch();
     }
 
     /**
-     * 文章表单
+     * 菜单表单
      * @return mixed
      */
     public function form(){
@@ -93,7 +89,7 @@ class Article extends Base
             $map  = $this->request->post();
 
             //自动验证
-            $validate = validate('Article');
+            $validate = validate('Nav');
 
             if (!$validate->check($map)) {
                 $this->error($validate->getError());
@@ -111,13 +107,13 @@ class Article extends Base
 
             //数据库操作
             if( empty($map['id']) ){
-                $row = $this->article->allowField(true)->save( $map );
+                $row = $this->nav->allowField(true)->save( $map );
             }else{
-                $row =$this->article->allowField(true)->update( $map );
+                $row =$this->nav->allowField(true)->update( $map );
             }
 
             //记录日志
-            AdminLog::setTitle($map['id'] ? '编辑' : '新增'.'文章');
+            AdminLog::setTitle($map['id'] ? '编辑' : '新增'.'菜单');
 
             //查询结果判断
             if ($row) {
@@ -133,7 +129,7 @@ class Article extends Base
 
         //判断查询
         if( $id ){
-            $data = $this->article->find($id);
+            $data = $this->nav->find($id);
         }
 
         //返回数据
@@ -142,76 +138,41 @@ class Article extends Base
     }
 
     /**
-     * 文章删除
+     * 菜单删除
      * @return mixed
      */
     public function del()
     {
         //软删除
         $aId = input('post.id', '', 'strval');
-        $this->article->where('id', 'in', $aId)->update(['status' => -1]);
-        $pos = $this->article->where('id', 'in', $aId)->select();
+        $this->nav->where('id', 'in', $aId)->update(['status' => -1]);
+        $pos = $this->nav->where('id', 'in', $aId)->select();
 
         foreach ($pos as $val) {
-            cache('article_pos_by_pos_' . $val['path'] . $val['name'], null);
+            cache('nav_pos_by_pos_' . $val['path'] . $val['name'], null);
         }
 
-        AdminLog::setTitle('删除文章');
+        AdminLog::setTitle('删除菜单');
     }
 
     /**
-     * 分类
+     * 菜单分类
      * @return mixed|\think\response\Json
      */
     public function category(){
 
         if($this->request->isAjax()){
-            $map = [];
-            $page       = input('get.page/d', 1);
-            $limit      = input('get.limit/d', 20);
-            $keyword    = input('get.keyword', '');
-            $status     = input('get.status', '');
+            $category_list  =  $this->navCategory->select();
 
-            if(!empty($keyword)){
-                $map[] = ['name','like','%'.$keyword.'%'];
-            }
+            AdminLog::setTitle('获取菜单列表');
 
-            if(!empty($status)){
-                $map[] = ['status','=',$status];
-            }
-
-            $category_list  =  $this->articleCategory
-                ->where($map)
-                ->page($page, $limit)
-                ->order(['sort' => 'DESC'])
-                ->select();
-
-            $count = $this->articleCategory->where($map)->count();
-            if(!empty($keyword)){
-                $category_level_list = $category_list;
-            }else{
-                $category_list = array2level($category_list);
-                $category_level_list = [];
-                foreach ($category_list as $k=>$v){
-                    if( $v['level'] != 1 ){
-                        for($i=1;$i<$v['level'];$i++){
-                            $v['name'] = '|____'.$v['name'];
-                        }
-                    }
-
-                    $category_level_list[] = $v;
-                }
-            }
-
-
-            AdminLog::setTitle('获取文章列表');
-
-            Helper::json_success( $category_level_list, $count );
+            //返回数据
+            Helper::json_success( $category_list );
         }
     }
 
     /**
-     * 分类表单
+     * 菜单分类表单
      * @return mixed
      */
     public function categoryForm(){
@@ -219,38 +180,28 @@ class Article extends Base
         if($this->request->isAjax()){
             $data = input('');
 
-            //自动验证
-            $validate = validate('ArticleCategory');
-            if (!$validate->check($data)) {
-                $this->error($validate->getError());
-            }
-
-            if(!isset($map['thumb'])){
-                $map['thumb'] = '';
-            }
 
             if ( isset( $data['id'] )&&!empty( $data['id'] ) ) {
-                $rs = $this->articleCategory->update($data);
+                $rs = $this->navCategory->update($data);
             } else {
-                $rs = $this->articleCategory->save($data);
+                $rs = $this->navCategory->save($data);
             }
 
             if ( $rs ) {
                 $this->success(isset($data['id']) ? '编辑成功' : '新增成功');
             } else {
 
-                AdminLog::setTitle('编辑分类');
+                AdminLog::setTitle('编辑菜单分类');
 
                 $this->error(isset($data['id']) ? '编辑失败' : '新增失败');
             }
-
         }
 
         $id     = input('get.id', 0, 'intval');
         $data = NULL;
 
         if( $id ){
-            $data = $this->articleCategory->find($id);
+            $data = $this->navCategory->find($id);
         }
 
         $this->assign('data', $data);
@@ -259,22 +210,22 @@ class Article extends Base
     }
 
     /**
-     * 分类删除
+     * 菜单分类删除
      */
     public function categoryDel(){
         $ids       = $this->request->post('id');
 
-        $category = $this->articleCategory->where('pid' ,'in',$ids)->find();
-        $article  = $this->article->where('cid' ,'in',$ids)->find();
+        $category = $this->navCategory->where('pid' ,'in',$ids)->find();
+        $nav  = $this->nav->where('cid' ,'in',$ids)->find();
 
         if (!empty($category)) {
-            $this->error('此分类下存在子分类，不可删除');
+            $this->error('此菜单分类下存在子菜单分类，不可删除');
         }
-        if (!empty($article)) {
-            $this->error('此分类下存在文章，不可删除');
+        if (!empty($nav)) {
+            $this->error('此菜单分类下存在菜单，不可删除');
         }
-        if ($this->articleCategory->destroy($ids)) {
-            AdminLog::setTitle('删除文章分类');
+        if ($this->navCategory->destroy($ids)) {
+            AdminLog::setTitle('删除菜单菜单分类');
 
             $this->success('删除成功');
         } else {
