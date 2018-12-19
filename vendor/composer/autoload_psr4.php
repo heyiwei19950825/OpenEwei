@@ -12,5 +12,6 @@ return array(
     'think\\' => array($vendorDir . '/topthink/think-queue/src'),
     'Twig\\' => array($vendorDir . '/twig/twig/src'),
     'Symfony\\Polyfill\\Ctype\\' => array($vendorDir . '/symfony/polyfill-ctype'),
+    'QL\\' => array($vendorDir . '/jaeger/querylist'),
     'PHPMailer\\PHPMailer\\' => array($vendorDir . '/phpmailer/phpmailer/src'),
 );
