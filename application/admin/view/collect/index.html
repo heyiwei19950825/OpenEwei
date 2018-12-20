@@ -12,15 +12,13 @@
     <div class="layui-tab layui-tab-card">
         <ul class="layui-tab-title">
             <li class="layui-this">内容采集</li>
+            <li>内容采集</li>
+            <li>内容采集</li>
+            <li>内容采集</li>
+            <li>内容采集</li>
         </ul>
         <div class="layui-tab-content">
             <form class="layui-form layui-card-header layuiadmin-card-header-auto">
-                <div class="layui-form-item  layui-col-md8">
-                    <label class="layui-form-label"> * 导入采集规则</label>
-                    <div class="layui-input-block">
-
-                    </div>
-                </div>
                 <div class="layui-form-item  layui-col-md8">
                     <label class="layui-form-label"> * URL地址</label>
                     <div class="layui-input-block">
@@ -32,55 +30,7 @@
                 <div class="layui-form-item  layui-col-md8">
                     <label class="layui-form-label"> * 采集规则</label>
                     <div class="layui-input-block">
-                        <textarea placeholder='{
-    "title": [
-        ".shop-item>a:eq(0)",
-        "title",
-        "标题"
-    ],
-    "desc": [
-        ".shop-item>p",
-        "text",
-        "描述"
-    ],
-    "thumb": [
-        "img",
-        "src",
-        "缩略图"
-    ],
-    "category": [
-        ".metacat>a:eq(1)",
-        "text",
-        "分类"
-    ],
-    "link": [
-        ".shop-item>a:eq(0)",
-        "href",
-        "详情地址",
-        "gain": [
-            "content": [
-              ".article-content",
-              "html",
-              "内容"
-            ],
-            "reading": [
-              ".article-header>.muted:eq(4)",
-              "text",
-              "阅读量"
-            ],
-            "comming": [
-              ".article-header>.muted:eq(5)",
-              "text",
-              "评论量"
-            ],
-        ]
-    ],
-    "time": [
-        ".pricebtn",
-        "text",
-        "原文时间"
-    ]
-}' lay-verify="required" class="layui-textarea" name="rule">{"title":[".shop-item>a:eq(0)","title","标题"],"desc":[".shop-item>p","text","描述"],"thumb":["img","src","缩略图"],"category":[".metacat>a:eq(1)","text","分类"],"link":[".shop-item>a:eq(0)","href","图片地址"],"time":[".pricebtn","text","原文时间"]}</textarea>
+                        <textarea placeholder='{"title":[".transition","text","标题"],"desc":[".mob-sub","text","描述"],"thumb":["img:eq(0)","data-original","缩略图"],"category":[".column-link-box","text","分类"],"link":["h2>a:eq(0)","href","详情地址",{"content":[".article-content-wrap","html","内容"],"comming":[".article-pl","text","评论数"]}],"time":[".time","text","原文时间"]}' lay-verify="required" class="layui-textarea" name="rule">{"title":[".shop-item>a:eq(0)","title","标题"],"desc":[".shop-item>p","text","描述"],"thumb":["img","src","缩略图"],"category":[".metacat>a:eq(1)","text","分类"],"link":[".shop-item>a:eq(0)","href","详情地址",{"content":[".article-content","html","内容"],"reading":[".article-header>.muted:eq(4)","text","阅读量"],"comming":[".article-header>.muted:eq(5)","text","评论量"]}],"time":[".pricebtn","text","原文时间"]}</textarea>
                         <div class="layui-form-mid layui-word-aux">（页面元素抓取规则）</div>
                     </div>
                 </div>
@@ -105,8 +55,8 @@
                 </div>
                 <table id="list" lay-filter="list"></table>
                 <script type="text/html" id="barDemo">
-                    <a class="layui-btn layui-btn-xs">采集</a>
-                    <a class="layui-btn layui-btn-danger layui-btn-xs">删除</a>
+                    <a class="layui-btn layui-btn-xs" lay-event="import">采集</a>
+                    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
                 </script>
             </div>
             <div class="layui-tab-item">
@@ -132,8 +82,11 @@
 
         /* 监听提交 */
         form.on('submit(component-form-demo)', function(data){
-            console.log();
+            // var index = layer.load(1, {
+            //     shade: [0.1,'#fff'] //0.1透明度的白色背景
+            // });
             $.post("{:url('admin/collect/rule')}", data.field, function (res) {
+                // layer.close(index);
                 layer.msg(res.msg);
                 if( res.code == 1 ){
                     renderTable(res.data.key,res.data.data);
@@ -157,8 +110,23 @@
                 cols: [cols],
                 data:data
             });
-        }
 
+            //工具箱
+            table.on('tool(list)',function(obj){
+                var layEvent = obj.event;
+                if ( layEvent === 'del' ) {
+                    layer.confirm('真的删除行么', function (index) {
+                        obj.del();
+                        layer.close(index);     //关闭弹层
+                        layer.msg('已删除');
+                    });
+                }else if( layEvent === 'import' ){
+                    var data = obj.data;
+
+                    $.post()
+                }
+            })
+        }
     });
 </script>
 </body>

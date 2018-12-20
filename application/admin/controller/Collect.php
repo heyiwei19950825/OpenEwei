@@ -4,6 +4,7 @@ namespace app\admin\controller;
 
 use QL\QueryList;
 use think\Controller;
+use think\Exception;
 use think\Request;
 
 class Collect extends Base
@@ -23,8 +24,6 @@ class Collect extends Base
      */
     public function index()
     {
-        //
-
         return $this->fetch();
     }
 
@@ -34,16 +33,25 @@ class Collect extends Base
     public function rule(){
 
         if($this->request->isPost()){
+            //初始化数据
             $params = $this->request->param();
-            $rule = json_decode($params['rule'],true);
-            $key[] =
-                [
-                'type'  => 'checkbox',
-                'fixed' => 'left',
-                ];
+            $domain = 'http://'.explode('/',$params['url'])[2];//获取域名
+            $key[]  = ['type'  => 'checkbox','fixed' => 'left',];
+            $second = $row = [];
+            $i      = 0;//默认页面数
 
 
+            //数据验证
+            try{
+                $rule = json_decode($params['rule'],true);
+            }catch (Exception $e){
+                $this->error('规则格式错误');
+            }
+
+            if(empty($rule)) $this->error('规则格式错误');
+            //初始化话规则
             foreach ($rule as $k => &$v){
+                //验证规则格式
                 if( count($v) < 3 ){
                     return $this->error('规则格式错误');
                 }
@@ -52,29 +60,47 @@ class Collect extends Base
                     'title' => $v[2]
                 ];
                 unset($v[2]);
+
+                //分解二级采集规则
+                if( isset($v[3]) ){
+                    $second[$k] = $v[3];
+                    foreach ($v[3] as $vk => $vv){
+                        $key[] = [
+                            'field'  => $vk,
+                            'title'  => $vv[2]
+                        ];
+                    }
+                    unset($v[3]);
+                }
             }
 
-            $key[] =[
-                "fixed"     => 'right',
-                "width"     => 165,
-                "align"     => 'center',
-                "toolbar"   => '#barDemo',
-            ];
-
-            $i = 0;
-            $row = [];
+            $key[] =["fixed"=> 'right', "width"=> 165, "align"=> 'center', "toolbar"=> '#barDemo'];
+            //查询1级
             while ( $i <= $params['page']){
                 // 待采集的页面地址
                 $url = $i == 0 ? $params['url']:$params['url'].$i.'/';
                 // 切片选择器
-                $range = '#cardslist>.card';
+                $range = '.mod-info-flow>.mod-art';
 
                 $data = QueryList::Query($url,$rule,$range)->data;
                 $row = array_merge($row,$data);
                 $i++;
             }
-
-
+            //查询2级
+            if( !empty($second) ){
+                //分解1级查询数据
+                foreach ( $row as $rowKey => &$val) {
+                        //分解条数据查询规则
+                        foreach ( $second as $secondKey => $secondVal){
+                            $secondUrl = $val[$secondKey];
+                            $secondUrl = filter_var($secondUrl,FILTER_VALIDATE_URL)?$secondUrl:$domain.$secondUrl;
+                            if(filter_var($secondUrl,FILTER_VALIDATE_URL)){
+                                $secondData = QueryList::Query($secondUrl,$secondVal)->data;
+                                $val = array_merge($val,$secondData[0]);
+                            }
+                        }
+                }
+            }
             return $this->success('查询成功','', ['key'=>$key,'data'=>$row]);
         }
 

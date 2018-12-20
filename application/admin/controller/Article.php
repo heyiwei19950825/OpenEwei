@@ -89,9 +89,9 @@ class Article extends Base
     public function form(){
 
         if ($this->request->isPost()) {
+
             //查询条件
             $map  = $this->request->post();
-
             //自动验证
             $validate = validate('Article');
 

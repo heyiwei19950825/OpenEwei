@@ -246,6 +246,7 @@
         form.on('submit(form-submit)', function(data){
             //获取富文本中内容 拼接到表单数据中
             var content = ue.getContent();
+            console.log(content);
             data.field.content = content;
             $.post("{:url('form')}", data.field, function (e) {
                 if(e.code==1){
