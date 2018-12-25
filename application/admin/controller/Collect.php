@@ -40,7 +40,6 @@ class Collect extends Base
             $second = $row = [];
             $i      = 0;//默认页面数
 
-
             //数据验证
             try{
                 $rule = json_decode($params['rule'],true);
@@ -80,12 +79,13 @@ class Collect extends Base
                 // 待采集的页面地址
                 $url = $i == 0 ? $params['url']:$params['url'].$i.'/';
                 // 切片选择器
-                $range = '.mod-info-flow>.mod-art';
+                $range = $params['range'];
 
                 $data = QueryList::Query($url,$rule,$range)->data;
                 $row = array_merge($row,$data);
                 $i++;
             }
+
             //查询2级
             if( !empty($second) ){
                 //分解1级查询数据
@@ -96,15 +96,25 @@ class Collect extends Base
                             $secondUrl = filter_var($secondUrl,FILTER_VALIDATE_URL)?$secondUrl:$domain.$secondUrl;
                             if(filter_var($secondUrl,FILTER_VALIDATE_URL)){
                                 $secondData = QueryList::Query($secondUrl,$secondVal)->data;
-                                $val = array_merge($val,$secondData[0]);
+                                if( $secondData ){
+                                    $val = array_merge($val,$secondData[0]);
+                                }
                             }
                         }
                 }
             }
+
             return $this->success('查询成功','', ['key'=>$key,'data'=>$row]);
         }
 
         return $this->fetch();
+    }
+
+    /**
+     * 保存抓取规则
+     */
+    public function saveRule(){
+
     }
 
 }

@@ -12,29 +12,36 @@
     <div class="layui-tab layui-tab-card">
         <ul class="layui-tab-title">
             <li class="layui-this">内容采集</li>
-            <li>内容采集</li>
-            <li>内容采集</li>
-            <li>内容采集</li>
-            <li>内容采集</li>
+            <li>文章采集</li>
+            <li>图片采集</li>
+            <li>视频采集</li>
+            <li>音乐采集</li>
+            <li>小说采集</li>
         </ul>
         <div class="layui-tab-content">
             <form class="layui-form layui-card-header layuiadmin-card-header-auto">
                 <div class="layui-form-item  layui-col-md8">
-                    <label class="layui-form-label"> * URL地址</label>
+                    <label class="layui-form-label"> * URL页面地址</label>
                     <div class="layui-input-block">
                         <input type="text" name="url" lay-verify="url|required"  placeholder="输入抓取地址的url" class="layui-input" value="http://www.phphz.com/code/">
                         <div class="layui-form-mid layui-word-aux">（以http:// 或 https://开头）</div>
                     </div>
                 </div>
-
                 <div class="layui-form-item  layui-col-md8">
                     <label class="layui-form-label"> * 采集规则</label>
                     <div class="layui-input-block">
-                        <textarea placeholder='{"title":[".transition","text","标题"],"desc":[".mob-sub","text","描述"],"thumb":["img:eq(0)","data-original","缩略图"],"category":[".column-link-box","text","分类"],"link":["h2>a:eq(0)","href","详情地址",{"content":[".article-content-wrap","html","内容"],"comming":[".article-pl","text","评论数"]}],"time":[".time","text","原文时间"]}' lay-verify="required" class="layui-textarea" name="rule">{"title":[".shop-item>a:eq(0)","title","标题"],"desc":[".shop-item>p","text","描述"],"thumb":["img","src","缩略图"],"category":[".metacat>a:eq(1)","text","分类"],"link":[".shop-item>a:eq(0)","href","详情地址",{"content":[".article-content","html","内容"],"reading":[".article-header>.muted:eq(4)","text","阅读量"],"comming":[".article-header>.muted:eq(5)","text","评论量"]}],"time":[".pricebtn","text","原文时间"]}</textarea>
+                        <textarea placeholder='{"title":[".shop-item>a:eq(0)","title","标题"],"desc":[".shop-item>p","text","描述"],"thumb":["img","src","缩略图"],"category":[".metacat>a:eq(1)","text","分类"],"link":[".shop-item>a:eq(0)","href","详情地址",{"content":[".article-content","html","内容"],"reading":[".article-header>.muted:eq(4)","text","阅读量"],"comming":[".article-header>.muted:eq(5)","text","评论量"]}],"time":[".pricebtn","text","原文时间"]}' lay-verify="required" class="layui-textarea" name="rule"> {"title":[".transition","text","标题"],"desc":[".mob-sub","text","描述"],"thumb":["img:eq(0)","data-original","缩略图"],"category":[".column-link-box","text","分类"],"link":["h2>a:eq(0)","href","详情地址",{"content":[".article-content-wrap","html","内容"],"comming":[".article-pl","text","评论数"]}],"time":[".time","text","原文时间"]}</textarea>
                         <div class="layui-form-mid layui-word-aux">（页面元素抓取规则）</div>
                     </div>
                 </div>
-                    <div class="layui-form-item  layui-col-md8">
+                <div class="layui-form-item  layui-col-md8">
+                    <label class="layui-form-label"> * 切片规则</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="range" lay-verify="required"  placeholder="输入抓取地址的切片规则" class="layui-input" value="#cardslist>.card">
+                        <div class="layui-form-mid layui-word-aux"> 抓取数据页面的唯一节点 </div>
+                    </div>
+                </div>
+                <div class="layui-form-item  layui-col-md8">
                         <label class="layui-form-label"> * 抓取页数</label>
                         <div class="layui-input-inline">
                             <input type="number" name="page" lay-verify="number|required"  value="1" class="layui-input">
