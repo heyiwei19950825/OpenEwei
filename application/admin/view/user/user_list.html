@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>用户管理</title>
-    <link rel="stylesheet" href="__LAYUI__/layui/css/layui.css" media="all">
-    <link rel="stylesheet" href="__LAYUI__/style/admin.css" media="all">
-    <link rel="stylesheet" href="__LAYUI__/style/oc.css" media="all">
-</head>
-<body>
+{extend name="base" /}
+{block name="content"}
 <div class="layui-fluid">
     <div class="layui-tab layui-tab-card">
         <ul class="layui-tab-title">
@@ -30,8 +22,8 @@
         </div>
     </div>
 </div>
-
-<script src="__LAYUI__/layui/layui.js"></script>
+{/block}
+{block name="script"}
 <script>
     layui.use(['table', 'jquery'], function () {
         var table = layui.table,
@@ -148,5 +140,4 @@
         });
     });
 </script>
-</body>
-</html>
+{/block}

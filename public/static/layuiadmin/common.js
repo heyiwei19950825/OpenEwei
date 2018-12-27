@@ -69,7 +69,7 @@ layui.define(function(exports){
                     $.post(url, {id: [data.id]}, function (res) {
                         if (res.code === 1) {
                             obj.del();
-                            layer.close(user_list);
+                            layer.close(index);
                             layer.msg(res.msg);
                         } else {
                             layer.msg(res.msg);
@@ -177,8 +177,6 @@ layui.define(function(exports){
             active_width = $(this).attr('data-width');
             active_height = $(this).attr('data-height');
             active_item = $(this).attr('data-item');
-            layer.msg(11111);
-
             active[type] ? active[type].call(this) : '';
         });
 
@@ -222,6 +220,7 @@ layui.define(function(exports){
                 //上传完毕
             }
         });
+
         /**
          * 单图上传
          */
@@ -252,8 +251,6 @@ layui.define(function(exports){
                 });
             }
         });
-
-
 
         //对外暴露的接口
         exports('common', {});

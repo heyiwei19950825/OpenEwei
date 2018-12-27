@@ -1,17 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>模板管理</title>
-    <meta name="renderer" content="webkit">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <link rel="stylesheet" href="__LAYUI__/layui/css/layui.css" media="all">
-    <link rel="stylesheet" href="__LAYUI__/style/admin.css" media="all">
-    <link rel="stylesheet" href="__LAYUI__/style/template.css" media="all">
-</head>
-<body>
-
+{extend name="base" /}
+{block name="content"}
 <div class="layui-fluid">
     <div class="layui-tab layui-tab-card layui-card">
         <ul class="layui-tab-title">
@@ -214,9 +202,8 @@
         </div>
     </div>
 </div>
-
-
-<script src="__LAYUI__/layui/layui.js"></script>
+{/block}
+{block name="script"}
 <script>
     layui.config({
         base: '__LAYUI__/' //静态资源所在路径
@@ -231,5 +218,4 @@
 
     });
 </script>
-</body>
-</html>
+{/block}

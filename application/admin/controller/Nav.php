@@ -12,6 +12,7 @@
 namespace app\admin\controller;
 
 use app\admin\model\AdminLog;
+use app\common\layout\Iframe;
 use org\Helper;
 
 class Nav extends Base
@@ -34,48 +35,13 @@ class Nav extends Base
      * @return mixed
      */
     public function index(){
-
-        if($this->request->isAjax()){
-            //查询条件
-            $page       = input('get.page/d', 1);
-            $limit      = input('get.limit/d', 20);
-            $cid        = input('get.cid/d', 0);
-            $keyword    = input('get.keyword', '');
-            $status     = input('get.status', '');
-            $map        = [];
-
-            //条件判断
-            if(!empty($keyword)){
-                $map[] = ['title|author','like','%'.$keyword.'%'];
-            }
-
-            if(!empty($status)){
-                $map[] = ['status','=',$status];
-            }
-
-            if(!empty($cid)){
-                $map[] = ['cid','=',$cid];
-            }
-
-            if ($cid > 0) {
-                $category_children_ids = $this->navCategory->where(['path' => ['like', "%,{$cid},%"]])->column('id');
-                $category_children_ids = (!empty($category_children_ids) && is_array($category_children_ids)) ? implode(',', $category_children_ids) . ',' . $cid : $cid;
-                $map['cid']            = ['IN', $category_children_ids];
-            }
-
-            //查询字段
-            $field = 'id,nav_id,parent_id,status,sort,name,target,href,icon,path';
-
-            //查询数据
-            $row  =  $this->nav->select( $field,$map,$page,$limit );
-
-            //记录日志
-            AdminLog::setTitle( '获取菜单列表' );
-
-            //返回数据
-            Helper::json_success( $row['data'],$row['count'] );
-        }
-        return $this->fetch();
+        $row = [];
+        return  (new Iframe())->setMetaTitle('菜单栏管理')->search([
+            ['name'=>'status','type'=>'select','title'=>'状态','options'=>[1=>'正常',2=>'待审核']],
+            ['name'=>'sex','type'=>'select','title'=>'性别','options'=>[0=>'未知',1=>'男',2=>'女']],
+            ['name'=>'create_time_range','type'=>'daterange','extra_attr'=>'placeholder="注册时间"'],
+            ['name'=>'keyword','type'=>'text','extra_attr'=>'placeholder="请输入查询关键字"'],
+        ])->content($row);
     }
 
     /**
@@ -84,57 +50,7 @@ class Nav extends Base
      */
     public function form(){
 
-        if ($this->request->isPost()) {
-            //查询条件
-            $map  = $this->request->post();
 
-            //自动验证
-            $validate = validate('Nav');
-
-            if (!$validate->check($map)) {
-                $this->error($validate->getError());
-            }
-
-            //优化参数
-            if(!isset($map['thumb'])){
-                $map['thumb'] = '';
-            }
-            if(!isset($map['photo'])){
-                $map['photo'] = '';
-            }
-            $map['publish_time'] = strtotime($map['publish_time']);
-            unset($map['file']);
-
-            //数据库操作
-            if( empty($map['id']) ){
-                $row = $this->nav->allowField(true)->save( $map );
-            }else{
-                $row =$this->nav->allowField(true)->update( $map );
-            }
-
-            //记录日志
-            AdminLog::setTitle($map['id'] ? '编辑' : '新增'.'菜单');
-
-            //查询结果判断
-            if ($row) {
-                $this->success($map['id'] ? '编辑成功' : '新增成功');
-            } else {
-                $this->error($map['id'] ? '编辑失败' : '新增失败');
-            }
-        }
-
-        //获取查询条件
-        $id     = input('get.id', 0, 'intval');
-        $data = NULL;
-
-        //判断查询
-        if( $id ){
-            $data = $this->nav->find($id);
-        }
-
-        //返回数据
-        $this->assign('data', $data);
-        return $this->fetch();
     }
 
     /**
@@ -143,93 +59,7 @@ class Nav extends Base
      */
     public function del()
     {
-        //软删除
-        $aId = input('post.id', '', 'strval');
-        $this->nav->where('id', 'in', $aId)->update(['status' => -1]);
-        $pos = $this->nav->where('id', 'in', $aId)->select();
 
-        foreach ($pos as $val) {
-            cache('nav_pos_by_pos_' . $val['path'] . $val['name'], null);
-        }
-
-        AdminLog::setTitle('删除菜单');
     }
 
-    /**
-     * 菜单分类
-     * @return mixed|\think\response\Json
-     */
-    public function category(){
-
-        if($this->request->isAjax()){
-            $category_list  =  $this->navCategory->select();
-
-            AdminLog::setTitle('获取菜单列表');
-
-            //返回数据
-            Helper::json_success( $category_list );
-        }
-    }
-
-    /**
-     * 菜单分类表单
-     * @return mixed
-     */
-    public function categoryForm(){
-
-        if($this->request->isAjax()){
-            $data = input('');
-
-
-            if ( isset( $data['id'] )&&!empty( $data['id'] ) ) {
-                $rs = $this->navCategory->update($data);
-            } else {
-                $rs = $this->navCategory->save($data);
-            }
-
-            if ( $rs ) {
-                $this->success(isset($data['id']) ? '编辑成功' : '新增成功');
-            } else {
-
-                AdminLog::setTitle('编辑菜单分类');
-
-                $this->error(isset($data['id']) ? '编辑失败' : '新增失败');
-            }
-        }
-
-        $id     = input('get.id', 0, 'intval');
-        $data = NULL;
-
-        if( $id ){
-            $data = $this->navCategory->find($id);
-        }
-
-        $this->assign('data', $data);
-
-        return $this->fetch();
-    }
-
-    /**
-     * 菜单分类删除
-     */
-    public function categoryDel(){
-        $ids       = $this->request->post('id');
-
-        $category = $this->navCategory->where('pid' ,'in',$ids)->find();
-        $nav  = $this->nav->where('cid' ,'in',$ids)->find();
-
-        if (!empty($category)) {
-            $this->error('此菜单分类下存在子菜单分类，不可删除');
-        }
-        if (!empty($nav)) {
-            $this->error('此菜单分类下存在菜单，不可删除');
-        }
-        if ($this->navCategory->destroy($ids)) {
-            AdminLog::setTitle('删除菜单菜单分类');
-
-            $this->success('删除成功');
-        } else {
-            $this->error('删除失败');
-        }
-    }
 }

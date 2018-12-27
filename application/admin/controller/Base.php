@@ -22,11 +22,11 @@ class Base extends Controller
     protected $aid;
     protected $isLogin = false;     //登录状态
     protected $adminAuthRule;
-    protected $module;
-    protected $controller;
-    protected $action;
     protected $roleId;
     protected $adminName;
+    protected $urlRule;
+    protected $ip;
+    protected $url;
 
     public function initialize()
     {
@@ -41,20 +41,24 @@ class Base extends Controller
         }
 
         //数据初始化
-        $this->aid = get_aid();
-        $this->module = $this->request->module();
-        $this->controller = $this->request->controller();
-        $this->action = $this->request->action();
-        $admin = session('admin_auth');
-        $this->adminName = $admin['username'];
-        $group = model('admin/AdminAuthGroup')->where('status', 1)->column('title', 'id');
-        $adminRole = explode(',', $admin['role_id']);
-        $currentRoleId = $admin['current_role'];
-        $this->roleId = $currentRoleId;
-        $currentRoleRules = model('admin/AdminAuthGroup')->where('id', $currentRoleId)->value('rules');
+        $admin              = session('admin_auth');
+        $group              = model('admin/AdminAuthGroup')->where('status', 1)->column('title', 'id');
+        $adminRole          = explode(',', $admin['role_id']);
+        $currentRoleId      = $admin['current_role'];
+        $currentRoleRules   = model('admin/AdminAuthGroup')->where('id', $currentRoleId)->value('rules');
+
         if ($currentRoleRules !== '*') {
             $currentRoleRules = explode(',', $currentRoleRules);
         }
+
+        $this->roleId       = $currentRoleId;
+        $this->adminName    = $admin['username'];
+        $this->urlRule      = strtolower($this->request->module() . '/' . $this->request->controller() . '/' . $this->request->action());
+        $this->ip           = $this->request->ip();
+        $this->url          = $this->request->url(true);//完整url;
+        $this->aid          = get_aid();
+
+
         //菜单机制
         $menuList = cache('menu');
         if (!$menuList) {
@@ -128,11 +132,7 @@ class Base extends Controller
      */
     protected function checkAuth()
     {
-        $model      = strtolower($this->request->module());
-        $action     = strtolower($this->request->action());
-        $controller = strtolower($this->request->controller());
-
-        $rule = $this->adminAuthRule->where('name', $model . '/' . $controller . '/' . $action)->where('status', 1)->find();
+        $rule = $this->adminAuthRule->where('name', $this->urlRule)->where('status', 1)->find();
         if ($rule) {
             $admin = session('admin_auth');
             if ($admin['uid'] === 1) {

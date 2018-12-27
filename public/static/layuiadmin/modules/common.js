@@ -61,7 +61,6 @@ layui.define(function(exports){
         var url =  $(this).attr('data-url');
         var width =  $(this).attr('data-width');
         var height =  $(this).attr('data-height');
-        var data_item =  $(this).attr('data-item');
 
         var data = obj.data;
         var layEvent = obj.event;
@@ -70,7 +69,7 @@ layui.define(function(exports){
                 $.post(url, {id: [data.id]}, function (res) {
                     if (res.code === 1) {
                         obj.del();
-                        layer.close(index);     //关闭弹层
+                        layer.close(index);
                         layer.msg(res.msg);
                     } else {
                         layer.msg(res.msg);
@@ -99,7 +98,7 @@ layui.define(function(exports){
                         //提交 Ajax 成功后，静态更新表格中的数据
                         $.post(url, field, function (res) {
                             if (res.code === 1) {
-                                table.reload(data_item);   //数据刷新
+                                table.reload('list');   //数据刷新
                                 layer.close(index);     //关闭弹层
                                 layer.msg(res.msg);
                             } else {
@@ -129,7 +128,7 @@ layui.define(function(exports){
                 $.post(active_url, {id: ids}, function (res) {
                     if (res.code === 1) {
                         layer.close(index);
-                        table.reload(active_item);
+                        table.reload('list');
                         layer.msg(res.msg);
                     } else {
                         layer.msg(res.msg);
@@ -156,7 +155,7 @@ layui.define(function(exports){
                         $.post(active_url,field, function (res) {
                             if (res.code === 1) {
                                 layer.close(index);
-                                table.reload(active_item);
+                                table.reload('list');
                                 layer.msg(res.msg);
                             } else {
                                 layer.msg(res.msg);
@@ -178,9 +177,10 @@ layui.define(function(exports){
         active_width = $(this).attr('data-width');
         active_height = $(this).attr('data-height');
         active_item = $(this).attr('data-item');
-
         active[type] ? active[type].call(this) : '';
     });
+
+
 
     /**
      * 多图上传
@@ -192,19 +192,17 @@ layui.define(function(exports){
         ,exts: 'jpg|png|gif|bmp'
         ,multiple: true
         ,before: function(obj){
-        }
-        ,done: function(res){
-            //上传完毕
-            if( res.error == 0 ){
+            //预读本地文件示例，不支持ie8
+            obj.preview(function(index, file, result){
                 var thumbContainer = '<div class="layui-col-md2 layui-col-sm4 photo-list">\n' +
                     '        <div class="cmdlist-container">\n' +
                     '            <a href="javascript:;">\n' +
-                    '              <img src="'+res.url+'">\n' +
+                    '              <img src="'+result+'">\n' +
                     '            </a>\n' +
                     '            <a href="javascript:;">\n' +
                     '              <div class="cmdlist-text">\n' +
                     '                <div class="price">\n' +
-                    '                   <input name="thumb[]" type="hidden" value="'+res.url+'">'+
+                    '                   <input name="thumb[]" type="hidden" value="'+result+'">'
                 '                   <button type="button" class="layui-btn layui-btn-danger remove-photo-btn">移除</button>'+
                 '                </div>\n' +
                 '              </div>\n' +
@@ -214,7 +212,12 @@ layui.define(function(exports){
                 $('#thumb-container').append(thumbContainer).on('click', '.remove-photo-btn', function () {
                     $(this).parent('.photo-list').remove();
                 });
-            }
+
+
+            });
+        }
+        ,done: function(res){
+            //上传完毕
         }
     });
     /**
@@ -222,13 +225,13 @@ layui.define(function(exports){
      */
     upload.render({
         elem: '#thumb-upload'
-        ,url: 'admin/adv/upload'
+        ,url: '/api/upload/upload'
         ,accept: 'image'
         ,exts: 'jpg|png|gif|bmp'
         ,before: function(obj){
             //预读本地文件示例，不支持ie8
             obj.preview(function(index, file, result){
-                $('#thumb-img').attr('src', result); //图片链接（base64）
+                $('#demo1').attr('src', result); //图片链接（base64）
             });
         }
         ,done: function(res){
@@ -247,7 +250,6 @@ layui.define(function(exports){
             });
         }
     });
-
 
     //对外暴露的接口
     exports('common', {});

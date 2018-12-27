@@ -2,11 +2,10 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>OCenter用户及后台管理系统</title>
+    <title>{$meta_title|default=''}|{:config('web_site_title')}后台管理</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <link rel="stylesheet" href="__LAYUI__/layui/css/layui.css" media="all">
     <link rel="stylesheet" href="__LAYUI__/style/admin.css" media="all">
     <link rel="stylesheet" href="__LAYUI__/style/oc.css" media="all">
@@ -89,10 +88,8 @@
         <div class="layui-side layui-side-menu">
             <div class="layui-side-scroll">
                 <div class="layui-logo" lay-href="{:url('index/console')}">
-
                     <span><img src="__PUBLIC__/images/logo-touming.png" style="width: 40px">OpenCenter V3</span>
                 </div>
-
                 <ul class="layui-nav layui-nav-tree" lay-shrink="all" id="LAY-system-side-menu"
                     lay-filter="layadmin-system-side-menu">
                     {volist name="menu" id="vo"}
@@ -141,7 +138,6 @@
             </div>
         </div>
 
-
         <!-- 主体内容 -->
         <div class="layui-body" id="LAY_app_body">
             <div class="layadmin-tabsbody-item layui-show">
@@ -153,7 +149,6 @@
         <div class="layadmin-body-shade" layadmin-event="shade"></div>
     </div>
 </div>
-
 <script src="__LAYUI__/layui/layui.js"></script>
 <script>
     layui.config({
