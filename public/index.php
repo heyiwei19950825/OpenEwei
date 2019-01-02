@@ -11,6 +11,7 @@
 
 // [ 应用入口文件 ]
 
+define('EACOOPHP_V','12');
 // 定义目录分隔符
 define('DS', DIRECTORY_SEPARATOR);
 // 定义应用目录

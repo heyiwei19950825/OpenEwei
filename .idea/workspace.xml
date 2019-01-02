@@ -2,112 +2,45 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98777e50-01de-4b71-8821-08f1cfad9611" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/application/common/builder/Builder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/common/builder/BuilderForm.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/common/controller/Base.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/common/layout/Iframe.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/common/view/builder/Fields/avatar.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/common/view/builder/Fields/checkbox.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/common/view/builder/Fields/color.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/common/view/builder/Fields/date.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/common/view/builder/Fields/daterange.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/common/view/builder/Fields/datetime.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/common/view/builder/Fields/email.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/common/view/builder/Fields/file.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/common/view/builder/Fields/files.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/common/view/builder/Fields/group.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/common/view/builder/Fields/hidden.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/common/view/builder/Fields/icon.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/common/view/builder/Fields/image.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/common/view/builder/Fields/info.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/common/view/builder/Fields/left_icon_number.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/common/view/builder/Fields/left_icon_text.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/common/view/builder/Fields/multilayer_select.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/common/view/builder/Fields/number.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/common/view/builder/Fields/password.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/common/view/builder/Fields/picture.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/common/view/builder/Fields/pictures.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/common/view/builder/Fields/radio.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/common/view/builder/Fields/readonly.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/common/view/builder/Fields/repeater.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/common/view/builder/Fields/right_icon_number.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/common/view/builder/Fields/right_icon_text.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/common/view/builder/Fields/section.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/common/view/builder/Fields/select.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/common/view/builder/Fields/select2.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/common/view/builder/Fields/select_multiple.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/common/view/builder/Fields/self.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/common/view/builder/Fields/self_html.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/common/view/builder/Fields/tab.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/common/view/builder/Fields/tags.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/common/view/builder/Fields/text.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/common/view/builder/Fields/textarea.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/common/view/builder/Fields/ueditor.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/common/view/builder/Fields/url.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/common/view/builder/Fields/wangeditor.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/common/view/builder/formbuilder.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/common/view/builder/from-fields.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/common/view/builder/javascript.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/common/view/builder/listbuilder.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/common/view/builder/sortbuilder.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/common/view/builder/style.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/admin/common.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/admin/view/public/base.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/admin/view/public/content_foot.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/admin/view/public/content_head.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/admin/view/public/document_header.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/admin/view/public/footer.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/admin/view/public/header.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/admin/view/public/layerbase.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/admin/view/public/layout.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/admin/view/public/left.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/common/builder/BuilderList.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/common/builder/BuilderSort.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/common/view/layout/iframe/content.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/common/view/widget/file.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/common/view/widget/picture.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/common/view/widget/pictures.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/common/view/widget/repeater.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/common/view/widget/ueditor.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/common/view/widget/wangeditor.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/controller/Base.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/controller/Base.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/admin/controller/Admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/controller/Admin.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/admin/controller/Nav.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/controller/Nav.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/action/action_limit.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/action/action_limit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/action/action_limit_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/action/action_limit_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/admin/admin_auth_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/admin/admin_auth_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/admin/admin_auth_group_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/admin/admin_auth_group_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/admin/admin_auth_group_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/admin/admin_auth_group_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/admin/admin_auth_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/admin/admin_auth_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/admin/admin_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/admin/admin_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/admin/admin_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/admin/admin_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/admin/admin_log.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/admin/admin_log.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/adv/append_adv.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/adv/append_adv.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/adv/edit_pos.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/adv/edit_pos.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/adv/pos.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/adv/pos.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/article/category_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/article/category_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/article/form.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/article/form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/article/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/article/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/collect/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/collect/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/collect/rule.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/collect/rule.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/html/from.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/html/from.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/html/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/html/material.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/html/material.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/html/template.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/html/template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/index/console.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/index/console.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/index/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/index/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/index/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/index/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/index/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/index/search.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/index/show_more.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/index/show_more.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/index/theme.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/index/theme.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/login/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/login/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/nav/category_form.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/nav/form.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/nav/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/public/base.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/public/content_footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/common/view/layout/iframe/search.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/public/content_header.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/public/footer.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/public/header.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/public/left.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/score/rule_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/score/rule_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/score/type_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/score/type_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/score/type_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/score/type_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/setting/personage.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/setting/personage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/setting/system.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/setting/system.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/user/register_config.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/user/register_config.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/user/user_auth.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/user/user_auth.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/user/user_auth_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/user/user_auth_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/user/user_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/user/user_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/user/user_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/user/user_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/user/user_log.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/user/user_log.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/user/user_role.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/user/user_role.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/user/user_role_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/user/user_role_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/static/layuiadmin/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/static/layuiadmin/common.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/static/layuiadmin/modules/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/static/layuiadmin/modules/common.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runtime/cache/8d/6ab84ca2af9fccd4e4048694176ebf.php" beforeDir="false" afterPath="$PROJECT_DIR$/runtime/cache/8d/6ab84ca2af9fccd4e4048694176ebf.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/common/builder/Builder.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/common/builder/Builder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/common/builder/BuilderForm.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/common/builder/BuilderForm.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/common/controller/Base.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/common/controller/Base.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/common/layout/Iframe.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/common/layout/Iframe.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/common/view/builder/from-fields.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/common/view/builder/from-fields.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/common/view/builder/javascript.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/common/view/builder/javascript.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/common/view/builder/listbuilder.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/common/view/builder/listbuilder.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/common/view/builder/style.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/common/view/builder/style.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/common/view/layout/iframe/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/common/view/layout/iframe/search.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/common/view/widget/adv_code.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/common/view/widget/adv_empty.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/common/view/widget/adv_single_pic.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/common/view/widget/adv_slider.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/common/view/widget/adv_text.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/runtime/cache/8d/6ab84ca2af9fccd4e4048694176ebf.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/runtime/cache/d7/2e5ee9b367833956ed9f88a960c686.php" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -117,6 +50,25 @@
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
+  </component>
+  <component name="DockManager">
+    <window id="1">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/application/admin/view/action/action_limit.html">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="554">
+                    <caret line="73" column="44" lean-forward="true" selection-start-line="73" selection-start-column="44" selection-end-line="73" selection-end-column="44" />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="2035786944">
@@ -174,28 +126,29 @@
           <entry key="project.open.time.27" value="3" />
           <entry key="project.open.time.29" value="1" />
           <entry key="project.open.time.3" value="1" />
-          <entry key="project.open.time.30" value="1" />
+          <entry key="project.open.time.30" value="2" />
           <entry key="project.open.time.31" value="1" />
           <entry key="project.open.time.33" value="1" />
           <entry key="project.open.time.35" value="1" />
           <entry key="project.open.time.53" value="2" />
           <entry key="project.open.time.57" value="1" />
+          <entry key="project.open.time.63" value="1" />
           <entry key="project.open.time.65" value="1" />
           <entry key="project.open.time.73" value="1" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="17" />
+          <entry key="project.opened" value="19" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="conf" value="1" />
           <entry key="css" value="2" />
-          <entry key="html" value="192" />
+          <entry key="html" value="248" />
           <entry key="jpg" value="6" />
           <entry key="js" value="31" />
           <entry key="json" value="5" />
           <entry key="md" value="1" />
-          <entry key="php" value="180" />
+          <entry key="php" value="213" />
           <entry key="png" value="3" />
           <entry key="sql" value="1" />
           <entry key="stub" value="3" />
@@ -206,12 +159,12 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="2" />
-          <entry key="HTML" value="192" />
+          <entry key="HTML" value="248" />
           <entry key="Image" value="9" />
           <entry key="JSON" value="5" />
           <entry key="JavaScript" value="31" />
           <entry key="Markdown" value="1" />
-          <entry key="PHP" value="183" />
+          <entry key="PHP" value="216" />
           <entry key="PLAIN_TEXT" value="4" />
           <entry key="SQL" value="1" />
           <entry key="SmartyConfig" value="1" />
@@ -219,57 +172,36 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="html" value="4488" />
+          <entry key="html" value="4844" />
           <entry key="js" value="558" />
           <entry key="json" value="7" />
-          <entry key="php" value="14260" />
+          <entry key="php" value="15374" />
           <entry key="test" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="4489" />
+          <entry key="HTML" value="4845" />
           <entry key="JSON" value="7" />
           <entry key="JavaScript" value="557" />
-          <entry key="PHP" value="14260" />
+          <entry key="PHP" value="15374" />
           <entry key="PLAIN_TEXT" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.php.new.class">
         <counts>
-          <entry key="PHP Class.type" value="8" />
+          <entry key="PHP Class.type" value="9" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/common/layout/Iframe.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="423">
-              <caret line="62" column="22" selection-start-line="62" selection-start-column="22" selection-end-line="62" selection-end-column="22" />
-              <folding>
-                <element signature="e#6#387#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/common/controller/Base.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="18" column="30" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/admin/controller/Nav.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="38" column="63" selection-start-line="38" selection-start-column="63" selection-end-line="38" selection-end-column="63" />
+            <state relative-caret-position="351">
+              <caret line="44" column="72" lean-forward="true" selection-start-line="44" selection-start-column="72" selection-end-line="44" selection-end-column="72" />
               <folding>
                 <element signature="e#413#442#0#PHP" expanded="true" />
               </folding>
@@ -278,21 +210,12 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/common/view/layout/iframe/search.html">
+        <entry file="file://$PROJECT_DIR$/application/admin/common.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="48" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="48" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/application/common/builder/BuilderForm.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="351">
-              <caret line="364" column="26" lean-forward="true" selection-start-line="364" selection-start-column="26" selection-end-line="364" selection-end-column="26" />
+            <state relative-caret-position="117">
+              <caret line="40" column="1" lean-forward="true" selection-start-line="40" selection-start-column="1" selection-end-line="40" selection-end-column="1" />
               <folding>
-                <element signature="e#6#387#0#PHP" expanded="true" />
+                <element signature="e#389#405#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -301,30 +224,54 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/common/builder/Builder.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="674">
-              <caret line="109" column="57" selection-start-line="109" selection-start-column="57" selection-end-line="109" selection-end-column="57" />
+            <state relative-caret-position="235">
+              <caret line="82" column="7" lean-forward="true" selection-start-line="82" selection-start-column="7" selection-end-line="82" selection-end-column="7" />
               <folding>
                 <element signature="e#6#80#0#PHP" expanded="true" />
-                <element signature="e#552#583#0#PHP" expanded="true" />
+                <element signature="e#561#592#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/common/view/builder/Fields/tab.html">
+        <entry file="file://$PROJECT_DIR$/application/common/builder/BuilderList.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="62" lean-forward="true" selection-start-line="14" selection-start-column="62" selection-end-line="14" selection-end-column="62" />
+            <state relative-caret-position="507">
+              <caret line="581" selection-start-line="581" selection-end-line="581" />
+              <folding>
+                <element signature="e#6#80#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/admin/controller/Action.php">
+        <entry file="file://$PROJECT_DIR$/application/common/view/builder/listbuilder.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="35" column="36" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="36" />
+            <state relative-caret-position="316">
+              <caret line="44" column="29" lean-forward="true" selection-start-line="44" selection-start-column="29" selection-end-line="44" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/admin/view/base.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="49" lean-forward="true" selection-start-line="10" selection-start-column="49" selection-end-line="10" selection-end-column="49" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/admin/view/collect/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" selection-start-line="2" selection-end-line="66" />
+              <folding>
+                <element signature="n#div#0;n#!!top" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -341,36 +288,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>.layui-card-header .layui-icon</find>
-      <find>page</find>
-      <find>component-form-group</find>
-      <find>\n</find>
-      <find>user_detail</find>
-      <find>FILTER_VALIDATE_URL</find>
-      <find>layEvent</find>
-      <find>$this-&gt;controller</find>
-      <find>$adminRole</find>
-      <find>adminName</find>
-      <find>load</find>
-      <find>export_data</find>
-      <find>auth_name</find>
-      <find>filiale_name</find>
-      <find>agent_name</find>
-      <find>get_client_ip</find>
-      <find>get_info</find>
-      <find>taskcountid</find>
-      <find>content_header</find>
-      <find>alert</find>
-      <find>layer.msg(11111);</find>
-      <find>11111</find>
-      <find>tagIns1</find>
-      <find>tool(list)</find>
-      <find>user_list</find>
-      <find>preQueryConnector</find>
-      <find>groupIds</find>
-      <find>IS_AJAX</find>
-      <find>BuilderForm</find>
-      <find>apps</find>
+      <find>admin_public_base</find>
+      <find>用于管理后台的规则项</find>
+      <find>builder</find>
+      <find>listbuilder</find>
+      <find>var</find>
+      <find>addTopBtn</find>
+      <find>fet</find>
+      <find>_admin_document_header_</find>
+      <find>面包屑导航</find>
+      <find>(jQuery);</find>
+      <find>Auth</find>
+      <find>logic</find>
+      <find>fetch</find>
+      <find>include</find>
+      <find>extra_html</find>
+      <find>keyListItem</find>
+      <find>$table_column_fields</find>
+      <find>setListPrimaryKey</find>
+      <find>table_primary_key</find>
+      <find>setListPage</find>
+      <find>$tableLimit</find>
+      <find>tableLimit</find>
+      <find>$tableLimits</find>
+      <find>tableLimits</find>
+      <find>openPage</find>
+      <find>title</find>
+      <find>菜单栏</find>
+      <find>setPageTips</find>
+      <find>setMetaTitle</find>
+      <find>tableColumns</find>
     </findStrings>
     <replaceStrings>
       <replace>https://www.layui.com/admin/std/dist/layuiadmin/style/res/template/portrait.png</replace>
@@ -385,16 +332,21 @@
       <replace>nav</replace>
       <replace>菜单</replace>
       <replace>$data</replace>
-      <replace>application</replace>
       <replace>$this-&gt;request-&gt;isAjax()</replace>
+      <replace>$this-&gt;reques-&gt;isAjax</replace>
+      <replace>request</replace>
+      <replace>application</replace>
+      <replace>$this-&gt;request-&gt;isAjax</replace>
     </replaceStrings>
     <dirStrings>
       <dir>E:\RaningWork\OpenCenter_2\thinkphp</dir>
-      <dir>E:\RaningWork\OpenCenter_2\application\admin\view</dir>
       <dir>E:\RaningWork\OpenCenter_2\application\admin\controller</dir>
-      <dir>E:\RaningWork\OpenCenter_2</dir>
       <dir>E:\RaningWork\OpenCenter_2\public</dir>
       <dir>E:\RaningWork\OpenCenter_2\application\common</dir>
+      <dir>E:\RaningWork\OpenCenter_2\application\admin\view</dir>
+      <dir>E:\RaningWork\OpenCenter_2\application\admin</dir>
+      <dir>E:\RaningWork\OpenCenter_2</dir>
+      <dir>E:\RaningWork\OpenCenter_2\application</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -404,19 +356,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/application/admin/view/index/console.html" />
-        <option value="$PROJECT_DIR$/application/admin/view/index/search.html" />
-        <option value="$PROJECT_DIR$/application/admin/view/index/theme.html" />
-        <option value="$PROJECT_DIR$/application/admin/view/base.html" />
-        <option value="$PROJECT_DIR$/application/admin/view/index/login.html" />
-        <option value="$PROJECT_DIR$/application/admin/view/action/action_limit.html" />
-        <option value="$PROJECT_DIR$/application/admin/view/action/action_limit_form.html" />
-        <option value="$PROJECT_DIR$/public/static/layuiadmin/modules/common.js" />
-        <option value="$PROJECT_DIR$/public/static/layuiadmin/common.js" />
-        <option value="$PROJECT_DIR$/application/admin/view/admin/admin_auth_form.html" />
-        <option value="$PROJECT_DIR$/application/admin/view/admin/admin_auth_group_form.html" />
-        <option value="$PROJECT_DIR$/application/admin/view/admin/admin_auth_group_list.html" />
-        <option value="$PROJECT_DIR$/application/admin/view/admin/admin_auth_list.html" />
         <option value="$PROJECT_DIR$/application/admin/view/admin/admin_form.html" />
         <option value="$PROJECT_DIR$/application/admin/view/admin/admin_list.html" />
         <option value="$PROJECT_DIR$/application/admin/view/admin/admin_log.html" />
@@ -448,13 +387,26 @@
         <option value="$PROJECT_DIR$/application/admin/view/user/user_role_form.html" />
         <option value="$PROJECT_DIR$/application/common/view/build/list.html" />
         <option value="$PROJECT_DIR$/application/common/view/build/form.html" />
-        <option value="$PROJECT_DIR$/application/admin/controller/Nav.php" />
-        <option value="$PROJECT_DIR$/application/common/controller/Base.php" />
-        <option value="$PROJECT_DIR$/application/common/layout/Iframe.php" />
         <option value="$PROJECT_DIR$/application/common/layout/iframe/search.html" />
-        <option value="$PROJECT_DIR$/application/common/view/layout/iframe/search.html" />
-        <option value="$PROJECT_DIR$/application/common/builder/Builder.php" />
         <option value="$PROJECT_DIR$/application/common/builder/BuilderForm.php" />
+        <option value="$PROJECT_DIR$/application/admin/common.php" />
+        <option value="$PROJECT_DIR$/application/common/controller/Base.php" />
+        <option value="$PROJECT_DIR$/public/index.php" />
+        <option value="$PROJECT_DIR$/application/admin/view/public/content_head.html" />
+        <option value="$PROJECT_DIR$/application/common/layout/Iframe.php" />
+        <option value="$PROJECT_DIR$/application/admin/controller/Admin.php" />
+        <option value="$PROJECT_DIR$/application/admin/view/public/document_header.html" />
+        <option value="$PROJECT_DIR$/application/admin/view/public/header.html" />
+        <option value="$PROJECT_DIR$/application/common/view/builder/style.html" />
+        <option value="$PROJECT_DIR$/application/common/view/builder/javascript.html" />
+        <option value="$PROJECT_DIR$/application/common/builder/Builder.php" />
+        <option value="$PROJECT_DIR$/application/common/view/layout/iframe/search.html" />
+        <option value="$PROJECT_DIR$/application/common/view/layout/iframe/content.html" />
+        <option value="$PROJECT_DIR$/application/admin/view/public/layerbase.html" />
+        <option value="$PROJECT_DIR$/application/admin/view/public/base.html" />
+        <option value="$PROJECT_DIR$/application/admin/controller/Nav.php" />
+        <option value="$PROJECT_DIR$/application/common/builder/BuilderList.php" />
+        <option value="$PROJECT_DIR$/application/common/view/builder/listbuilder.html" />
       </list>
     </option>
   </component>
@@ -480,11 +432,11 @@
       <path value="$PROJECT_DIR$/vendor/jaeger/querylist" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-1928" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1096" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-1919" />
+    <option name="y" value="1" />
+    <option name="width" value="1918" />
+    <option name="height" value="1078" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -514,7 +466,15 @@
               <item name="OpenCenter_2" type="462c0819:PsiDirectoryNode" />
               <item name="application" type="462c0819:PsiDirectoryNode" />
               <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="OpenCenter_2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="OpenCenter_2" type="462c0819:PsiDirectoryNode" />
+              <item name="application" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
+              <item name="action" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="OpenCenter_2" type="b2602c69:ProjectViewProjectNode" />
@@ -528,6 +488,14 @@
               <item name="application" type="462c0819:PsiDirectoryNode" />
               <item name="common" type="462c0819:PsiDirectoryNode" />
               <item name="view" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="OpenCenter_2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="OpenCenter_2" type="462c0819:PsiDirectoryNode" />
+              <item name="application" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
+              <item name="builder" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -546,19 +514,19 @@
     <property name="settings.editor.selected.configurable" value="fileTemplates" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\RaningWork\OpenCenter_2\application\common\view" />
-      <recent name="E:\RaningWork\OpenCenter_2\public\images" />
-      <recent name="E:\RaningWork\OpenCenter_2\application\admin\view" />
-      <recent name="E:\RaningWork\OpenCenter_2\application\admin\controller" />
-      <recent name="E:\RaningWork\OpenCenter_2\application\common\model" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\RaningWork\OpenCenter_2\application\common\view\layout" />
       <recent name="E:\RaningWork\OpenCenter_2\application\common\view" />
       <recent name="E:\RaningWork\OpenCenter_2\application\common\layout" />
       <recent name="E:\RaningWork\OpenCenter_2\application\common\layout\iframe" />
       <recent name="E:\RaningWork\OpenCenter_2" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\RaningWork\OpenCenter_2\application\admin\view" />
+      <recent name="E:\RaningWork\OpenCenter_2\application\common" />
+      <recent name="E:\RaningWork\OpenCenter_2\application\admin\view\public" />
+      <recent name="E:\RaningWork\OpenCenter_2\application\common\builder" />
+      <recent name="E:\RaningWork\OpenCenter_2\application\common\view" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -605,21 +573,23 @@
       <workItem from="1545874546958" duration="3322000" />
       <workItem from="1545887333680" duration="1225000" />
       <workItem from="1545895391033" duration="8486000" />
+      <workItem from="1545967163795" duration="9149000" />
+      <workItem from="1546391091255" duration="10642000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="171837000" />
+    <option name="totallyTimeSpent" value="191628000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1928" y="-8" width="1936" height="1096" extended-state="6" />
+    <frame x="-1919" y="1" width="1918" height="1078" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24946696" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.25672767" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32942432" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -635,6 +605,27 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Database" order="3" />
     </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25672767" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32942432" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.3283582" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -643,269 +634,10 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application/admin/view/admin/admin_log.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="121" selection-start-line="121" selection-end-line="122" />
-          <folding>
-            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#script#1;n#body#0;n#html#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/admin/view/admin/admin_list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="86" selection-start-line="86" selection-end-line="86" selection-end-column="8" />
-          <folding>
-            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#script#1;n#body#0;n#html#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/admin/view/admin/admin_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="92" selection-start-line="92" selection-end-line="92" selection-end-column="8" />
-          <folding>
-            <element signature="n#form#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#script#1;n#body#0;n#html#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/admin/view/admin/admin_auth_list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="88" selection-start-line="88" selection-end-line="88" selection-end-column="8" />
-          <folding>
-            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#script#1;n#body#0;n#html#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/admin/view/article/category_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="198" column="8" lean-forward="true" selection-start-line="198" selection-start-column="8" selection-end-line="198" selection-end-column="8" />
-          <folding>
-            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#script#3;n#body#0;n#html#0;n#!!top" />
-            <element signature="e#7783#9283#0" />
-            <element signature="e#9666#10117#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/admin/view/action/action_limit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="50" selection-start-line="50" selection-end-line="51" selection-end-column="21" />
-          <folding>
-            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#script#1;n#body#0;n#html#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/admin/view/adv/pos.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="1" selection-end-column="22" />
-          <folding>
-            <element signature="n#div#0;n#!!top" />
-            <element signature="n#script#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/admin/view/article/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="87" selection-start-line="87" selection-end-line="88" selection-end-column="21" />
-          <folding>
-            <element signature="n#div#0;n#!!top" />
-            <element signature="n#script#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/admin/view/nav/form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2516">
-          <caret line="147" column="39" selection-start-line="147" selection-start-column="39" selection-end-line="147" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/admin/view/collect/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="1" selection-end-column="22" />
-          <folding>
-            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#script#1;n#body#0;n#html#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/admin/view/collect/rule.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="75" selection-start-line="75" selection-end-line="76" />
-          <folding>
-            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#script#1;n#body#0;n#html#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/admin/view/html/from.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="1" selection-end-column="22" />
-          <folding>
-            <element signature="n#form#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#script#1;n#!!top" />
-            <element signature="e#3202#3247#0" />
-            <element signature="e#3256#3337#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/admin/view/login/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="63" selection-start-line="63" selection-end-line="64" />
-          <folding>
-            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#script#1;n#body#0;n#html#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/admin/view/html/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="168" selection-start-line="168" selection-end-line="169" />
-          <folding>
-            <element signature="n#style#0;n#!!top" />
-            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#script#5;n#body#0;n#html#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/admin/view/html/material.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="220" selection-start-line="220" selection-end-line="221" />
-          <folding>
-            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#script#1;n#body#0;n#html#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/admin/view/nav/category_form.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/admin/view/html/template.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="221" lean-forward="true" selection-start-line="221" selection-end-line="221" />
-          <folding>
-            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#script#1;n#body#0;n#html#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/admin/view/adv/edit_pos.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="122" selection-start-line="122" selection-end-line="122" selection-end-column="8" />
-          <folding>
-            <element signature="n#div#0;n#!!top" />
-            <element signature="n#script#1;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/admin/view/setting/personage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="53" column="21" lean-forward="true" selection-start-line="53" selection-start-column="21" selection-end-line="53" selection-end-column="21" />
-          <folding>
-            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#script#1;n#body#0;n#html#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/admin/view/setting/system.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="228" selection-start-line="228" selection-end-line="228" selection-end-column="8" />
-          <folding>
-            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/admin/view/score/type_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="47" column="33" lean-forward="true" selection-start-line="47" selection-start-column="33" selection-end-line="47" selection-end-column="33" />
-          <folding>
-            <element signature="n#form#0;n#body#0;n#html#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/admin/view/score/type_list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="367" column="8" lean-forward="true" selection-start-line="367" selection-start-column="8" selection-end-line="367" selection-end-column="8" />
-          <folding>
-            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#script#1;n#body#0;n#html#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/admin/view/user/register_config.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="87" selection-start-line="87" selection-end-line="88" />
-          <folding>
-            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#script#1;n#body#0;n#html#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/admin/view/user/user_auth.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="165" selection-start-line="165" selection-end-line="166" />
-          <folding>
-            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#script#1;n#body#0;n#html#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/admin/view/user/user_auth_form.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="77" selection-start-line="77" selection-end-line="77" selection-end-column="8" />
-          <folding>
-            <element signature="n#form#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#script#1;n#body#0;n#html#0;n#!!top" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -913,10 +645,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="88" selection-start-line="88" selection-end-line="88" selection-end-column="8" />
-          <folding>
-            <element signature="n#form#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#script#1;n#body#0;n#html#0;n#!!top" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -924,10 +652,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="142" selection-start-line="142" selection-end-line="142" selection-end-column="8" />
-          <folding>
-            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#script#1;n#body#0;n#html#0;n#!!top" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -935,9 +659,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="22" lean-forward="true" selection-start-column="22" selection-end-column="22" />
-          <folding>
-            <element signature="n#script#1;n#body#0;n#html#0;n#!!top" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -945,10 +666,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="201" selection-start-line="201" selection-end-line="201" selection-end-column="8" />
-          <folding>
-            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#script#1;n#body#0;n#html#0;n#!!top" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -956,10 +673,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="105" column="8" lean-forward="true" selection-start-line="105" selection-start-column="8" selection-end-line="105" selection-end-column="8" />
-          <folding>
-            <element signature="n#form#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#script#1;n#body#0;n#html#0;n#!!top" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -967,51 +680,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="94" selection-start-line="94" selection-end-line="94" selection-end-column="8" />
-          <folding>
-            <element signature="n#form#0;n#body#0;n#html#0;n#!!top" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/common/view/widget/adv_text.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/common/view/widget/adv_slider.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/common/view/widget/adv_single_pic.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/common/view/widget/adv_empty.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/common/view/widget/adv_code.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/application/common/view/widget/adv_text.html" />
+    <entry file="file://$PROJECT_DIR$/application/common/view/widget/adv_slider.html" />
+    <entry file="file://$PROJECT_DIR$/application/common/view/widget/adv_single_pic.html" />
+    <entry file="file://$PROJECT_DIR$/application/common/view/widget/adv_empty.html" />
+    <entry file="file://$PROJECT_DIR$/application/common/view/widget/adv_code.html" />
     <entry file="file://$PROJECT_DIR$/build.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -1026,9 +702,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/common/view/build/list.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/application/common/view/build/list.html" />
     <entry file="file://$PROJECT_DIR$/application/admin/view/admin/admin_auth_form.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="502">
@@ -1043,88 +717,240 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/thinkphp/library/think/Controller.php">
+    <entry file="file://$PROJECT_DIR$/application/common/view/build/form.html" />
+    <entry file="file://$PROJECT_DIR$/application/common/view/builder/Fields/tab.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="22" column="23" lean-forward="true" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
+        <state relative-caret-position="238">
+          <caret line="14" column="62" selection-start-line="14" selection-start-column="62" selection-end-line="14" selection-end-column="62" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/admin/controller/Action.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
+        <state relative-caret-position="442">
           <caret line="35" column="36" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/common/controller/Base.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="18" column="30" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/common/view/build/form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="6" lean-forward="true" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
-          <folding>
-            <element signature="n#script#2;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/common/layout/Iframe.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="423">
-          <caret line="62" column="22" selection-start-line="62" selection-start-column="22" selection-end-line="62" selection-end-column="22" />
-          <folding>
-            <element signature="e#6#387#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/admin/controller/Nav.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="38" column="63" selection-start-line="38" selection-start-column="63" selection-end-line="38" selection-end-column="63" />
-          <folding>
-            <element signature="e#413#442#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/common/view/layout/iframe/search.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="48" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/common/builder/Builder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="674">
-          <caret line="109" column="57" selection-start-line="109" selection-start-column="57" selection-end-line="109" selection-end-column="57" />
-          <folding>
-            <element signature="e#6#80#0#PHP" expanded="true" />
-            <element signature="e#552#583#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/common/view/builder/Fields/tab.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="62" lean-forward="true" selection-start-line="14" selection-start-column="62" selection-end-line="14" selection-end-column="62" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/common/builder/BuilderForm.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="364" column="26" lean-forward="true" selection-start-line="364" selection-start-column="26" selection-end-line="364" selection-end-column="26" />
+        <state relative-caret-position="575">
+          <caret line="377" column="32" lean-forward="true" selection-start-line="377" selection-start-column="32" selection-end-line="377" selection-end-column="32" />
           <folding>
             <element signature="e#6#387#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/common/builder/BuilderSort.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="17" column="27" lean-forward="true" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/common/controller/Base.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="25" column="101" selection-start-line="25" selection-start-column="101" selection-end-line="25" selection-end-column="101" />
+          <folding>
+            <element signature="e#422#443#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/common/view/builder/from-fields.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="33" column="84" selection-start-line="33" selection-start-column="84" selection-end-line="33" selection-end-column="84" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/admin/view/public/layout.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="61" selection-start-line="5" selection-start-column="61" selection-end-line="5" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/thinkphp/library/think/Controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-85">
+          <caret line="133" column="23" selection-start-line="133" selection-start-column="23" selection-end-line="133" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/common/view/builder/sortbuilder.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/common/view/builder/formbuilder.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/common/view/builder/Fields/avatar.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/common/view/builder/javascript.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/common/view/builder/style.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/common/layout/Iframe.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="621">
+          <caret line="103" column="67" selection-start-line="103" selection-start-column="61" selection-end-line="103" selection-end-column="67" />
+          <folding>
+            <element signature="e#6#387#0#PHP" expanded="true" />
+            <element signature="e#418#449#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/common/view/layout/iframe/search.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/common/view/layout/iframe/content.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="8" lean-forward="true" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/admin/view/public/content_foot.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/admin/view/public/content_head.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="45" lean-forward="true" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/admin/view/public/header.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="44" column="45" selection-start-line="44" selection-start-column="45" selection-end-line="44" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/admin/view/public/footer.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="14" column="33" lean-forward="true" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/admin/controller/Admin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="28" column="53" selection-start-line="28" selection-start-column="49" selection-end-line="28" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/admin/view/public/document_header.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="7" lean-forward="true" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/admin/view/public/layerbase.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="32" selection-start-line="3" selection-start-column="32" selection-end-line="3" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/admin/view/public/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="5" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/admin/view/collect/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" selection-start-line="2" selection-end-line="66" />
+          <folding>
+            <element signature="n#div#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/admin/view/action/action_limit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="554">
+          <caret line="73" column="44" lean-forward="true" selection-start-line="73" selection-start-column="44" selection-end-line="73" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/admin/common.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="117">
+          <caret line="40" column="1" lean-forward="true" selection-start-line="40" selection-start-column="1" selection-end-line="40" selection-end-column="1" />
+          <folding>
+            <element signature="e#389#405#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/common/builder/Builder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="82" column="7" lean-forward="true" selection-start-line="82" selection-start-column="7" selection-end-line="82" selection-end-column="7" />
+          <folding>
+            <element signature="e#6#80#0#PHP" expanded="true" />
+            <element signature="e#561#592#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/admin/view/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="49" lean-forward="true" selection-start-line="10" selection-start-column="49" selection-end-line="10" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/common/builder/BuilderList.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="507">
+          <caret line="581" selection-start-line="581" selection-end-line="581" />
+          <folding>
+            <element signature="e#6#80#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/common/view/builder/listbuilder.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="316">
+          <caret line="44" column="29" lean-forward="true" selection-start-line="44" selection-start-column="29" selection-end-line="44" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/admin/controller/Nav.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="44" column="72" lean-forward="true" selection-start-line="44" selection-start-column="72" selection-end-line="44" selection-end-column="72" />
+          <folding>
+            <element signature="e#413#442#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

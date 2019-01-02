@@ -11,6 +11,7 @@
 namespace app\common\layout;
 
 use app\common\controller\Base;
+use think\Exception;
 
 class Iframe extends Base
 {
@@ -77,10 +78,12 @@ class Iframe extends Base
      */
     public function content($content)
     {
+
         if ($this->request->isAjax()) {
             return $content;
         }
         $this->addRow($content);
+
         return $this;
     }
 
@@ -162,7 +165,7 @@ class Iframe extends Base
                 'content'     => $this->build(),
             ];
 
-            $templateFile = APP_PATH.'/common/view/layout/iframe/content.html';
+            $templateFile = APP_PATH.'common/view/layout/iframe/content.html';
             return $this->fetch($templateFile, $items);
         }
     }

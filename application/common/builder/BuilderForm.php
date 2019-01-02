@@ -1,13 +1,12 @@
 <?php
-/**----------------------------------------------------------------------
- * OpenEwei V1
- * Copyright 2018-2018 http://www.redkylin.con All rights reserved.
- * ----------------------------------------------------------------------
- * Author: ewei(lamp_heyiwei@163.com)
- * Date: 2018/12/27
- * Time: 18:04
- * ----------------------------------------------------------------------
- */
+// +----------------------------------------------------------------------
+// | Copyright (c) 2017-2018 https://www.eacoophp.com, All rights reserved.
+// +----------------------------------------------------------------------
+// | [EacooPHP] 并不是自由软件,可免费使用,未经许可不能去掉EacooPHP相关版权。
+// | 禁止在EacooPHP整体或任何部分基础上发展任何派生、修改或第三方版本用于重新分发
+// +----------------------------------------------------------------------
+// | Author:  心云间、凝听 <981248356@qq.com>
+// +----------------------------------------------------------------------
 namespace app\common\builder;
 
 /**
@@ -107,7 +106,7 @@ class BuilderForm extends Builder
             'extra_class' => $extra_class
         ];
         $this->formItems[] = $item;
-
+        
         return $this;
     }
 
@@ -132,12 +131,12 @@ class BuilderForm extends Builder
     }
 
     /**
-     *添加按钮
-     *@param $type 按钮类型
-     *@param $title 按钮标题
-     *@param $title 提交地址
-     *@return $this
-     */
+    *添加按钮
+    *@param $type 按钮类型
+    *@param $title 按钮标题
+    *@param $title 提交地址
+    *@return $this
+    */
     public function addButton($type='submit',$title='',$url=''){
         switch ($type) {
             case 'submit'://确认按钮
@@ -147,7 +146,7 @@ class BuilderForm extends Builder
                 if ($title == '') {
                     $title ='确定';
                 }
-
+                
                 $ajax_submit = '';
                 if ($this->ajaxSubmit==true) {
                     $ajax_submit='ajax-post';
@@ -182,7 +181,7 @@ class BuilderForm extends Builder
                 }
                 $attr['onclick'] = 'javascript:location.href=\''.$url.'\';return false;';
                 break;
-
+            
             default:
                 # code...
                 break;
@@ -220,14 +219,14 @@ class BuilderForm extends Builder
      * @return parent::fetch('formbuilder');
      */
     public function fetch($template_name='formbuilder',$vars =[], $replace ='', $config = '') {
-        //额外已经构造好的表单项目与单个组装的的表单项目进行合并
-        if (!empty($this->extraItems)) {
-            $this->formItems = array_merge($this->formItems, $this->extraItems);
-        }
+         //额外已经构造好的表单项目与单个组装的的表单项目进行合并
+       if (!empty($this->extraItems)) {
+           $this->formItems = array_merge($this->formItems, $this->extraItems);
+       }
 
-        //过来表单项
-        $this->formItems = $this->buildFormItems($this->formItems);
-
+       //过来表单项
+       $this->formItems = $this->buildFormItems($this->formItems);
+       
         //设置post_url默认值
         $this->postUrl=$this->postUrl? $this->postUrl : $this->url;
         //编译表单值
@@ -246,10 +245,10 @@ class BuilderForm extends Builder
                         // }
                     }
                 }
-
+                
             }
         }
-
+        
         /**
          * 设置按钮
          */
@@ -268,7 +267,7 @@ class BuilderForm extends Builder
             'post_url'        => $this->postUrl,//表单提交地址
             'fieldList'       => $this->formItems,//表单项目
             'button_list'     => $this->buttonList,//按钮组
-            'extra_html'      => $this->extraHtml//额外HTML代码
+            'extra_html'      => $this->extraHtml//额外HTML代码 
         ];
         $this->assign($template_val);
 
@@ -290,7 +289,7 @@ class BuilderForm extends Builder
         }
 
         foreach ($formItems as $key => &$item) {
-            if (!in_array($item['type'], $this->fieldsItemsList)) {
+           if (!in_array($item['type'], $this->fieldsItemsList)) {
                 unset($formItems[$key]);
                 continue;
             }
@@ -355,14 +354,14 @@ class BuilderForm extends Builder
                         'field_help_block_class'=>'hide',
                     ];
                     break;
-
+                
                 default:
                     # code...
                     break;
             }
-        }
+       }
 
-        return $formItems;
+       return $formItems;
     }
 
     /**
@@ -377,7 +376,7 @@ class BuilderForm extends Builder
         if (!is_array($field)) {
             $field = $field->toArray();
         }
-
+        
         $template_path_str = '../';
         $field_type = $field['type'];
 
@@ -387,6 +386,6 @@ class BuilderForm extends Builder
             return parent::fetch($field_template);
         } else{
             hook('FormBuilderExtend', ['field' => $field]);
-        }
+        }  
     }
 }
