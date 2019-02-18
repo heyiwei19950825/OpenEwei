@@ -1,5 +1,9 @@
-<select name="{$field.name}" id="{$field.name}" class="form-control" {$field.extra_attr|default=''}>
-    {present name="field.options.none"}{notempty name="field.options.none"}<option value=''>{$field.options.none}</option>{/notempty}{php}unset($field['options']['none']);{/php}{else/}<option value=''>请选择 {$field.title|default=""}</option>{/present}
+    {present name="field.options.none"}
+    {notempty name="field.options.none"}
+    <option value=''>{$field.options.none}</option>
+    {/notempty}
+    {php}unset($field['options']['none']);{/php}{else/}<option value=''>请选择 {$field.title|default=""}</option>
+    {/present}
     {foreach name="field.options" item="option" key="option_key"}
         {php}if(is_array($option)):{/php}
             <option value="{$option_key}" {present name="field.value"}{eq name="field.value" value="$option_key"} selected{/eq}{/present}
@@ -12,4 +16,17 @@
             <option value="{$option_key}" {present name="field.value"}{eq name="field.value" value="$option_key"} selected{/eq}{/present}>{$option}</option>
         {php}endif;{/php}
     {/foreach}
-</select>
+
+
+
+
+<div class="layui-inline">
+    <div class="layui-inline">
+        <select name="{$field.name}" id="{$field.name}" {$field.extra_attr|default=''}>
+            <option value=''>请选择 {$field.title|default=""}</option>
+            <option value="">选择状态</option>
+            <option value="1">未激活</option>
+            <option value="2">已激活</option>
+        </select>
+    </div>
+</div>

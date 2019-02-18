@@ -1,0 +1,14 @@
+<div class="layui-form layui-card-header layuiadmin-card-header-auto">
+    <div class="layui-form-item">
+        {volist name="searchFields" id="field" key="k"}
+        <div class="form-group mt-10">
+            {:action('common/BuilderForm/fieldType',['field'=>$field],'builder')}
+        </div>
+        {/volist}
+        <div class="layui-inline">
+            <button class="layui-btn layuiadmin-btn-useradmin" lay-submit lay-filter="LAY-search">
+                <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+            </button>
+        </div>
+    </div>
+</div>

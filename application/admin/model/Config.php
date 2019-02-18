@@ -11,7 +11,7 @@
 
 namespace app\admin\model;
 
-use think\model;
+use think\Model;
 use think\facade\Request;
 
 /**
@@ -19,7 +19,7 @@ use think\facade\Request;
  * 配置模型
  * @package app\admin\model
  */
-class Config extends model
+class Config extends Model
 {
     protected $table = COMMON . 'config';
     // 开启自动写入时间戳字段

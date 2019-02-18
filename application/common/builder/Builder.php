@@ -21,6 +21,7 @@ class Builder extends Base {
 
     protected $metaTitle; // 页面标题
     protected $tips;      // 页面标题
+    protected $dataUrl;   // 数据地址
     protected $pluginName;
     protected $preQueryConnector;
 
@@ -87,6 +88,17 @@ class Builder extends Base {
      */
     public function setPageTips($content,$type='info') {
         $this->tips = $content;
+        return $this;
+    }
+
+    /**
+     * 设置数据获取地址
+     * @param string $url
+     * @return $this
+     */
+    public function setDataUrl( $url = '' ){
+        $this->dataUrl = $url;
+
         return $this;
     }
 

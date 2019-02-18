@@ -17,7 +17,6 @@ namespace app\common\builder;
 class BuilderList extends Builder {
     
     private $topButtonList   = [];   // 顶部工具栏按钮组
-    //private $_select         = [];             //添加下拉框
     private $search          = ['type'=>'basic']; // 搜索参数配置
     private $action_url = '';
     private $tabNav          = [];           // 页面Tab导航
@@ -33,7 +32,7 @@ class BuilderList extends Builder {
     private $openPage = false;        //是否开启分页
     private $tableLimit = 20;        //分页显示数量
     private $tableLimits = [20,50,100];        //可选择分页显示数量
-    //private $_template;                    // 模版
+    private $pageTitle       =  '';         // 页面标题
 
     /**
      * 添加筛选功能
@@ -116,6 +115,13 @@ class BuilderList extends Builder {
      */
     public function setListPrimaryKey($table_primary_key = 'id') {
         $this->tablePrimaryKey = $table_primary_key;
+        return $this;
+    }
+
+
+    public function setPageTitle( $title = "" ){
+        $this->pageTitle = $title;
+
         return $this;
     }
 
@@ -577,6 +583,8 @@ class BuilderList extends Builder {
                 'table_limits'        => json_encode($this->tableLimits), //可选数据分页数量
                 'extra_html'          => $this->extraHtml, // 额外HTML代码
                 'staticFiles'         => $this->staticFiles,// 加载静态资源文件
+                'data_url'            => $this->dataUrl,// 加载数据使用的url
+                'page_title'          => $this->pageTitle,// 页面标题
             ];
             $this->assign($template_val);
             $templateFile = APP_PATH.'/common/view/builder/'.$template_name.'.html';

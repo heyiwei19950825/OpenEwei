@@ -14,6 +14,7 @@ namespace app\admin\controller;
 use app\admin\model\AdminLog;
 use app\common\layout\Iframe;
 use org\Helper;
+use org\WxJsConfig;
 
 class Nav extends Admin
 {
@@ -36,13 +37,21 @@ class Nav extends Admin
      * @return mixed
      */
     public function index(){
+        $wxJsConfig = new WxJsConfig();
+        $config = $wxJsConfig->getJsConfig();
+        var_dump(json_decode($config,true));die;
+
+
+
+
         $return = builder('list')
-            ->setPageTips('用于管理后台的规则项')
+            ->setPageTitle('导航管理')
+            ->setDataUrl(url('admin/action/actionLimit'))
             ->addTopBtn('addnew',array('href'=>url('edit',['pid'=>1])))  // 添加新增按钮
             ->addTopBtn('resume',array('model'=>'auth_rule'))  // 添加启用按钮
             ->addTopBtn('forbid',array('model'=>'auth_rule'))  // 添加禁用按钮
             ->addTopBtn('delete',array('model'=>'auth_rule'))  // 添加删除按钮
-//            ->setTabNav(logic('Auth')->getTabList(), [])  // 设置页面Tab导航
+//            ->setTabNav([['title' => '标题','href' => url('/admin/nav/index')],['title' => '标题','href' => 'http://www.xxx.cn']],0)  // 设置页面Tab导航
             ->setSearch('', url('rule'))
             ->keyListItem('id','ID',true)
             ->keyListItem('title','标题',true,true)

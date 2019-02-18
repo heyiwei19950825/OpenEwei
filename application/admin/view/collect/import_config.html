@@ -1,0 +1,37 @@
+{extend name="base" /}
+{block name="content"}
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-card-body" style="padding: 15px;">
+            <form class="layui-form " action="" lay-filter="component-form-group">
+                <div class="layui-form-item  layui-col-md8">
+                    <label class="layui-form-label">数据库表名</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="tableName" lay-verify="required"  placeholder="输入需要存入数据库中的表名称" class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">创建字段</label>
+                    <div class="layui-input-block">
+                        <input type="radio" name="field" value="1" title="是" >
+                        <input type="radio" name="field" value="0" title="否" checked="">
+                    </div>
+                    <div class="layui-form-mid layui-word-aux">（多出字段是否添加到表中，如果不添加则会忽略此字段）</div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="script"}
+<script>
+    layui.config({
+        base: '__LAYUI__/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'form'], function(){
+    });
+</script>
+{/block}
+

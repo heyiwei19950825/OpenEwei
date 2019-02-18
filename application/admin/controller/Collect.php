@@ -2,12 +2,14 @@
 
 namespace app\admin\controller;
 
+use org\Helper;
 use QL\QueryList;
 use think\Controller;
+use think\Db;
 use think\Exception;
 use think\Request;
 
-class Collect extends Base
+class Collect extends Controller
 {
     public $config;
 
@@ -39,7 +41,7 @@ class Collect extends Base
             $key[]  = ['type'  => 'checkbox','fixed' => 'left',];
             $second = $row = [];
             $i      = 0;//默认页面数
-
+            dump($params);die;
             //数据验证
             try{
                 $rule = json_decode($params['rule'],true);
@@ -80,7 +82,6 @@ class Collect extends Base
                 $url = $i == 0 ? $params['url']:$params['url'].$i.'/';
                 // 切片选择器
                 $range = $params['range'];
-
                 $data = QueryList::Query($url,$rule,$range)->data;
                 $row = array_merge($row,$data);
                 $i++;
@@ -115,6 +116,91 @@ class Collect extends Base
      */
     public function saveRule(){
 
+    }
+
+    /**
+     * 保存数据
+     */
+    public function saveData(){
+        if( $this->request->isPost() ){
+            $params  = $this->request->param();
+            $config  = Helper::convertUrlArray($params['config']);
+            if(empty($params['data']) ){
+                return $this->error('暂无数据');
+            }
+            //检测表是否存在
+            $checkRow = Db::query('show tables like "oc_'.$config['tableName'].'"');
+
+            //表不存在并且不创建新表 提示错误
+            if( empty($checkRow) ){
+
+                return $this->error('数据表不存在');
+            }
+            try{
+                //创建表
+                if( $config['field'] != 0 ){
+                    //分析字段
+                    $field = array_keys($params['data'][0]);
+                    $tableField = Db::query('desc oc_'.$config['tableName']);
+                    $tableFields = [];
+                    foreach($tableField as $k=>$v){
+                        $tableFields[] = $v['Field'];
+                    }
+                    $sql = '';
+                    //检测字段是否已经存在表中   如果没有则生成sql语句              //生成sql语句
+                    foreach ($field as $k=>$v){
+                        if(!in_array($v,$tableFields)){
+                            $len = ''; // 字段类型
+                            $demo  = $params['data'][0][$v];
+                            if( strlen( $demo ) < 50 ){
+                                $len = 'varchar(50)';
+                            }
+                            switch (strlen( $demo )){
+                                case $demo < 50:
+                                    $len ='varchar(50)';
+                                    break;
+
+                                case $demo < 255:
+                                    $len ='varchar(255)';
+                                    break;
+
+                                case $demo > 255:
+                                    $len ='text';
+                                    break;
+                            }
+
+                            $sql .= ' ADD COLUMN `'.$v.'` '.$len.' DEFAULT NULL, ';
+                        }
+
+                    }
+                    //执行sql语句
+                    $sql = 'ALTER TABLE ` oc_'.$config['tableName'].'`'.rtrim($sql,', ').';';
+                    $tableRow = Db::query($sql);
+                    if( !$tableRow ){
+                        return $this->error('错误数据，请检查1');
+                    }
+                }
+                //数据写入表中
+                $insertRow = Db::name($config['tableName'])->insertAll($params['data']);
+
+                if($insertRow){
+                    return $this->success('写入成功');
+                }
+
+            }catch (Exception $e){
+                echo $e->getMessage();die;
+                return $this->error('错误数据，请检查2');
+
+            }
+        }
+    }
+
+    /**
+     * 采集入库配置
+     * @return mixed
+     */
+    public function importConfig(){
+        return $this->fetch();
     }
 
 }
