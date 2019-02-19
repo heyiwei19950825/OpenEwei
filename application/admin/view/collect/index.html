@@ -22,14 +22,14 @@
                         <div class="layui-form-item  layui-col-md11">
                             <label class="layui-form-label"> * 页面地址</label>
                             <div class="layui-input-block">
-                                <input type="text" name="url" lay-verify="url|required"  placeholder="输入抓取地址的url" class="layui-input" value="http://www.phphz.com/code/">
+                                <input type="text" name="url" lay-verify="url|required"  placeholder="输入抓取地址的url" class="layui-input" value="http://www.niudana.com/">
                                 <div class="layui-form-mid layui-word-aux">（以http:// 或 https://开头）</div>
                             </div>
                         </div>
                         <div class="layui-form-item  layui-col-md11">
                             <label class="layui-form-label"> * 切片规则</label>
                             <div class="layui-input-block">
-                                <input type="text" name="range" lay-verify="required"  placeholder="输入抓取地址的切片规则 例如#cardslist>.card" class="layui-input" value="">
+                                <input type="text" name="range" lay-verify="required"  placeholder="输入抓取地址的切片规则 例如#cardslist>.card" class="layui-input" value="li">
                                 <div class="layui-form-mid layui-word-aux"> 抓取数据页面的唯一节点 </div>
                             </div>
                         </div>
@@ -90,6 +90,14 @@
                             </div>
                             <div class="layui-form-mid layui-word-aux">（注意：有编程经验则可选）</div>
                         </div>
+                        <!--抓取模式选择-->
+                        <div class="layui-form-item  layui-col-md11">
+                            <label class="layui-form-label"> 抓取页数</label>
+                            <div class="layui-input-inline" style="line-height: 36px;">
+                                <input type="number" name="page" value="1" class="layui-input">
+                            </div>
+                            <div class="layui-form-mid layui-word-aux">（注意：抓取多页则写入页码）</div>
+                        </div>
 
                         <!--普通模式-->
                         <div class="general-model">
@@ -97,22 +105,24 @@
                             <div class="layui-form-item  layui-col-md11">
                                 <blockquote class="layui-elem-quote" style="margin-left: 20px;">列表数据采集规则</blockquote>
 
-                                <table class="layui-table" style="margin-left: 20px; width: 98%;">
+                                <table class="layui-table" style="margin-left: 20px; width: 98%;" lay-filter="list_rule">
                                     <thead>
                                     <tr>
                                         <th >字段名称</th>
                                         <th >采集规则</th>
                                         <th >采集类型</th>
                                         <th >中文名称</th>
+                                        <th >正则过滤【正则代码】</th>
                                         <th >操作</th>
                                     </tr>
                                     </thead>
                                     <tbody class="tbody_rule">
                                     <tr class="table_rule">
-                                        <td><input type="text" name="list_name[]" class="layui-input" placeholder="标示字段名称 例如：thumb"></td>
+                                        <td><input type="text" name="list_name[]" class="layui-input list_name" placeholder="标示字段名称 例如：thumb"></td>
                                         <td><input type="text" name="list_rule[]" class="layui-input" placeholder="jquery 选取规则 例如：.shop-item>a:eq(0)"></td>
                                         <td><input type="text" name="list_type[]" class="layui-input" placeholder="仅支持：text href src html"></td>
                                         <td><input type="text" name="list_desc[]" class="layui-input" placeholder="自定义中文名称"></td>
+                                        <td><input type="text" name="list_filtration[]" class="layui-input" placeholder="自定义中文名称"></td>
                                         <td><a class="layui-btn layui-btn-danger layui-btn-xs table_rule_del">删除</a></td>
                                     </tr>
                                     </tbody>
@@ -120,11 +130,6 @@
                                 <div style="float:right">
                                     <a class="layui-btn layui-btn-xs table_rule_add">增加</a>
                                 </div>
-                                <!--<label class="layui-form-label"> * 采集规则</label>-->
-                                <!--<div class="layui-input-block">-->
-                                <!--<textarea placeholder='{"title":[".shop-item>a:eq(0)","title","标题"],"desc":[".shop-item>p","text","描述"],"thumb":["img","src","缩略图"],"category":[".metacat>a:eq(1)","text","分类"],"link":[".shop-item>a:eq(0)","href","详情地址",{"content":[".article-content","html","内容"],"reading":[".article-header>.muted:eq(4)","text","阅读量"],"comming":[".article-header>.muted:eq(5)","text","评论量"]}],"time":[".pricebtn","text","原文时间"]}' lay-verify="required" class="layui-textarea" name="rule"> {"title":[".shop-item>a:eq(0)","title","标题"],"desc":[".shop-item>p","text","描述"],"thumb":["img","src","缩略图"],"category":[".metacat>a:eq(1)","text","分类"],"link":[".shop-item>a:eq(0)","href","详情地址",{"content":[".article-content","html","内容","-blockquote"],"reading":[".article-header>.muted:eq(4)","text","阅读量"],"comming":[".article-header>.muted:eq(5)","text","评论量"]}],"time":[".pricebtn","text","原文时间","-a"]}</textarea>-->
-                                <!--<div class="layui-form-mid layui-word-aux">（页面元素抓取规则）</div>-->
-                                <!--</div>-->
                             </div>
 
                             <!--详情采集规则-->
@@ -136,9 +141,9 @@
                                 </div>
                             </div>
                             <div class="layui-form-item  layui-col-md11 layui-hide detail-url">
-                                <label class="layui-form-label"> * 详情URL</label>
+                                <label class="layui-form-label"> * 详情字段</label>
                                 <div class="layui-input-block">
-                                    <input type="text" name="range" placeholder="抓取对应列表数据中字段" class="layui-input" value="">
+                                    <input type="text" name="detail_code" placeholder="抓取对应列表数据中详情字段" class="layui-input" value="link">
                                 </div>
                             </div>
                             <div class="layui-form-item  layui-col-md11 layui-hide detail-rule">
@@ -150,6 +155,7 @@
                                         <th >采集规则</th>
                                         <th >采集类型</th>
                                         <th >中文名称</th>
+                                        <th >正则过滤【正则代码】</th>
                                         <th >操作</th>
                                     </tr>
                                     </thead>
@@ -157,9 +163,8 @@
                                     <tr class="table_rule">
                                         <td><input type="text" name="detail_name[]"  class="layui-input" placeholder="标示字段名称 例如：thumb"></td>
                                         <td><input type="text" name="detail_rule[]" class="layui-input" placeholder="jquery 选取规则 例如：.shop-item>a:eq(0)"></td>
-                                        <td><input type="text" name="detail_rule[]" class="layui-input" placeholder="jquery 选取规则 例如：.shop-item>a:eq(0)"></td>
                                         <td><input type="text" name="detail_type[]" class="layui-input" placeholder="仅支持：text href src html"></td>
-                                        <td><input type="text" name="detail_desc[]" class="layui-input" placeholder="自定义中文名称"></td>
+                                        <td><input type="text" name="detail_filtration[]" class="layui-input" placeholder="自定义中文名称"></td>
                                         <td><a class="layui-btn layui-btn-danger layui-btn-xs table_rule_del">删除</a></td>
                                     </tr>
                                     </tbody>
@@ -167,11 +172,6 @@
                                 <div style="float:right">
                                     <a class="layui-btn layui-btn-xs table_rule_add">增加</a>
                                 </div>
-                                <!--<label class="layui-form-label"> * 采集规则</label>-->
-                                <!--<div class="layui-input-block">-->
-                                <!--<textarea placeholder='{"title":[".shop-item>a:eq(0)","title","标题"],"desc":[".shop-item>p","text","描述"],"thumb":["img","src","缩略图"],"category":[".metacat>a:eq(1)","text","分类"],"link":[".shop-item>a:eq(0)","href","详情地址",{"content":[".article-content","html","内容"],"reading":[".article-header>.muted:eq(4)","text","阅读量"],"comming":[".article-header>.muted:eq(5)","text","评论量"]}],"time":[".pricebtn","text","原文时间"]}' lay-verify="required" class="layui-textarea" name="rule"> {"title":[".shop-item>a:eq(0)","title","标题"],"desc":[".shop-item>p","text","描述"],"thumb":["img","src","缩略图"],"category":[".metacat>a:eq(1)","text","分类"],"link":[".shop-item>a:eq(0)","href","详情地址",{"content":[".article-content","html","内容","-blockquote"],"reading":[".article-header>.muted:eq(4)","text","阅读量"],"comming":[".article-header>.muted:eq(5)","text","评论量"]}],"time":[".pricebtn","text","原文时间","-a"]}</textarea>-->
-                                <!--<div class="layui-form-mid layui-word-aux">（页面元素抓取规则）</div>-->
-                                <!--</div>-->
                             </div>
                         </div>
                         <!--专业模式-->
@@ -195,7 +195,7 @@
                         <div class="layui-form-item  layui-col-md11">
                             <label class="layui-form-label"> * 数据表</label>
                             <div class="layui-input-block">
-                                <input type="text" name="table_name" lay-verify="required"  placeholder="输入库表名称" class="layui-input" value="">
+                                <input type="text" name="table_name" lay-verify="required"  placeholder="输入库表名称" class="layui-input" value="article">
                                 <div class="layui-form-mid layui-word-aux">（注意：如果表中不存在字段则自动添加该字段）</div>
                             </div>
 
@@ -271,11 +271,12 @@
 
         /* 监听提交 */
         form.on('submit(component-form-demo)', function(data){
-            var index = layer.load(1, {
-                shade: [0.1,'#fff'] //0.1透明度的白色背景
-            });
+            console.log(data);
+            // var index = layer.load(1, {
+            //     shade: [0.1,'#fff'] //0.1透明度的白色背景
+            // });
             $.post("{:url('admin/collect/rule')}", data.field, function (res) {
-                layer.close(index);
+                // layer.close(index);
                 layer.msg(res.msg);
                 if( res.code == 1 ){
                     renderTable(res.data.key,res.data.data);
@@ -343,14 +344,13 @@
                        //提交 Ajax 成功后，静态更新表格中的数据
                        //post存入数据表中
                        $.post("{:url('admin/collect/saveData')}",{
-                           data:checkData, //抓取数据
+                           data:JSON.stringify(checkData), //抓取数据
                            config:config     //其他参数
                        },function( res ){
                            if( res.code == 0 ){
                                 layer.msg(res.msg);
                            }
                        })
-
                }
            })
         }
@@ -358,9 +358,21 @@
         //添加入库规则
         $('.table_rule_add').on('click',function(){
             var par = $(this).parents('.layui-form-item');
-            var html = '<tr class="table_rule">'+par.find('.table_rule').html()+'</tr>';
+            var i  = $('.list_name').length;
+            console.log($('.list_name').length);
+            var html = '<tr class="table_rule">\n' +
+                '                                        <td><input type="text" name="list_name['+i+']" class="layui-input list_name" placeholder="标示字段名称 例如：thumb"></td>\n' +
+                '                                        <td><input type="text" name="list_rule['+i+']" class="layui-input" placeholder="jquery 选取规则 例如：.shop-item>a:eq(0)"></td>\n' +
+                '                                        <td><input type="text" name="list_type['+i+']" class="layui-input" placeholder="仅支持：text href src html"></td>\n' +
+                '                                        <td><input type="text" name="list_desc['+i+']" class="layui-input" placeholder="自定义中文名称"></td>\n' +
+                '                                        <td><input type="text" name="list_filtration['+i+']" class="layui-input" placeholder="自定义中文名称"></td>\n' +
+                '                                        <td><a class="layui-btn layui-btn-danger layui-btn-xs table_rule_del">删除</a></td>\n' +
+                '                                    </tr>';
 
             par.find('tbody').append(html)
+            table.on('list_rule',function(){
+                this.reload();
+            });
         })
         //删除入库规则
         $('.table_rule_del').on('click','tbody_rule',function(){
@@ -377,7 +389,7 @@
             }else{
                 $('.detail-rule').addClass('layui-hide');
                 $('.detail-url').addClass('layui-hide');
-                $('input[name=need_detail]').val(1);
+                $('input[name=need_detail]').val(0);
             }
         });
 

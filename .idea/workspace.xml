@@ -2,20 +2,62 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98777e50-01de-4b71-8821-08f1cfad9611" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/application/admin/view/collect/import_config.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/bg1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/qrcode.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/admin/behavior/AdminLog.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/behavior/AdminLog.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/admin/behavior/UserLog.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/behavior/UserLog.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/admin/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/admin/controller/Action.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/controller/Action.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/admin/controller/Admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/controller/Admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/admin/controller/Adv.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/controller/Adv.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/admin/controller/Article.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/controller/Article.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/admin/controller/Base.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/controller/Base.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/admin/controller/Collect.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/controller/Collect.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/admin/controller/File.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/controller/File.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/admin/controller/Login.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/controller/Login.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/admin/controller/Nav.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/controller/Nav.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/admin/controller/Score.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/controller/Score.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/admin/controller/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/controller/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/admin/model/ActionLimit.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/model/ActionLimit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/admin/model/Admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/model/Admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/admin/model/AdminAuthGroup.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/model/AdminAuthGroup.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/admin/model/AdminAuthRule.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/model/AdminAuthRule.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/admin/model/AdminLog.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/model/AdminLog.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/admin/model/Config.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/model/Config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/adv/pos.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/adv/pos.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/admin/model/IPBlackList.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/model/IPBlackList.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/admin/model/Picture.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/model/Picture.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/admin/model/ScoreLog.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/model/ScoreLog.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/admin/model/ScoreRule.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/model/ScoreRule.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/admin/model/ScoreType.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/model/ScoreType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/admin/model/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/model/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/admin/model/UserCount.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/model/UserCount.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/admin/model/UserLog.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/model/UserLog.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/admin/model/UserRole.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/model/UserRole.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/admin/model/UserRule.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/model/UserRule.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/admin/tags.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/tags.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/admin/validate/ActionLimit.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/validate/ActionLimit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/admin/validate/ScoreRule.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/validate/ScoreRule.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/admin/validate/ScoreType.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/validate/ScoreType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/admin/validate/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/validate/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/admin/validate/UserRole.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/validate/UserRole.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/admin/validate/UserRule.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/validate/UserRule.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/admin/view/collect/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/collect/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/common/builder/Builder.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/common/builder/Builder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/common/builder/BuilderList.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/common/builder/BuilderList.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/common/view/builder/Fields/select.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/common/view/builder/Fields/select.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/common/view/builder/listbuilder.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/common/view/builder/listbuilder.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/common/view/layout/iframe/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/common/view/layout/iframe/search.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/admin/view/index/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/index/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/admin/view/index/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/index/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/admin/view/login/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/login/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/common/controller/Api.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/common/controller/Api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/common/model/Adv.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/common/model/Adv.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/common/model/AdvPos.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/common/model/AdvPos.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/common/model/Article.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/common/model/Article.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/common/model/ArticleCategory.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/common/model/ArticleCategory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/common/model/Nav.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/common/model/Nav.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/common/model/NavCategory.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/common/model/NavCategory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/common/model/Picture.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/common/model/Picture.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/common/widget/AdvWidget.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/common/widget/AdvWidget.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/index/controller/Base.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/index/controller/Base.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/install/common.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/install/common.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/install/controller/Install.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/install/controller/Install.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/runtime/cache/8d/6ab84ca2af9fccd4e4048694176ebf.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/runtime/cache/d7/2e5ee9b367833956ed9f88a960c686.php" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -76,7 +118,7 @@
     <session id="588067995">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="8" />
+          <entry key="project.closed" value="9" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.20" value="1" />
           <entry key="project.open.time.24" value="1" />
@@ -90,25 +132,26 @@
           <entry key="project.open.time.33" value="2" />
           <entry key="project.open.time.34" value="2" />
           <entry key="project.open.time.35" value="1" />
+          <entry key="project.open.time.36" value="1" />
           <entry key="project.open.time.53" value="2" />
           <entry key="project.open.time.57" value="1" />
           <entry key="project.open.time.63" value="1" />
           <entry key="project.open.time.65" value="1" />
           <entry key="project.open.time.73" value="1" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="36" />
+          <entry key="project.opened" value="37" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="conf" value="2" />
           <entry key="css" value="2" />
-          <entry key="html" value="261" />
+          <entry key="html" value="262" />
           <entry key="jpg" value="8" />
           <entry key="js" value="34" />
           <entry key="json" value="6" />
           <entry key="md" value="2" />
-          <entry key="php" value="252" />
+          <entry key="php" value="253" />
           <entry key="png" value="4" />
           <entry key="sql" value="3" />
           <entry key="stub" value="3" />
@@ -119,12 +162,12 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="2" />
-          <entry key="HTML" value="261" />
+          <entry key="HTML" value="262" />
           <entry key="Image" value="12" />
           <entry key="JSON" value="6" />
           <entry key="JavaScript" value="34" />
           <entry key="Markdown" value="2" />
-          <entry key="PHP" value="255" />
+          <entry key="PHP" value="256" />
           <entry key="PLAIN_TEXT" value="4" />
           <entry key="SQL" value="3" />
           <entry key="SmartyConfig" value="2" />
@@ -132,19 +175,19 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="html" value="8635" />
+          <entry key="html" value="9017" />
           <entry key="js" value="585" />
           <entry key="json" value="7" />
-          <entry key="php" value="22878" />
+          <entry key="php" value="24594" />
           <entry key="test" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="8636" />
+          <entry key="HTML" value="9018" />
           <entry key="JSON" value="7" />
           <entry key="JavaScript" value="584" />
-          <entry key="PHP" value="22878" />
+          <entry key="PHP" value="24594" />
           <entry key="PLAIN_TEXT" value="1" />
         </counts>
       </usages-collector>
@@ -157,39 +200,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/admin/view/collect/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="735">
-              <caret line="405" column="46" selection-start-line="405" selection-start-column="46" selection-end-line="405" selection-end-column="46" />
+            <state relative-caret-position="429">
+              <caret line="357" column="16" lean-forward="true" selection-start-line="357" selection-start-column="16" selection-end-line="357" selection-end-column="16" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" />
-                <element signature="n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" />
-                <element signature="n#div#2;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" />
                 <element signature="n#div#3;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" />
-                <element signature="n#div#2;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" />
                 <element signature="n#div#5;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" />
                 <element signature="n#style#0;n#div#0;n#div#5;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#div#6;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" />
                 <element signature="n#div#7;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" />
                 <element signature="n#div#8;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" />
                 <element signature="n#style#0;n#div#0;n#div#9;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#div#10;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" />
-                <element signature="n#div#0;n#div#10;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" />
-                <element signature="n#style#0;n#blockquote#0;n#div#0;n#div#10;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#table#0;n#div#0;n#div#10;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#10;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#div#1;n#div#10;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" />
-                <element signature="n#style#0;n#div#0;n#div#1;n#div#10;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#div#2;n#div#10;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" />
-                <element signature="n#div#3;n#div#10;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" />
-                <element signature="n#style#0;n#blockquote#0;n#div#3;n#div#10;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#table#0;n#div#3;n#div#10;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#3;n#div#10;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#div#11;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" />
+                <element signature="n#style#0;n#div#0;n#div#10;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#1;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#2;n#div#1;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
@@ -202,13 +230,25 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/admin/controller/Collect.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="293">
-              <caret line="81" column="20" selection-start-line="81" selection-start-column="17" selection-end-line="81" selection-end-column="20" />
+            <state relative-caret-position="590">
+              <caret line="63" column="17" lean-forward="true" selection-start-line="63" selection-start-column="17" selection-end-line="63" selection-end-column="17" />
               <folding>
                 <element signature="e#40#55#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/admin/controller/Action.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="561">
+              <caret line="34" column="5" lean-forward="true" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
+              <folding>
+                <element signature="e#6#378#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -226,36 +266,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>active_width</find>
-      <find>form</find>
-      <find>$config['tableName']</find>
-      <find>.article-content</find>
-      <find>$rules</find>
-      <find>call_user_func</find>
-      <find>-a</find>
-      <find>过滤</find>
-      <find>layui-col-md8</find>
-      <find>layui-col-md12</find>
-      <find>采集</find>
-      <find>增加</find>
-      <find>table_rule_del</find>
-      <find>table_rule_add.</find>
-      <find>table_rule_add</find>
-      <find>#cardslist&gt;.card</find>
-      <find>立即提交</find>
-      <find>抓取</find>
-      <find>required</find>
-      <find>layui-table</find>
-      <find>抓取详情</find>
-      <find>开启|关闭</find>
-      <find>detail_switch</find>
-      <find>login_config</find>
       <find>url</find>
       <find>lay-verify=&quot;url</find>
       <find>detail_</find>
       <find>模拟登陆</find>
       <find>{</find>
       <find>model_switch</find>
+      <find>need_login</find>
+      <find>model</find>
+      <find>页</find>
+      <find>切</find>
+      <find>get_model</find>
+      <find>数据表</find>
+      <find>标题</find>
+      <find>range</find>
+      <find>自定义中文</find>
+      <find>detail_name</find>
+      <find>need_detail</find>
+      <find>$range</find>
+      <find>中文名称</find>
+      <find>component-form-demo</find>
+      <find>采集规则测试</find>
+      <find>table</find>
+      <find>list_rule</find>
+      <find>list_filtration</find>
+      <find>table_rule</find>
+      <find>表规则参数不能为空或错</find>
+      <find>OpenCenter</find>
+      <find>Author: wdx(wdx@ourstu.com)</find>
+      <find>http://www.ocenter.cn</find>
+      <find>list_name</find>
     </findStrings>
     <replaceStrings>
       <replace>https://www.layui.com/admin/std/dist/layuiadmin/style/res/template/portrait.png</replace>
@@ -279,6 +319,9 @@
       <replace>layui-col-md11</replace>
       <replace>login-config</replace>
       <replace>list_</replace>
+      <replace>OpenEwei</replace>
+      <replace>Author: ewei(ewei@dtyjkj.com)</replace>
+      <replace>http://www.redkylin.com</replace>
     </replaceStrings>
     <dirStrings>
       <dir>E:\RaningWork\OpenCenter_2\thinkphp</dir>
@@ -287,8 +330,8 @@
       <dir>E:\RaningWork\OpenCenter_2\application\common</dir>
       <dir>E:\RaningWork\OpenCenter_2\application\admin</dir>
       <dir>E:\RaningWork\OpenCenter_2</dir>
-      <dir>E:\RaningWork\OpenCenter_2\application</dir>
       <dir>E:\RaningWork\OpenCenter_2\application\admin\view</dir>
+      <dir>E:\RaningWork\OpenCenter_2\application</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -298,7 +341,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/application/admin/view/html/material.html" />
         <option value="$PROJECT_DIR$/application/admin/view/html/template.html" />
         <option value="$PROJECT_DIR$/application/admin/view/setting/system.html" />
         <option value="$PROJECT_DIR$/application/admin/view/setting/personage.html" />
@@ -347,8 +389,9 @@
         <option value="$PROJECT_DIR$/config/app.php" />
         <option value="$PROJECT_DIR$/extend/org/Helper.php" />
         <option value="$PROJECT_DIR$/application/admin/view/collect/import_config.html" />
-        <option value="$PROJECT_DIR$/application/admin/controller/Collect.php" />
+        <option value="$PROJECT_DIR$/application/admin/controller/Action.php" />
         <option value="$PROJECT_DIR$/application/admin/view/collect/index.html" />
+        <option value="$PROJECT_DIR$/application/admin/controller/Collect.php" />
       </list>
     </option>
   </component>
@@ -385,6 +428,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -397,73 +441,10 @@
               <item name="OpenCenter_2" type="462c0819:PsiDirectoryNode" />
               <item name="application" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="OpenCenter_2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="OpenCenter_2" type="462c0819:PsiDirectoryNode" />
-              <item name="application" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="OpenCenter_2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="OpenCenter_2" type="462c0819:PsiDirectoryNode" />
-              <item name="application" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="OpenCenter_2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="OpenCenter_2" type="462c0819:PsiDirectoryNode" />
-              <item name="application" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="OpenCenter_2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="OpenCenter_2" type="462c0819:PsiDirectoryNode" />
-              <item name="application" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="collect" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="OpenCenter_2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="OpenCenter_2" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="OpenCenter_2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="OpenCenter_2" type="462c0819:PsiDirectoryNode" />
-              <item name="extend" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="OpenCenter_2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="OpenCenter_2" type="462c0819:PsiDirectoryNode" />
-              <item name="extend" type="462c0819:PsiDirectoryNode" />
-              <item name="org" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="OpenCenter_2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="OpenCenter_2" type="462c0819:PsiDirectoryNode" />
-              <item name="vendor" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="OpenCenter_2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="OpenCenter_2" type="462c0819:PsiDirectoryNode" />
-              <item name="vendor" type="462c0819:PsiDirectoryNode" />
-              <item name="jaeger" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="OpenCenter_2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="OpenCenter_2" type="462c0819:PsiDirectoryNode" />
-              <item name="vendor" type="462c0819:PsiDirectoryNode" />
-              <item name="jaeger" type="462c0819:PsiDirectoryNode" />
-              <item name="querylist" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -553,18 +534,19 @@
       <workItem from="1550020817909" duration="9752000" />
       <workItem from="1550106079417" duration="1465000" />
       <workItem from="1550194427979" duration="11186000" />
-      <workItem from="1550452034775" duration="18108000" />
+      <workItem from="1550452034775" duration="18309000" />
+      <workItem from="1550539531732" duration="20659000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="292232000" />
+    <option name="totallyTimeSpent" value="313092000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1874" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16372657" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16538037" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -592,13 +574,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application/admin/common.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3672">
-          <caret line="224" column="28" lean-forward="true" selection-start-line="224" selection-start-column="28" selection-end-line="224" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/admin/view/base.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
@@ -866,48 +841,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/admin/controller/Collect.php">
+    <entry file="file://$PROJECT_DIR$/application/admin/controller/Action.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="81" column="20" selection-start-line="81" selection-start-column="17" selection-end-line="81" selection-end-column="20" />
+        <state relative-caret-position="561">
+          <caret line="34" column="5" lean-forward="true" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
           <folding>
-            <element signature="e#40#55#0#PHP" expanded="true" />
+            <element signature="e#6#378#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/admin/view/collect/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="735">
-          <caret line="405" column="46" selection-start-line="405" selection-start-column="46" selection-end-line="405" selection-end-column="46" />
+        <state relative-caret-position="429">
+          <caret line="357" column="16" lean-forward="true" selection-start-line="357" selection-start-column="16" selection-end-line="357" selection-end-column="16" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" />
-            <element signature="n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" />
-            <element signature="n#div#2;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" />
             <element signature="n#div#3;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" />
-            <element signature="n#div#2;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" />
             <element signature="n#div#5;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" />
             <element signature="n#style#0;n#div#0;n#div#5;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#div#6;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" />
             <element signature="n#div#7;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" />
             <element signature="n#div#8;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" />
             <element signature="n#style#0;n#div#0;n#div#9;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#div#10;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" />
-            <element signature="n#div#0;n#div#10;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" />
-            <element signature="n#style#0;n#blockquote#0;n#div#0;n#div#10;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#table#0;n#div#0;n#div#10;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#10;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#div#1;n#div#10;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#10;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#div#2;n#div#10;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" />
-            <element signature="n#div#3;n#div#10;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" />
-            <element signature="n#style#0;n#blockquote#0;n#div#3;n#div#10;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#table#0;n#div#3;n#div#10;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#3;n#div#10;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#div#11;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#div#10;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#1;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#2;n#div#1;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
@@ -915,6 +875,16 @@
             <element signature="n#style#0;n#div#0;n#div#2;n#div#1;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#2;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#2;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/admin/controller/Collect.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="590">
+          <caret line="63" column="17" lean-forward="true" selection-start-line="63" selection-start-column="17" selection-end-line="63" selection-end-column="17" />
+          <folding>
+            <element signature="e#40#55#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

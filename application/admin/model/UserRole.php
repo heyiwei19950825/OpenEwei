@@ -1,9 +1,9 @@
 <?php
 /**----------------------------------------------------------------------
- * OpenCenter V3
- * Copyright 2014-2018 http://www.ocenter.cn All rights reserved.
+ * OpenEwei V3
+ * Copyright 2014-2018 http://www.redkylin.com All rights reserved.
  * ----------------------------------------------------------------------
- * Author: wdx(wdx@ourstu.com)
+ * Author: ewei(ewei@dtyjkj.com)
  * Date: 2018/10/10
  * Time: 14:11
  * ----------------------------------------------------------------------

@@ -37,19 +37,55 @@ class Collect extends Controller
         if($this->request->isPost()){
             //初始化数据
             $params = $this->request->param();
+            $url = $range = $dow_img = $code = $need_login = $login_url = $login_name = $login_password = $need_detail = $rule = $table_name = $get_model = $page = $detail_code = '';
+            $list_name = $list_rule = $list_type = $list_desc = $detail_name = $detail_rule = $detail_type = $detail_desc = $table_collect_name = $table_field_name =  $second = $row = $list_filtration = [];
+            extract($params);
+
             $domain = 'http://'.explode('/',$params['url'])[2];//获取域名
             $key[]  = ['type'  => 'checkbox','fixed' => 'left',];
-            $second = $row = [];
             $i      = 0;//默认页面数
-            dump($params);die;
-            //数据验证
-            try{
-                $rule = json_decode($params['rule'],true);
-            }catch (Exception $e){
-                $this->error('规则格式错误');
+
+            //是否需要模拟登陆
+            if($need_login){
+
             }
 
-            if(empty($rule)) $this->error('规则格式错误');
+            //判断抓取模式
+            if( $get_model ===  "0" ){      //普通模式
+                $rule = [];
+                //需要做数据转换
+                foreach ($list_name as $k => $v){
+
+                    if( empty( $v ) || empty( $list_rule[$k] )  || empty( $list_type[$k] ) || empty( $list_desc[$k] ) ){
+                        $this->error('列表规则参数不能为空');
+                    }
+
+                    $rule[$v] = [$list_rule[$k],$list_type[$k],$list_desc[$k]];
+                }
+
+
+                //设置详情规则
+                if( $need_detail == 1 ){
+                    foreach ($detail_name as $k => $v){
+
+                        if( empty( $v ) || empty( $detail_rule[$k] )  || empty( $detail_type[$k] ) || empty( $detail_desc[$k] ) ){
+                            $this->error('列表规则参数不能为空');
+                        }
+                        $rule[$detail_code][] = [$v =>[$detail_rule[$k],$detail_type[$k],$detail_desc[$k]]];
+                    }
+                }
+
+            }else{
+                //数据验证
+                try{
+                    $rule = json_decode($params['rule'],true);
+                }catch (Exception $e){
+                    $this->error('规则格式错误');
+                }
+            }
+
+            if(empty($rule)) $this->error('列表规则参数不能为空或错误');
+
             //初始化话规则
             foreach ($rule as $k => &$v){
                 //验证规则格式
@@ -74,15 +110,35 @@ class Collect extends Controller
                     unset($v[3]);
                 }
             }
-
             $key[] =["fixed"=> 'right', "width"=> 165, "align"=> 'center', "toolbar"=> '#barDemo'];
             //查询1级
-            while ( $i <= $params['page']){
+            while ( $i <= $page ){
                 // 待采集的页面地址
                 $url = $i == 0 ? $params['url']:$params['url'].$i.'/';
                 // 切片选择器
                 $range = $params['range'];
                 $data = QueryList::Query($url,$rule,$range)->data;
+                try{
+                    //正则过滤
+                    foreach ($data as $dataK=>&$dataV){
+                        $fi = 0;
+                        foreach ($dataV as $fk => &$fv){
+                            if( !empty($fv) &&  $list_filtration[$fi]){
+                                preg_match("/$list_filtration[$fi]/",$fv,$match);
+                                if(!empty($match)){
+                                    $fv = $match[0];
+                                }
+                            }
+                            $fi++;
+                        }
+
+                    }
+                }catch (Exception $e){
+                    echo $e->getMessage();die;
+                }
+
+
+
                 $row = array_merge($row,$data);
                 $i++;
             }
@@ -122,12 +178,17 @@ class Collect extends Controller
      * 保存数据
      */
     public function saveData(){
+
         if( $this->request->isPost() ){
             $params  = $this->request->param();
+            unset($params['data']);
+            var_dump($params);die;
+
             $config  = Helper::convertUrlArray($params['config']);
             if(empty($params['data']) ){
                 return $this->error('暂无数据');
             }
+
             //检测表是否存在
             $checkRow = Db::query('show tables like "oc_'.$config['tableName'].'"');
 

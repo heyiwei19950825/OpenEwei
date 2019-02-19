@@ -1,7 +1,7 @@
 <?php
 /**
- * OpenCenter V3
- * Copyright 2014-2018 http://www.ocenter.cn All rights reserved.
+ * OpenEwei V3
+ * Copyright 2014-2018 http://www.redkylin.com All rights reserved.
  * ----------------------------------------------------------------------
  * Author: sun(slf02@ourstu.com)
  * Date: 2018/9/27
