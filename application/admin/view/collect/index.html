@@ -3,7 +3,7 @@
 <div class="layui-fluid">
     <div class="layui-tab layui-tab-card">
         <ul class="layui-tab-title">
-            <li class="layui-this">内容采集</li>
+            <li class="layui-this">通用抓取</li>
             <li>文章采集</li>
             <li>图片采集</li>
             <li>视频采集</li>
@@ -14,7 +14,7 @@
             <div class="layui-row">
                 <form class="layui-form layui-card-header layuiadmin-card-header-auto">
                     <!--采集规则-->
-                    <div class="layui-col-md8 layui-card" style="padding-bottom: 30px;">
+                    <div class="layui-col-md12 layui-card" style="padding-bottom: 30px;">
                         <div class="layui-card-header layui-col-md11 " style="margin-bottom: 20px;">
                             采集规则
                         </div>
@@ -118,17 +118,41 @@
                                     </thead>
                                     <tbody class="tbody_rule">
                                     <tr class="table_rule">
-                                        <td><input type="text" name="list_name[]" class="layui-input list_name" placeholder="标示字段名称 例如：thumb"></td>
-                                        <td><input type="text" name="list_rule[]" class="layui-input" placeholder="jquery 选取规则 例如：.shop-item>a:eq(0)"></td>
-                                        <td><input type="text" name="list_type[]" class="layui-input" placeholder="仅支持：text href src html"></td>
-                                        <td><input type="text" name="list_desc[]" class="layui-input" placeholder="自定义中文名称"></td>
-                                        <td><input type="text" name="list_filtration[]" class="layui-input" placeholder="自定义中文名称"></td>
+                                        <td><input type="text" value="name" name="list_name[]" class="layui-input list_name" placeholder="标示字段名称 例如：thumb"></td>
+                                        <td><input type="text" value="a:eq(0)" name="list_rule[]" class="layui-input" placeholder="jquery 选取规则 例如：.shop-item>a:eq(0)"></td>
+                                        <td><input type="text" value="title" name="list_type[]" class="layui-input" placeholder="仅支持：text href src html"></td>
+                                        <td><input type="text" value="名称" name="list_desc[]" class="layui-input" placeholder="自定义中文名称"></td>
+                                        <td><input type="text" value="<b>.*<\/b>" name="list_filtration[]" class="layui-input" placeholder="正则表达式"></td>
+                                        <td><a class="layui-btn layui-btn-danger layui-btn-xs table_rule_del">删除</a></td>
+                                    </tr>
+                                    <tr class="table_rule">
+                                        <td><input type="text" value="link" name="list_name[]" class="layui-input list_name" placeholder="标示字段名称 例如：thumb"></td>
+                                        <td><input type="text" value="a:last" name="list_rule[]" class="layui-input" placeholder="jquery 选取规则 例如：.shop-item>a:eq(0)"></td>
+                                        <td><input type="text" value="href" name="list_type[]" class="layui-input" placeholder="仅支持：text href src html"></td>
+                                        <td><input type="text" value="链接" name="list_desc[]" class="layui-input" placeholder="自定义中文名称"></td>
+                                        <td><input type="text" value="(http|https):\/\/.*" name="list_filtration[]" class="layui-input" placeholder="正则表达式"></td>
+                                        <td><a class="layui-btn layui-btn-danger layui-btn-xs table_rule_del">删除</a></td>
+                                    </tr>
+                                    <tr class="table_rule">
+                                        <td><input type="text" value="logo" name="list_name[]" class="layui-input list_name" placeholder="标示字段名称 例如：thumb"></td>
+                                        <td><input type="text" value="a:eq(0)>i" name="list_rule[]" class="layui-input" placeholder="jquery 选取规则 例如：.shop-item>a:eq(0)"></td>
+                                        <td><input type="text" value="style" name="list_type[]" class="layui-input" placeholder="仅支持：text href src html"></td>
+                                        <td><input type="text" value="图片" name="list_desc[]" class="layui-input" placeholder="自定义中文名称"></td>
+                                        <td><input type="text" value="\/uploadfile.*\.(png|jpg|gif)" name="list_filtration[]" class="layui-input" placeholder="正则表达式"></td>
+                                        <td><a class="layui-btn layui-btn-danger layui-btn-xs table_rule_del">删除</a></td>
+                                    </tr>
+                                    <tr class="table_rule">
+                                        <td><input type="text" value="desc" name="list_name[]" class="layui-input list_name" placeholder="标示字段名称 例如：thumb"></td>
+                                        <td><input type="text" value="a:eq(0)" name="list_rule[]" class="layui-input" placeholder="jquery 选取规则 例如：.shop-item>a:eq(0)"></td>
+                                        <td><input type="text" value="text" name="list_type[]" class="layui-input" placeholder="仅支持：text href src html"></td>
+                                        <td><input type="text" value="描述" name="list_desc[]" class="layui-input" placeholder="自定义中文名称"></td>
+                                        <td><input type="text" value="" name="list_filtration[]" class="layui-input" placeholder="正则表达式"></td>
                                         <td><a class="layui-btn layui-btn-danger layui-btn-xs table_rule_del">删除</a></td>
                                     </tr>
                                     </tbody>
                                 </table>
                                 <div style="float:right">
-                                    <a class="layui-btn layui-btn-xs table_rule_add">增加</a>
+                                    <a class="layui-btn layui-btn-xs table_rule_add" data-type="list">增加</a>
                                 </div>
                             </div>
 
@@ -148,7 +172,7 @@
                             </div>
                             <div class="layui-form-item  layui-col-md11 layui-hide detail-rule">
                                 <blockquote class="layui-elem-quote" style="margin-left: 20px;">内容数据采集规则</blockquote>
-                                <table class="layui-table" style="margin-left: 20px;width: 98%;">
+                                <table class="layui-table" style="margin-left: 20px;width: 98%;" lay-filter="detail_rule">
                                     <thead>
                                     <tr>
                                         <th >字段名称</th>
@@ -161,16 +185,17 @@
                                     </thead>
                                     <tbody class="tbody_rule">
                                     <tr class="table_rule">
-                                        <td><input type="text" name="detail_name[]"  class="layui-input" placeholder="标示字段名称 例如：thumb"></td>
+                                        <td><input type="text" name="detail_name[]"  class="layui-input detail_name" placeholder="标示字段名称 例如：thumb"></td>
                                         <td><input type="text" name="detail_rule[]" class="layui-input" placeholder="jquery 选取规则 例如：.shop-item>a:eq(0)"></td>
                                         <td><input type="text" name="detail_type[]" class="layui-input" placeholder="仅支持：text href src html"></td>
-                                        <td><input type="text" name="detail_filtration[]" class="layui-input" placeholder="自定义中文名称"></td>
+                                        <td><input type="text" name="detail_desc[]" class="layui-input" placeholder="自定义中文名称"></td>
+                                        <td><input type="text" name="detail_filtration[]" class="layui-input" placeholder="正则表达式"></td>
                                         <td><a class="layui-btn layui-btn-danger layui-btn-xs table_rule_del">删除</a></td>
                                     </tr>
                                     </tbody>
                                 </table>
                                 <div style="float:right">
-                                    <a class="layui-btn layui-btn-xs table_rule_add">增加</a>
+                                    <a class="layui-btn layui-btn-xs table_rule_add" data-type="detail">增加</a>
                                 </div>
                             </div>
                         </div>
@@ -188,7 +213,7 @@
                     </div>
 
                     <!--入库规则-->
-                    <div class="layui-col-md3 layui-card " style="margin-left: 20px;padding-bottom: 30px;">
+                    <div class="layui-col-md3 layui-card layui-hide" style="margin-left: 20px;padding-bottom: 30px;">
                         <div class="layui-card-header layui-col-md11 " style="margin-bottom: 20px;">
                             入库规则
                         </div>
@@ -264,7 +289,8 @@
     }).use(['table', 'jquery','form','laydate'],function(){
         var table = layui.table,
             $ = layui.$,
-            form = layui.form;
+            form = layui.form,
+            alone = false;  //采集单个数据标示
 
         //规则表单
         form.render(null, 'component-form-group');
@@ -312,13 +338,16 @@
                         layer.msg('已删除');
                     });
                 }else if( layEvent === 'import' ){
+
                     var data = obj.data;
+
+                    alone = true;
                     saveData(data);
                 }
             })
         }
-
         $('.save-data').on('click',function(){
+            alone = false;
             saveData();
         });
 
@@ -345,7 +374,9 @@
                        //post存入数据表中
                        $.post("{:url('admin/collect/saveData')}",{
                            data:JSON.stringify(checkData), //抓取数据
-                           config:config     //其他参数
+                           config:config,     //其他参数
+                           alone:alone
+
                        },function( res ){
                            if( res.code == 0 ){
                                 layer.msg(res.msg);
@@ -358,19 +389,26 @@
         //添加入库规则
         $('.table_rule_add').on('click',function(){
             var par = $(this).parents('.layui-form-item');
-            var i  = $('.list_name').length;
-            console.log($('.list_name').length);
+            var type = 'list_';
+            if( $(this).attr('data-type') == 'detail'){
+                type = 'detail_'
+            }
+            console.log(type);
+            var i  = $('.'+type+'name').length;
+            console.log(i);
+
+
             var html = '<tr class="table_rule">\n' +
-                '                                        <td><input type="text" name="list_name['+i+']" class="layui-input list_name" placeholder="标示字段名称 例如：thumb"></td>\n' +
-                '                                        <td><input type="text" name="list_rule['+i+']" class="layui-input" placeholder="jquery 选取规则 例如：.shop-item>a:eq(0)"></td>\n' +
-                '                                        <td><input type="text" name="list_type['+i+']" class="layui-input" placeholder="仅支持：text href src html"></td>\n' +
-                '                                        <td><input type="text" name="list_desc['+i+']" class="layui-input" placeholder="自定义中文名称"></td>\n' +
-                '                                        <td><input type="text" name="list_filtration['+i+']" class="layui-input" placeholder="自定义中文名称"></td>\n' +
+                '                                        <td><input type="text" name="'+type+'name['+i+']" class="layui-input '+type+'name" placeholder="标示字段名称 例如：thumb"></td>\n' +
+                '                                        <td><input type="text" name="'+type+'rule['+i+']" class="layui-input" placeholder="jquery 选取规则 例如：.shop-item>a:eq(0)"></td>\n' +
+                '                                        <td><input type="text" name="'+type+'type['+i+']" class="layui-input" placeholder="仅支持：text href src html"></td>\n' +
+                '                                        <td><input type="text" name="'+type+'desc['+i+']" class="layui-input" placeholder="自定义中文名称"></td>\n' +
+                '                                        <td><input type="text" name="'+type+'filtration['+i+']" class="layui-input" placeholder="自定义中文名称"></td>\n' +
                 '                                        <td><a class="layui-btn layui-btn-danger layui-btn-xs table_rule_del">删除</a></td>\n' +
                 '                                    </tr>';
 
             par.find('tbody').append(html)
-            table.on('list_rule',function(){
+            table.on(''+type+'rule',function(){
                 this.reload();
             });
         })

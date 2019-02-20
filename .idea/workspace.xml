@@ -3,61 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="98777e50-01de-4b71-8821-08f1cfad9611" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/behavior/AdminLog.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/behavior/AdminLog.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/behavior/UserLog.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/behavior/UserLog.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/controller/Action.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/controller/Action.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/controller/Admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/controller/Admin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/controller/Adv.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/controller/Adv.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/controller/Article.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/controller/Article.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/controller/Base.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/controller/Base.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/admin/controller/Collect.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/controller/Collect.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/controller/File.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/controller/File.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/controller/Login.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/controller/Login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/controller/Nav.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/controller/Nav.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/controller/Score.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/controller/Score.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/controller/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/controller/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/model/ActionLimit.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/model/ActionLimit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/model/Admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/model/Admin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/model/AdminAuthGroup.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/model/AdminAuthGroup.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/model/AdminAuthRule.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/model/AdminAuthRule.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/model/AdminLog.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/model/AdminLog.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/model/Config.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/model/Config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/model/IPBlackList.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/model/IPBlackList.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/model/Picture.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/model/Picture.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/model/ScoreLog.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/model/ScoreLog.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/model/ScoreRule.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/model/ScoreRule.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/model/ScoreType.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/model/ScoreType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/model/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/model/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/model/UserCount.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/model/UserCount.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/model/UserLog.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/model/UserLog.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/model/UserRole.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/model/UserRole.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/model/UserRule.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/model/UserRule.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/tags.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/tags.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/validate/ActionLimit.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/validate/ActionLimit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/validate/ScoreRule.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/validate/ScoreRule.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/validate/ScoreType.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/validate/ScoreType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/validate/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/validate/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/validate/UserRole.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/validate/UserRole.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/validate/UserRule.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/validate/UserRule.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/admin/view/collect/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/collect/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/index/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/index/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/index/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/index/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/login/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/login/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/common/controller/Api.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/common/controller/Api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/common/model/Adv.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/common/model/Adv.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/common/model/AdvPos.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/common/model/AdvPos.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/common/model/Article.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/common/model/Article.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/common/model/ArticleCategory.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/common/model/ArticleCategory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/common/model/Nav.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/common/model/Nav.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/common/model/NavCategory.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/common/model/NavCategory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/common/model/Picture.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/common/model/Picture.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/common/widget/AdvWidget.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/common/widget/AdvWidget.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/index/controller/Base.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/index/controller/Base.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/install/common.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/install/common.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/install/controller/Install.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/install/controller/Install.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runtime/cache/8d/6ab84ca2af9fccd4e4048694176ebf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/runtime/cache/d7/2e5ee9b367833956ed9f88a960c686.php" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -118,7 +65,7 @@
     <session id="588067995">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="9" />
+          <entry key="project.closed" value="10" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.20" value="1" />
           <entry key="project.open.time.24" value="1" />
@@ -126,7 +73,7 @@
           <entry key="project.open.time.27" value="4" />
           <entry key="project.open.time.28" value="2" />
           <entry key="project.open.time.29" value="7" />
-          <entry key="project.open.time.3" value="1" />
+          <entry key="project.open.time.3" value="2" />
           <entry key="project.open.time.30" value="4" />
           <entry key="project.open.time.31" value="2" />
           <entry key="project.open.time.33" value="2" />
@@ -139,7 +86,7 @@
           <entry key="project.open.time.65" value="1" />
           <entry key="project.open.time.73" value="1" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="37" />
+          <entry key="project.opened" value="38" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -151,7 +98,7 @@
           <entry key="js" value="34" />
           <entry key="json" value="6" />
           <entry key="md" value="2" />
-          <entry key="php" value="253" />
+          <entry key="php" value="254" />
           <entry key="png" value="4" />
           <entry key="sql" value="3" />
           <entry key="stub" value="3" />
@@ -167,7 +114,7 @@
           <entry key="JSON" value="6" />
           <entry key="JavaScript" value="34" />
           <entry key="Markdown" value="2" />
-          <entry key="PHP" value="256" />
+          <entry key="PHP" value="257" />
           <entry key="PLAIN_TEXT" value="4" />
           <entry key="SQL" value="3" />
           <entry key="SmartyConfig" value="2" />
@@ -175,19 +122,19 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="html" value="9017" />
+          <entry key="html" value="9433" />
           <entry key="js" value="585" />
           <entry key="json" value="7" />
-          <entry key="php" value="24594" />
+          <entry key="php" value="29232" />
           <entry key="test" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="9018" />
+          <entry key="HTML" value="9434" />
           <entry key="JSON" value="7" />
           <entry key="JavaScript" value="584" />
-          <entry key="PHP" value="24594" />
+          <entry key="PHP" value="29232" />
           <entry key="PLAIN_TEXT" value="1" />
         </counts>
       </usages-collector>
@@ -203,8 +150,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/admin/view/collect/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="429">
-              <caret line="357" column="16" lean-forward="true" selection-start-line="357" selection-start-column="16" selection-end-line="357" selection-end-column="16" />
+            <state relative-caret-position="495">
+              <caret line="409" column="42" selection-start-line="409" selection-start-column="42" selection-end-line="409" selection-end-column="42" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
@@ -218,6 +165,8 @@
                 <element signature="n#div#8;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" />
                 <element signature="n#style#0;n#div#0;n#div#9;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#10;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#table#0;n#div#0;n#div#11;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" />
+                <element signature="n#div#0;n#div#0;n#div#11;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" />
                 <element signature="n#style#0;n#div#1;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#1;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#2;n#div#1;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
@@ -233,8 +182,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/admin/controller/Collect.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="590">
-              <caret line="63" column="17" lean-forward="true" selection-start-line="63" selection-start-column="17" selection-end-line="63" selection-end-column="17" />
+            <state relative-caret-position="357">
+              <caret line="159" column="47" selection-start-line="159" selection-start-column="47" selection-end-line="159" selection-end-column="47" />
               <folding>
                 <element signature="e#40#55#0#PHP" expanded="true" />
               </folding>
@@ -245,11 +194,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/admin/controller/Action.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="34" column="5" lean-forward="true" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
-              <folding>
-                <element signature="e#6#378#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="425">
+              <caret line="34" column="5" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -266,20 +212,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>url</find>
-      <find>lay-verify=&quot;url</find>
-      <find>detail_</find>
-      <find>模拟登陆</find>
-      <find>{</find>
-      <find>model_switch</find>
-      <find>need_login</find>
-      <find>model</find>
-      <find>页</find>
-      <find>切</find>
-      <find>get_model</find>
-      <find>数据表</find>
-      <find>标题</find>
-      <find>range</find>
       <find>自定义中文</find>
       <find>detail_name</find>
       <find>need_detail</find>
@@ -288,7 +220,6 @@
       <find>component-form-demo</find>
       <find>采集规则测试</find>
       <find>table</find>
-      <find>list_rule</find>
       <find>list_filtration</find>
       <find>table_rule</find>
       <find>表规则参数不能为空或错</find>
@@ -296,6 +227,21 @@
       <find>Author: wdx(wdx@ourstu.com)</find>
       <find>http://www.ocenter.cn</find>
       <find>list_name</find>
+      <find>入库</find>
+      <find>dump</find>
+      <find>暂无数据</find>
+      <find>$params['data']</find>
+      <find>data</find>
+      <find>save-data</find>
+      <find>import</find>
+      <find>strlen</find>
+      <find>strstr</find>
+      <find>detail_desc</find>
+      <find>正则过滤【正则代码</find>
+      <find>$second</find>
+      <find>detail_rule</find>
+      <find>$detailV</find>
+      <find>list_rule</find>
     </findStrings>
     <replaceStrings>
       <replace>https://www.layui.com/admin/std/dist/layuiadmin/style/res/template/portrait.png</replace>
@@ -309,7 +255,6 @@
       <replace>菜单分类</replace>
       <replace>nav</replace>
       <replace>菜单</replace>
-      <replace>$data</replace>
       <replace>$this-&gt;request-&gt;isAjax()</replace>
       <replace>$this-&gt;reques-&gt;isAjax</replace>
       <replace>request</replace>
@@ -322,6 +267,7 @@
       <replace>OpenEwei</replace>
       <replace>Author: ewei(ewei@dtyjkj.com)</replace>
       <replace>http://www.redkylin.com</replace>
+      <replace>$data</replace>
     </replaceStrings>
     <dirStrings>
       <dir>E:\RaningWork\OpenCenter_2\thinkphp</dir>
@@ -428,7 +374,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -445,13 +390,14 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://E:/RaningWork/OpenCenter_2/application/admin/controller/User.php" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="E:/OutherWork/PHP/ZhaoJunfeng-EacooPHP-master/EacooPHP" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="fileTemplates" />
@@ -535,18 +481,19 @@
       <workItem from="1550106079417" duration="1465000" />
       <workItem from="1550194427979" duration="11186000" />
       <workItem from="1550452034775" duration="18309000" />
-      <workItem from="1550539531732" duration="20659000" />
+      <workItem from="1550539531732" duration="20732000" />
+      <workItem from="1550626604043" duration="21200000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="313092000" />
+    <option name="totallyTimeSpent" value="334365000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1874" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16538037" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.074972436" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -566,6 +513,27 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Database" order="3" />
     </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.074972436" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32942432" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.3283582" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -820,13 +788,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/jaeger/querylist/QueryList.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-850">
-          <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/database.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="335">
@@ -843,18 +804,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/admin/controller/Action.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="34" column="5" lean-forward="true" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
-          <folding>
-            <element signature="e#6#378#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="425">
+          <caret line="34" column="5" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/admin/view/collect/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="429">
-          <caret line="357" column="16" lean-forward="true" selection-start-line="357" selection-start-column="16" selection-end-line="357" selection-end-column="16" />
+        <state relative-caret-position="495">
+          <caret line="409" column="42" selection-start-line="409" selection-start-column="42" selection-end-line="409" selection-end-column="42" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
@@ -868,6 +826,8 @@
             <element signature="n#div#8;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" />
             <element signature="n#style#0;n#div#0;n#div#9;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#10;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#table#0;n#div#0;n#div#11;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#div#11;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" />
             <element signature="n#style#0;n#div#1;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#1;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#2;n#div#1;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
@@ -879,10 +839,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/jaeger/querylist/QueryList.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="84" column="27" selection-start-line="84" selection-start-column="27" selection-end-line="84" selection-end-column="27" />
+          <folding>
+            <element signature="e#22#61#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/application/admin/controller/Collect.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="590">
-          <caret line="63" column="17" lean-forward="true" selection-start-line="63" selection-start-column="17" selection-end-line="63" selection-end-column="17" />
+        <state relative-caret-position="357">
+          <caret line="159" column="47" selection-start-line="159" selection-start-column="47" selection-end-line="159" selection-end-column="47" />
           <folding>
             <element signature="e#40#55#0#PHP" expanded="true" />
           </folding>
