@@ -27,9 +27,9 @@
                             </div>
                         </div>
                         <div class="layui-form-item  layui-col-md11">
-                            <label class="layui-form-label"> * 切片规则</label>
+                            <label class="layui-form-label">切片规则</label>
                             <div class="layui-input-block">
-                                <input type="text" name="range" lay-verify="required"  placeholder="输入抓取地址的切片规则 例如#cardslist>.card" class="layui-input" value="li">
+                                <input type="text" name="range"  placeholder="输入抓取地址的切片规则 例如#cardslist>.card" class="layui-input" value="li">
                                 <div class="layui-form-mid layui-word-aux"> 抓取数据页面的唯一节点 </div>
                             </div>
                         </div>
@@ -451,6 +451,9 @@
                 $('.general-model').addClass('layui-hide');
                 $('.specialty-model').removeClass('layui-hide');
                 $('input[name=get_model]').val(1);
+
+                //专业模式   专业模式的内容转换成专业模式的
+
             }else{
                 $('.general-model').removeClass('layui-hide');
                 $('.specialty-model').addClass('layui-hide');

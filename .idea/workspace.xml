@@ -65,7 +65,7 @@
     <session id="588067995">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="10" />
+          <entry key="project.closed" value="12" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.20" value="1" />
           <entry key="project.open.time.24" value="1" />
@@ -85,8 +85,8 @@
           <entry key="project.open.time.63" value="1" />
           <entry key="project.open.time.65" value="1" />
           <entry key="project.open.time.73" value="1" />
-          <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="38" />
+          <entry key="project.open.time.8" value="2" />
+          <entry key="project.opened" value="39" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -98,7 +98,7 @@
           <entry key="js" value="34" />
           <entry key="json" value="6" />
           <entry key="md" value="2" />
-          <entry key="php" value="254" />
+          <entry key="php" value="256" />
           <entry key="png" value="4" />
           <entry key="sql" value="3" />
           <entry key="stub" value="3" />
@@ -114,7 +114,7 @@
           <entry key="JSON" value="6" />
           <entry key="JavaScript" value="34" />
           <entry key="Markdown" value="2" />
-          <entry key="PHP" value="257" />
+          <entry key="PHP" value="259" />
           <entry key="PLAIN_TEXT" value="4" />
           <entry key="SQL" value="3" />
           <entry key="SmartyConfig" value="2" />
@@ -122,19 +122,19 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="html" value="9433" />
+          <entry key="html" value="9467" />
           <entry key="js" value="585" />
           <entry key="json" value="7" />
-          <entry key="php" value="29232" />
+          <entry key="php" value="31249" />
           <entry key="test" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="9434" />
+          <entry key="HTML" value="9468" />
           <entry key="JSON" value="7" />
           <entry key="JavaScript" value="584" />
-          <entry key="PHP" value="29232" />
+          <entry key="PHP" value="31249" />
           <entry key="PLAIN_TEXT" value="1" />
         </counts>
       </usages-collector>
@@ -150,8 +150,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/admin/view/collect/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="409" column="42" selection-start-line="409" selection-start-column="42" selection-end-line="409" selection-end-column="42" />
+            <state relative-caret-position="454">
+              <caret line="308" column="17" selection-start-line="308" selection-start-column="17" selection-end-line="308" selection-end-column="17" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
@@ -182,11 +182,20 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/admin/controller/Collect.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="159" column="47" selection-start-line="159" selection-start-column="47" selection-end-line="159" selection-end-column="47" />
+            <state relative-caret-position="513">
+              <caret line="179" column="46" lean-forward="true" selection-start-line="179" selection-start-column="46" selection-end-line="179" selection-end-column="46" />
               <folding>
                 <element signature="e#40#55#0#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/extend/org/Helper.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="317">
+              <caret line="160" selection-start-line="160" selection-end-line="160" />
             </state>
           </provider>
         </entry>
@@ -212,15 +221,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>自定义中文</find>
-      <find>detail_name</find>
-      <find>need_detail</find>
-      <find>$range</find>
-      <find>中文名称</find>
-      <find>component-form-demo</find>
-      <find>采集规则测试</find>
-      <find>table</find>
-      <find>list_filtration</find>
       <find>table_rule</find>
       <find>表规则参数不能为空或错</find>
       <find>OpenCenter</find>
@@ -238,10 +238,19 @@
       <find>strstr</find>
       <find>detail_desc</find>
       <find>正则过滤【正则代码</find>
-      <find>$second</find>
       <find>detail_rule</find>
       <find>$detailV</find>
       <find>list_rule</find>
+      <find>_query</find>
+      <find>$params['range']</find>
+      <find>range</find>
+      <find>采集规则错误</find>
+      <find>规则错误</find>
+      <find>$urlArrKey</find>
+      <find>$list_filtration</find>
+      <find>$second</find>
+      <find>htmlspecialchars_decode</find>
+      <find>model_switch</find>
     </findStrings>
     <replaceStrings>
       <replace>https://www.layui.com/admin/std/dist/layuiadmin/style/res/template/portrait.png</replace>
@@ -287,7 +296,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/application/admin/view/html/template.html" />
         <option value="$PROJECT_DIR$/application/admin/view/setting/system.html" />
         <option value="$PROJECT_DIR$/application/admin/view/setting/personage.html" />
         <option value="$PROJECT_DIR$/application/admin/view/score/rule_form.html" />
@@ -333,9 +341,10 @@
         <option value="$PROJECT_DIR$/application/admin/view/adv/pos.html" />
         <option value="$PROJECT_DIR$/public/static/layuiadmin/common.js" />
         <option value="$PROJECT_DIR$/config/app.php" />
-        <option value="$PROJECT_DIR$/extend/org/Helper.php" />
         <option value="$PROJECT_DIR$/application/admin/view/collect/import_config.html" />
         <option value="$PROJECT_DIR$/application/admin/controller/Action.php" />
+        <option value="$PROJECT_DIR$/vendor/jaeger/querylist/QueryList.php" />
+        <option value="$PROJECT_DIR$/extend/org/Helper.php" />
         <option value="$PROJECT_DIR$/application/admin/view/collect/index.html" />
         <option value="$PROJECT_DIR$/application/admin/controller/Collect.php" />
       </list>
@@ -374,6 +383,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -384,13 +394,36 @@
             <path>
               <item name="OpenCenter_2" type="b2602c69:ProjectViewProjectNode" />
               <item name="OpenCenter_2" type="462c0819:PsiDirectoryNode" />
-              <item name="application" type="462c0819:PsiDirectoryNode" />
+              <item name="extend" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="OpenCenter_2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="OpenCenter_2" type="462c0819:PsiDirectoryNode" />
+              <item name="extend" type="462c0819:PsiDirectoryNode" />
+              <item name="org" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="OpenCenter_2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="OpenCenter_2" type="462c0819:PsiDirectoryNode" />
+              <item name="vendor" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="OpenCenter_2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="OpenCenter_2" type="462c0819:PsiDirectoryNode" />
+              <item name="vendor" type="462c0819:PsiDirectoryNode" />
+              <item name="jaeger" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="OpenCenter_2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="OpenCenter_2" type="462c0819:PsiDirectoryNode" />
+              <item name="vendor" type="462c0819:PsiDirectoryNode" />
+              <item name="jaeger" type="462c0819:PsiDirectoryNode" />
+              <item name="querylist" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -482,18 +515,19 @@
       <workItem from="1550194427979" duration="11186000" />
       <workItem from="1550452034775" duration="18309000" />
       <workItem from="1550539531732" duration="20732000" />
-      <workItem from="1550626604043" duration="21200000" />
+      <workItem from="1550626604043" duration="21256000" />
+      <workItem from="1550711398840" duration="20151000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="334365000" />
+    <option name="totallyTimeSpent" value="354572000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1874" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.074972436" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3026461" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -759,13 +793,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/extend/org/Helper.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="470">
-          <caret line="146" column="42" selection-start-line="146" selection-start-column="42" selection-end-line="146" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/admin/view/collect/import_config.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="612">
@@ -809,10 +836,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/jaeger/querylist/QueryList.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="36" column="21" lean-forward="true" selection-start-line="36" selection-start-column="21" selection-end-line="36" selection-end-column="21" />
+          <folding>
+            <element signature="e#22#61#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/extend/org/Helper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="160" selection-start-line="160" selection-end-line="160" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/application/admin/view/collect/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="409" column="42" selection-start-line="409" selection-start-column="42" selection-end-line="409" selection-end-column="42" />
+        <state relative-caret-position="454">
+          <caret line="308" column="17" selection-start-line="308" selection-start-column="17" selection-end-line="308" selection-end-column="17" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
@@ -839,20 +883,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/jaeger/querylist/QueryList.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="84" column="27" selection-start-line="84" selection-start-column="27" selection-end-line="84" selection-end-column="27" />
-          <folding>
-            <element signature="e#22#61#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/admin/controller/Collect.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="159" column="47" selection-start-line="159" selection-start-column="47" selection-end-line="159" selection-end-column="47" />
+        <state relative-caret-position="513">
+          <caret line="179" column="46" lean-forward="true" selection-start-line="179" selection-start-column="46" selection-end-line="179" selection-end-column="46" />
           <folding>
             <element signature="e#40#55#0#PHP" expanded="true" />
           </folding>

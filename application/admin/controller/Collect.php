@@ -34,23 +34,20 @@ class Collect extends Controller
      */
     public function rule(){
         if($this->request->isPost()){
+//            $str = "&lt;p&gt;safd&nbsp;&lt;/p&gt;";
+//            $str= htmlspecialchars_decode($str);
+//            dump($str) ;die;
+
             //初始化数据
             $params = $this->request->param();
             $url = $range = $dow_img = $code = $need_login = $login_url = $login_name = $login_password = $need_detail = $rule = $table_name = $get_model = $page = $detail_code = '';
-            $list_name = $list_rule = $list_type = $list_desc = $detail_name = $detail_rule = $detail_type = $detail_desc = $table_collect_name = $table_field_name =  $second = $row = $list_filtration = $detail_filtration = [];
+            $list_name = $list_rule = $list_type = $list_desc = $detail_name = $detail_rule = $detail_type = $detail_desc = $table_collect_name = $table_field_name =  $second = $row = $list_filtration = $detail_filtration = $urlArrKey = [];
             extract($params);
+
 
             $domain = 'http://'.explode('/',$params['url'])[2];//获取域名
             $key[]  = ['type'  => 'checkbox','fixed' => 'left',];
             $i      = 0;//默认页面数
-
-            //获取url类型的字段
-            $urlArrKey = []; //链接类型字段的key
-            foreach ($list_type as $k=>$v){
-                if($v == 'href'){
-                    $urlArrKey[] = $list_name[$k];
-                }
-            }
 
             //是否需要模拟登陆
             if($need_login){
@@ -60,6 +57,7 @@ class Collect extends Controller
             //判断抓取模式
             if( $get_model ===  "0" ){      //普通模式
                 $rule = [];
+
                 //需要做数据转换
                 foreach ($list_name as $k => $v){
 
@@ -69,6 +67,7 @@ class Collect extends Controller
 
                     $rule[$v] = [$list_rule[$k],$list_type[$k],$list_desc[$k]];
                 }
+
 
                 //设置详情规则
                 if( $need_detail == 1 ){
@@ -81,17 +80,32 @@ class Collect extends Controller
                     }
                     $rule[$detail_code][] = $detail_rules;
                 }
+
+
+
             }else{
                 //数据验证
                 try{
+
                     $rule = json_decode($params['rule'],true);
+
                 }catch (Exception $e){
                     $this->error('规则格式错误');
                 }
             }
-            if(empty($rule)) $this->error('列表规则参数不能为空或错误');
 
+            //获取url类型的字段
+            foreach ($rule as $k=>$v){
+                if($v[2] == 'href'){
+                    $urlArrKey[] = $k;
+                }
+            }
+
+
+
+            if(empty($rule)) $this->error('列表规则参数不能为空或错误');
             //初始化话规则
+            $ii = 0;
             foreach ($rule as $k => &$v){
                 //验证规则格式
                 if( count($v) < 3 ){
@@ -106,6 +120,7 @@ class Collect extends Controller
 
                 //分解二级采集规则
                 if( isset($v[3]) ){
+
                     $second[$k] = $v[3];
                     foreach ($v[3] as $vk => &$vv){
                         $key[] = [
@@ -119,7 +134,16 @@ class Collect extends Controller
                     }
                     //删除一级中的二级规则
                     unset($v[3]);
+
+
+                    //专业模式 提取 正则表达式
+                    if( isset($v[4])&&!empty($v[4]) ){
+                        $list_filtration = [];
+                        $list_filtration[$ii] = $v[4];
+                        unset($v[4]);
+                    }
                 }
+                $ii++;
             }
 
             //固定json返回key
@@ -129,50 +153,52 @@ class Collect extends Controller
                 // 待采集的页面地址
                 $url = $i == 0 ? $params['url']:$params['url'].$i.'/';
                 // 切片选择器
-                $range = $params['range'];
                 try{
-
                     $data = QueryList::Query($url,$rule,$range)->data;
-
                     foreach ($data as $dataK=>&$dataV){
                         $fi = 0;
                         foreach ($dataV as $fk => &$fv){
-
-                            //url判断
+                            //url判断[url添加域名]
                             if( in_array( $fk,$urlArrKey ) && !empty($fv) && !strstr('http',$fv ) ){
                                 $fv = $domain.$fv;
                             }
-
                             //正则过滤
-                            if( !empty($fv) &&  $list_filtration[$fi]){
-                                preg_match("/$list_filtration[$fi]/",$fv,$match);
+                            if( !empty($fv) &&  isset($list_filtration[$fi]) && !empty($list_filtration[$fi]) ) {
+                                $pregStr = $list_filtration[$fi];
+                                var_dump($pregStr);
+                                var_dump($fv);
+                                preg_match_all($pregStr,$fv,$match);
+                                var_dump($match);die;
                                 if(!empty($match)){
-                                    $fv = $match[0];
+                                    $fv = $match[1];
                                 }
                             }
                             $fi++;
                         }
                     }
                 }catch (Exception $e){
+                    echo $e->getMessage();die;
                     return $this->error('采集规则错误，请检查');
                 }
-
                 $row = array_merge($row,$data);
                 $i++;
             }
-
+        dump($row);die;
             //查询2级
             if( !empty($second) ){
                 //分解1级查询数据
                 foreach ( $row as $rowKey => &$val) {
                         //分解条数据查询规则
                         foreach ( $second as $secondKey => $secondVal){
-                            $secondUrl = $val[$secondKey];
-                            var_dump($secondVal);die;
-                            $secondData = QueryList::Query($secondUrl,$secondVal)->data;
+                            //将url中的中文转换成编码【中文url 插件无法解析】
+                            $secondUrl = Helper::chineseUrlToUrlCode( $val[$secondKey] );
+                            //判断是否是url
+                            if( filter_var($secondUrl,FILTER_VALIDATE_URL) ){
+                                $secondData = QueryList::Query($secondUrl,$secondVal)->data;
 
-                            if( $secondData ){
-                                $val = array_merge($val,$secondData[0]);
+                                if( $secondData ){
+                                    $val = array_merge($val,$secondData[0]);
+                                }
                             }
                         }
                 }
