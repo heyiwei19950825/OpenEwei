@@ -163,14 +163,13 @@ class Collect extends Controller
                                 $fv = $domain.$fv;
                             }
                             //正则过滤
-                            if( !empty($fv) &&  isset($list_filtration[$fi]) && !empty($list_filtration[$fi]) ) {
-                                $pregStr = $list_filtration[$fi];
-                                var_dump($pregStr);
-                                var_dump($fv);
-                                preg_match_all($pregStr,$fv,$match);
-                                var_dump($match);die;
+                            if( !empty($fv) &&  isset($list_filtration[$fi]) &&  $list_filtration[$fi]){
+                                $fv = str_replace('"','\'',$fv);
+                                preg_match( $list_filtration[$fi],$fv,$match);
+//                                dump($fv);die;
+                                dump($match);die;
                                 if(!empty($match)){
-                                    $fv = $match[1];
+                                    $fv = $match[0];
                                 }
                             }
                             $fi++;
@@ -183,7 +182,6 @@ class Collect extends Controller
                 $row = array_merge($row,$data);
                 $i++;
             }
-        dump($row);die;
             //查询2级
             if( !empty($second) ){
                 //分解1级查询数据
