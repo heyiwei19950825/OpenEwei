@@ -34,24 +34,20 @@ class Collect extends Controller
      */
     public function rule(){
         if($this->request->isPost()){
-//            $str = "&lt;p&gt;safd&nbsp;&lt;/p&gt;";
-//            $str= htmlspecialchars_decode($str);
-//            dump($str) ;die;
-
+            ini_set('max_execution_time', '0');
             //初始化数据
             $params = $this->request->param();
             $url = $range = $dow_img = $code = $need_login = $login_url = $login_name = $login_password = $need_detail = $rule = $table_name = $get_model = $page = $detail_code = '';
-            $list_name = $list_rule = $list_type = $list_desc = $detail_name = $detail_rule = $detail_type = $detail_desc = $table_collect_name = $table_field_name =  $second = $row = $list_filtration = $detail_filtration = $urlArrKey = [];
+            $list_name = $list_rule = $list_type = $list_desc = $detail_name = $detail_rule = $detail_type = $detail_desc = $table_collect_name = $table_field_name =  $second_filtration = $second = $row = $list_filtration = $detail_filtration = $urlArrKey = [];
             extract($params);
 
 
             $domain = 'http://'.explode('/',$params['url'])[2];//获取域名
             $key[]  = ['type'  => 'checkbox','fixed' => 'left',];
-            $i      = 0;//默认页面数
+            $i      = 1;//默认页面数
 
             //是否需要模拟登陆
             if($need_login){
-
             }
 
             //判断抓取模式
@@ -72,7 +68,6 @@ class Collect extends Controller
                 //设置详情规则
                 if( $need_detail == 1 ){
                     foreach ($detail_name as $detailK => $detailV){
-
                         if( empty( $detailV ) || empty( $detail_rule[$detailK] )  || empty( $detail_type[$detailK] ) || empty( $detail_desc[$detailK] ) ){
                             $this->error('列表规则参数不能为空');
                         }
@@ -81,14 +76,10 @@ class Collect extends Controller
                     $rule[$detail_code][] = $detail_rules;
                 }
 
-
-
             }else{
                 //数据验证
                 try{
-
                     $rule = json_decode($params['rule'],true);
-
                 }catch (Exception $e){
                     $this->error('规则格式错误');
                 }
@@ -101,12 +92,12 @@ class Collect extends Controller
                 }
             }
 
-
-
             if(empty($rule)) $this->error('列表规则参数不能为空或错误');
             //初始化话规则
             $ii = 0;
             foreach ($rule as $k => &$v){
+                $list_filtration = [];
+
                 //验证规则格式
                 if( count($v) < 3 ){
                     return $this->error('规则格式错误');
@@ -121,13 +112,21 @@ class Collect extends Controller
                 //分解二级采集规则
                 if( isset($v[3]) ){
 
-                    $second[$k] = $v[3];
-                    foreach ($v[3] as $vk => &$vv){
+                    $secondRule = $v[3];
+                    foreach ($secondRule as $vk => &$vv){
                         $key[] = [
                             'field'  => $vk,
                             'title'  => $vv[2]
                         ];
+                        if( isset($vv[4])&&!empty($vv[4]) ){
+
+                            $second_filtration[$vk] = $vv[4];
+                            unset($vv[4]);
+                            unset($vv[3]);
+
+                        }
                     }
+                    $second[$k] = $secondRule;
                     //删除二级的规则描述
                     foreach ($second[$k] as $sK => &$sV){
                         unset($sV[2]);
@@ -138,10 +137,10 @@ class Collect extends Controller
 
                     //专业模式 提取 正则表达式
                     if( isset($v[4])&&!empty($v[4]) ){
-                        $list_filtration = [];
                         $list_filtration[$ii] = $v[4];
                         unset($v[4]);
                     }
+
                 }
                 $ii++;
             }
@@ -149,9 +148,17 @@ class Collect extends Controller
             //固定json返回key
             $key[] =["fixed"=> 'right', "width"=> 165, "align"=> 'center', "toolbar"=> '#barDemo'];
             //查询1级
+
             while ( $i <= $page ){
                 // 待采集的页面地址
-                $url = $i == 0 ? $params['url']:$params['url'].$i.'/';
+                $url = str_replace('@@',$i,$url);
+                $headers = get_headers( $url );
+
+                if (strpos($headers[0], '404'))
+                {
+                    continue;
+                }
+
                 // 切片选择器
                 try{
                     $data = QueryList::Query($url,$rule,$range)->data;
@@ -165,11 +172,10 @@ class Collect extends Controller
                             //正则过滤
                             if( !empty($fv) &&  isset($list_filtration[$fi]) &&  $list_filtration[$fi]){
                                 $fv = str_replace('"','\'',$fv);
+
                                 preg_match( $list_filtration[$fi],$fv,$match);
-//                                dump($fv);die;
-                                dump($match);die;
                                 if(!empty($match)){
-                                    $fv = $match[0];
+                                    $fv = $match[1];
                                 }
                             }
                             $fi++;
@@ -186,14 +192,44 @@ class Collect extends Controller
             if( !empty($second) ){
                 //分解1级查询数据
                 foreach ( $row as $rowKey => &$val) {
-                        //分解条数据查询规则
+                    //分解条数据查询规则
                         foreach ( $second as $secondKey => $secondVal){
                             //将url中的中文转换成编码【中文url 插件无法解析】
-                            $secondUrl = Helper::chineseUrlToUrlCode( $val[$secondKey] );
+                            $secondUrl = $val[$secondKey];
+//                            $secondUrl = Helper::chineseUrlToUrlCode( $val[$secondKey] );
+                            //判断404页面
+                            $headers = get_headers( $secondUrl );
+
+                            if (strpos($headers[0], '404'))
+                            {
+                                continue 1;
+                            }
                             //判断是否是url
                             if( filter_var($secondUrl,FILTER_VALIDATE_URL) ){
                                 $secondData = QueryList::Query($secondUrl,$secondVal)->data;
 
+                                //遍历查询结果  正则内容
+                                foreach ($secondData as $sDataK=>&$sDataV){
+                                    $fi = 0;
+                                    foreach ($sDataV as $sFk => &$sFv){
+                                        //url判断[url添加域名]
+                                        if( in_array( $sFk,$urlArrKey ) && !empty($sFv) && !strstr('http',$sFv ) ){
+                                            $sFv = $domain.$sFv;
+                                        }
+                                        //正则过滤
+                                        if( !empty($sFv) &&  isset($second_filtration[$fi]) &&  $second_filtration[$fi]){
+                                            $sFv = str_replace('"','\'',$sFv);
+
+                                            preg_match( $second_filtration[$fi],$sFv,$match);
+                                            if(!empty($match)){
+                                                $sFv = $match[1];
+                                            }
+                                        }
+                                        $fi++;
+                                    }
+                                }
+
+                                //二级内容合并
                                 if( $secondData ){
                                     $val = array_merge($val,$secondData[0]);
                                 }
@@ -223,11 +259,11 @@ class Collect extends Controller
         if( $this->request->isPost() ){
             $params  = $this->request->param();
             $params['data']    = json_decode($params['data'],true);
-            $config  = Helper::convertUrlArray($params['config']);
+            parse_str($params['config'],$config);
 
             //独立数据转换
             if($params['alone'] == true){
-                $data[] = $params['data'];
+                $data = $params['data'];
             }else{
                 $data = $params['data'];
             }
@@ -261,7 +297,6 @@ class Collect extends Controller
                         if(!in_array($v,$tableFields)){
                             $len = ''; // 字段类型
                             $demo  = $data[0][$v];
-
                             if( strlen( $demo ) < 50 ){
                                 $len = 'varchar(50)';
                             }
@@ -277,8 +312,10 @@ class Collect extends Controller
                                 case $demo > 255:
                                     $len ='text';
                                     break;
+                                default:
+                                    $len ='text';
+                                    break;
                             }
-
                             $sql .= ' ADD COLUMN `'.$v.'` '.$len.' DEFAULT NULL, ';
                         }
 
@@ -289,6 +326,7 @@ class Collect extends Controller
                 }
                 //数据写入表中
                 $insertRow = Db::name($config['tableName'])->insertAll($data);
+
 
                 if($insertRow){
                     return $this->success('写入成功');

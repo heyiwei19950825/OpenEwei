@@ -23,7 +23,7 @@
                             <label class="layui-form-label"> * 页面地址</label>
                             <div class="layui-input-block">
                                 <input type="text" name="url" lay-verify="url|required"  placeholder="输入抓取地址的url" class="layui-input" value="http://www.niudana.com/">
-                                <div class="layui-form-mid layui-word-aux">（以http:// 或 https://开头）</div>
+                                <div class="layui-form-mid layui-word-aux">（以http:// 或 https://开头  页面标示用@@ 例如 http://www.phphz.com/@@/）</div>
                             </div>
                         </div>
                         <div class="layui-form-item  layui-col-md11">
@@ -95,6 +95,9 @@
                             <label class="layui-form-label"> 抓取页数</label>
                             <div class="layui-input-inline" style="line-height: 36px;">
                                 <input type="number" name="page" value="1" class="layui-input">
+                            </div>
+                            <div class="layui-input-inline" style="line-height: 36px;">
+                                <input type="number" name="start_page" value="1" class="layui-input" placeholder="从第几页开始">
                             </div>
                             <div class="layui-form-mid layui-word-aux">（注意：抓取多页则写入页码）</div>
                         </div>
