@@ -388,7 +388,7 @@
                }
            })
         }
-
+        tableRuleDel();
         //添加入库规则
         $('.table_rule_add').on('click',function(){
             var par = $(this).parents('.layui-form-item');
@@ -396,11 +396,8 @@
             if( $(this).attr('data-type') == 'detail'){
                 type = 'detail_'
             }
-            console.log(type);
+
             var i  = $('.'+type+'name').length;
-            console.log(i);
-
-
             var html = '<tr class="table_rule">\n' +
                 '                                        <td><input type="text" name="'+type+'name['+i+']" class="layui-input '+type+'name" placeholder="标示字段名称 例如：thumb"></td>\n' +
                 '                                        <td><input type="text" name="'+type+'rule['+i+']" class="layui-input" placeholder="jquery 选取规则 例如：.shop-item>a:eq(0)"></td>\n' +
@@ -409,16 +406,19 @@
                 '                                        <td><input type="text" name="'+type+'filtration['+i+']" class="layui-input" placeholder="自定义中文名称"></td>\n' +
                 '                                        <td><a class="layui-btn layui-btn-danger layui-btn-xs table_rule_del">删除</a></td>\n' +
                 '                                    </tr>';
-
             par.find('tbody').append(html)
+            tableRuleDel();
             table.on(''+type+'rule',function(){
                 this.reload();
             });
         })
+
         //删除入库规则
-        $('.table_rule_del').on('click','tbody_rule',function(){
-            $(this).parents('.table_rule').remove();
-        })
+        function tableRuleDel(){
+            $('.table_rule_del').on('click',function(){
+                $(this).parents('.table_rule').remove();
+            })
+        }
 
         //开启详情数据抓取
         form.on('switch(detail_switch)',function(data){
