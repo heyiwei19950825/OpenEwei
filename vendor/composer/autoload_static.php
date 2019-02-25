@@ -31,6 +31,8 @@ class ComposerStaticInitce339991e9ac5ecf073fed7c65d837a7
         ),
         'Q' => 
         array (
+            'QL\\Ext\\Lib\\' => 11,
+            'QL\\Ext\\' => 7,
             'QL\\' => 3,
         ),
         'P' => 
@@ -63,6 +65,15 @@ class ComposerStaticInitce339991e9ac5ecf073fed7c65d837a7
         'Symfony\\Polyfill\\Ctype\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
+        ),
+        'QL\\Ext\\Lib\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/jaeger/curlmulti',
+        ),
+        'QL\\Ext\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/jaeger/querylist-ext-aquery',
+            1 => __DIR__ . '/..' . '/jaeger/querylist-ext-multi',
         ),
         'QL\\' => 
         array (

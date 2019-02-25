@@ -25,7 +25,8 @@
         "phpoffice/phpexcel": "^1.8",
         "phpmailer/phpmailer": "^6.0",
         "twig/twig":"*",
-        "jaeger/querylist": "^3.2"
+        "jaeger/querylist": "^3.2",
+        "jaeger/querylist-ext-multi": "^1.0"
     },
     "extra": {
         "think-path": "thinkphp"

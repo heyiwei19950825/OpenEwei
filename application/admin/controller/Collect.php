@@ -41,7 +41,6 @@ class Collect extends Controller
             $list_name = $list_rule = $list_type = $list_desc = $detail_name = $detail_rule = $detail_type = $detail_desc = $table_collect_name = $table_field_name =  $second_filtration = $second = $row = $list_filtration = $detail_filtration = $urlArrKey = [];
             extract($params);
 
-
             $domain = 'http://'.explode('/',$params['url'])[2];//获取域名
             $key[]  = ['type'  => 'checkbox','fixed' => 'left',];
             $i      = 1;//默认页面数
@@ -81,6 +80,7 @@ class Collect extends Controller
                 try{
                     $rule = json_decode($params['rule'],true);
                     $list_filtration = [];
+                    $detail_filtration = [];
                 }catch (Exception $e){
                     $this->error('规则格式错误');
                 }
@@ -94,59 +94,48 @@ class Collect extends Controller
             }
 
             if(empty($rule)) $this->error('列表规则参数不能为空或错误');
+
             //初始化话规则
             $ii = 0;
             foreach ($rule as $k => &$v){
-                //验证规则格式
-                if( count($v) < 3 ){
-                    return $this->error('规则格式错误');
-                }
                 $key[] = [
                     'field'  => $k,
                     'title' => $v[2]
                 ];
-                //删除一级中的规则描述
-                unset($v[2]);
 
-                //分解二级采集规则
-                if( isset($v[3]) ){
 
-                    $secondRule = $v[3];
-                    foreach ($secondRule as $vk => &$vv){
+                //获取二级规则
+                if(isset($v[3]) && !empty($v[3]) ){
+
+                    if( $get_model ===  "1" ){
+                        $detail_code = $k;
+                    }
+
+                    $second = $v[3];
+                    //获取二级的正则规则
+                    foreach ($second as $sK=>&$sV){
                         $key[] = [
-                            'field'  => $vk,
-                            'title'  => $vv[2]
+                            'field'  => $sK,
+                            'title'  => $sV[2]
                         ];
-                        if( isset($vv[4])&&!empty($vv[4]) ){
-
-                            $second_filtration[$vk] = $vv[4];
-                            unset($vv[4]);
-                            unset($vv[3]);
-
-                        }
-                    }
-                    $second[$k] = $secondRule;
-                    //删除二级的规则描述
-                    foreach ($second[$k] as $sK => &$sV){
+                        if( $get_model == "1" && isset($sV[4])) $detail_filtration[] = $sV[4];
                         unset($sV[2]);
+                        unset($sV[3]);
+                        unset($sV[4]);
                     }
-                    //删除一级中的二级规则
-                    unset($v[3]);
-
-                    //专业模式 提取 正则表达式
-                    if( isset($v[4])&&!empty($v[4]) ){
-                        $list_filtration[$ii] = $v[4];
-                        unset($v[4]);
-                    }
-
                 }
-                $ii++;
+
+                //专业模式 提取 正则表达式
+                if( isset($v[4])&&!empty($v[4]) ){
+                    $list_filtration[$ii] = $v[4];
+                }
+                unset($v[3]);
+                unset($v[4]);
             }
 
             //固定json返回key
             $key[] =["fixed"=> 'right', "width"=> 165, "align"=> 'center', "toolbar"=> '#barDemo'];
             //查询1级
-
             while ( $i <= $page ){
                 // 待采集的页面地址
                 $url = str_replace('@@',$i,$url);
@@ -190,7 +179,6 @@ class Collect extends Controller
                         }
                     }
                 }catch (Exception $e){
-                    echo $e->getMessage();die;
                     return $this->error('采集规则错误，请检查');
                 }
 
@@ -199,59 +187,56 @@ class Collect extends Controller
             }
             //查询2级
             if( !empty($second) ){
-                //分解1级查询数据
+                //分解1级查询数据   [单线程]
                 foreach ( $row as $rowKey => &$val) {
-                    //分解条数据查询规则
-                    foreach ( $second as $secondKey => $secondVal){
-                        //将url中的中文转换成编码【中文url 插件无法解析】
-                        $secondUrl = $val[$secondKey];
-//                            $secondUrl = Helper::chineseUrlToUrlCode( $val[$secondKey] );
-                        //判断404页面
-                        if(empty($secondUrl))continue 1;
-                        $headers = get_headers( $secondUrl );
-                        if (strpos($headers[0], '404'))
-                        {
-                            continue 1;
-                        }
-                        //判断是否是url
-                        if( filter_var($secondUrl,FILTER_VALIDATE_URL) ){
-                            $secondData = QueryList::Query($secondUrl,$secondVal)->data;
-                            unset($secondData[0]);//院校库定制
-                            //遍历查询结果  正则内容
-                            foreach ($secondData as $sDataK=>&$sDataV){
-                                $fi = 0;
-                                foreach ($sDataV as $sFk => &$sFv){
-                                    //url判断[url添加域名]
-                                    if( in_array( $sFk,$urlArrKey ) && !empty($sFv) && !strstr('http',$sFv ) ){
-                                        $sFv = $domain.$sFv;
-                                    }
-                                    //正则过滤
-                                    if( !empty($sFv) &&  isset($second_filtration[$fi]) &&  $second_filtration[$fi]){
-                                        $sFv = str_replace('"','\'',$sFv);
+                    //将url中的中文转换成编码【中文url 插件无法解析】
+                    $secondUrl = Helper::chineseUrlToUrlCode( $val[$detail_code] );
+                    //判断404页面
+                    if(empty($secondUrl))continue 1;
+                    $headers = get_headers( $secondUrl );
+                    if (strpos($headers[0], '404'))
+                    {
+                        continue 1;
+                    }
 
-                                        preg_match( $second_filtration[$fi],$sFv,$match);
-                                        if(!empty($match)){
-                                            $sFv = $match[1];
-                                        }
-                                    }
-                                    $fi++;
+                    //判断是否是url
+                    if( filter_var($secondUrl,FILTER_VALIDATE_URL) ){
+                        $secondData = QueryList::Query($secondUrl,$second)->data;
+                        //遍历查询结果  正则内容
+                        foreach ($secondData as $sDataK=>&$sDataV){
+                            $fi = 0;
+                            foreach ($sDataV as $sFk => &$sFv){
+                                //url判断[url添加域名]
+                                if( in_array( $sFk,$urlArrKey ) && !empty($sFv) && !strstr('http',$sFv ) ){
+                                    $sFv = $domain.$sFv;
                                 }
-                            }
-                            $newStr = "";
-                            foreach( $secondData as $a =>&$b ){//院校库定制
-                                $newStr .= $b['school'].',';
-                            }
 
-                            //二级内容合并
-                            if( $secondData ){
-                                $val = array_merge($val,['school'=>trim($newStr,',')]);//院校库定制
-//                                $val = array_merge($val,$secondData[0]);
+                                //正则过滤
+                                if( !empty($sFv) &&  isset($detail_filtration[$fi]) &&  $detail_filtration[$fi]){
+                                    $sFv = str_replace('"','\'',$sFv);
+                                    preg_match( $detail_filtration[$fi],$sFv,$match);
+                                    if(!empty($match)){
+                                        $sFv = $match[1];
+                                    }else{
+                                        $sFv = '暂无数据';
+                                    }
+                                }
+                                $fi++;
                             }
+                        }
+//                            $newStr = "";
+//                            foreach( $secondData as $a =>&$b ){//院校库定制
+//                                $newStr .= $b['school'].',';
+//                            }
+
+                        //二级内容合并
+                        if( $secondData ){
+//                                $val = array_merge($val,['school'=>trim($newStr,',')]);//院校库定制
+                            $val = array_merge($val,$secondData[0]);
                         }
                     }
                 }
             }
-
             return $this->success('查询成功','', ['key'=>$key,'data'=>$row]);
         }
 
@@ -329,7 +314,7 @@ class Collect extends Controller
                                     $len ='text';
                                     break;
                             }
-                            $sql .= ' ADD COLUMN `'.$v.'` '.$len.' DEFAULT NULL, ';
+                            $sql .= ' ADD COLUMN `'.$v.'` '.$len.' DEFAULT NULL COMMENT \'测试\', ';
                         }
 
                     }
@@ -349,10 +334,12 @@ class Collect extends Controller
                     }
                 }
                 //院校库===============================
-
-
+                $insertRow = true;
                 //数据写入表中
-                $insertRow = Db::name($config['tableName'])->insertAll($data);
+                foreach ($data as $k=>$v){
+                    $rows= Db::name($config['tableName'])->insert($v);
+                    if(!$rows) $insertRow = false;
+                }
                 if($insertRow){
                     return $this->success('写入成功');
                 }
