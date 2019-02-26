@@ -13,9 +13,6 @@
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-ctype" />
       <path value="$PROJECT_DIR$/vendor/topthink/think-queue" />
       <path value="$PROJECT_DIR$/vendor/jaeger/phpquery-single" />
-      <path value="$PROJECT_DIR$/vendor/jaeger/querylist" />
-      <path value="$PROJECT_DIR$/vendor/jaeger/querylist-ext-aquery" />
-      <path value="$PROJECT_DIR$/vendor/jaeger/querylist-ext-multi" />
       <path value="$PROJECT_DIR$/vendor/jaeger/curlmulti" />
     </include_path>
   </component>
