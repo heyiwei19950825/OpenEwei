@@ -24,7 +24,8 @@
         "topthink/think-helper": "1.*",
         "phpoffice/phpexcel": "^1.8",
         "phpmailer/phpmailer": "^6.0",
-        "twig/twig":"*"
+        "twig/twig":"*",
+        "jaeger/querylist": "~V4"
     },
     "extra": {
         "think-path": "thinkphp"

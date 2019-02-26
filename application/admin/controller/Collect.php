@@ -7,7 +7,6 @@ use QL\QueryList;
 use think\Controller;
 use think\Db;
 use think\Exception;
-use think\Request;
 
 class Collect extends Controller
 {
@@ -148,7 +147,7 @@ class Collect extends Controller
 
                 // 切片选择器
                 try{
-                    $data = QueryList::Query($url,$rule,$range)->data;
+                    $data = QueryList::get($url)->rules($rule)->range($range)->query()->getData()->all();
                     foreach ($data as $dataK=>&$dataV){
                         $fi = 0;
                         $notNullVal = false;
@@ -213,7 +212,7 @@ class Collect extends Controller
 
                     //判断是否是url
                     if( filter_var($secondUrl,FILTER_VALIDATE_URL) ){
-                        $secondData = QueryList::Query($secondUrl,$second)->data;
+                        $secondData = QueryList::get($secondUrl)->rules($second)->query()->getData()->all();
                         //遍历查询结果  正则内容
                         foreach ($secondData as $sDataK=>&$sDataV){
                             $fi = 0;
@@ -235,10 +234,8 @@ class Collect extends Controller
                                         $pregRule = $detail_filtration[$fi];
                                         $fKey = 1;
                                     }
-//                                    echo $pregRule;
-//                                    echo $sFv;
+
                                     preg_match( $pregRule,$sFv,$match);
-//                                    dump($match);die;
                                     if(!empty($match)){
                                         $sFv = $match[$fKey];
                                     }else{
