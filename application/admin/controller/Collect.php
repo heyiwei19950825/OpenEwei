@@ -163,10 +163,19 @@ class Collect extends Controller
                             }
                             //正则过滤
                             if( !empty($fv) &&  isset($list_filtration[$fi]) &&  $list_filtration[$fi]){
-                                $fv = str_replace('"','\'',$fv);
-                                preg_match( $list_filtration[$fi],$fv,$match);
+                                //拆分正则选取key标示
+                                if( strpos($list_filtration[$fi],'@@@') ){
+                                    $dFiltration = explode('@@@',$list_filtration[$fi]);
+                                    $fKey = $dFiltration[1];
+                                    $pregRule = $dFiltration[0];
+
+                                }else{
+                                    $pregRule = $list_filtration[$fi];
+                                    $fKey = 1;
+                                }
+                                preg_match( $pregRule,$fv,$match);
                                 if(!empty($match)){
-                                    $fv = $match[1];
+                                    $fv = $match[$fKey];
                                 }else{
                                     $fv = '暂无数据';
                                 }
@@ -189,6 +198,9 @@ class Collect extends Controller
             if( !empty($second) ){
                 //分解1级查询数据   [单线程]
                 foreach ( $row as $rowKey => &$val) {
+                    if($rowKey >1){
+                        break;
+                    }
                     //将url中的中文转换成编码【中文url 插件无法解析】
                     $secondUrl = Helper::chineseUrlToUrlCode( $val[$detail_code] );
                     //判断404页面
@@ -214,9 +226,21 @@ class Collect extends Controller
                                 //正则过滤
                                 if( !empty($sFv) &&  isset($detail_filtration[$fi]) &&  $detail_filtration[$fi]){
                                     $sFv = str_replace('"','\'',$sFv);
-                                    preg_match( $detail_filtration[$fi],$sFv,$match);
+                                    //拆分正则选取key标示
+                                    if( strpos($detail_filtration[$fi],'@@@') ){
+                                        $dFiltration = explode('@@@',$detail_filtration[$fi]);
+                                        $fKey = $dFiltration[1];
+                                        $pregRule = $dFiltration[0];
+                                    }else{
+                                        $pregRule = $detail_filtration[$fi];
+                                        $fKey = 1;
+                                    }
+//                                    echo $pregRule;
+//                                    echo $sFv;
+                                    preg_match( $pregRule,$sFv,$match);
+//                                    dump($match);die;
                                     if(!empty($match)){
-                                        $sFv = $match[1];
+                                        $sFv = $match[$fKey];
                                     }else{
                                         $sFv = '暂无数据';
                                     }
@@ -224,14 +248,8 @@ class Collect extends Controller
                                 $fi++;
                             }
                         }
-//                            $newStr = "";
-//                            foreach( $secondData as $a =>&$b ){//院校库定制
-//                                $newStr .= $b['school'].',';
-//                            }
-
                         //二级内容合并
                         if( $secondData ){
-//                                $val = array_merge($val,['school'=>trim($newStr,',')]);//院校库定制
                             $val = array_merge($val,$secondData[0]);
                         }
                     }
@@ -359,5 +377,7 @@ class Collect extends Controller
     public function importConfig(){
         return $this->fetch();
     }
+
+
 
 }

@@ -33,7 +33,7 @@
                                 <div class="layui-form-mid layui-word-aux"> 抓取数据页面的唯一节点 </div>
                             </div>
                         </div>
-                        <div class="layui-form-item  layui-col-md11">
+                        <div class="layui-form-item  layui-col-md11 layui-hide">
                             <label class="layui-form-label"> * 下载图片</label>
                             <div class="layui-input-inline">
                                 <select name="dow_img" lay-verify="required">
@@ -43,7 +43,7 @@
                             </div>
                             <div class="layui-form-mid layui-word-aux">（将图片存入本地或是图床）</div>
                         </div>
-                        <div class="layui-form-item  layui-col-md11">
+                        <div class="layui-form-item  layui-col-md11 layui-hide">
                             <label class="layui-form-label"> * 编码</label>
                             <div class="layui-input-inline">
                                 <select id="" name="code" lay-verify="required">
@@ -54,7 +54,7 @@
                             <div class="layui-form-mid layui-word-aux">（抓取网站的编码数据）</div>
                         </div>
                         <!--模拟登陆-->
-                        <div class="layui-form-item  layui-col-md11">
+                        <div class="layui-form-item  layui-col-md11 layui-hide">
                             <label class="layui-form-label"> 模拟登陆</label>
                             <div class="layui-input-block" style="line-height: 36px;">
                                 <input type="checkbox" name="switch" lay-skin="switch" lay-text="开启|关闭" lay-filter="login_switch">
@@ -88,7 +88,7 @@
                                 <input type="checkbox" name="switch" lay-skin="switch" lay-text="开启|关闭" lay-filter="model_switch">
                                 <input type="hidden" name="get_model" value="0">
                             </div>
-                            <div class="layui-form-mid layui-word-aux">（注意：有编程经验则可选）</div>
+                            <div class="layui-form-mid layui-word-aux">（注意：有编程经验则可选【需要有正则基础】）</div>
                         </div>
                         <!--抓取模式选择-->
                         <div class="layui-form-item  layui-col-md11">
@@ -96,12 +96,12 @@
                             <div class="layui-input-inline" style="line-height: 36px;">
                                 <input type="number" name="page" value="1" class="layui-input">
                             </div>
+                            <label class="layui-form-label"> 开始页码</label>
                             <div class="layui-input-inline" style="line-height: 36px;">
                                 <input type="number" name="start_page" value="1" class="layui-input" placeholder="从第几页开始">
                             </div>
                             <div class="layui-form-mid layui-word-aux">（注意：抓取多页则写入页码）</div>
                         </div>
-
                         <!--普通模式-->
                         <div class="general-model">
                             <!--列表采集规则-->
@@ -121,35 +121,11 @@
                                     </thead>
                                     <tbody class="tbody_rule">
                                     <tr class="table_rule">
-                                        <td><input type="text" value="name" name="list_name[]" class="layui-input list_name" placeholder="标示字段名称 例如：thumb"></td>
-                                        <td><input type="text" value="a:eq(0)" name="list_rule[]" class="layui-input" placeholder="jquery 选取规则 例如：.shop-item>a:eq(0)"></td>
-                                        <td><input type="text" value="title" name="list_type[]" class="layui-input" placeholder="仅支持：text href src html"></td>
-                                        <td><input type="text" value="名称" name="list_desc[]" class="layui-input" placeholder="自定义中文名称"></td>
-                                        <td><input type="text" value="<b>.*<\/b>" name="list_filtration[]" class="layui-input" placeholder="正则表达式"></td>
-                                        <td><a class="layui-btn layui-btn-danger layui-btn-xs table_rule_del">删除</a></td>
-                                    </tr>
-                                    <tr class="table_rule">
-                                        <td><input type="text" value="link" name="list_name[]" class="layui-input list_name" placeholder="标示字段名称 例如：thumb"></td>
-                                        <td><input type="text" value="a:last" name="list_rule[]" class="layui-input" placeholder="jquery 选取规则 例如：.shop-item>a:eq(0)"></td>
-                                        <td><input type="text" value="href" name="list_type[]" class="layui-input" placeholder="仅支持：text href src html"></td>
-                                        <td><input type="text" value="链接" name="list_desc[]" class="layui-input" placeholder="自定义中文名称"></td>
-                                        <td><input type="text" value="(http|https):\/\/.*" name="list_filtration[]" class="layui-input" placeholder="正则表达式"></td>
-                                        <td><a class="layui-btn layui-btn-danger layui-btn-xs table_rule_del">删除</a></td>
-                                    </tr>
-                                    <tr class="table_rule">
-                                        <td><input type="text" value="logo" name="list_name[]" class="layui-input list_name" placeholder="标示字段名称 例如：thumb"></td>
-                                        <td><input type="text" value="a:eq(0)>i" name="list_rule[]" class="layui-input" placeholder="jquery 选取规则 例如：.shop-item>a:eq(0)"></td>
-                                        <td><input type="text" value="style" name="list_type[]" class="layui-input" placeholder="仅支持：text href src html"></td>
-                                        <td><input type="text" value="图片" name="list_desc[]" class="layui-input" placeholder="自定义中文名称"></td>
-                                        <td><input type="text" value="\/uploadfile.*\.(png|jpg|gif)" name="list_filtration[]" class="layui-input" placeholder="正则表达式"></td>
-                                        <td><a class="layui-btn layui-btn-danger layui-btn-xs table_rule_del">删除</a></td>
-                                    </tr>
-                                    <tr class="table_rule">
-                                        <td><input type="text" value="desc" name="list_name[]" class="layui-input list_name" placeholder="标示字段名称 例如：thumb"></td>
-                                        <td><input type="text" value="a:eq(0)" name="list_rule[]" class="layui-input" placeholder="jquery 选取规则 例如：.shop-item>a:eq(0)"></td>
-                                        <td><input type="text" value="text" name="list_type[]" class="layui-input" placeholder="仅支持：text href src html"></td>
-                                        <td><input type="text" value="描述" name="list_desc[]" class="layui-input" placeholder="自定义中文名称"></td>
-                                        <td><input type="text" value="" name="list_filtration[]" class="layui-input" placeholder="正则表达式"></td>
+                                        <td><input type="text" name="list_name[]" class="layui-input list_name" placeholder="标示字段名称 例如：thumb"></td>
+                                        <td><input type="text" name="list_rule[]" class="layui-input" placeholder="jquery 选取规则 例如：.shop-item>a:eq(0)"></td>
+                                        <td><input type="text" name="list_type[]" class="layui-input" placeholder="仅支持：text href src html"></td>
+                                        <td><input type="text" name="list_desc[]" class="layui-input" placeholder="自定义中文名称"></td>
+                                        <td><input type="text" name="list_filtration[]" class="layui-input" placeholder="正则表达式"></td>
                                         <td><a class="layui-btn layui-btn-danger layui-btn-xs table_rule_del">删除</a></td>
                                     </tr>
                                     </tbody>
@@ -212,9 +188,7 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
-
                     <!--入库规则-->
                     <div class="layui-col-md3 layui-card layui-hide" style="margin-left: 20px;padding-bottom: 30px;">
                         <div class="layui-card-header layui-col-md11 " style="margin-bottom: 20px;">
