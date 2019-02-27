@@ -123,15 +123,9 @@
                                 <a class="layui-btn layui-btn-xs table_rule_add" data-type="list">增加</a>
                             </div>
                         </div>
-                        <div class="layui-form-item  layui-col-md11 detail-url">
-                            <label class="layui-form-label"> * 关联字段</label>
-                            <div class="layui-input-block">
-                                <input type="text" name="detail_code" placeholder="抓取对应列表数据中详情字段" class="layui-input" value="link">
-                            </div>
-                        </div>
-                        <div class="layui-form-item  layui-col-md11 detail-rule layui-hide" style="border: 1px solid #f6f6f6">
-                            <blockquote class="layui-elem-quote" style="margin-left: 20px;">内容数据采集规则</blockquote>
-                            <table class="layui-table" style="margin-left: 20px;width: 98%;" lay-filter="detail_rule">
+                        <div class="layui-form-item  layui-col-md11 rule-list">
+                            <blockquote class="layui-elem-quote" style="margin-left: 20px;">列表数据采集规则</blockquote>
+                            <table class="layui-table" style="margin-left: 20px; width: 98%;" lay-filter="list_rule">
                                 <thead>
                                 <tr>
                                     <th >字段名称</th>
@@ -144,17 +138,17 @@
                                 </thead>
                                 <tbody class="tbody_rule">
                                 <tr class="table_rule">
-                                    <td><input type="text" name="detail_name[]"  class="layui-input detail_name" placeholder="标示字段名称 例如：thumb"></td>
-                                    <td><input type="text" name="detail_rule[]" class="layui-input" placeholder="jquery 选取规则 例如：.shop-item>a:eq(0)"></td>
-                                    <td><input type="text" name="detail_type[]" class="layui-input" placeholder="仅支持：text href src html"></td>
-                                    <td><input type="text" name="detail_desc[]" class="layui-input" placeholder="自定义中文名称"></td>
-                                    <td><input type="text" name="detail_filtration[]" class="layui-input" placeholder="正则表达式"></td>
+                                    <td><input type="text" name="list_name[]" class="layui-input list_name" placeholder="标示字段名称 例如：thumb"></td>
+                                    <td><input type="text" name="list_rule[]" class="layui-input" placeholder="jquery 选取规则 例如：.shop-item>a:eq(0)"></td>
+                                    <td><input type="text" name="list_type[]" class="layui-input" placeholder="仅支持：text href src html"></td>
+                                    <td><input type="text" name="list_desc[]" class="layui-input" placeholder="自定义中文名称"></td>
+                                    <td><input type="text" name="list_filtration[]" class="layui-input" placeholder="正则表达式"></td>
                                     <td><a class="layui-btn layui-btn-danger layui-btn-xs table_rule_del">删除</a></td>
                                 </tr>
                                 </tbody>
                             </table>
                             <div style="float:right">
-                                <a class="layui-btn layui-btn-xs table_rule_add" data-type="detail">增加</a>
+                                <a class="layui-btn layui-btn-xs table_rule_add" data-type="list">增加</a>
                             </div>
                         </div>
                     </div>
@@ -341,30 +335,35 @@
            })
         }
         tableRuleDel();
-        //添加入库规则
-        $('.table_rule_add').on('click',function(){
-            var par = $(this).parents('.layui-form-item');
-            var type = 'list_';
-            if( $(this).attr('data-type') == 'detail'){
-                type = 'detail_'
-            }
+        tableRuleAdd();
 
-            var i  = $('.'+type+'name').length;
-            var html = '<tr class="table_rule">\n' +
-                '                                        <td><input type="text" name="'+type+'name['+i+']" class="layui-input '+type+'name" placeholder="标示字段名称 例如：thumb"></td>\n' +
-                '                                        <td><input type="text" name="'+type+'rule['+i+']" class="layui-input" placeholder="jquery 选取规则 例如：.shop-item>a:eq(0)"></td>\n' +
-                '                                        <td><input type="text" name="'+type+'type['+i+']" class="layui-input" placeholder="仅支持：text href src html"></td>\n' +
-                '                                        <td><input type="text" name="'+type+'desc['+i+']" class="layui-input" placeholder="自定义中文名称"></td>\n' +
-                '                                        <td><input type="text" name="'+type+'filtration['+i+']" class="layui-input" placeholder="自定义中文名称"></td>\n' +
-                '                                        <td><a class="layui-btn layui-btn-danger layui-btn-xs table_rule_del">删除</a></td>\n' +
-                '                                    </tr>';
-            par.find('tbody').append(html)
-            tableRuleDel();
-            table.on(''+type+'rule',function(){
-                this.reload();
-            });
-        })
+        //增加入库规则
+        function tableRuleAdd(){
+            //添加入库规则
+            $('.table_rule_add').on('click',function(){
+                $()
+                var par = $(this).parents('.layui-form-item');
+                var type = 'list_';
+                if( $(this).attr('data-type') == 'detail'){
+                    type = 'detail_'
+                }
 
+                var i  = $('.'+type+'name').length;
+                var html = '<tr class="table_rule">\n' +
+                    '                                        <td><input type="text" name="'+type+'name['+i+']" class="layui-input '+type+'name" placeholder="标示字段名称 例如：thumb"></td>\n' +
+                    '                                        <td><input type="text" name="'+type+'rule['+i+']" class="layui-input" placeholder="jquery 选取规则 例如：.shop-item>a:eq(0)"></td>\n' +
+                    '                                        <td><input type="text" name="'+type+'type['+i+']" class="layui-input" placeholder="仅支持：text href src html"></td>\n' +
+                    '                                        <td><input type="text" name="'+type+'desc['+i+']" class="layui-input" placeholder="自定义中文名称"></td>\n' +
+                    '                                        <td><input type="text" name="'+type+'filtration['+i+']" class="layui-input" placeholder="自定义中文名称"></td>\n' +
+                    '                                        <td><a class="layui-btn layui-btn-danger layui-btn-xs table_rule_del">删除</a></td>\n' +
+                    '                                    </tr>';
+                par.find('tbody').append(html)
+                tableRuleDel();
+                table.on(''+type+'rule',function(){
+                    this.reload();
+                });
+            })
+        }
         //删除入库规则
         function tableRuleDel(){
             $('.table_rule_del').on('click',function(){
@@ -374,9 +373,14 @@
 
         //添加二级采集规则
         $('.add-rule').on('click',function(){
+            var html = '<div class="layui-form-item  layui-col-md11">'+$('.rule-list').html()+'</div>';
+            $('.general-model').append(html);
 
+            table.on('list_rule',function(){
+                this.reload();
+            });
+            tableRuleAdd();
         });
-
 
         //开启模拟登陆
         form.on('switch(login_switch)',function(data){
