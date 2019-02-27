@@ -36,29 +36,22 @@ class Collect extends Controller
             ini_set('max_execution_time', '0');
             //初始化数据
             $params = $this->request->param();
-            $url = $range = $dow_img = $code = $need_login = $login_url = $login_name = $login_password = $need_detail = $rule = $table_name = $get_model = $page = $detail_code = '';
-            $list_name = $list_rule = $list_type = $list_desc = $detail_name = $detail_rule = $detail_type = $detail_desc = $table_collect_name = $table_field_name =  $second_filtration = $second = $row = $list_filtration = $detail_filtration = $urlArrKey = [];
+            $url = $dow_img = $code = $need_login = $login_url = $login_name = $login_password = $need_detail = $rule = $table_name = $get_model = $page = $detail_code = '';
+            $list_name = $list_rule = $list_type = $list_desc = $detail_name = $detail_rule = $detail_type = $detail_desc = $table_collect_name = $table_field_name =  $second_filtration = $second = $row = $list_filtration = $detail_filtration = $urlArrKey = $range = $detail_code = [];
             extract($params);
 
             $domain = 'http://'.explode('/',$params['url'])[2];//获取域名
             $key[]  = ['type'  => 'checkbox','fixed' => 'left',];
             $i      = 1;//默认页面数
 
-            //是否需要模拟登陆
-            if($need_login){
-            }
-
             //判断抓取模式
             if( $get_model ===  "0" ){      //普通模式
                 $rule = [];
-
                 //需要做数据转换
                 foreach ($list_name as $k => $v){
-
                     if( empty( $v ) || empty( $list_rule[$k] )  || empty( $list_type[$k] ) || empty( $list_desc[$k] ) ){
                         $this->error('列表规则参数不能为空');
                     }
-
                     $rule[$v] = [$list_rule[$k],$list_type[$k],$list_desc[$k]];
                 }
 
@@ -87,7 +80,7 @@ class Collect extends Controller
 
             //获取url类型的字段
             foreach ($rule as $k=>$v){
-                if($v[2] == 'href'){
+                if($v[1] == 'href'){
                     $urlArrKey[] = $k;
                 }
             }
@@ -113,10 +106,10 @@ class Collect extends Controller
                     $second = $v[3];
                     //获取二级的正则规则
                     foreach ($second as $sK=>&$sV){
-                        $key[] = [
-                            'field'  => $sK,
-                            'title'  => $sV[2]
-                        ];
+//                        $key[] = [
+//                            'field'  => $sK,
+//                            'title'  => $sV[2]
+//                        ];
                         if( $get_model == "1" && isset($sV[4])) $detail_filtration[] = $sV[4];
                         unset($sV[2]);
                         unset($sV[3]);
@@ -144,7 +137,6 @@ class Collect extends Controller
                 {
                     continue;
                 }
-
                 // 切片选择器
                 try{
                     $data = QueryList::get($url)->rules($rule)->range($range)->query()->getData()->all();
@@ -160,6 +152,7 @@ class Collect extends Controller
                             if( in_array( $fk,$urlArrKey ) && !empty($fv) && !strstr('http',$fv ) ){
                                 $fv = $domain.$fv;
                             }
+
                             //正则过滤
                             if( !empty($fv) &&  isset($list_filtration[$fi]) &&  $list_filtration[$fi]){
                                 //拆分正则选取key标示
@@ -189,70 +182,11 @@ class Collect extends Controller
                 }catch (Exception $e){
                     return $this->error('采集规则错误，请检查');
                 }
-
                 $row = array_merge($row, $data);
                 $i++;
             }
-            //查询2级
-            if( !empty($second) ){
-                //分解1级查询数据   [单线程]
-                foreach ( $row as $rowKey => &$val) {
-                    if($rowKey >1){
-                        break;
-                    }
-                    //将url中的中文转换成编码【中文url 插件无法解析】
-                    $secondUrl = Helper::chineseUrlToUrlCode( $val[$detail_code] );
-                    //判断404页面
-                    if(empty($secondUrl))continue 1;
-                    $headers = get_headers( $secondUrl );
-                    if (strpos($headers[0], '404'))
-                    {
-                        continue 1;
-                    }
 
-                    //判断是否是url
-                    if( filter_var($secondUrl,FILTER_VALIDATE_URL) ){
-                        $secondData = QueryList::get($secondUrl)->rules($second)->query()->getData()->all();
-                        //遍历查询结果  正则内容
-                        foreach ($secondData as $sDataK=>&$sDataV){
-                            $fi = 0;
-                            foreach ($sDataV as $sFk => &$sFv){
-                                //url判断[url添加域名]
-                                if( in_array( $sFk,$urlArrKey ) && !empty($sFv) && !strstr('http',$sFv ) ){
-                                    $sFv = $domain.$sFv;
-                                }
-
-                                //正则过滤
-                                if( !empty($sFv) &&  isset($detail_filtration[$fi]) &&  $detail_filtration[$fi]){
-                                    $sFv = str_replace('"','\'',$sFv);
-                                    //拆分正则选取key标示
-                                    if( strpos($detail_filtration[$fi],'@@@') ){
-                                        $dFiltration = explode('@@@',$detail_filtration[$fi]);
-                                        $fKey = $dFiltration[1];
-                                        $pregRule = $dFiltration[0];
-                                    }else{
-                                        $pregRule = $detail_filtration[$fi];
-                                        $fKey = 1;
-                                    }
-
-                                    preg_match( $pregRule,$sFv,$match);
-                                    if(!empty($match)){
-                                        $sFv = $match[$fKey];
-                                    }else{
-                                        $sFv = '暂无数据';
-                                    }
-                                }
-                                $fi++;
-                            }
-                        }
-                        //二级内容合并
-                        if( $secondData ){
-                            $val = array_merge($val,$secondData[0]);
-                        }
-                    }
-                }
-            }
-            return $this->success('查询成功','', ['key'=>$key,'data'=>$row]);
+            return $this->success( '共查获'.count($row).'条数据，准备抓取详细信息','', ['key'=>$key,'data'=>$row]);
         }
 
         return $this->fetch();

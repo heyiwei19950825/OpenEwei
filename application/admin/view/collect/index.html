@@ -1,259 +1,237 @@
 {extend name="base" /}
 {block name="content"}
-<div class="layui-fluid">
-    <div class="layui-tab layui-tab-card">
-        <ul class="layui-tab-title">
-            <li class="layui-this">通用抓取</li>
-            <li>文章采集</li>
-            <li>图片采集</li>
-            <li>视频采集</li>
-            <li>音乐采集</li>
-            <li>小说采集</li>
-        </ul>
-        <div class="layui-tab-content"  style="background:#f2f2f2">
-            <div class="layui-row">
-                <form class="layui-form layui-card-header layuiadmin-card-header-auto">
-                    <!--采集规则-->
-                    <div class="layui-col-md12 layui-card" style="padding-bottom: 30px;">
-                        <div class="layui-card-header layui-col-md11 " style="margin-bottom: 20px;">
-                            采集规则
-                        </div>
-                        <!--基础数据配置-->
-                        <div class="layui-form-item  layui-col-md11">
-                            <label class="layui-form-label"> * 页面地址</label>
-                            <div class="layui-input-block">
-                                <input type="text" name="url" lay-verify="url|required"  placeholder="输入抓取地址的url" class="layui-input" value="http://www.niudana.com/">
-                                <div class="layui-form-mid layui-word-aux">（以http:// 或 https://开头  页面标示用@@ 例如 http://www.phphz.com/@@/）</div>
-                            </div>
-                        </div>
-                        <div class="layui-form-item  layui-col-md11">
-                            <label class="layui-form-label">切片规则</label>
-                            <div class="layui-input-block">
-                                <input type="text" name="range"  placeholder="输入抓取地址的切片规则 例如#cardslist>.card" class="layui-input" value="li">
-                                <div class="layui-form-mid layui-word-aux"> 抓取数据页面的唯一节点 </div>
-                            </div>
-                        </div>
-                        <div class="layui-form-item  layui-col-md11 layui-hide">
-                            <label class="layui-form-label"> * 下载图片</label>
-                            <div class="layui-input-inline">
-                                <select name="dow_img" lay-verify="required">
-                                    <option value="0">是</option>
-                                    <option value="1">否</option>
-                                </select>
-                            </div>
-                            <div class="layui-form-mid layui-word-aux">（将图片存入本地或是图床）</div>
-                        </div>
-                        <div class="layui-form-item  layui-col-md11 layui-hide">
-                            <label class="layui-form-label"> * 编码</label>
-                            <div class="layui-input-inline">
-                                <select id="" name="code" lay-verify="required">
-                                    <option value="utf8">UTF-8</option>
-                                    <option value="gbk">GBK</option>
-                                </select>
-                            </div>
-                            <div class="layui-form-mid layui-word-aux">（抓取网站的编码数据）</div>
-                        </div>
-                        <!--模拟登陆-->
-                        <div class="layui-form-item  layui-col-md11 layui-hide">
-                            <label class="layui-form-label"> 模拟登陆</label>
-                            <div class="layui-input-block" style="line-height: 36px;">
-                                <input type="checkbox" name="switch" lay-skin="switch" lay-text="开启|关闭" lay-filter="login_switch">
-                                <input type="hidden" name="need_login" value="0">
-                            </div>
-                        </div>
-                        <div class="layui-form-item  layui-col-md11 layui-hide login-config">
-                            <label class="layui-form-label"> * 登陆地址</label>
-                            <div class="layui-input-block">
-                                <input type="text" name="login_url"  placeholder="登录地址url" class="layui-input">
-                                <div class="layui-form-mid layui-word-aux">（以http:// 或 https://开头）</div>
-                            </div>
-                        </div>
-                        <div class="layui-form-item  layui-col-md11 layui-hide login-config">
-                            <label class="layui-form-label"> * 登陆账号</label>
-                            <div class="layui-input-block">
-                                <input type="text" name="login_name" lay-verify=""  placeholder="" class="layui-input">
-                            </div>
-                        </div>
-                        <div class="layui-form-item  layui-col-md11 layui-hide login-config">
-                            <label class="layui-form-label"> * 登陆密码</label>
-                            <div class="layui-input-block">
-                                <input type="text" name="login_password" lay-verify=""  placeholder="" class="layui-input">
-                            </div>
-                        </div>
-
-                        <!--抓取模式选择-->
-                        <div class="layui-form-item  layui-col-md11">
-                            <label class="layui-form-label"> 专业模式</label>
-                            <div class="layui-input-inline" style="line-height: 36px;">
-                                <input type="checkbox" name="switch" lay-skin="switch" lay-text="开启|关闭" lay-filter="model_switch">
-                                <input type="hidden" name="get_model" value="0">
-                            </div>
-                            <div class="layui-form-mid layui-word-aux">（注意：有编程经验则可选【需要有正则基础】）</div>
-                        </div>
-                        <!--抓取模式选择-->
-                        <div class="layui-form-item  layui-col-md11">
-                            <label class="layui-form-label"> 抓取页数</label>
-                            <div class="layui-input-inline" style="line-height: 36px;">
-                                <input type="number" name="page" value="1" class="layui-input">
-                            </div>
-                            <label class="layui-form-label"> 开始页码</label>
-                            <div class="layui-input-inline" style="line-height: 36px;">
-                                <input type="number" name="start_page" value="1" class="layui-input" placeholder="从第几页开始">
-                            </div>
-                            <div class="layui-form-mid layui-word-aux">（注意：抓取多页则写入页码）</div>
-                        </div>
-                        <!--普通模式-->
-                        <div class="general-model">
-                            <!--列表采集规则-->
-                            <div class="layui-form-item  layui-col-md11">
-                                <blockquote class="layui-elem-quote" style="margin-left: 20px;">列表数据采集规则</blockquote>
-
-                                <table class="layui-table" style="margin-left: 20px; width: 98%;" lay-filter="list_rule">
-                                    <thead>
-                                    <tr>
-                                        <th >字段名称</th>
-                                        <th >采集规则</th>
-                                        <th >采集类型</th>
-                                        <th >中文名称</th>
-                                        <th >正则过滤【正则代码】</th>
-                                        <th >操作</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody class="tbody_rule">
-                                    <tr class="table_rule">
-                                        <td><input type="text" name="list_name[]" class="layui-input list_name" placeholder="标示字段名称 例如：thumb"></td>
-                                        <td><input type="text" name="list_rule[]" class="layui-input" placeholder="jquery 选取规则 例如：.shop-item>a:eq(0)"></td>
-                                        <td><input type="text" name="list_type[]" class="layui-input" placeholder="仅支持：text href src html"></td>
-                                        <td><input type="text" name="list_desc[]" class="layui-input" placeholder="自定义中文名称"></td>
-                                        <td><input type="text" name="list_filtration[]" class="layui-input" placeholder="正则表达式"></td>
-                                        <td><a class="layui-btn layui-btn-danger layui-btn-xs table_rule_del">删除</a></td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                                <div style="float:right">
-                                    <a class="layui-btn layui-btn-xs table_rule_add" data-type="list">增加</a>
-                                </div>
-                            </div>
-
-                            <!--详情采集规则-->
-                            <div class="layui-form-item  layui-col-md11">
-                                <label class="layui-form-label"> 抓取详情</label>
-                                <div class="layui-input-block"  style="line-height: 36px;">
-                                    <input type="checkbox" name="switch" lay-skin="switch" lay-text="开启|关闭" lay-filter="detail_switch">
-                                    <input type="hidden" name="need_detail" value="0">
-                                </div>
-                            </div>
-                            <div class="layui-form-item  layui-col-md11 layui-hide detail-url">
-                                <label class="layui-form-label"> * 详情字段</label>
-                                <div class="layui-input-block">
-                                    <input type="text" name="detail_code" placeholder="抓取对应列表数据中详情字段" class="layui-input" value="link">
-                                </div>
-                            </div>
-                            <div class="layui-form-item  layui-col-md11 layui-hide detail-rule">
-                                <blockquote class="layui-elem-quote" style="margin-left: 20px;">内容数据采集规则</blockquote>
-                                <table class="layui-table" style="margin-left: 20px;width: 98%;" lay-filter="detail_rule">
-                                    <thead>
-                                    <tr>
-                                        <th >字段名称</th>
-                                        <th >采集规则</th>
-                                        <th >采集类型</th>
-                                        <th >中文名称</th>
-                                        <th >正则过滤【正则代码】</th>
-                                        <th >操作</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody class="tbody_rule">
-                                    <tr class="table_rule">
-                                        <td><input type="text" name="detail_name[]"  class="layui-input detail_name" placeholder="标示字段名称 例如：thumb"></td>
-                                        <td><input type="text" name="detail_rule[]" class="layui-input" placeholder="jquery 选取规则 例如：.shop-item>a:eq(0)"></td>
-                                        <td><input type="text" name="detail_type[]" class="layui-input" placeholder="仅支持：text href src html"></td>
-                                        <td><input type="text" name="detail_desc[]" class="layui-input" placeholder="自定义中文名称"></td>
-                                        <td><input type="text" name="detail_filtration[]" class="layui-input" placeholder="正则表达式"></td>
-                                        <td><a class="layui-btn layui-btn-danger layui-btn-xs table_rule_del">删除</a></td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                                <div style="float:right">
-                                    <a class="layui-btn layui-btn-xs table_rule_add" data-type="detail">增加</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!--专业模式-->
-                        <div class="specialty-model layui-hide">
-                            <div class="layui-form-item  layui-col-md11">
-                                <label class="layui-form-label"> * 采集规则</label>
-                                <div class="layui-input-block">
-                                <textarea placeholder='{"title":[".shop-item>a:eq(0)","title","标题"],"desc":[".shop-item>p","text","描述"],"thumb":["img","src","缩略图"],"category":[".metacat>a:eq(1)","text","分类"],"link":[".shop-item>a:eq(0)","href","详情地址",{"content":[".article-content","html","内容"],"reading":[".article-header>.muted:eq(4)","text","阅读量"],"comming":[".article-header>.muted:eq(5)","text","评论量"]}],"time":[".pricebtn","text","原文时间"]}' lay-verify="required" class="layui-textarea" name="rule"> {"title":[".shop-item>a:eq(0)","title","标题"],"desc":[".shop-item>p","text","描述"],"thumb":["img","src","缩略图"],"category":[".metacat>a:eq(1)","text","分类"],"link":[".shop-item>a:eq(0)","href","详情地址",{"content":[".article-content","html","内容","-blockquote"],"reading":[".article-header>.muted:eq(4)","text","阅读量"],"comming":[".article-header>.muted:eq(5)","text","评论量"]}],"time":[".pricebtn","text","原文时间","-a"]}</textarea>
-                                <div class="layui-form-mid layui-word-aux">（页面元素抓取规则）</div>
-                                </div>
-                            </div>
+    <div class="layui-tab-content"  style="background:#f2f2f2">
+        <div class="layui-row">
+            <form class="layui-form layui-card-header layuiadmin-card-header-auto">
+                <!--采集规则-->
+                <div class="layui-col-md12 layui-card" style="padding-bottom: 30px;">
+                    <div class="layui-card-header layui-col-md11 " style="margin-bottom: 20px;">
+                        采集规则
+                    </div>
+                    <!--基础数据配置-->
+                    <div class="layui-form-item  layui-col-md11">
+                        <label class="layui-form-label"> * 页面地址</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="url" lay-verify="url|required"  placeholder="输入抓取地址的url" class="layui-input" value="http://www.niudana.com/">
+                            <div class="layui-form-mid layui-word-aux">（以http:// 或 https://开头  页面标示用@@ 例如 http://www.phphz.com/@@/）</div>
                         </div>
                     </div>
-                    <!--入库规则-->
-                    <div class="layui-col-md3 layui-card layui-hide" style="margin-left: 20px;padding-bottom: 30px;">
-                        <div class="layui-card-header layui-col-md11 " style="margin-bottom: 20px;">
-                            入库规则
+                    <div class="layui-form-item  layui-col-md11">
+                        <label class="layui-form-label">切片规则</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="range"  placeholder="输入抓取地址的切片规则 例如#cardslist>.card" class="layui-input" value="li">
+                            <div class="layui-form-mid layui-word-aux"> 抓取数据页面的唯一节点 </div>
                         </div>
-                        <div class="layui-form-item  layui-col-md11">
-                            <label class="layui-form-label"> * 数据表</label>
-                            <div class="layui-input-block">
-                                <input type="text" name="table_name" lay-verify="required"  placeholder="输入库表名称" class="layui-input" value="article">
-                                <div class="layui-form-mid layui-word-aux">（注意：如果表中不存在字段则自动添加该字段）</div>
-                            </div>
+                    </div>
+                    <div class="layui-form-item  layui-col-md11 layui-hide">
+                        <label class="layui-form-label"> * 下载图片</label>
+                        <div class="layui-input-inline">
+                            <select name="dow_img" lay-verify="required">
+                                <option value="0">是</option>
+                                <option value="1">否</option>
+                            </select>
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">（将图片存入本地或是图床）</div>
+                    </div>
+                    <div class="layui-form-item  layui-col-md11 layui-hide">
+                        <label class="layui-form-label"> * 编码</label>
+                        <div class="layui-input-inline">
+                            <select id="" name="code" lay-verify="required">
+                                <option value="utf8">UTF-8</option>
+                                <option value="gbk">GBK</option>
+                            </select>
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">（抓取网站的编码数据）</div>
+                    </div>
+                    <!--模拟登陆-->
+                    <div class="layui-form-item  layui-col-md11 layui-hide">
+                        <label class="layui-form-label"> 模拟登陆</label>
+                        <div class="layui-input-block" style="line-height: 36px;">
+                            <input type="checkbox" name="switch" lay-skin="switch" lay-text="开启|关闭" lay-filter="login_switch">
+                            <input type="hidden" name="need_login" value="0">
+                        </div>
+                    </div>
+                    <div class="layui-form-item  layui-col-md11 layui-hide login-config">
+                        <label class="layui-form-label"> * 登陆地址</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="login_url"  placeholder="登录地址url" class="layui-input">
+                            <div class="layui-form-mid layui-word-aux">（以http:// 或 https://开头）</div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item  layui-col-md11 layui-hide login-config">
+                        <label class="layui-form-label"> * 登陆账号</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="login_name" lay-verify=""  placeholder="" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item  layui-col-md11 layui-hide login-config">
+                        <label class="layui-form-label"> * 登陆密码</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="login_password" lay-verify=""  placeholder="" class="layui-input">
+                        </div>
+                    </div>
 
+                    <!--抓取模式选择-->
+                    <div class="layui-form-item  layui-col-md11">
+                        <label class="layui-form-label"> 专业模式</label>
+                        <div class="layui-input-inline" style="line-height: 36px;">
+                            <input type="checkbox" name="switch" lay-skin="switch" lay-text="开启|关闭" lay-filter="model_switch">
+                            <input type="hidden" name="get_model" value="0">
                         </div>
-                        <div class="layui-form-item  layui-col-md11" style="padding-left: 10px;">
-                            <table class="layui-table">
+                        <div class="layui-form-mid layui-word-aux">（注意：有编程经验则可选【需要有正则基础】）</div>
+                    </div>
+                    <!--抓取模式选择-->
+                    <div class="layui-form-item  layui-col-md11">
+                        <label class="layui-form-label"> 抓取页数</label>
+                        <div class="layui-input-inline" style="line-height: 36px;">
+                            <input type="number" name="page" value="1" class="layui-input">
+                        </div>
+                        <label class="layui-form-label"> 开始页码</label>
+                        <div class="layui-input-inline" style="line-height: 36px;">
+                            <input type="number" name="start_page" value="1" class="layui-input" placeholder="从第几页开始">
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">（注意：抓取多页则写入页码）</div>
+                    </div>
+                    <!--普通模式-->
+                    <div class="general-model">
+                        <!--列表采集规则-->
+                        <div class="layui-form-item  layui-col-md11">
+                            <blockquote class="layui-elem-quote" style="margin-left: 20px;">列表数据采集规则</blockquote>
+                            <table class="layui-table" style="margin-left: 20px; width: 98%;" lay-filter="list_rule">
                                 <thead>
-                                    <tr>
-                                        <th >采集列名</th>
-                                        <th >发布列名</th>
-                                        <th >操作</th>
-                                    </tr>
+                                <tr>
+                                    <th >字段名称</th>
+                                    <th >采集规则</th>
+                                    <th >采集类型</th>
+                                    <th >中文名称</th>
+                                    <th >正则过滤【正则代码】</th>
+                                    <th >操作</th>
+                                </tr>
                                 </thead>
                                 <tbody class="tbody_rule">
-                                    <tr class="table_rule">
-                                        <td><input type="text"  class="layui-input" name="table_collect_name[]"></td>
-                                        <td><input type="text"  class="layui-input" name="table_field_name[]"></td>
-                                        <td><a class="layui-btn layui-btn-danger layui-btn-xs table_rule_del">删除</a></td>
-                                    </tr>
+                                <tr class="table_rule">
+                                    <td><input type="text" name="list_name[]" class="layui-input list_name" placeholder="标示字段名称 例如：thumb"></td>
+                                    <td><input type="text" name="list_rule[]" class="layui-input" placeholder="jquery 选取规则 例如：.shop-item>a:eq(0)"></td>
+                                    <td><input type="text" name="list_type[]" class="layui-input" placeholder="仅支持：text href src html"></td>
+                                    <td><input type="text" name="list_desc[]" class="layui-input" placeholder="自定义中文名称"></td>
+                                    <td><input type="text" name="list_filtration[]" class="layui-input" placeholder="正则表达式"></td>
+                                    <td><a class="layui-btn layui-btn-danger layui-btn-xs table_rule_del">删除</a></td>
+                                </tr>
                                 </tbody>
                             </table>
                             <div style="float:right">
-                                <a class="layui-btn layui-btn-xs table_rule_add">增加</a>
+                                <a class="layui-btn layui-btn-xs table_rule_add" data-type="list">增加</a>
+                            </div>
+                        </div>
+                        <div class="layui-form-item  layui-col-md11 detail-url">
+                            <label class="layui-form-label"> * 关联字段</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="detail_code" placeholder="抓取对应列表数据中详情字段" class="layui-input" value="link">
+                            </div>
+                        </div>
+                        <div class="layui-form-item  layui-col-md11 detail-rule layui-hide" style="border: 1px solid #f6f6f6">
+                            <blockquote class="layui-elem-quote" style="margin-left: 20px;">内容数据采集规则</blockquote>
+                            <table class="layui-table" style="margin-left: 20px;width: 98%;" lay-filter="detail_rule">
+                                <thead>
+                                <tr>
+                                    <th >字段名称</th>
+                                    <th >采集规则</th>
+                                    <th >采集类型</th>
+                                    <th >中文名称</th>
+                                    <th >正则过滤【正则代码】</th>
+                                    <th >操作</th>
+                                </tr>
+                                </thead>
+                                <tbody class="tbody_rule">
+                                <tr class="table_rule">
+                                    <td><input type="text" name="detail_name[]"  class="layui-input detail_name" placeholder="标示字段名称 例如：thumb"></td>
+                                    <td><input type="text" name="detail_rule[]" class="layui-input" placeholder="jquery 选取规则 例如：.shop-item>a:eq(0)"></td>
+                                    <td><input type="text" name="detail_type[]" class="layui-input" placeholder="仅支持：text href src html"></td>
+                                    <td><input type="text" name="detail_desc[]" class="layui-input" placeholder="自定义中文名称"></td>
+                                    <td><input type="text" name="detail_filtration[]" class="layui-input" placeholder="正则表达式"></td>
+                                    <td><a class="layui-btn layui-btn-danger layui-btn-xs table_rule_del">删除</a></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div style="float:right">
+                                <a class="layui-btn layui-btn-xs table_rule_add" data-type="detail">增加</a>
                             </div>
                         </div>
                     </div>
-
-                    <!--按钮-->
-                    <div class="layui-col-md12 layui-card " style="padding: 10px;">
-                        <div class="layui-form-item layui-layout-admin" style="margin:0 auto;">
-                            <div class="">
-                                <div class="layui-btn" lay-submit="" lay-filter="component-form-demo">采集规则测试</div>
-                                <div class="layui-btn layui-btn-primary">保存采集规则</div>
-                                <div class="layui-btn layuiadmin-btn-admin save-data">采集数据</div>
-                                <div class="layui-btn layuiadmin-btn-admin layui-btn-danger del-data">删除数据</div>
+                    <!--专业模式-->
+                    <div class="specialty-model layui-hide">
+                        <div class="layui-form-item  layui-col-md11">
+                            <label class="layui-form-label"> * 采集规则</label>
+                            <div class="layui-input-block">
+                                <textarea placeholder='' lay-verify="required" class="layui-textarea" name="rule"></textarea>
+                                <div class="layui-form-mid layui-word-aux">（页面元素抓取规则）</div>
                             </div>
-                            <div class="layui-form-mid layui-word-aux">（先点击规则测试 然后采集对应的数据）</div>
                         </div>
                     </div>
-                </form>
-            </div>
+                </div>
+                <!--入库规则-->
+                <div class="layui-col-md3 layui-card layui-hide" style="margin-left: 20px;padding-bottom: 30px;">
+                    <div class="layui-card-header layui-col-md11 " style="margin-bottom: 20px;">
+                        入库规则
+                    </div>
+                    <div class="layui-form-item  layui-col-md11">
+                        <label class="layui-form-label"> * 数据表</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="table_name" lay-verify="required"  placeholder="输入库表名称" class="layui-input" value="article">
+                            <div class="layui-form-mid layui-word-aux">（注意：如果表中不存在字段则自动添加该字段）</div>
+                        </div>
 
-            <!--采集数据表格-->
-            <div class="layui-tab-item layui-show">
-                <table id="list" lay-filter="list"></table>
-                <script type="text/html" id="barDemo">
-                    <a class="layui-btn layui-btn-xs" lay-event="import">采集</a>
-                    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
-                </script>
-            </div>
-            <div class="layui-tab-item">
-                <table id="data-list" lay-filter="list"></table>
-            </div>
+                    </div>
+                    <div class="layui-form-item  layui-col-md11" style="padding-left: 10px;">
+                        <table class="layui-table">
+                            <thead>
+                            <tr>
+                                <th >采集列名</th>
+                                <th >发布列名</th>
+                                <th >操作</th>
+                            </tr>
+                            </thead>
+                            <tbody class="tbody_rule">
+                            <tr class="table_rule">
+                                <td><input type="text"  class="layui-input" name="table_collect_name[]"></td>
+                                <td><input type="text"  class="layui-input" name="table_field_name[]"></td>
+                                <td><a class="layui-btn layui-btn-danger layui-btn-xs table_rule_del">删除</a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div style="float:right">
+                            <a class="layui-btn layui-btn-xs table_rule_add">增加</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!--按钮-->
+                <div class="layui-col-md12 layui-card " style="padding: 10px;">
+                    <div class="layui-form-item layui-layout-admin" style="margin:0 auto;">
+                        <div class="">
+                            <div class="layui-btn layuiadmin-btn-admin layui-btn-normal add-rule">添加二级规则</div>
+                            <div class="layui-btn" lay-submit="" lay-filter="component-form-demo">采集规则测试</div>
+                            <div class="layui-btn layui-btn-primary">保存采集规则</div>
+                            <div class="layui-btn layuiadmin-btn-admin save-data">采集数据</div>
+                            <div class="layui-btn layuiadmin-btn-admin layui-btn-danger del-data">删除数据</div>
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">（先点击规则测试 然后采集对应的数据）</div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!--采集数据表格-->
+        <div class="layui-tab-item layui-show">
+            <table id="list" lay-filter="list"></table>
+            <script type="text/html" id="barDemo">
+                <a class="layui-btn layui-btn-xs" lay-event="import">采集</a>
+                <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+            </script>
+        </div>
+        <div class="layui-tab-item">
+            <table id="data-list" lay-filter="list"></table>
         </div>
     </div>
-</div>
 
 <script src="__LAYUI__/layui/layui.js"></script>
 {/block}
@@ -394,19 +372,11 @@
             })
         }
 
-        //开启详情数据抓取
-        form.on('switch(detail_switch)',function(data){
-            if(this.checked){
-                $('.detail-rule').removeClass('layui-hide');
-                $('.detail-url').removeClass('layui-hide');
-                $('input[name=need_detail]').val(1);
+        //添加二级采集规则
+        $('.add-rule').on('click',function(){
 
-            }else{
-                $('.detail-rule').addClass('layui-hide');
-                $('.detail-url').addClass('layui-hide');
-                $('input[name=need_detail]').val(0);
-            }
         });
+
 
         //开启模拟登陆
         form.on('switch(login_switch)',function(data){
