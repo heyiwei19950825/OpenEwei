@@ -36,8 +36,8 @@ class Collect extends Controller
             ini_set('max_execution_time', '0');
             //初始化数据
             $params = $this->request->param();
-            $url = $dow_img = $code = $need_login = $login_url = $login_name = $login_password = $need_detail = $rule = $table_name = $get_model = $page = $detail_code = '';
-            $list_name = $list_rule = $list_type = $list_desc = $detail_name = $detail_rule = $detail_type = $detail_desc = $table_collect_name = $table_field_name =  $second_filtration = $second = $row = $list_filtration = $detail_filtration = $urlArrKey = $range = $detail_code = [];
+            $url = $dow_img = $code = $need_login = $login_url = $login_name = $login_password = $rule = $table_name = $get_model = $page = $start_page = $make = '';
+            $list_name = $list_rule = $list_type = $list_desc = $table_collect_name = $table_field_name =  $second_filtration = $second = $row = $list_filtration = $urlArrKey = $range = [];
             extract($params);
 
             $domain = 'http://'.explode('/',$params['url'])[2];//获取域名
@@ -49,86 +49,38 @@ class Collect extends Controller
                 $rule = [];
                 //需要做数据转换
                 foreach ($list_name as $k => $v){
-                    if( empty( $v ) || empty( $list_rule[$k] )  || empty( $list_type[$k] ) || empty( $list_desc[$k] ) ){
-                        $this->error('列表规则参数不能为空');
-                    }
-                    $rule[$v] = [$list_rule[$k],$list_type[$k],$list_desc[$k]];
-                }
-
-
-                //设置详情规则
-                if( $need_detail == 1 ){
-                    foreach ($detail_name as $detailK => $detailV){
-                        if( empty( $detailV ) || empty( $detail_rule[$detailK] )  || empty( $detail_type[$detailK] ) || empty( $detail_desc[$detailK] ) ){
+                    foreach( $v as $sK => $sV){
+                        if( empty( $sV ) || empty( $list_rule[$k][$sK] )  || empty( $list_type[$k][$sK] ) || empty( $list_desc[$k][$sK] ) ){
                             $this->error('列表规则参数不能为空');
                         }
-                        $detail_rules[$detailV] = [$detail_rule[$detailK],$detail_type[$detailK],$detail_desc[$detailK]];
+                        $rule[$k][$sV] = [$list_rule[$k][$sK],$list_type[$k][$sK],$list_desc[$k][$sK]];
                     }
-                    $rule[$detail_code][] = $detail_rules;
                 }
-
             }else{
                 //数据验证
                 try{
                     $rule = json_decode($params['rule'],true);
                     $list_filtration = [];
-                    $detail_filtration = [];
                 }catch (Exception $e){
                     $this->error('规则格式错误');
-                }
-            }
-
-            //获取url类型的字段
-            foreach ($rule as $k=>$v){
-                if($v[1] == 'href'){
-                    $urlArrKey[] = $k;
                 }
             }
 
             if(empty($rule)) $this->error('列表规则参数不能为空或错误');
 
             //初始化话规则
-            $ii = 0;
-            foreach ($rule as $k => &$v){
+            foreach ($rule[0] as $k => &$v){
                 $key[] = [
-                    'field'  => $k,
+                    'field' => $k,
                     'title' => $v[2]
                 ];
-
-
-                //获取二级规则
-                if(isset($v[3]) && !empty($v[3]) ){
-
-                    if( $get_model ===  "1" ){
-                        $detail_code = $k;
-                    }
-
-                    $second = $v[3];
-                    //获取二级的正则规则
-                    foreach ($second as $sK=>&$sV){
-//                        $key[] = [
-//                            'field'  => $sK,
-//                            'title'  => $sV[2]
-//                        ];
-                        if( $get_model == "1" && isset($sV[4])) $detail_filtration[] = $sV[4];
-                        unset($sV[2]);
-                        unset($sV[3]);
-                        unset($sV[4]);
-                    }
-                }
-
-                //专业模式 提取 正则表达式
-                if( isset($v[4])&&!empty($v[4]) ){
-                    $list_filtration[$ii] = $v[4];
-                }
-                unset($v[3]);
-                unset($v[4]);
+                unset($v[2]);
             }
 
             //固定json返回key
             $key[] =["fixed"=> 'right', "width"=> 165, "align"=> 'center', "toolbar"=> '#barDemo'];
             //查询1级
-            while ( $i <= $page ){
+            while ( $i <= $page[0] ){
                 // 待采集的页面地址
                 $url = str_replace('@@',$i,$url);
                 $headers = get_headers( $url );
@@ -139,7 +91,10 @@ class Collect extends Controller
                 }
                 // 切片选择器
                 try{
-                    $data = QueryList::get($url)->rules($rule)->range($range)->query()->getData()->all();
+                    $list_filtration0 = $list_filtration[0];
+                    echo json_encode($rule[0]);
+                    echo $range[0];die;
+                    $data = QueryList::get($url)->rules($rule[0])->range($range[0])->query()->getData()->all();
                     foreach ($data as $dataK=>&$dataV){
                         $fi = 0;
                         $notNullVal = false;
@@ -148,21 +103,17 @@ class Collect extends Controller
                             if(!empty($fv)){
                                 $notNullVal = true;
                             }
-                            //url判断[url添加域名]
-                            if( in_array( $fk,$urlArrKey ) && !empty($fv) && !strstr('http',$fv ) ){
-                                $fv = $domain.$fv;
-                            }
 
                             //正则过滤
-                            if( !empty($fv) &&  isset($list_filtration[$fi]) &&  $list_filtration[$fi]){
+                            if( !empty($fv) &&  isset($list_filtration0[$fi]) &&  !empty($list_filtration0[$fi]) ){
                                 //拆分正则选取key标示
-                                if( strpos($list_filtration[$fi],'@@@') ){
-                                    $dFiltration = explode('@@@',$list_filtration[$fi]);
+                                if( strpos($list_filtration0[$fi],'@@@') ){
+                                    $dFiltration = explode('@@@',$list_filtration0[$fi]);
                                     $fKey = $dFiltration[1];
                                     $pregRule = $dFiltration[0];
 
                                 }else{
-                                    $pregRule = $list_filtration[$fi];
+                                    $pregRule = $list_filtration0[$fi];
                                     $fKey = 1;
                                 }
                                 preg_match( $pregRule,$fv,$match);
@@ -180,6 +131,7 @@ class Collect extends Controller
                         }
                     }
                 }catch (Exception $e){
+                    echo $e->getMessage();die;
                     return $this->error('采集规则错误，请检查');
                 }
                 $row = array_merge($row, $data);
@@ -191,6 +143,38 @@ class Collect extends Controller
 
         return $this->fetch();
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /**
      * 保存抓取规则
