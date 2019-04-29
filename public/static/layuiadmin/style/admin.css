@@ -523,4 +523,79 @@ html{background-color: #f2f2f2; color: #666;}
 }
 
 
+/*步骤条*/
+.steps-bar{width:80%;overflow:hidden;color:#999;margin: 0 auto;}
+.steps-bar a{color:#999;}
+.steps-bar .step{
+  width:49%;display:table-cell;
+  position: relative;
+}
+.steps-bar .step:last-child{
+  width:auto;
+  top:0;
+}
+.steps-bar .step .each{
+  width:100%;overflow:hidden;
+}
+.steps-bar .step .info{
+  width: 50%;
+  margin-left: -25%;
+  text-align: center;
+  position: relative;
+  z-index: 9;
+  left:15px;
+  margin-top:5px;
+}
+
+.steps-bar .step:first-child .info{
+  margin-left:0;
+  text-align:left;
+  left:0;
+}
+
+.steps-bar .step:last-child .info{
+  width:auto;
+  margin-left:-100px;
+  text-align:right;
+  left:auto;
+  right:0;
+}
+.steps-bar .current .round{
+  background:#3c8dbc;
+  color:#fff;
+  border-color:#3c8dbc;
+}
+.steps-bar .current a{
+  color:#3c8dbc;
+}
+.steps-bar .current .bar{
+  background:#3c8dbc;
+  border-color:#3c8dbc;
+}
+.steps-bar .round{
+  width:30px;
+  height:30px;
+  line-height:30px;
+  border:4px #d3d3d3 solid;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 18px;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 12px;
+  text-align: center;
+  float: left;
+}
+.steps-bar .bar{
+  margin:10px 10px 0px 40px;
+  width: auto;
+  height: 6px;
+  vertical-align: middle;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  background:#d3d3d3;
+}
+
+
 

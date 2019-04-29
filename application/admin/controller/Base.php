@@ -69,17 +69,21 @@ class Base extends Controller
             if (is_array($currentRoleRules)) {
                 $map1[] = ['id', 'in', $currentRoleRules];
             }
+//            dump($currentRoleRules);die;
             $menu = model('admin/AdminAuthRule')
                 ->where($map1)
                 ->order('sort asc')
                 ->select()
                 ->toArray();
             $menuList = list_to_tree($menu);
+//            dump($menuList);die;
+
             //菜单写入缓存
             cache('menu', $menuList);
         }
         //导航栏
         $navList = cache('nav');
+
         if (!$navList) {
             $map2[] = ['is_menu', '=', 1];
             $map2[] = ['is_show', '=', 1];
@@ -93,6 +97,7 @@ class Base extends Controller
                 ->order('sort asc')
                 ->select()
                 ->toArray();
+//   echo model('admin/AdminAuthRule')->getLastSql();die;
             $navList = list_to_tree($nav);
             //菜单写入缓存
             cache('nav', $navList);

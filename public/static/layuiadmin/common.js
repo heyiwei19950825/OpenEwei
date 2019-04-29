@@ -181,7 +181,6 @@ layui.define(function(exports){
         });
 
 
-
         /**
          * 多图上传
          */
@@ -251,6 +250,18 @@ layui.define(function(exports){
                 });
             }
         });
+
+
+        //绑定新开标签页
+        $('.new-tab').each(function(i,v){
+            var  that = $(v);
+            that.on('click',function(){
+                var url = that.attr('data-href');
+                var tit = that.attr('data-title');
+                top.layui.index.openTabsPage(url,tit)
+            })
+        })
+
 
         //对外暴露的接口
         exports('common', {});

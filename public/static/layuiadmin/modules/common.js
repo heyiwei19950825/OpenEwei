@@ -180,8 +180,6 @@ layui.define(function(exports){
         active[type] ? active[type].call(this) : '';
     });
 
-
-
     /**
      * 多图上传
      */
@@ -251,9 +249,23 @@ layui.define(function(exports){
         }
     });
 
+    //绑定新开标签页
+    $('.new-tab').each(function(i,v){
+        var  taht = $(v);
+        taht.on('click',function(){
+            var url = taht.attr('data-href');
+            var tit = that.attr('data-title');
+            top.layui.index.openTabsPage(url,tit)
+        })
+    })
+
+
     //对外暴露的接口
     exports('common', {});
 });
+
+
+
 
 
 
