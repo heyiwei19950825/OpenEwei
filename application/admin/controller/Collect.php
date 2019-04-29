@@ -2,6 +2,7 @@
 
 namespace app\admin\controller;
 
+use app\admin\lib\CollectLib;
 use org\Helper;
 use QL\QueryList;
 use think\Cache;
@@ -33,19 +34,85 @@ class Collect extends Controller
      * 抓取规则
      */
     public function rule(){
+        //判断请求
         if($this->request->isPost()){
-            ini_set('max_execution_time', '0');
             //初始化数据
-            $params = $this->request->param();
-            $url = $dow_img = $code = $need_login = $login_url = $login_name = $login_password = $rule = $table_name = $get_model = $page = $start_page = $make = '';
-            $list_name = $list_rule = $list_type = $list_desc = $table_collect_name = $table_field_name =  $second_filtration = $second = $row = $list_filtration = $urlArrKey = $range = [];
-            extract($params);
+            $rule       = [];
+            $params     = $this->request->param();//获取请求参数
+            $cacheKey   = md5(json_encode($params));//获取缓存名称
 
-            $cacheName = md5(json_encode($params));
-//            cache($cacheName,NULL);die;
+            //验证缓存是否已经完成
+            if( !cache($cacheKey) ){
+                //拆分出可使用规则
+                $lib    = new CollectLib();
+                $rule   = $lib->disposeParams($params);
+            }
+
+            dump($rule);die;
+
+
+            $key = [];
             $domain = 'http://'.explode('/',$params['url'])[2];//获取域名
             $startUrl = $url;
-            if( !cache($cacheName) ){
+            $url_arr = explode("\n",trim($url) );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//            if( !cache($cacheName) ){
                 //判断抓取模式
                 if( $get_model ===  "0" ){      //普通模式
                     $rule = [];
@@ -96,17 +163,16 @@ class Collect extends Controller
                 );
                 //存储爬取规则
                 cache($cacheName,$cacheVal,3600);
-
-            }
-
-//            dump($make);die;
+//            }
 
             //分解爬取规则
             $cacheVal = cache($cacheName);
             extract($cacheVal);
 
+
             reset($range);
             $first_key = key($range);
+
             $url = str_replace('@@',$start_page[$first_key],$startUrl);
             try{
                 $data = QueryList::get($url)->rules($rule[$first_key])->range($range[$first_key])->query()->getData()->all();
@@ -121,7 +187,6 @@ class Collect extends Controller
                     }
                     if(!$noEmpty) unset($data[$dataK]);
                 }
-
                 $startPage = ($start_page[$first_key] += 1);
             }catch (Exception $e){
                 return $this->error('采集规则错误，请检查');
@@ -135,16 +200,14 @@ class Collect extends Controller
                 unset($range[$first_key]);
                 unset($rule[$first_key]);
                 unset($make[$first_key]);
-
                 //判断二级标示不为空时 说明还有下一级数据
                 if( !empty($make) && !empty($data)){
-                    dump($data);die;
                     reset($make);
                     $make_key = key($make);
                     $startUrl = $data[0][$make[$make_key]];
                 }
             }
-            dump($rule);die;
+
             if( empty($rule) ){
                 cache($cacheName,NULL);
             }else{
@@ -159,9 +222,9 @@ class Collect extends Controller
                 ),3600);
             }
 
-            return $this->success( '第一阶段数据抓取，抓取当前第'.( $startPage - 1 ).'页','', ['key'=>$key,'data'=>$row]);
-        }
 
+            return $this->success( '第一阶段数据抓取，抓取当前第'.( $startPage - 1 ).'页','', ['key'=>$key,'data'=>$row,'']);
+        }
 
 
         return $this->fetch();
