@@ -1,6 +1,9 @@
 {extend name="base" /}
 {block name="content"}
 <div class="layui-tab-content"  style="background:#f2f2f2">
+    <div style="padding-bottom: 180px;">
+
+
     <div class="layui-row">
         <form class="layui-form layui-card-header layuiadmin-card-header-auto">
             <div>
@@ -193,19 +196,7 @@
                     </div>
                 </div>
             </div>
-            <!--按钮-->
-            <div class="layui-col-md12 layui-card " style="padding: 10px;margin-top: 30px;">
-                <div class="layui-form-item layui-layout-admin" style="margin:0 auto;">
-                    <div class="">
-                        <div class="layui-btn layuiadmin-btn-admin layui-btn-normal add-rule">添加二级规则</div>
-                        <div class="layui-btn" lay-submit="" lay-filter="component-form-demo">采集规则测试</div>
-                        <div class="layui-btn layui-btn-primary">保存采集规则</div>
-                        <div class="layui-btn layuiadmin-btn-admin save-data">采集数据</div>
-                        <div class="layui-btn layuiadmin-btn-admin layui-btn-danger del-data">删除数据</div>
-                    </div>
-                    <div class="layui-form-mid layui-word-aux">（先点击规则测试 然后采集对应的数据）</div>
-                </div>
-            </div>
+
         </form>
     </div>
     <!--采集数据表格-->
@@ -218,6 +209,41 @@
     </div>
     <div class="layui-tab-item">
         <table id="data-list" lay-filter="list"></table>
+    </div>
+    </div>
+    <div class="layui-form-item layui-layout-admin">
+        <div class="layui-input-block">
+            <div class="layui-footer" style="left: 0; height: 130px;">
+                <div class="layui-btn layuiadmin-btn-admin layui-btn-normal add-rule">添加二级规则</div>
+                <div class="layui-btn" lay-submit="" lay-filter="component-form-demo">采集规则测试</div>
+                <div class="layui-btn layui-btn-primary">保存采集规则</div>
+                <div class="layui-btn layuiadmin-btn-admin save-data">采集数据</div>
+                <div class="layui-btn layuiadmin-btn-admin layui-btn-danger del-data">删除数据</div>
+                <div class="steps-bar" style="padding: 10px;">
+                    <div class="step current">
+                        <div class="each">
+                            <a href="{:url('admin/task/add')}" class="round">1</a>
+                            <div class="bar"></div>
+                        </div>
+                        <div class="info"><a href="{:url('admin/task/add')}">任务设置</a></div>
+                    </div>
+                    <div class="step current">
+                        <div class="each">
+                            <a href="{:url('admin/task/addStep1')}" class="round">2</a>
+                            <div class="bar"></div>
+                        </div>
+                        <div class="info"><a href="{:url('admin/task/addStep1')}">采集器设置</a></div>
+                    </div>
+                    <div class="step ">
+                        <div class="each">
+                            <a href="{:url('admin/task/addStep2')}" class="round">3</a>
+                        </div>
+                        <div class="info"><a href="{:url('admin/task/addStep2')}">发布设置</a></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
 </div>
 

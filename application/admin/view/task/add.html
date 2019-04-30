@@ -21,33 +21,22 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">自动采集</label>
                     <div class="layui-input-block">
-                        <input type="checkbox" name="auto_collect" lay-skin="switch" lay-filter="switchTest" lay-text="自动|关闭">
+                        <input type="checkbox" data-class="auto_collect" lay-filter="form-switch" lay-skin="switch" lay-filter="switchTest" lay-text="自动|关闭">
+                        <input type="hidden" name="auto_collect" value="0">
                     </div>
                 </div>
-
                 <div class="layui-form-item">
                     <label class="layui-form-label">每次采集数</label>
                     <div class="layui-input-block">
-                        <input type="number" name="model" value="" lay-verify="" placeholder="" autocomplete="off" class="layui-input">
+                        <input type="number" name="model" value="" placeholder="" autocomplete="off" class="layui-input">
                         <div class="layui-form-mid layui-word-aux">（该任务每次采集的数据量，不能超过采集设置中的“每次采集数量”）</div>
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">使用代理</label>
+                    <label class="layui-form-label">图片本地化</label>
                     <div class="layui-input-block">
-                        <input type="checkbox" name="auto_collect" lay-skin="switch" lay-filter="switchTest" lay-text="自动|关闭">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">图片本地话</label>
-                    <div class="layui-input-block">
-                        <input type="checkbox" name="auto_collect" lay-skin="switch" lay-filter="switchTest" lay-text="自动|关闭">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">图片地址</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="model" value="" lay-verify="" placeholder="" autocomplete="off" class="layui-input">
+                        <input type="checkbox" data-class="img_download" lay-filter="form-switch" lay-skin="switch" lay-filter="switchTest" lay-text="是|否">
+                        <input type="hidden" name="img_download" value="0">
                     </div>
                 </div>
                 <div class="layui-form-item layui-layout-admin">
@@ -101,19 +90,19 @@
 
         form.render(null, 'component-form-group');
 
+
+        form.on("switch(form-switch)",function(data){
+            console.log(data.othis);
+        })
+
+
+
         /* 监听提交 */
         form.on('submit(component-form-demo)', function(data){
-            var register_type = [];
-            $("input[name='register_type']:checked").each(function () {
-                register_type.push(this.value);
-            });
-            var reg_switch = [];
-            $("input[name='reg_switch']:checked").each(function () {
-                reg_switch.push(this.value);
-            });
-            data.field.reg_switch = reg_switch;
-            data.field.register_type = register_type;
-            $.post("{:url('admin/user/registerConfig')}", {data: data.field}, function (res) {
+            console.log(data);return false;
+            data.field.auto_collect = auto_collect;
+            data.field.img_download = img_download;
+            $.post("{:url('admin/task/add')}", {data: data.field}, function (res) {
                 layer.msg(res.msg);
             }, 'json');
             return false;
