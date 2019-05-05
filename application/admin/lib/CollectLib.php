@@ -41,7 +41,7 @@ class CollectLib
                         ];
                     }
                     //规则赋值
-                    $ruleParams[$k][''][$sV] = [$list_rule[$k][$sK],$list_type[$k][$sK],$list_desc[$k][$sK]];
+                    $ruleParams[$k][$sV] = [$list_rule[$k][$sK],$list_type[$k][$sK],$list_desc[$k][$sK]];
                 }
             }
         }else{
@@ -57,7 +57,6 @@ class CollectLib
             }
         }
 
-
         $rule = array(
             'url'           => $url,            //爬取开始页url
             'page'          => $page,           //爬取页数
@@ -68,10 +67,6 @@ class CollectLib
         );
 
 
-
-
-        dump($rule);die;
-
         //返回数据
         if(empty($rule)){
             return [
@@ -79,10 +74,7 @@ class CollectLib
                 'result'    => false
             ];
         }else{
-            return [
-                'data'      => $rule,
-                'result'    => true
-            ];
+            return $rule;
         }
     }
 }

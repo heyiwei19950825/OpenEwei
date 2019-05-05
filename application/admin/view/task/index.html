@@ -33,7 +33,7 @@
             </div>
             <div class="layui-tab-item layui-show">
                 <div style="padding: 10px;">
-                    <a class="layui-btn new-tab"  data-href="{:url('add')}"  data-title="添加任务">添加</a>
+                    <a class="layui-btn new-tab"  data-href="{:url('taskForm')}"  data-title="添加任务">添加</a>
                     <button class="layui-btn layuiadmin-btn-admin layui-btn-danger" data-type="del" data-url="{:url('del')}">删除</button>
                 </div>
                 <table id="list" lay-filter="list"></table>
@@ -72,10 +72,10 @@
                 {type: 'checkbox', fixed: 'left'},
                 {field: 'id', title: 'ID', sort: true, fixed: 'left', width: 80},
                 {field: 'name', title: '名称', sort: true, fixed: 'left',edit:true},
-                {field: 'module', title: '采集模块', sort: true, fixed: 'left', width: 100,edit:true},
-                {field: 'auto_collect', title: '自动采集', sort: true, fixed: 'left', width: 250},
-                {field: 'create_time', title: '添加时间', sort: true, fixed: 'left', width: 150},
-                {field: 'collect_time', title: '采集时间', sort: true, width: 80},
+                {field: 'model', title: '采集模块', sort: true, fixed: 'left',edit:true},
+                {field: 'auto_collect', title: '自动采集', sort: true, fixed: 'left' },
+                {field: 'create_time', title: '添加时间', sort: true, fixed: 'left' },
+                {field: 'collect_time', title: '采集时间', sort: true},
                 {fixed: 'right', width: 165, align: 'center', toolbar: '#barDemo'}
             ]],
         });
