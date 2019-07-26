@@ -1,6 +1,6 @@
 <?php
 /**----------------------------------------------------------------------
- * OpenEwei V1
+ * EweiAdmin V1
  * Copyright 2018-2018 http://www.redkylin.con All rights reserved.
  * ----------------------------------------------------------------------
  * Author: ewei(lamp_heyiwei@163.com)

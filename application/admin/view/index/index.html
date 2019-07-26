@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>{$meta_title|default=''}|{:config('web_site_title')}后台管理</title>
+    <title>{$meta_title|default='七品'}|{:config('web_site_title')}后台管理</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -75,7 +75,7 @@
                         <dd><a lay-href="set/user/info.html">基本资料</a></dd>
                         <dd><a lay-href="set/user/password.html">修改密码</a></dd>
                         <hr>
-                        <dd layadmin-event="logout" style="text-align: center;"><a>退出</a></dd>
+                        <dd layadmin-event="logout" class="logout" style="text-align: center;"><a>退出</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item layui-hide-xs" lay-unselect>
@@ -88,7 +88,7 @@
         <div class="layui-side layui-side-menu">
             <div class="layui-side-scroll">
                 <div class="layui-logo" lay-href="{:url('index/console')}">
-                    <span><img src="__PUBLIC__/images/logo.png" style="width: 80px">OpenEwei</span>
+                    <span><img src="__PUBLIC__/images/logo.png" style="width: 80px">EweiAdmin</span>
                 </div>
                 <ul class="layui-nav layui-nav-tree" lay-shrink="all" id="LAY-system-side-menu"
                     lay-filter="layadmin-system-side-menu">
@@ -180,6 +180,19 @@
         $('.clean-runtime').on('click', function(){
             $.get('__PUBLIC__/cc.php');
             layer.msg('清理缓存成功');
+        });
+
+        $('.logout').on('click', function () {
+            $.post("{:url('admin/login/logout')}", function (res) {
+                if (res.code === 1) {
+                    layer.msg(res.msg);
+                    setTimeout(function () {
+                        $(location).attr('href', res.url);
+                    }, 1000);
+                } else {
+                    layer.msg(res.msg);
+                }
+            }, 'json');
         });
 
         $('input[name=search]').on('keydown', function (event) {

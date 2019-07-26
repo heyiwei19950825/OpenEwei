@@ -1,6 +1,6 @@
 <?php
 /**----------------------------------------------------------------------
- * OpenEwei V3
+ * EweiAdmin V3
  * Copyright 2014-2018 http://www.redkylin.com All rights reserved.
  * ----------------------------------------------------------------------
  * Author: ewei(ewei@dtyjkj.com)
@@ -54,6 +54,6 @@ return [
     ],
 
     //后台管理系统名称
-    'web_site_title' => 'OpenEwei'
+    'web_site_title' => 'EweiAdmin'
 
 ];

@@ -1,7 +1,7 @@
 <?php
 /**----------------------------------------------------------------------
  * 页面管理
- * OpenEwei V1
+ * EweiAdmin V1
  * Copyright 2018-2018 http://www.redkylin.con All rights reserved.
  * ----------------------------------------------------------------------
  * Author: ewei(lamp_heyiwei@163.com)
@@ -18,9 +18,11 @@ use app\admin\model\AdminLog;
 
 class Html extends Base
 {
+    protected $temple;
+    protected $adv;
     public function initialize()
     {
-
+        $this->temple = model('Temple');
     }
 
     /**
@@ -32,8 +34,6 @@ class Html extends Base
         if ($this->request->isAjax()) {
 
             $map['keyword'] = $this->request->get('keyword', '');
-            $map['mobile']  = $this->request->get('mobile', '');
-            $map['sex']     = $this->request->get('sex', '');
             $map['status']  = $this->request->get('status', '');
 
             $data = [
@@ -41,7 +41,7 @@ class Html extends Base
                 'msg'   => '数据返回成功',
             ];
 
-            AdminLog::setTitle('获取列表');
+            AdminLog::setTitle('获取页面模板列表');
             return json($data);
         }else{
 
@@ -133,18 +133,33 @@ class Html extends Base
     public function template(){
 
         if ($this->request->isAjax()) {
+            $page = $this->request->post('page', '');
+            $limit = $this->request->post('limit', '');
+            $map['name'] = $this->request->post('keyword', '');
+            $map['status']  = $this->request->post('status');
+            $mapData = [];
+            if($map['name']){
+                $mapData[] = ['name','like',"%".$map['name']."%"];
 
-            $map['keyword'] = $this->request->get('keyword', '');
-            $map['mobile']  = $this->request->get('mobile', '');
-            $map['sex']     = $this->request->get('sex', '');
-            $map['status']  = $this->request->get('status', '');
+            }
+            $mapData[] = ['status','=',1];
+            $count = $this->temple->where($mapData)->count();
+            $templateList = $this->temple->where($mapData)
+                ->field('id,name,thum_img,price,desc,browse_number,demo_url,baidu_down_link')
+                ->page($page, $limit)
+                ->order('id desc')
+                ->select();
 
             $data = [
+                'data'=>[
+                    'list'=>$templateList,
+                    'count'=>$count
+                ],
                 'code'  => 0,
                 'msg'   => '数据返回成功',
             ];
 
-            AdminLog::setTitle('获取列表');
+            AdminLog::setTitle('获取商城页面列表');
             return json($data);
         }else{
             return $this->fetch();

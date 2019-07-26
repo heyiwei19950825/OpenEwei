@@ -8,200 +8,85 @@
         </ul>
         <div class="layui-tab-content ">
             <div class="layui-tab-item layui-show">
-                <div class="layui-row layui-col-space30">
-                    <div class="layui-col-md2 layui-col-sm4">
-                        <div class="cmdlist-container">
-                            <a href="javascript:;">
-                                <img src="https://www.layui.com/admin/std/dist/layuiadmin/style/res/template/portrait.png">
-                            </a>
-                            <a href="javascript:;">
-                                <div class="cmdlist-text">
-                                    <p class="info">2018春夏季新款港味短款白色T恤+网纱中长款chic半身裙套装两件套</p>
-                                    <div class="price">
-                                        <b>￥79</b>
-                                        <p>
-                                            ¥
-                                            <del>130</del>
-                                        </p>
-                                        <span class="flow">
-                                          <i class="layui-icon layui-icon-rate"></i>
-                                          433
-                                        </span>
-                                    </div>
-                                </div>
-                            </a>
+                <div class="layui-form layui-card-header layuiadmin-card-header-auto">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">关键字</label>
+                            <div class="layui-input-block" style="width: 300px;">
+                                <input type="text" name="keyword" placeholder="请输入关键字" class="layui-input">
+                            </div>
                         </div>
-                    </div>
-                    <div class="layui-col-md2 layui-col-sm4">
-                        <div class="cmdlist-container">
-                            <a href="javascript:;">
-                                <img src="https://www.layui.com/admin/std/dist/layuiadmin/style/res/template/portrait.png">
-                            </a>
-                            <a href="javascript:;">
-                                <div class="cmdlist-text">
-                                    <p class="info">2018春夏季新款港味短款白色T恤+网纱中长款chic半身裙套装两件套</p>
-                                    <div class="price">
-                                        <b>￥79</b>
-                                        <p>
-                                            ¥
-                                            <del>130</del>
-                                        </p>
-                                        <span class="flow">
-                                          <i class="layui-icon layui-icon-rate"></i>
-                                          433
-                                        </span>
-                                    </div>
-                                </div>
-                            </a>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">状态</label>
+                            <div class="layui-input-block">
+                                <select name="status">
+                                    <option value="">选择状态</option>
+                                    <option value="0">禁用</option>
+                                    <option value="1">启用</option>
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                    <div class="layui-col-md2 layui-col-sm4">
-                        <div class="cmdlist-container">
-                            <a href="javascript:;">
-                                <img src="https://www.layui.com/admin/std/dist/layuiadmin/style/res/template/portrait.png">
-                            </a>
-                            <a href="javascript:;">
-                                <div class="cmdlist-text">
-                                    <p class="info">2018春夏季新款港味短款白色T恤+网纱中长款chic半身裙套装两件套</p>
-                                    <div class="price">
-                                        <b>￥79</b>
-                                        <p>
-                                            ¥
-                                            <del>130</del>
-                                        </p>
-                                        <span class="flow">
-                                          <i class="layui-icon layui-icon-rate"></i>
-                                          433
-                                        </span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="layui-col-md2 layui-col-sm4">
-                        <div class="cmdlist-container">
-                            <a href="javascript:;">
-                                <img src="https://www.layui.com/admin/std/dist/layuiadmin/style/res/template/portrait.png">
-                            </a>
-                            <a href="javascript:;">
-                                <div class="cmdlist-text">
-                                    <p class="info">2018春夏季新款港味短款白色T恤+网纱中长款chic半身裙套装两件套</p>
-                                    <div class="price">
-                                        <b>￥79</b>
-                                        <p>
-                                            ¥
-                                            <del>130</del>
-                                        </p>
-                                        <span class="flow">
-                                          <i class="layui-icon layui-icon-rate"></i>
-                                          433
-                                        </span>
-                                    </div>
-                                </div>
-                            </a>
+                        <div class="layui-inline">
+                            <button class="layui-btn  layuiadmin-btn-template" data-type="buy">
+                                <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
+                <div class="layui-row layui-col-space30 buy-item" style="margin-top: 30px;">
+
+                </div>
+                <div id="buyPage"></div>
             </div>
-            <div class="layui-tab-item ">
-                <div class="layui-row layui-col-space30">
-                    <div class="layui-col-md2 layui-col-sm4">
-                        <div class="cmdlist-container">
-                            <a href="javascript:;">
-                                <img src="https://www.layui.com/admin/std/dist/layuiadmin/style/res/template/portrait.png">
-                            </a>
-                            <a href="javascript:;">
-                                <div class="cmdlist-text">
-                                    <p class="info">2018春夏季新款港味短款白色T恤+网纱中长款chic半身裙套装两件套</p>
-                                    <div class="price">
-                                        <b>￥79</b>
-                                        <p>
-                                            ¥
-                                            <del>130</del>
-                                        </p>
-                                        <span class="flow">
-                                          <i class="layui-icon layui-icon-rate"></i>
-                                          433
-                                        </span>
-                                    </div>
-                                </div>
-                            </a>
+
+            <div class="layui-tab-item">
+                <div class="layui-form layui-card-header layuiadmin-card-header-auto">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">关键字</label>
+                            <div class="layui-input-block" style="width: 300px;">
+                                <input type="text" name="keyword" placeholder="请输入关键字" class="layui-input">
+                            </div>
                         </div>
-                    </div>
-                    <div class="layui-col-md2 layui-col-sm4">
-                        <div class="cmdlist-container">
-                            <a href="javascript:;">
-                                <img src="https://www.layui.com/admin/std/dist/layuiadmin/style/res/template/portrait.png">
-                            </a>
-                            <a href="javascript:;">
-                                <div class="cmdlist-text">
-                                    <p class="info">2018春夏季新款港味短款白色T恤+网纱中长款chic半身裙套装两件套</p>
-                                    <div class="price">
-                                        <b>￥79</b>
-                                        <p>
-                                            ¥
-                                            <del>130</del>
-                                        </p>
-                                        <span class="flow">
-                                          <i class="layui-icon layui-icon-rate"></i>
-                                          433
-                                        </span>
-                                    </div>
-                                </div>
-                            </a>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">状态</label>
+                            <div class="layui-input-block">
+                                <select name="status">
+                                    <option value="">选择状态</option>
+                                    <option value="0">禁用</option>
+                                    <option value="1">启用</option>
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                    <div class="layui-col-md2 layui-col-sm4">
-                        <div class="cmdlist-container">
-                            <a href="javascript:;">
-                                <img src="https://www.layui.com/admin/std/dist/layuiadmin/style/res/template/portrait.png">
-                            </a>
-                            <a href="javascript:;">
-                                <div class="cmdlist-text">
-                                    <p class="info">2018春夏季新款港味短款白色T恤+网纱中长款chic半身裙套装两件套</p>
-                                    <div class="price">
-                                        <b>￥79</b>
-                                        <p>
-                                            ¥
-                                            <del>130</del>
-                                        </p>
-                                        <span class="flow">
-                                          <i class="layui-icon layui-icon-rate"></i>
-                                          433
-                                        </span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="layui-col-md2 layui-col-sm4">
-                        <div class="cmdlist-container">
-                            <a href="javascript:;">
-                                <img src="https://www.layui.com/admin/std/dist/layuiadmin/style/res/template/portrait.png">
-                            </a>
-                            <a href="javascript:;">
-                                <div class="cmdlist-text">
-                                    <p class="info">2018春夏季新款港味短款白色T恤+网纱中长款chic半身裙套装两件套</p>
-                                    <div class="price">
-                                        <b>￥79</b>
-                                        <p>
-                                            ¥
-                                            <del>130</del>
-                                        </p>
-                                        <span class="flow">
-                                          <i class="layui-icon layui-icon-rate"></i>
-                                          433
-                                        </span>
-                                    </div>
-                                </div>
-                            </a>
+                        <div class="layui-inline">
+                            <button class="layui-btn layuiadmin-btn-template" data-type="template">
+                                <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
+                <div class="layui-tab-item layui-show">
+                    <div style="padding: 10px;">
+                        <button class="layui-btn layuiadmin-btn-admin" data-type="add" data-title="添加" data-url="{:url('adminForm')}" data-width="600px" data-height="500px">添加</button>
+                        <button class="layui-btn layuiadmin-btn-admin layui-btn-danger" data-type="del" data-url="{:url('delAdmin')}">删除</button>
+                    </div>
+                    <table id="list" lay-filter="list"></table>
+                    <script type="text/html" id="barDemo">
+                        <a class="layui-btn layui-btn-xs" lay-event="other" data-title="编辑用户" data-url="{:url('adminForm')}" data-width="600px" data-height="500px;">编辑</a>
+                        {{# if(d.id > 1){ }}
+                        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del"  data-url='{:url("delAdmin")}'>删除</a>
+                        {{# } }}
+                    </script>
+                </div>
+                <div class="layui-row layui-col-space30 shop-item" style="margin-top: 30px;">
+                </div>
+                <div id="page"></div>
             </div>
         </div>
     </div>
 </div>
+
+
 {/block}
 {block name="script"}
 <script>
@@ -209,12 +94,122 @@
         base: '__LAYUI__/' //静态资源所在路径
     }).extend({
         index: 'lib/index' //主入口模块
-    }).use(['index', 'form', 'laydate'], function(){
+    }).use(['index', 'form', 'laydate','laypage'], function(){
         var $ = layui.$
-            ,admin = layui.admin
-            ,element = layui.element
-            ,layer = layui.layer
-            ,form = layui.form;
+            ,laypage = layui.laypage;
+        //向服务端获取页面数据
+        var count = 0;
+        var noOne = true,
+            curr = 1,
+            limit = 32,
+            keyword = '',
+            status = 0,
+            isBuy= false;
+        //获取数据列表
+        var getList = function(noOne,curr,limit,isBug,keyword,status){
+            $.post("{:url('html/template')}", {
+                page:curr,
+                limit:limit,
+                isBuy:isBug,
+                keyword:keyword,
+                status:status
+            }, function (res) {
+                var item = isBug?$('.buy-item'):$('.shop-item');
+                item.html('');
+                if(res.code == 0){
+                    var html = '';
+                    $(res.data.list).each(function(i,v){
+                        html += '                    <div class="layui-col-md3 layui-col-sm4">\n' +
+                            '                        <div class="cmdlist-container">\n' +
+                            '                            <a href="javascript:;" style="height: 192px;\n' +
+                            '    overflow: hidden;\n' +
+                            '    display: block;">\n' +
+                            '                                <img src="'+v.thum_img+'">\n' +
+                            '                            </a>\n' +
+                            '                            <a href="javascript:;">\n' +
+                            '                                <div class="cmdlist-text">\n' +
+                            '                                    <p class="info">'+v.name+'</p>\n' +
+                            '                                    <div class="price">\n' +
+                            // '                                        <b>￥'+v.price+'</b>\n' +
+                            // '                                        <p>\n' +
+                            // '                                            ¥\n' +
+                            // '                                            <del>130</del>\n' +
+                            // '                                        </p>\n' +
+                            '                                        <span class="flow">\n' +
+                            '                                          <i class="layui-icon layui-icon-rate"></i>\n' +
+                            '                                          '+v.browse_number+'\n' +
+                            '                                        </span>\n' +
+                            '                                        <span class="flow">\n' +
+                            '                                         <button type="button" class="layui-btn layui-btn-normal browse" data-name="'+v.name+'" data-url="'+v.demo_url+'">浏览</button>'+
+                            '                                        </span>\n' +
+                            '                                        <span class="flow">\n' +
+                            '                                         <button type="button" class="layui-btn layui-btn-warm">购买</button>'+
+                            '                                        </span>\n' +
+                            '                                    </div>\n' +
+                            '                                </div>\n' +
+                            '                            </a>\n' +
+                            '                        </div>\n' +
+                            '                    </div>'
+                    });
+                    count = res.data.count;
+                    item.prepend(html);
+
+                    //绑定打开
+                    $('.browse').on('click',function(){
+                        var url  = $(this).attr('data-url');
+                        var name  = $(this).attr('data-name');
+                        layer.open({
+                            type: 2,
+                            title: name,
+                            shadeClose: true,
+                            shade: false,
+                            maxmin: true, //开启最大化最小化按钮
+                            area: ['90%', '90%'],
+                            content: url
+                        });
+                    })
+
+
+
+                    //是否是第一次
+                    if(noOne){
+                        //设置分页
+                        laypage.render({
+                            elem: isBug?'buyPage':'page'
+                            ,limit:32
+                            ,limits:[16, 32, 64, 128]
+                            ,count:count
+                            ,layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
+                            ,jump: function(obj,first){
+                                console.log(!first);
+                                console.log(obj);
+                                if(!first){
+                                    //首次不执行
+                                    getList( false ,obj.curr,obj.limit,isBug);
+
+                                    $('body,html').animate({
+                                        scrollTop:0,
+                                    },30);
+                                }
+
+                            }
+                        });
+                    }
+                }
+            },'json');
+        };
+        getList(noOne,curr,limit);
+        getList(noOne,curr,limit,true);
+
+        //搜索列表信息
+        $('.layuiadmin-btn-template').on('click',function(){
+            var type = $(this).attr('data-type');
+            var keyword = $(this).parents('.layui-form-item').find('input[name=keyword]').val();
+            var status = $(this).parents('.layui-form-item').find('select[name=status]').val();
+            type = type == 'buy'?true:false;
+
+            getList(noOne,curr,limit,type,keyword,status);
+        })
 
     });
 </script>

@@ -7,7 +7,7 @@
             <li class="text-muted">{$vo.title}</li>
         {/volist}
       {else/}
-        <li class="active">{$meta_title}</li>
+        <li class="active">{$meta_title|'七品'}</li>
       {/notempty}
     </ol>
  </section>
@@ -16,7 +16,7 @@
   {php}if(!isset($hide_panel) || $hide_panel!==true){ {/php}
     <div class="box box-info">
         <div class="box-header with-border">
-              <h3 class="box-title">{$meta_title}</h3> {present name="custom_head.help"}<a href="{$custom_head.help}" class="color-6" title="帮助" target="_blank"><i class="fa fa-question-circle f15"></i></a>{/present}
+              <h3 class="box-title">{$meta_title|'七品'}</h3> {present name="custom_head.help"}<a href="{$custom_head.help}" class="color-6" title="帮助" target="_blank"><i class="fa fa-question-circle f15"></i></a>{/present}
               <div class="box-tools pull-right">{present name="custom_head.self"}{$custom_head.self}{/present}
               {present name="custom_head.back"}<button type="button" class="btn btn-box-tool f16" onclick="javascript:history.go(-1);"><i class="fa fa-reply"></i></button>{/present}
               <button type="button" class="btn btn-box-tool f16" onclick="javascript:location.reload();"><i class="fa fa-refresh"></i></button>

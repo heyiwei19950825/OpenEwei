@@ -1,6 +1,6 @@
 <?php
 /**----------------------------------------------------------------------
- * OpenEwei V3
+ * EweiAdmin V3
  * Copyright 2014-2018 http://www.redkylin.com All rights reserved.
  * ----------------------------------------------------------------------
  * Author: ewei(ewei@dtyjkj.com)
@@ -58,9 +58,9 @@ class Base extends Controller
         $this->url          = $this->request->url(true);//完整url;
         $this->aid          = get_aid();
 
-
         //菜单机制
-        $menuList = cache('menu');
+//        $menuList = cache('menu');
+        $menuList = null;
         if (!$menuList) {
             $map1[] = ['is_menu', '=', 1];
             $map1[] = ['is_show', '=', 1];
@@ -76,7 +76,6 @@ class Base extends Controller
                 ->select()
                 ->toArray();
             $menuList = list_to_tree($menu);
-//            dump($menuList);die;
 
             //菜单写入缓存
             cache('menu', $menuList);
