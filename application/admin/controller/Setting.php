@@ -14,6 +14,7 @@ namespace app\admin\controller;
 
 
 use app\admin\model\AdminLog;
+use think\Db;
 
 class Setting extends Base
 {
@@ -28,25 +29,31 @@ class Setting extends Base
      */
     public function system()
     {
-        if ($this->request->isAjax()) {
+        //获取数据信息
+        $config = Db::name('system')->where(['id'=>1])->find();
+        AdminLog::setTitle('获取配置文件信息');
 
-            $map['keyword'] = $this->request->get('keyword', '');
-            $map['mobile']  = $this->request->get('mobile', '');
-            $map['sex']     = $this->request->get('sex', '');
-            $map['status']  = $this->request->get('status', '');
+        $this->assign('config',$config);
+        return $this->fetch();
+    }
+
+    /**
+     * 编辑
+     */
+    public function systemForm(){
+        if( $this->request->isAjax()){
+            $params = $this->request->post();
+
+            Db::name('system')->where([
+                "id"=>1
+            ])->update($params['data']);
 
             $data = [
                 'code'  => 0,
-                'msg'   => '数据返回成功',
+                'msg'   => '修改成功',
             ];
-
-            AdminLog::setTitle('获取列表');
+            AdminLog::setTitle('修改配置文件');
             return json($data);
-        }else{
-
-            $config= [];
-            $this->assign('config',$config);
-            return $this->fetch();
         }
     }
 

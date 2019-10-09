@@ -194,7 +194,7 @@ class Helper
     }
 
 
-static function iunserializer($value) {
+    static function iunserializer($value) {
         if (empty($value)) {
             return array();
         }
@@ -212,4 +212,131 @@ static function iunserializer($value) {
         }
     }
 
+    /**
+     * 计算经纬度距离
+     * @param $lat1
+     * @param $lng1
+     * @param $lat2
+     * @param $lng2
+     * @param bool $miles
+     * @return float|int
+     */
+
+    static function distance($lat1, $lng1, $lat2, $lng2, $miles = true)
+    {
+        $pi80 = M_PI / 180;
+        $lat1 = $pi80;
+        $lng1 = $pi80;
+        $lat2 = $pi80;
+        $lng2 = $pi80;
+
+
+        $r = 6372.797; // mean radius of Earth in km
+        $dlat = $lat2 - $lat1;
+        $dlng = $lng2 - $lng1;
+        $a = sin($dlat / 2) * sin($dlat / 2) + cos($lat1) * cos($lat2) * sin($dlng / 2) * sin($dlng / 2);
+        $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
+        $km = $r * $c;
+
+        return ($miles ? ($km * 0.621371192) : $km);
+
+
+    }
+
+    /**
+     * 时间换算 成 多少天 多少秒
+     * @param $secs
+     * @return string
+     */
+    static function secsToStr($time) {
+        if( is_string($time) ){
+            $time = strtotime($time);
+        }
+        // 当天最大时间
+        $todayLast = strtotime(date('Y-m-d 23:59:59'));
+        $agoTimeTrue = time() - $time;
+        $agoTime = $todayLast - $time;
+        $agoDay = floor($agoTime / 86400);
+
+        if ($agoTimeTrue < 60) {
+            $result = '刚刚';
+        } elseif ($agoTimeTrue < 3600) {
+            $result = (ceil($agoTimeTrue / 60)) . '分钟前';
+        } elseif ($agoTimeTrue < 3600 * 12) {
+            $result = (ceil($agoTimeTrue / 3600)) . '小时前';
+        } else {
+            $format = date('Y') != date('Y', $time) ? "Y-m-d" : "m-d";
+            $result = date($format, $time);
+        }
+        return $result;
+    }
+
+    /**
+     * 模拟GET请求
+     */
+    static function getCurl($url,$data = null){
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, FALSE);
+        if (!empty($data)){
+            curl_setopt($curl, CURLOPT_POST, 1);
+            curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+        }
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        //执行
+        $output = curl_exec($curl);
+        curl_close($curl);
+        return $output;
+    }
+
+    /**
+     * 模拟POST请求
+     */
+    static function postCurl( $url,$params ) {
+        //初始化
+        $curl = curl_init();
+        //设置抓取的url
+        curl_setopt($curl, CURLOPT_URL, $url);
+        //设置头文件的信息作为数据流输出
+        curl_setopt($curl, CURLOPT_HEADER, 1);
+        //设置获取的信息以文件流的形式返回，而不是直接输出。
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        //设置post方式提交
+        curl_setopt($curl, CURLOPT_POST, 1);
+        //设置post数据
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $params);
+        //执行命令
+        $data = curl_exec($curl);
+        //关闭URL请求
+        curl_close($curl);
+        //显示获得的数据
+        return $data;
+    }
+
+    /**
+     * 生成订单号
+     */
+    static function createOrderNumber(){
+        //生成24位唯一订单号码，格式：YYYY-MMDD-HHII-SS-NNNN,NNNN-CC，
+        //其中：YYYY=年份，MM=月份，DD=日期，HH=24格式小时，II=分，SS=秒，NNNNNNNN=随机数，CC=检查码
+
+        @date_default_timezone_set("PRC");
+        //订购日期
+        $order_date = date('Y-m-d');
+        //订单号码主体（YYYYMMDDHHIISSNNNNNNNN）
+        $order_id_main = date('YmdHis') . rand(10000000,99999999);
+        //订单号码主体长度
+        $order_id_len = strlen($order_id_main);
+        $order_id_sum = 0;
+        for($i=0; $i<$order_id_len; $i++){
+            $order_id_sum += (int)(substr($order_id_main,$i,1));
+        }
+        //唯一订单号码（YYYYMMDDHHIISSNNNNNNNNCC）
+        $orderNumber = $order_id_main . str_pad((100 - $order_id_sum % 100) % 100,2,'0',STR_PAD_LEFT);
+
+        return $orderNumber;
+    }
+
 }
+

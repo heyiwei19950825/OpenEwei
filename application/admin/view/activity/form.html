@@ -1,0 +1,245 @@
+{extend name="base" /}
+{block name="content"}
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-card-body" style="padding: 15px;">
+            <div class="layui-form" lay-filter="layuiadmin-form" id="layuiadmin-form" style="padding: 20px 30px 0 0;">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">描述</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="title" value="{$data.desc}" required  lay-verify="required" placeholder="请输入标题" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">作者</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="author" value="{$data.author}" placeholder="（选填）请输入作者" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">简介</label>
+                    <div class="layui-input-block">
+                        <textarea name="introduction" placeholder="（选填）请输入简介" class="layui-textarea">{$data.introduction}</textarea>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">缩略图</label>
+                    <div class="layui-input-block">
+                        <div class="layui-upload">
+                            <button type="button" class="layui-btn" id="thumb-upload-more">缩略图上传</button>
+                            <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+                                预览图：
+                                <div class="layui-upload-list  layui-row" id="thumb-container">
+                                    {if condition="!empty($data['thumb'])"}
+                                        {foreach name="$data['thumb']" item="vo"}
+                                            <div class="layui-col-md2 layui-col-sm4 photo-list">
+                                                <div class="cmdlist-container">
+                                                    <a href="javascript:;">
+                                                        <img src="{$vo}">
+                                                    </a>
+                                                    <a href="javascript:;">
+                                                        <div class="cmdlist-text">
+                                                            <div class="price">
+                                                                <input type="hidden" name="thumb[]" value="{$vo}">
+                                                                <button type="button" class="layui-btn layui-btn-danger remove-photo-btn">移除</button>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        {/foreach}
+                                    {/if}
+                                </div>
+                            </blockquote>
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">最多上传3张图片用于 数据列表中展示</div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">图集</label>
+                    <div class="layui-input-block">
+                        <button type="button" id="upload-photo-btn" class="layui-btn">上传图集</button>
+                        <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+                            预览图：
+                            <div class="layui-upload-list layui-row" id="photo-container">
+                                {if condition="!empty($data['photo'])"}
+                                    {foreach name="$data['photo']" item="vo"}
+                                        <div class="layui-col-md2 layui-col-sm4 photo-list">
+                                            <div class="cmdlist-container">
+                                                <a href="javascript:;">
+                                                    <img src="{$vo}">
+                                                </a>
+                                                <a href="javascript:;">
+                                                    <div class="cmdlist-text">
+                                                        <div class="price">
+                                                            <input type="hidden" name="photo[]" value="{$vo}">
+                                                            <button type="button" class="layui-btn layui-btn-danger remove-photo-btn">移除</button>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    {/foreach}
+                                {/if}
+                            </div>
+                        </blockquote>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">状态</label>
+                    <div class="layui-input-block">
+                        <input type="radio" name="status" value="1" title="已审核" {if condition="$data.status==1"} checked="checked"{/if}>
+                        <input type="radio" name="status" value="0" title="未审核" {if condition="$data.status==0"} checked="checked"{/if}>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">展示类型</label>
+                    <div class="layui-input-block">
+                        <input type="radio" name="type" value="1" title="纯文本"  {if condition="$data.type==1 || !isset($data.type)"} checked="checked"{/if}>
+                        <input type="radio" name="type" value="2" title="单图展示" {if condition="$data.type==2"} checked="checked"{/if}>
+                        <input type="radio" name="type" value="3" title="多图展示" {if condition="$data.type==3"} checked="checked"{/if}>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">置顶</label>
+                    <div class="layui-input-block">
+                        <input type="radio" name="is_top" value="1" title="置顶" {if condition="$data.is_top==1"} checked="checked"{/if}>
+                        <input type="radio" name="is_top" value="0" title="未置顶" {if condition="$data.is_top==0"} checked="checked"{/if}>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">推荐</label>
+                    <div class="layui-input-block">
+                        <input type="radio" name="is_recommend" value="1" title="推荐" {if condition="$data.is_recommend==1"} checked="checked"{/if}>
+                        <input type="radio" name="is_recommend" value="0" title="未推荐" {if condition="$data.is_recommend==0"} checked="checked"{/if}>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">发布时间</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="publish_time" value="{$data.publish_time}" class="layui-input datetime">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">排序</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="sort" value="{$data.sort}" required  lay-verify="required" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">内容</label>
+                    <div class="layui-input-block">
+                        <textarea name="content" lay-verify="content" placeholder="" class="layui-textarea" id="content">{$data.content}</textarea>
+                    </div>
+                </div>
+                <div class="layui-form-item layui-layout-admin">
+                    <div class="layui-input-block">
+                        <div class="layui-footer" style="left: 0;">
+                            <input type="hidden" name="id" value="{$data.id}">
+                            <button class="layui-btn" lay-submit="" lay-filter="form-submit">立即提交</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="js"}
+<script src="__STATIC__/ueditor/ueditor.config.js"></script>
+<script src="__STATIC__/ueditor/ueditor.all.min.js"></script>
+{block name="script"}
+{/block}
+<script>
+    layui.config({
+        base: '__LAYUI__/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index','jquery','form', 'table','laydate','upload','common'], function(){
+        var $ = layui.$
+            ,admin = layui.admin
+            ,form = layui.form
+            ,laydate = layui.laydate
+            ,uploadEditor = UE.getEditor('upload-photo-btn')
+            ,uploadImage;
+
+        //百度编辑器
+        var ue = UE.getEditor('content');
+        ue.ready(function() {
+            ue.setHeight(500);
+        });
+
+        //百度编辑器多图上传
+        uploadEditor.ready(function () {
+            uploadEditor.setDisabled();
+            uploadEditor.hide();
+            uploadEditor.addListener('beforeInsertImage', function (t, arg) {
+                $.each(arg, function (index, item) {
+                    var photoListItem ='<div class="layui-col-md2 layui-col-sm4 photo-list">\n' +
+                        '        <div class="cmdlist-container">\n' +
+                        '            <a href="javascript:;">\n' +
+                        '              <img src="'+item.src+'">\n' +
+                        '            </a>\n' +
+                        '            <a href="javascript:;">\n' +
+                        '              <div class="cmdlist-text">\n' +
+                        '                <div class="price">\n' +
+                        '                   <input type="hidden" name="photo[]" value="'+item.src+'">'+
+                        '                   <button type="button" class="layui-btn layui-btn-danger remove-photo-btn">移除</button>'+
+                        '                </div>\n' +
+                        '              </div>\n' +
+                        '            </a>\n' +
+                        '        </div>\n' +
+                        '    </div>\n';
+
+                    $('#photo-container').append(photoListItem);
+                    $('.remove-photo-btn').on('click', function () {
+                        $(this).parents('.photo-list').remove();
+                    });
+                });
+            });
+        });
+
+        //删除图片
+        $('.remove-photo-btn').on('click', function () {
+            $(this).parents('.photo-list').remove();
+        });
+
+        $('#upload-photo-btn').on('click', function () {
+            uploadImage = uploadEditor.getDialog("insertimage");
+            uploadImage.open();
+        });
+
+        /**
+         * 通用日期时间选择
+         */
+        $('.datetime').each(function(i,v){
+            laydate.render({
+                elem : this,
+            });
+        })
+
+        form.render();
+
+        /* 监听提交 */
+        form.on('submit(form-submit)', function(data){
+            //获取富文本中内容 拼接到表单数据中
+            var content = ue.getContent();
+            console.log(content);
+            data.field.content = content;
+            $.post("{:url('form')}", data.field, function (e) {
+                if(e.code==1){
+                    layer.confirm('保存成功,关闭本页面吗?', {icon: 3, title:'提示'}, function(index){
+                        admin.closeThisTabs();
+                        layer.close(index);
+                    });
+                }else{
+                    layer.msg(e.msg);
+                }
+            }, 'json');
+            return false;
+        });
+    })
+</script>
+{/block}
+

@@ -8,7 +8,7 @@
  * Time: 11:07
  * ----------------------------------------------------------------------
  */
-namespace org;
+namespace org\WeChat;
 
 class WxJsConfig
 {

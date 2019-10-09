@@ -14,8 +14,7 @@ namespace app\admin\controller;
 use app\admin\model\AdminLog;
 use app\common\layout\Iframe;
 use org\Helper;
-use org\WxJsConfig;
-
+use org\WeChat\WxJsConfig;
 class Nav extends Admin
 {
     protected $nav;
